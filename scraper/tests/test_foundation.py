@@ -276,6 +276,47 @@ class TestPreciosPyFoundation(unittest.TestCase):
         self.assertEqual(group_2l.canonical_ean, "7840058008084")
         self.assertEqual(group_2l.offers[0].ean, "7840058008084")
 
+    def test_delta_sync_engine(self) -> None:
+        from precios_py.delta_sync import DeltaSyncEngine
+
+        engine = DeltaSyncEngine()
+        prev_offers = [
+            ScrapedOffer(
+                supermarket_slug="superseis",
+                external_sku="item1",
+                raw_title="Leche 1L",
+                regular_price=9500,
+                promo_price=None,
+                ean="7840000000106",
+            )
+        ]
+        curr_offers = [
+            # Precio cambió de 9500 a 9800 y oferta a 8900
+            ScrapedOffer(
+                supermarket_slug="superseis",
+                external_sku="item1",
+                raw_title="Leche 1L",
+                regular_price=9800,
+                promo_price=8900,
+                ean="7840000000106",
+            ),
+            # Nuevo producto
+            ScrapedOffer(
+                supermarket_slug="biggie",
+                external_sku="item2",
+                raw_title="Yerba 500g",
+                regular_price=17500,
+                ean="7840000000036",
+            ),
+        ]
+
+        delta = engine.compute_delta(prev_offers, curr_offers)
+        self.assertEqual(delta.total_price_changes, 1)
+        self.assertEqual(delta.total_new_products, 1)
+        self.assertEqual(len(delta.updated_offers), 2)
+        self.assertEqual(delta.updated_offers[0]["old_regular_price"], 9500)
+        self.assertEqual(delta.updated_offers[0]["new_regular_price"], 9800)
+
 
 if __name__ == "__main__":
     unittest.main()
