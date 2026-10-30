@@ -39,6 +39,30 @@ void main() {
       expect(promos, isNotEmpty);
       print('Promociones bancarias cargadas: ${promos.length}');
 
+      // 5. Probar Delta Sync en vivo (actualización de precio por paquete < 80 KB)
+      final yerbaBefore = repo.findByBarcode('7840000000036');
+      expect(yerbaBefore, isNotNull);
+
+      final deltaItems = [
+        {
+          'supermarket_slug': 'biggie',
+          'external_sku': 'BG-8821',
+          'ean': '7840000000036',
+          'raw_title': 'Yerba Kurupi Menta y Boldo 500g',
+          'new_regular_price': 16900,
+          'new_promo_price': 14900,
+        }
+      ];
+
+      final appliedCount = repo.applyDeltaSync(deltaItems);
+      expect(appliedCount, equals(1));
+
+      final yerbaAfter = repo.findByBarcode('7840000000036');
+      final biggieOffer = yerbaAfter!.offers.firstWhere((o) => o.supermarketSlug == 'biggie');
+      expect(biggieOffer.regularPriceGs, equals(16900));
+      expect(biggieOffer.promoPriceGs, equals(14900));
+      print('Delta sync aplicado con éxito: Yerba en Biggie actualizada a Gs. ${biggieOffer.regularPriceGs}');
+
       db.dispose();
     });
   });

@@ -471,4 +471,46 @@ class LocalCatalogRepository {
     }
     return result;
   }
+
+  /// Aplica el paquete delta diario (< 80 KB) de cambios de precios en la base SQLite local
+  int applyDeltaSync(List<Map<String, dynamic>> updatedOffers) {
+    if (_db == null || updatedOffers.isEmpty) return 0;
+
+    var applied = 0;
+    _db.execute('BEGIN TRANSACTION;');
+    try {
+      final stmt = _db.prepare('''
+        UPDATE local_offers
+        SET regular_price = ?,
+            promo_price = ?,
+            scraped_at = CURRENT_TIMESTAMP
+        WHERE supermarket_id = (SELECT id FROM local_supermarkets WHERE slug = ?)
+          AND product_id = (
+            SELECT p.id FROM local_products p
+            WHERE (p.ean IS NOT NULL AND p.ean = ?)
+               OR p.normalized_name = ?
+            LIMIT 1
+          );
+      ''');
+
+      for (final item in updatedOffers) {
+        final supSlug = item['supermarket_slug'] as String?;
+        final regPrice = item['new_regular_price'] as int?;
+        final promoPrice = item['new_promo_price'] as int?;
+        final ean = item['ean'] as String?;
+        final title = item['raw_title'] as String?;
+
+        if (supSlug == null || regPrice == null) continue;
+
+        stmt.execute([regPrice, promoPrice, supSlug, ean ?? '', title ?? '']);
+        applied++;
+      }
+      stmt.dispose();
+      _db.execute('COMMIT;');
+    } catch (_) {
+      _db.execute('ROLLBACK;');
+      rethrow;
+    }
+    return applied;
+  }
 }
