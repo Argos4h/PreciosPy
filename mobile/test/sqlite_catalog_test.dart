@@ -63,6 +63,26 @@ void main() {
       expect(biggieOffer.promoPriceGs, equals(14900));
       print('Delta sync aplicado con éxito: Yerba en Biggie actualizada a Gs. ${biggieOffer.regularPriceGs}');
 
+      // 6. Probar Modo Cazador de Precios (Crowdsourcing en vivo)
+      const newEan = '7849999000123';
+      final crowdsourced = repo.addCrowdsourcedProduct(
+        ean: newEan,
+        productName: 'Chipa Pirulito Tradicional 100g',
+        supermarketSlug: 'superseis',
+        priceGs: 6500,
+      );
+      expect(crowdsourced.ean, equals(newEan));
+
+      // Debe encontrarse instantáneamente por código de barras y por búsqueda FTS5
+      final foundCrowdsourced = repo.findByBarcode(newEan);
+      expect(foundCrowdsourced, isNotNull);
+      expect(foundCrowdsourced!.normalizedName, contains('Chipa Pirulito'));
+      expect(foundCrowdsourced.offers.first.regularPriceGs, equals(6500));
+
+      final ftsHits = repo.searchInstant('pirulito');
+      expect(ftsHits, isNotEmpty);
+      print('Producto de Cazador de Precios verificado en SQLite y FTS5: ${foundCrowdsourced.normalizedName}');
+
       db.dispose();
     });
   });

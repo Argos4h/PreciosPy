@@ -104,3 +104,4 @@ class DeltaSyncEngine:
         p = Path(output_path)
         p.parent.mkdir(parents=True, exist_ok=True)
         p.write_text(json.dumps(asdict(bundle), indent=2, ensure_ascii=False), encoding="utf-8")
+

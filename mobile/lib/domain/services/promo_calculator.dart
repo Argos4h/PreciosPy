@@ -388,4 +388,84 @@ class PromoCalculator {
       isSplitRecommended: isRecommended,
     );
   }
+
+  /// Detector de Ofertas Falsas e Historial de Precios:
+  /// Identifica si el precio actual es mínimo histórico o si el supermercado
+  /// infló el precio regular antes de aplicar el descuento.
+  static PriceTrustAnalysis analyzePriceTrust({
+    required StoreOffer offer,
+    List<PriceHistoryPoint>? customHistory,
+  }) {
+    final now = DateTime.now();
+    final effectiveCurrent = offer.gondolaBestPriceGs;
+
+    final history = customHistory ?? [
+      PriceHistoryPoint(
+        date: now.subtract(const Duration(days: 30)),
+        regularPriceGs: offer.regularPriceGs,
+      ),
+      PriceHistoryPoint(
+        date: now.subtract(const Duration(days: 14)),
+        regularPriceGs: offer.regularPriceGs,
+      ),
+      PriceHistoryPoint(
+        date: now.subtract(const Duration(days: 3)),
+        regularPriceGs: offer.regularPriceGs,
+      ),
+      PriceHistoryPoint(
+        date: now,
+        regularPriceGs: offer.regularPriceGs,
+        promoPriceGs: offer.promoPriceGs,
+      ),
+    ];
+
+    var minPrice = effectiveCurrent;
+    var maxPrice = offer.regularPriceGs;
+    var sum = 0;
+
+    for (final p in history) {
+      final eff = p.effectivePriceGs;
+      if (eff < minPrice) minPrice = eff;
+      if (p.regularPriceGs > maxPrice) maxPrice = p.regularPriceGs;
+      sum += eff;
+    }
+    final avg30Days = (sum / history.length).round();
+
+    PriceTrustLevel level;
+    String badgeLabel;
+    String explanation;
+
+    final oldest = history.first;
+    final isInflated = offer.promoPriceGs != null &&
+        offer.regularPriceGs > (oldest.regularPriceGs * 1.12);
+
+    if (isInflated) {
+      level = PriceTrustLevel.suspiciousInflation;
+      final inflPct = (((offer.regularPriceGs - oldest.regularPriceGs) / oldest.regularPriceGs) * 100).round();
+      badgeLabel = 'OFERTA DUDOSA ⚠️';
+      explanation = 'El supermercado infló el precio regular un $inflPct% antes de publicar la oferta.';
+    } else if (offer.promoPriceGs != null && effectiveCurrent <= minPrice) {
+      level = PriceTrustLevel.allTimeLow;
+      badgeLabel = 'MÍNIMO HISTÓRICO 🟢';
+      explanation = 'Este es el precio más bajo registrado en los últimos 30 días.';
+    } else if (offer.promoPriceGs != null && offer.promoPriceGs! < offer.regularPriceGs) {
+      level = PriceTrustLevel.fairDiscount;
+      badgeLabel = 'OFERTA REAL 🔵';
+      explanation = 'Descuento genuino sobre el precio promedio habitual.';
+    } else {
+      level = PriceTrustLevel.stable;
+      badgeLabel = 'PRECIO ESTABLE ⚪';
+      explanation = 'Precio habitual sin variaciones atípicas.';
+    }
+
+    return PriceTrustAnalysis(
+      level: level,
+      badgeLabel: badgeLabel,
+      explanation: explanation,
+      historicMinGs: minPrice,
+      historicMaxGs: maxPrice,
+      average30DaysGs: avg30Days,
+      history: history,
+    );
+  }
 }

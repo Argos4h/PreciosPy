@@ -128,7 +128,11 @@ class _ScannerScreenState extends ConsumerState<ScannerScreen> {
             child: Padding(
               padding: const EdgeInsets.all(16),
               child: scannedProduct == null
-                  ? const Center(child: Text('Código EAN no encontrado en el catálogo local.'))
+                  ? _PriceHunterForm(
+                      ean: _currentBarcode,
+                      activeStoreSlug: activeStoreSlug,
+                      onRegistered: () => setState(() {}),
+                    )
                   : _AisleSemaphoreSheet(
                       product: scannedProduct,
                       rankedOffers: rankedOffers,
@@ -210,6 +214,138 @@ class _AisleSemaphoreSheet extends StatelessWidget {
                 'Precio aquí (${currentStoreEval.offer.supermarketName}): ${GuaraniFormatter.format(currentStoreEval.effectiveFinalPriceGs)} • En caja: ${GuaraniFormatter.format(currentStoreEval.cashOutflowAtPosGs)}',
                 style: const TextStyle(fontSize: 13, color: Colors.white70),
               ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class _PriceHunterForm extends ConsumerStatefulWidget {
+  final String ean;
+  final String activeStoreSlug;
+  final VoidCallback onRegistered;
+
+  const _PriceHunterForm({
+    required this.ean,
+    required this.activeStoreSlug,
+    required this.onRegistered,
+  });
+
+  @override
+  ConsumerState<_PriceHunterForm> createState() => _PriceHunterFormState();
+}
+
+class _PriceHunterFormState extends ConsumerState<_PriceHunterForm> {
+  final _nameCtrl = TextEditingController();
+  final _priceCtrl = TextEditingController();
+  bool _isSaving = false;
+
+  @override
+  void dispose() {
+    _nameCtrl.dispose();
+    _priceCtrl.dispose();
+    super.dispose();
+  }
+
+  void _submit() {
+    final name = _nameCtrl.text.trim();
+    final priceStr = _priceCtrl.text.replaceAll(RegExp(r'[^\d]'), '');
+    final price = int.tryParse(priceStr);
+
+    if (name.isEmpty || price == null || price <= 0) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Por favor ingresá un nombre y precio válido.')),
+      );
+      return;
+    }
+
+    setState(() => _isSaving = true);
+    final repo = ref.read(catalogRepositoryProvider);
+    repo.addCrowdsourcedProduct(
+      ean: widget.ean,
+      productName: name,
+      supermarketSlug: widget.activeStoreSlug,
+      priceGs: price,
+    );
+
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        content: Text('🎖️ ¡+50 Puntos de Cazador ganados! Producto registrado en la comunidad.'),
+        backgroundColor: Color(0xFF00875A),
+      ),
+    );
+
+    setState(() => _isSaving = false);
+    widget.onRegistered();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      child: Padding(
+        padding: const EdgeInsets.all(16),
+        child: ListView(
+          shrinkWrap: true,
+          children: [
+            Row(
+              children: [
+                const Icon(Icons.military_tech_rounded, color: Colors.amberAccent, size: 28),
+                const SizedBox(width: 8),
+                const Text(
+                  '¡Modo Cazador de Precios!',
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w800),
+                ),
+                const Spacer(),
+                Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
+                  decoration: BoxDecoration(
+                    color: const Color(0x33FFC107),
+                    borderRadius: BorderRadius.circular(12),
+                    border: Border.all(color: Colors.amberAccent),
+                  ),
+                  child: const Text(
+                    '+50 PTS',
+                    style: TextStyle(fontSize: 10, fontWeight: FontWeight.w900, color: Colors.amberAccent),
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 6),
+            Text(
+              'El código ${widget.ean} aún no está catalogado. Registralo para que toda la comunidad pueda comparar su precio.',
+              style: const TextStyle(fontSize: 12, color: Colors.white70),
+            ),
+            const SizedBox(height: 12),
+            TextField(
+              controller: _nameCtrl,
+              decoration: InputDecoration(
+                labelText: 'Nombre del Producto',
+                hintText: 'Ej: Empanada de Carne, Yerba 500g...',
+                filled: true,
+                fillColor: const Color(0xFF0D1117),
+                border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
+              ),
+            ),
+            const SizedBox(height: 10),
+            TextField(
+              controller: _priceCtrl,
+              keyboardType: TextInputType.number,
+              decoration: InputDecoration(
+                labelText: 'Precio en Góndola (Gs.)',
+                hintText: 'Ej: 14500',
+                prefixText: 'Gs. ',
+                filled: true,
+                fillColor: const Color(0xFF0D1117),
+                border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
+              ),
+            ),
+            const SizedBox(height: 14),
+            FilledButton.icon(
+              onPressed: _isSaving ? null : _submit,
+              icon: const Icon(Icons.check_circle_rounded),
+              label: const Text('Guardar y Compartir en la Comunidad'),
+            ),
           ],
         ),
       ),

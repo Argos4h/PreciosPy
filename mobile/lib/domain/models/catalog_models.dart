@@ -173,3 +173,47 @@ class SplitCartResult {
     required this.isSplitRecommended,
   });
 }
+
+class PriceHistoryPoint {
+  final DateTime date;
+  final int regularPriceGs;
+  final int? promoPriceGs;
+
+  const PriceHistoryPoint({
+    required this.date,
+    required this.regularPriceGs,
+    this.promoPriceGs,
+  });
+
+  int get effectivePriceGs =>
+      (promoPriceGs != null && promoPriceGs! > 0 && promoPriceGs! < regularPriceGs)
+          ? promoPriceGs!
+          : regularPriceGs;
+}
+
+enum PriceTrustLevel {
+  allTimeLow,          // 🟢 Mínimo histórico (precio más bajo en 60 días)
+  suspiciousInflation, // ⚠️ Oferta dudosa (subieron el regular antes de ofertar)
+  fairDiscount,        // 🔵 Oferta real / descuento genuino
+  stable,              // ⚪ Precio habitual estable
+}
+
+class PriceTrustAnalysis {
+  final PriceTrustLevel level;
+  final String badgeLabel;
+  final String explanation;
+  final int historicMinGs;
+  final int historicMaxGs;
+  final int average30DaysGs;
+  final List<PriceHistoryPoint> history;
+
+  const PriceTrustAnalysis({
+    required this.level,
+    required this.badgeLabel,
+    required this.explanation,
+    required this.historicMinGs,
+    required this.historicMaxGs,
+    required this.average30DaysGs,
+    required this.history,
+  });
+}

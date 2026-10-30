@@ -4,6 +4,7 @@ import '../../../core/formatters/guarani_formatter.dart';
 import '../../../domain/models/catalog_models.dart';
 import '../../../domain/services/promo_calculator.dart';
 import '../../../state/app_providers.dart';
+import 'product_detail_sheet.dart';
 
 class SearchScreen extends ConsumerWidget {
   const SearchScreen({super.key});
@@ -175,9 +176,22 @@ class _ProductComparisonCard extends StatelessWidget {
 
     return Card(
       margin: const EdgeInsets.only(bottom: 12),
-      child: Padding(
-        padding: const EdgeInsets.all(14),
-        child: Column(
+      clipBehavior: Clip.antiAlias,
+      child: InkWell(
+        onTap: () {
+          showModalBottomSheet(
+            context: context,
+            isScrollControlled: true,
+            backgroundColor: Colors.transparent,
+            builder: (_) => ProductDetailSheet(
+              product: product,
+              rankedOffers: rankedOffers,
+            ),
+          );
+        },
+        child: Padding(
+          padding: const EdgeInsets.all(14),
+          child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Row(
@@ -297,7 +311,8 @@ class _ProductComparisonCard extends StatelessWidget {
           ],
         ),
       ),
-    );
+    ),
+  );
   }
 }
 

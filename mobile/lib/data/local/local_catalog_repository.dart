@@ -513,4 +513,60 @@ class LocalCatalogRepository {
     }
     return applied;
   }
+
+  /// Permite a la comunidad registrar un producto no catalogado (Modo Cazador de Precios)
+  ProductItem addCrowdsourcedProduct({
+    required String ean,
+    required String productName,
+    required String supermarketSlug,
+    required int priceGs,
+    String? brand,
+  }) {
+    final now = DateTime.now();
+    final newProd = ProductItem(
+      id: DateTime.now().millisecondsSinceEpoch % 1000000,
+      ean: ean.trim(),
+      normalizedName: productName.trim(),
+      brand: brand,
+      unitMeasure: 'UN',
+      unitQuantity: 1.0,
+      baseUnit: 'UN',
+      baseMultiplier: 1.0,
+      offers: [
+        StoreOffer(
+          supermarketSlug: supermarketSlug,
+          supermarketName: supermarkets[supermarketSlug] ?? supermarketSlug,
+          regularPriceGs: priceGs,
+          promoPriceGs: null,
+        ),
+      ],
+    );
+
+    if (_db != null) {
+      _db.execute('''
+        INSERT OR REPLACE INTO local_products
+        (id, ean, normalized_name, brand, unit_measure, unit_quantity, base_unit)
+        VALUES (?, ?, ?, ?, ?, ?, ?);
+      ''', [newProd.id, newProd.ean, newProd.normalizedName, newProd.brand, 'UN', 1.0, 'UN']);
+
+      _db.execute('''
+        INSERT INTO local_products_fts (product_id, ean, normalized_name, brand)
+        VALUES (?, ?, ?, ?);
+      ''', [newProd.id, newProd.ean ?? '', newProd.normalizedName, newProd.brand ?? '']);
+
+      final supId = _db.select(
+        'SELECT id FROM local_supermarkets WHERE slug = ?',
+        [supermarketSlug],
+      );
+      if (supId.isNotEmpty) {
+        _db.execute('''
+          INSERT OR REPLACE INTO local_offers
+          (product_id, supermarket_id, regular_price, promo_price, price_per_base_unit, scraped_at)
+          VALUES (?, ?, ?, ?, ?, ?);
+        ''', [newProd.id, supId.first['id'], priceGs, null, priceGs, now.toIso8601String()]);
+      }
+    }
+
+    return newProd;
+  }
 }

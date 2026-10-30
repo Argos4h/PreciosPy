@@ -230,6 +230,10 @@ def main() -> None:
     demo_cmd = sub.add_parser("simulate-wallet", help="Ejecuta una simulación de precios y carrito con tarjetas PY")
     demo_cmd.add_argument("--query", default="trebol", help="Consulta FTS5 sin acentos para probar velocidad")
 
+    serve_cmd = sub.add_parser("serve", help="Inicia el servidor API Gateway REST para PreciosPy")
+    serve_cmd.add_argument("--port", type=int, default=8080, help="Puerto HTTP (por defecto 8080)")
+    serve_cmd.add_argument("--host", default="127.0.0.1", help="Host IP")
+
     args = parser.parse_args()
     repo_root = Path(__file__).resolve().parents[3]
     schema_path = repo_root / "database" / "mobile_sqlite_schema.sql"
@@ -323,6 +327,24 @@ def main() -> None:
                 ensure_ascii=False,
             )
         )
+
+    elif args.command == "serve":
+        from .api import create_gateway_server
+
+        server = create_gateway_server(host=args.host, port=args.port)
+        print(f"PreciosPy API Gateway activo en http://{args.host}:{args.port}")
+        print("Endpoints disponibles:")
+        print(" - GET  /health")
+        print(" - GET  /api/v1/sync/manifest")
+        print(" - GET  /api/v1/sync/snapshot.db")
+        print(" - GET  /api/v1/sync/delta")
+        print(" - GET  /api/v1/supermarkets/branches")
+        print(" - POST /api/v1/crowdsource/report")
+        try:
+            server.serve_forever()
+        except KeyboardInterrupt:
+            print("\nServidor detenido.")
+            server.server_close()
 
 
 if __name__ == "__main__":

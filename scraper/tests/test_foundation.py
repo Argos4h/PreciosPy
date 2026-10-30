@@ -317,6 +317,56 @@ class TestPreciosPyFoundation(unittest.TestCase):
         self.assertEqual(delta.updated_offers[0]["old_regular_price"], 9500)
         self.assertEqual(delta.updated_offers[0]["new_regular_price"], 9800)
 
+    def test_api_gateway_endpoints(self) -> None:
+        import json
+        import threading
+        import urllib.request
+        from precios_py.api import create_gateway_server
+
+        server = create_gateway_server(host="127.0.0.1", port=8989)
+        t = threading.Thread(target=server.serve_forever, daemon=True)
+        t.start()
+
+        try:
+            # 1. Test /health
+            with urllib.request.urlopen("http://127.0.0.1:8989/health", timeout=3) as resp:
+                self.assertEqual(resp.status, 200)
+                data = json.loads(resp.read().decode("utf-8"))
+                self.assertEqual(data["status"], "healthy")
+
+            # 2. Test /api/v1/sync/manifest
+            with urllib.request.urlopen("http://127.0.0.1:8989/api/v1/sync/manifest", timeout=3) as resp:
+                self.assertEqual(resp.status, 200)
+                manifest = json.loads(resp.read().decode("utf-8"))
+                self.assertIn("latest_version", manifest)
+
+            # 3. Test /api/v1/supermarkets/branches
+            with urllib.request.urlopen("http://127.0.0.1:8989/api/v1/supermarkets/branches?city=Asunci%C3%B3n", timeout=3) as resp:
+                self.assertEqual(resp.status, 200)
+                branches = json.loads(resp.read().decode("utf-8"))
+                self.assertGreater(branches["total_branches"], 0)
+
+            # 4. Test POST /api/v1/crowdsource/report
+            req = urllib.request.Request(
+                "http://127.0.0.1:8989/api/v1/crowdsource/report",
+                data=json.dumps({
+                    "ean": "7849999999999",
+                    "product_name": "Pan Dulce Especial",
+                    "price_gs": 28000,
+                    "supermarket_slug": "superseis",
+                }).encode("utf-8"),
+                headers={"Content-Type": "application/json"},
+                method="POST",
+            )
+            with urllib.request.urlopen(req, timeout=3) as resp:
+                self.assertEqual(resp.status, 201)
+                res = json.loads(resp.read().decode("utf-8"))
+                self.assertEqual(res["status"], "success")
+                self.assertEqual(res["reward_points_earned"], 50)
+        finally:
+            server.shutdown()
+            server.server_close()
+
 
 if __name__ == "__main__":
     unittest.main()
