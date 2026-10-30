@@ -1,0 +1,67 @@
+name: Nightly Supermarket Scraper PY
+
+on:
+  schedule:
+    # Se ejecuta todos los días a las 02:00 AM hora de Paraguay (05:00 UTC)
+    - cron: '0 5 * * *'
+  workflow_dispatch:
+    inputs:
+      target_supermarket:
+        description: 'Supermercado específico (o all para todos)'
+        required: false
+        default: 'all'
+
+jobs:
+  scrape-supermarkets:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    strategy:
+      fail-fast: false
+      matrix:
+        target: [superseis, stock, biggie, casarica, arete, fortis]
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install uv and Python 3.12
+        uses: astral-sh/setup-uv@v3
+        with:
+          python-version: "3.12"
+
+      - name: Install Python dependencies
+        working-directory: ./scraper
+        run: uv sync
+
+      - name: Run Spider (${{ matrix.target }})
+        working-directory: ./scraper
+        env:
+          DATABASE_URL: ${{ secrets.SUPABASE_DB_POOLER_URL }}
+        run: uv run python -m precios_py.cli scrape --target ${{ matrix.target }}
+
+  build-sqlite-snapshot:
+    needs: scrape-supermarkets
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install uv and Python 3.12
+        uses: astral-sh/setup-uv@v3
+        with:
+          python-version: "3.12"
+
+      - name: Install Python dependencies
+        working-directory: ./scraper
+        run: uv sync
+
+      - name: Generate Offline-First SQLite Snapshot (FTS5)
+        working-directory: ./scraper
+        run: uv run python -m precios_py.cli export-sqlite --output ../dist/catalog_latest.db
+
+      - name: Upload Mobile SQLite Snapshot Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: mobile-sqlite-catalog
+          path: dist/catalog_latest.db
+          retention-days: 7
+

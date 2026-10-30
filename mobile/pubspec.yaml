@@ -1,0 +1,33 @@
+name: precios_py_mobile
+description: "PreciosPy - Comparador Offline-First de Supermercados y Promociones Bancarias en Paraguay"
+publish_to: "none"
+version: 0.1.0+1
+
+environment:
+  sdk: ">=3.3.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  # Estado reactivo y desacoplado
+  flutter_riverpod: ^2.5.1
+  # Base de datos SQLite local (FFI + FTS5) para búsquedas en < 4 ms sin internet
+  sqlite3: ^2.4.6
+  sqlite3_flutter_libs: ^0.5.24
+  path_provider: ^2.1.4
+  path: ^1.9.0
+  # Escáner nativo de códigos de barras EAN-13 a 60 FPS (MLKit / Apple Vision)
+  mobile_scanner: ^5.2.3
+  # Preferencias ligeras para guardar las tarjetas del usuario ("Mi Billetera")
+  shared_preferences: ^2.3.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^4.0.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/db/
+
