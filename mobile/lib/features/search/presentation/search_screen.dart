@@ -18,6 +18,15 @@ class SearchScreen extends ConsumerWidget {
     7: 'Dom',
   };
 
+  static const List<MapEntry<String, String>> _quickCategories = [
+    MapEntry('', 'Todos'),
+    MapEntry('yerba', '🌿 Yerba'),
+    MapEntry('leche', '🥛 Leche'),
+    MapEntry('cerveza', '🍺 Cerveza'),
+    MapEntry('coca', '🥤 Gaseosas'),
+    MapEntry('carne', '🥩 Carne'),
+  ];
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final products = ref.watch(filteredProductsProvider);
@@ -86,6 +95,26 @@ class SearchScreen extends ConsumerWidget {
                           selected: isSelected,
                           onSelected: (_) =>
                               ref.read(selectedWeekdayProvider.notifier).state = entry.key,
+                        ),
+                      );
+                    }).toList(),
+                  ),
+                ),
+                const SizedBox(height: 8),
+                SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Row(
+                    children: _quickCategories.map((cat) {
+                      final currentQuery = ref.watch(searchQueryProvider);
+                      final isSelected = currentQuery == cat.key;
+                      return Padding(
+                        padding: const EdgeInsets.only(right: 6),
+                        child: FilterChip(
+                          label: Text(cat.value),
+                          selected: isSelected,
+                          onSelected: (_) {
+                            ref.read(searchQueryProvider.notifier).state = cat.key;
+                          },
                         ),
                       );
                     }).toList(),
