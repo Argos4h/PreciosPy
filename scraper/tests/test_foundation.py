@@ -234,6 +234,48 @@ class TestPreciosPyFoundation(unittest.TestCase):
         self.assertEqual(hits[0]["supermarket_slug"], "superseis")
         self.assertEqual(hits[0]["promo_price"], 8900)
 
+    def test_entity_resolution_and_fuzzy_matcher(self) -> None:
+        from precios_py.entity_matcher import EntityResolver
+
+        resolver = EntityResolver(fuzzy_threshold=0.70)
+        offers = [
+            # Superseis no tiene EAN en su tarjeta de listado
+            ScrapedOffer(
+                supermarket_slug="superseis",
+                external_sku="s6_coca_2l",
+                raw_title="Gaseosa Coca-Cola sabor original 2 L",
+                regular_price=13500,
+                ean=None,
+            ),
+            # Biggie sí tiene el EAN en su JSON
+            ScrapedOffer(
+                supermarket_slug="biggie",
+                external_sku="bg_coca_2000",
+                raw_title="Coca Cola Original de 2.000 ml.",
+                regular_price=14900,
+                ean="7840058008084",
+            ),
+            # Producto de diferente tamaño que NUNCA debe unificarse
+            ScrapedOffer(
+                supermarket_slug="biggie",
+                external_sku="bg_coca_1500",
+                raw_title="Coca Cola Original de 1.500 ml.",
+                regular_price=12000,
+                ean="7840058000675",
+            ),
+        ]
+
+        groups = resolver.resolve_catalog(offers)
+        # Deben crearse 2 grupos: uno para 2L y otro para 1.5L
+        self.assertEqual(len(groups), 2)
+
+        # El grupo de 2L debe tener 2 ofertas (Superseis + Biggie)
+        group_2l = next(g for g in groups if "2.000" in g.canonical_name or "2 L" in g.canonical_name)
+        self.assertEqual(len(group_2l.offers), 2)
+        # El EAN de Biggie debe haberse propagado al grupo y a la oferta de Superseis
+        self.assertEqual(group_2l.canonical_ean, "7840058008084")
+        self.assertEqual(group_2l.offers[0].ean, "7840058008084")
+
 
 if __name__ == "__main__":
     unittest.main()

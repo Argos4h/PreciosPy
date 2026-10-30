@@ -111,16 +111,24 @@ def extract_unit_info(product_title: str) -> UnitInfo:
     multi_match = MULTIPACK_RE.search(title)
     if multi_match:
         count = int(multi_match.group(1))
-        qty = float(multi_match.group(2).replace(",", "."))
+        raw_num = multi_match.group(2)
         raw_unit = multi_match.group(3).lower()
+        if re.match(r"^\d+\.\d{3}$", raw_num) and raw_unit in ("ml", "cc", "g", "gr", "grs"):
+            qty = float(raw_num.replace(".", ""))
+        else:
+            qty = float(raw_num.replace(",", "."))
         total_qty = count * qty
         return _build_unit_info(total_qty, raw_unit)
 
-    # 2. Verificar unidad simple (ej. "500 g", "1.5 L")
+    # 2. Verificar unidad simple (ej. "500 g", "1.5 L", "2.000 ml")
     single_match = SINGLE_UNIT_RE.search(title)
     if single_match:
-        qty = float(single_match.group(1).replace(",", "."))
+        raw_num = single_match.group(1)
         raw_unit = single_match.group(2).lower()
+        if re.match(r"^\d+\.\d{3}$", raw_num) and raw_unit in ("ml", "cc", "g", "gr", "grs"):
+            qty = float(raw_num.replace(".", ""))
+        else:
+            qty = float(raw_num.replace(",", "."))
         return _build_unit_info(qty, raw_unit)
 
     return UnitInfo(unit_measure="UN", unit_quantity=1.0, base_unit="UN", base_multiplier=1.0)

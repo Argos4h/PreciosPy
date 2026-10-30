@@ -1,3 +1,4 @@
+// ignore_for_file: avoid_print
 import 'package:flutter_test/flutter_test.dart';
 import 'package:precios_py_mobile/core/formatters/guarani_formatter.dart';
 import 'package:precios_py_mobile/data/local/local_catalog_repository.dart';
@@ -28,6 +29,32 @@ void main() {
       expect(ranked[1].offer.supermarketSlug, 'superseis');
       expect(ranked[1].effectiveFinalPriceGs, 13760);
     });
+
+    test('Optimizador de Compra Dividida (Split Cart)', () {
+      final yerba = LocalCatalogRepository.initialCatalog[0];
+      final leche = LocalCatalogRepository.initialCatalog[1];
+      final cerveza = LocalCatalogRepository.initialCatalog[3];
+
+      final cart = {
+        yerba: 2,
+        leche: 6,
+        cerveza: 2,
+      };
+
+      final splitResult = PromoCalculator.optimizeSplitCart(
+        cartQuantities: cart,
+        supermarketsBySlug: LocalCatalogRepository.defaultSupermarkets,
+        allPromotions: LocalCatalogRepository.paraguayPromotions,
+        userCardSlugs: {'ueno_credito_n4', 'itau_credito_clasica'},
+        isoWeekday: 2, // Martes
+      );
+
+      expect(splitResult.bestSingleStore.supermarketSlug, isNotEmpty);
+      expect(splitResult.splitGroups, isNotEmpty);
+      expect(splitResult.combinedNetCostGs, lessThanOrEqualTo(splitResult.bestSingleStore.netFinalCostGs));
+      print('Mejor Single Store: ${splitResult.bestSingleStore.supermarketName} -> Gs. ${splitResult.bestSingleStore.netFinalCostGs}');
+      print('Costo Dividido: Gs. ${splitResult.combinedNetCostGs} (Ahorro Extra: Gs. ${splitResult.additionalSavingsGs})');
+      print('¿Se recomienda dividir?: ${splitResult.isSplitRecommended}');
+    });
   });
 }
-

@@ -11,6 +11,7 @@ from datetime import datetime
 from pathlib import Path
 from typing import Iterable
 
+from .entity_matcher import EntityResolver
 from .models import BankPromotion, ScrapedOffer
 from .normalizer import calculate_price_per_base_unit, extract_unit_info
 
@@ -19,6 +20,7 @@ class MobileSqliteExporter:
     def __init__(self, db_path: str | Path, schema_sql_path: str | Path):
         self.db_path = Path(db_path)
         self.schema_sql_path = Path(schema_sql_path)
+        self.resolver = EntityResolver()
 
     def initialize_schema(self) -> None:
         self.db_path.parent.mkdir(parents=True, exist_ok=True)
@@ -37,8 +39,8 @@ class MobileSqliteExporter:
         promotions: Iterable[BankPromotion] = (),
     ) -> dict[str, int]:
         """
-        Unifica las ofertas extraídas por EAN-13 (Entity Resolution), inserta el catálogo
-        en el SQLite local y reconstruye el índice de búsqueda instantánea FTS5.
+        Unifica las ofertas mediante Entity Resolution (EAN-13 exacto + Fuzzy Matcher por volumen/marca),
+        inserta el catálogo en el SQLite local y reconstruye el índice de búsqueda instantánea FTS5.
         """
         with sqlite3.connect(self.db_path) as conn:
             cur = conn.cursor()
@@ -55,81 +57,77 @@ class MobileSqliteExporter:
                 )
                 supermarket_id_by_slug[slug] = sup_id
 
-            # 2. Unificar productos por EAN (o título normalizado como fallback) e insertar ofertas
-            product_id_by_key: dict[str, int] = {}
-            next_product_id = 1
-            offers_count = 0
+            # 2. Resolver entidades cruzadas entre supermercados
+            valid_offers = [o for o in offers if o.supermarket_slug in supermarket_id_by_slug]
+            unified_groups = self.resolver.resolve_catalog(valid_offers)
 
             cur.execute("DELETE FROM local_products_fts;")
+            cur.execute("DELETE FROM local_products;")
+            cur.execute("DELETE FROM local_offers;")
 
-            for offer in offers:
-                sup_id = supermarket_id_by_slug.get(offer.supermarket_slug)
-                if sup_id is None:
-                    continue
+            offers_count = 0
 
-                unit_info = extract_unit_info(offer.raw_title)
-                entity_key = f"EAN:{offer.ean}" if offer.ean else f"TITLE:{offer.raw_title.upper().strip()}"
-
-                if entity_key not in product_id_by_key:
-                    prod_id = next_product_id
-                    next_product_id += 1
-                    product_id_by_key[entity_key] = prod_id
-
-                    cur.execute(
-                        """
-                        INSERT OR REPLACE INTO local_products
-                        (id, ean, normalized_name, brand, unit_measure, unit_quantity, base_unit, image_url)
-                        VALUES (?, ?, ?, ?, ?, ?, ?, ?)
-                        """,
-                        (
-                            prod_id,
-                            offer.ean,
-                            offer.raw_title.strip(),
-                            offer.brand,
-                            unit_info.unit_measure,
-                            unit_info.unit_quantity,
-                            unit_info.base_unit,
-                            offer.image_url,
-                        ),
-                    )
-                    cur.execute(
-                        """
-                        INSERT INTO local_products_fts (product_id, ean, normalized_name, brand)
-                        VALUES (?, ?, ?, ?)
-                        """,
-                        (prod_id, offer.ean or "", offer.raw_title.strip(), offer.brand or ""),
-                    )
-                else:
-                    prod_id = product_id_by_key[entity_key]
-
-                effective_gondola = (
-                    min(offer.regular_price, offer.promo_price)
-                    if offer.promo_price
-                    else offer.regular_price
-                )
-                price_per_base = calculate_price_per_base_unit(effective_gondola, unit_info)
+            for group in unified_groups:
+                prod_id = group.product_id
 
                 cur.execute(
                     """
-                    INSERT OR REPLACE INTO local_offers
-                    (product_id, supermarket_id, regular_price, promo_price, club_price,
-                     wholesale_price, wholesale_min_qty, price_per_base_unit, in_stock, scraped_at)
-                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                    INSERT OR REPLACE INTO local_products
+                    (id, ean, normalized_name, brand, unit_measure, unit_quantity, base_unit, image_url)
+                    VALUES (?, ?, ?, ?, ?, ?, ?, ?)
                     """,
                     (
                         prod_id,
-                        sup_id,
-                        offer.regular_price,
-                        offer.promo_price,
-                        offer.club_price,
-                        offer.wholesale_price,
-                        offer.wholesale_min_qty,
-                        price_per_base,
-                        1 if offer.in_stock else 0,
-                        offer.scraped_at.isoformat(),
+                        group.canonical_ean,
+                        group.canonical_name,
+                        group.brand,
+                        group.unit_measure,
+                        group.unit_quantity,
+                        group.base_unit,
+                        group.offers[0].image_url if group.offers else None,
                     ),
                 )
-                offers_count += 1
+
+                cur.execute(
+                    """
+                    INSERT INTO local_products_fts (product_id, ean, normalized_name, brand)
+                    VALUES (?, ?, ?, ?)
+                    """,
+                    (prod_id, group.canonical_ean or "", group.canonical_name, group.brand or ""),
+                )
+
+                for offer in group.offers:
+                    sup_id = supermarket_id_by_slug[offer.supermarket_slug]
+                    unit_info = extract_unit_info(offer.raw_title)
+
+                    effective_gondola = (
+                        min(offer.regular_price, offer.promo_price)
+                        if offer.promo_price
+                        else offer.regular_price
+                    )
+                    price_per_base = calculate_price_per_base_unit(effective_gondola, unit_info)
+
+                    cur.execute(
+                        """
+                        INSERT OR REPLACE INTO local_offers
+                        (product_id, supermarket_id, regular_price, promo_price, club_price,
+                         wholesale_price, wholesale_min_qty, price_per_base_unit, in_stock, scraped_at)
+                        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                        """,
+                        (
+                            prod_id,
+                            sup_id,
+                            offer.regular_price,
+                            offer.promo_price,
+                            offer.club_price,
+                            offer.wholesale_price,
+                            offer.wholesale_min_qty,
+                            price_per_base,
+                            1 if offer.in_stock else 0,
+                            offer.scraped_at.isoformat(),
+                        ),
+                    )
+                    offers_count += 1
 
             # 3. Insertar tarjetas y promociones bancarias
             card_id_by_slug: dict[str, int] = {}
@@ -186,7 +184,7 @@ class MobileSqliteExporter:
             conn.commit()
 
         return {
-            "unique_products": len(product_id_by_key),
+            "unique_products": len(unified_groups),
             "store_offers": offers_count,
             "bank_promotions": promos_count,
         }
@@ -199,7 +197,7 @@ class MobileSqliteExporter:
         tokens = [t.strip() for t in query.split() if t.strip()]
         if not tokens:
             return []
-        fts_query = " AND ".join(f'"{t}"*' for t in tokens)
+        fts_query = " AND ".join(f'{t}*' for t in tokens)
 
         with sqlite3.connect(self.db_path) as conn:
             conn.row_factory = sqlite3.Row
@@ -227,4 +225,3 @@ class MobileSqliteExporter:
                 (fts_query, limit),
             ).fetchall()
             return [dict(r) for r in rows]
-
