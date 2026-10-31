@@ -363,3 +363,7 @@ final favoritesProvider = StateNotifierProvider<FavoritesNotifier, Set<int>>((re
 /// Filtro de la pestaña Promos: ¿mostrar sólo promociones de mis tarjetas o todas las de Paraguay?
 final promosFilterOnlyUserCardsProvider = StateProvider<bool>((ref) => false);
 
+/// Pestaña activa en la barra de navegación (0=Precios, 1=Promos, 2=Escáner, 3=Listas, 4=Perfil)
+final activeTabProvider = StateProvider<int>((ref) => 0);
+
+

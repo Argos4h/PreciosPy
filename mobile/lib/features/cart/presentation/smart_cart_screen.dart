@@ -585,54 +585,21 @@ class SmartCartScreen extends ConsumerWidget {
                   ],
                 ),
                 if (cart.isNotEmpty)
-                  Row(
-                    children: [
-                      IconButton(
-                        onPressed: () {
-                          final buffer = StringBuffer();
-                          buffer.writeln('🛒 Mi Lista de Compras PreciosPy');
-                          buffer.writeln('📍 Ciudad: $selectedCity (${isCashOnly ? "Solo Efectivo" : "Con Tarjetas"})');
-                          buffer.writeln();
-                          for (final entry in cartItems) {
-                            buffer.writeln('• ${entry.value}x ${entry.key.normalizedName}');
-                          }
-                          if (rankings.isNotEmpty) {
-                            final winner = rankings.first;
-                            buffer.writeln();
-                            buffer.writeln('💡 Mejor opción calculada: ${winner.supermarketName} (${GuaraniFormatter.format(winner.netFinalCostGs)})');
-                          }
-                          Clipboard.setData(ClipboardData(text: buffer.toString()));
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(
-                              backgroundColor: const Color(0xFF10B981),
-                              behavior: SnackBarBehavior.floating,
-                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-                              content: const Row(
-                                children: [
-                                  Icon(Icons.check_circle_rounded, color: Colors.white, size: 18),
-                                  SizedBox(width: 8),
-                                  Text(
-                                    'Lista copiada para compartir por WhatsApp',
-                                    style: TextStyle(fontWeight: FontWeight.w700, color: Colors.white),
-                                  ),
-                                ],
-                              ),
-                              duration: const Duration(milliseconds: 1400),
-                            ),
-                          );
-                        },
-                        icon: const Icon(Icons.share_rounded, size: 20, color: Color(0xFF0284C7)),
-                        tooltip: 'Compartir Lista',
+                  Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                    decoration: BoxDecoration(
+                      color: const Color(0xFF10B981).withValues(alpha: 0.15),
+                      borderRadius: BorderRadius.circular(12),
+                      border: Border.all(color: const Color(0xFF10B981).withValues(alpha: 0.3)),
+                    ),
+                    child: Text(
+                      '${cart.values.fold<int>(0, (a, b) => a + b)} unidades',
+                      style: const TextStyle(
+                        fontSize: 11,
+                        fontWeight: FontWeight.w800,
+                        color: Color(0xFF10B981),
                       ),
-                      TextButton.icon(
-                        onPressed: () => ref.read(smartCartProvider.notifier).clearCart(),
-                        icon: const Icon(Icons.delete_sweep_rounded, size: 18, color: Color(0xFFEF4444)),
-                        label: const Text(
-                          'Vaciar',
-                          style: TextStyle(fontSize: 12, color: Color(0xFFEF4444), fontWeight: FontWeight.w700),
-                        ),
-                      ),
-                    ],
+                    ),
                   ),
               ],
             ),
@@ -702,6 +669,14 @@ class SmartCartScreen extends ConsumerWidget {
                               color: isDark ? const Color(0xFF94A3B8) : const Color(0xFF64748B),
                             ),
                           ),
+                          const SizedBox(height: 16),
+                          FilledButton.tonalIcon(
+                            onPressed: () {
+                              ref.read(activeTabProvider.notifier).state = 0;
+                            },
+                            icon: const Icon(Icons.search_rounded, size: 18),
+                            label: const Text('Explorar Precios y Catálogo'),
+                          ),
                         ],
                       ),
                     ),
@@ -713,6 +688,9 @@ class SmartCartScreen extends ConsumerWidget {
                       final item = cartItems[index];
                       final product = item.key;
                       final qty = item.value;
+                      final bestPrice = product.offers.isNotEmpty
+                          ? product.offers.map((o) => o.regularPriceGs).reduce((a, b) => a < b ? a : b)
+                          : null;
 
                       return Card(
                         margin: const EdgeInsets.only(bottom: 10),
@@ -737,13 +715,47 @@ class SmartCartScreen extends ConsumerWidget {
                                       ),
                                     ),
                                     const SizedBox(height: 2),
-                                    Text(
-                                      product.category ?? '🛒 Almacén',
-                                      style: TextStyle(
-                                        fontSize: 11,
-                                        color: isDark ? const Color(0xFF94A3B8) : const Color(0xFF64748B),
-                                      ),
+                                    Row(
+                                      children: [
+                                        Text(
+                                          product.category ?? '🛒 Almacén',
+                                          style: TextStyle(
+                                            fontSize: 11,
+                                            color: isDark ? const Color(0xFF94A3B8) : const Color(0xFF64748B),
+                                          ),
+                                        ),
+                                        if (bestPrice != null) ...[
+                                          const SizedBox(width: 8),
+                                          Text(
+                                            '•',
+                                            style: TextStyle(
+                                              fontSize: 11,
+                                              color: isDark ? const Color(0xFF64748B) : const Color(0xFFCBD5E1),
+                                            ),
+                                          ),
+                                          const SizedBox(width: 8),
+                                          Text(
+                                            '${GuaraniFormatter.format(bestPrice)} c/u',
+                                            style: TextStyle(
+                                              fontSize: 11,
+                                              fontWeight: FontWeight.w600,
+                                              color: isDark ? const Color(0xFF38BDF8) : const Color(0xFF0284C7),
+                                            ),
+                                          ),
+                                        ],
+                                      ],
                                     ),
+                                    if (bestPrice != null) ...[
+                                      const SizedBox(height: 2),
+                                      Text(
+                                        'Subtotal: ${GuaraniFormatter.format(bestPrice * qty)}',
+                                        style: const TextStyle(
+                                          fontSize: 11.5,
+                                          fontWeight: FontWeight.w700,
+                                          color: Color(0xFF10B981),
+                                        ),
+                                      ),
+                                    ],
                                   ],
                                 ),
                               ),
@@ -757,7 +769,7 @@ class SmartCartScreen extends ConsumerWidget {
                                     icon: const Icon(Icons.remove_circle_outline_rounded, size: 22),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsets.symmetric(horizontal: 8),
+                                    padding: const EdgeInsets.symmetric(horizontal: 6),
                                     child: Text(
                                       '$qty',
                                       style: TextStyle(
@@ -783,40 +795,116 @@ class SmartCartScreen extends ConsumerWidget {
                   ),
           ),
 
-          // EL BOTÓN DE ACCIÓN: "¿DÓNDE ME CONVIENE COMPRAR?"
+          // EL PANEL DE ACCIÓN: "¿DÓNDE ME CONVIENE COMPRAR?" + COMPARTIR
           if (cart.isNotEmpty)
-            Padding(
+            Container(
               padding: const EdgeInsets.fromLTRB(16, 8, 16, 16),
-              child: SizedBox(
-                width: double.infinity,
-                child: FilledButton.icon(
-                  style: FilledButton.styleFrom(
-                    backgroundColor: const Color(0xFF10B981),
-                    foregroundColor: Colors.white,
-                    padding: const EdgeInsets.symmetric(vertical: 16),
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-                    elevation: 3,
+              decoration: BoxDecoration(
+                color: isDark ? const Color(0xFF1E293B) : Colors.white,
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withValues(alpha: 0.05),
+                    offset: const Offset(0, -4),
+                    blurRadius: 10,
                   ),
-                  icon: const Icon(Icons.auto_awesome_rounded, size: 22),
-                  label: Text(
-                    '¿DÓNDE ME CONVIENE COMPRAR? (${cart.length} ÍTEMS)',
-                    style: const TextStyle(
-                      fontSize: 15,
-                      fontWeight: FontWeight.w900,
-                      letterSpacing: 0.5,
+                ],
+              ),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  SizedBox(
+                    width: double.infinity,
+                    child: FilledButton.icon(
+                      style: FilledButton.styleFrom(
+                        backgroundColor: const Color(0xFF10B981),
+                        foregroundColor: Colors.white,
+                        padding: const EdgeInsets.symmetric(vertical: 15),
+                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+                        elevation: 2,
+                      ),
+                      icon: const Icon(Icons.auto_awesome_rounded, size: 20),
+                      label: Text(
+                        '¿DÓNDE ME CONVIENE COMPRAR? (${cart.length} ÍTEMS)',
+                        style: const TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w900,
+                          letterSpacing: 0.3,
+                        ),
+                      ),
+                      onPressed: () {
+                        _showBestStoreReport(
+                          context: context,
+                          ref: ref,
+                          rankings: rankings,
+                          splitResult: splitResult,
+                          cityName: selectedCity,
+                          isCashOnly: isCashOnly,
+                        );
+                      },
                     ),
                   ),
-                  onPressed: () {
-                    _showBestStoreReport(
-                      context: context,
-                      ref: ref,
-                      rankings: rankings,
-                      splitResult: splitResult,
-                      cityName: selectedCity,
-                      isCashOnly: isCashOnly,
-                    );
-                  },
-                ),
+                  const SizedBox(height: 6),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: OutlinedButton.icon(
+                          style: OutlinedButton.styleFrom(
+                            padding: const EdgeInsets.symmetric(vertical: 10),
+                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                          ),
+                          onPressed: () {
+                            final buffer = StringBuffer();
+                            buffer.writeln('🛒 Mi Lista de Compras PreciosPy');
+                            buffer.writeln('📍 Ciudad: $selectedCity (${isCashOnly ? "Solo Efectivo" : "Con Tarjetas"})');
+                            buffer.writeln();
+                            for (final entry in cartItems) {
+                              buffer.writeln('• ${entry.value}x ${entry.key.normalizedName}');
+                            }
+                            if (rankings.isNotEmpty) {
+                              final winner = rankings.first;
+                              buffer.writeln();
+                              buffer.writeln('💡 Mejor opción calculada: ${winner.supermarketName} (${GuaraniFormatter.format(winner.netFinalCostGs)})');
+                            }
+                            Clipboard.setData(ClipboardData(text: buffer.toString()));
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                backgroundColor: const Color(0xFF10B981),
+                                behavior: SnackBarBehavior.floating,
+                                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                                content: const Row(
+                                  children: [
+                                    Icon(Icons.check_circle_rounded, color: Colors.white, size: 18),
+                                    SizedBox(width: 8),
+                                    Text(
+                                      'Lista copiada para compartir por WhatsApp',
+                                      style: TextStyle(fontWeight: FontWeight.w700, color: Colors.white),
+                                    ),
+                                  ],
+                                ),
+                                duration: const Duration(milliseconds: 1400),
+                              ),
+                            );
+                          },
+                          icon: const Icon(Icons.share_rounded, size: 16, color: Color(0xFF0284C7)),
+                          label: const Text(
+                            'Compartir Lista',
+                            style: TextStyle(fontSize: 12, fontWeight: FontWeight.w700, color: Color(0xFF0284C7)),
+                          ),
+                        ),
+                      ),
+                      const SizedBox(width: 8),
+                      TextButton.icon(
+                        style: TextButton.styleFrom(
+                          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+                          foregroundColor: const Color(0xFFEF4444),
+                        ),
+                        onPressed: () => ref.read(smartCartProvider.notifier).clearCart(),
+                        icon: const Icon(Icons.delete_sweep_rounded, size: 18),
+                        label: const Text('Vaciar', style: TextStyle(fontWeight: FontWeight.w700)),
+                      ),
+                    ],
+                  ),
+                ],
               ),
             ),
         ],

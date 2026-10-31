@@ -368,6 +368,14 @@ class PromosScreen extends ConsumerWidget {
                               icon: const Icon(Icons.public_rounded, size: 16),
                               label: const Text('Ver todas las promos del día'),
                             ),
+                            const SizedBox(height: 8),
+                            OutlinedButton.icon(
+                              onPressed: () {
+                                ref.read(activeTabProvider.notifier).state = 4;
+                              },
+                              icon: const Icon(Icons.credit_card_rounded, size: 16),
+                              label: const Text('Activar tarjetas en Mi Perfil'),
+                            ),
                           ],
                         ],
                       ),
@@ -393,7 +401,12 @@ class PromosScreen extends ConsumerWidget {
                       return Card(
                         margin: const EdgeInsets.only(bottom: 12),
                         clipBehavior: Clip.antiAlias,
-                        child: Padding(
+                        child: Container(
+                          decoration: BoxDecoration(
+                            border: Border(
+                              left: BorderSide(color: bankColor, width: 4.5),
+                            ),
+                          ),
                           padding: const EdgeInsets.all(14),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -547,7 +560,7 @@ class PromosScreen extends ConsumerWidget {
 
                               // Estado: ¿Aplica a mis tarjetas?
                               Container(
-                                padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                                padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
                                 decoration: BoxDecoration(
                                   color: isUserCard
                                       ? const Color(0xFF10B981).withValues(alpha: 0.15)
@@ -557,39 +570,77 @@ class PromosScreen extends ConsumerWidget {
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   children: [
-                                    Row(
-                                      children: [
-                                        Icon(
-                                          isUserCard ? Icons.check_circle_rounded : Icons.info_outline_rounded,
-                                          size: 14,
-                                          color: isUserCard
-                                              ? const Color(0xFF10B981)
-                                              : (isDark ? const Color(0xFF94A3B8) : const Color(0xFF64748B)),
-                                        ),
-                                        const SizedBox(width: 6),
-                                        Text(
-                                          isUserCard
-                                              ? 'Aplica con tus tarjetas guardadas'
-                                              : 'Requiere: ${promo.cardName}',
-                                          style: TextStyle(
-                                            fontSize: 11,
-                                            fontWeight: isUserCard ? FontWeight.w700 : FontWeight.w500,
+                                    Expanded(
+                                      child: Row(
+                                        children: [
+                                          Icon(
+                                            isUserCard ? Icons.check_circle_rounded : Icons.info_outline_rounded,
+                                            size: 14,
                                             color: isUserCard
                                                 ? const Color(0xFF10B981)
                                                 : (isDark ? const Color(0xFF94A3B8) : const Color(0xFF64748B)),
                                           ),
-                                        ),
-                                      ],
-                                    ),
-                                    Text(
-                                      promo.mechanism == DiscountMechanism.cashback
-                                          ? 'Reintegro en extracto'
-                                          : 'Descuento en caja',
-                                      style: TextStyle(
-                                        fontSize: 10,
-                                        color: isDark ? const Color(0xFF94A3B8) : const Color(0xFF64748B),
+                                          const SizedBox(width: 6),
+                                          Expanded(
+                                            child: Text(
+                                              isUserCard
+                                                  ? 'Aplica con tus tarjetas guardadas'
+                                                  : 'Requiere: ${promo.cardName}',
+                                              maxLines: 1,
+                                              overflow: TextOverflow.ellipsis,
+                                              style: TextStyle(
+                                                fontSize: 11,
+                                                fontWeight: isUserCard ? FontWeight.w700 : FontWeight.w500,
+                                                color: isUserCard
+                                                    ? const Color(0xFF10B981)
+                                                    : (isDark ? const Color(0xFF94A3B8) : const Color(0xFF64748B)),
+                                              ),
+                                            ),
+                                          ),
+                                        ],
                                       ),
                                     ),
+                                    const SizedBox(width: 6),
+                                    if (!isUserCard)
+                                      InkWell(
+                                        onTap: () {
+                                          ref.read(activeTabProvider.notifier).state = 4;
+                                        },
+                                        borderRadius: BorderRadius.circular(6),
+                                        child: Container(
+                                          padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+                                          decoration: BoxDecoration(
+                                            color: const Color(0xFF0284C7).withValues(alpha: 0.15),
+                                            borderRadius: BorderRadius.circular(6),
+                                          ),
+                                          child: const Row(
+                                            mainAxisSize: MainAxisSize.min,
+                                            children: [
+                                              Text(
+                                                'Activar',
+                                                style: TextStyle(
+                                                  fontSize: 10,
+                                                  fontWeight: FontWeight.w800,
+                                                  color: Color(0xFF0284C7),
+                                                ),
+                                              ),
+                                              SizedBox(width: 2),
+                                              Icon(Icons.arrow_forward_ios_rounded, size: 8, color: Color(0xFF0284C7)),
+                                            ],
+                                          ),
+                                        ),
+                                      )
+                                    else
+                                      Text(
+                                        promo.mechanism == DiscountMechanism.cashback
+                                            ? 'Reintegro'
+                                            : 'En caja',
+                                        style: TextStyle(
+                                          fontSize: 10,
+                                          fontWeight: FontWeight.w600,
+                                          color: isDark ? const Color(0xFF94A3B8) : const Color(0xFF64748B),
+                                        ),
+                                      ),
                                   ],
                                 ),
                               ),
@@ -605,3 +656,4 @@ class PromosScreen extends ConsumerWidget {
     );
   }
 }
+

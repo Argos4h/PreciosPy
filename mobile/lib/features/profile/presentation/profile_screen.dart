@@ -422,18 +422,28 @@ class ProfileScreen extends ConsumerWidget {
             Card(
               child: Padding(
                 padding: const EdgeInsets.all(16),
-                child: Row(
+                child: Column(
                   children: [
-                    const Icon(Icons.favorite_border_rounded, color: Color(0xFF94A3B8), size: 28),
-                    const SizedBox(width: 12),
-                    Expanded(
-                      child: Text(
-                        'Marcá el corazón en cualquier producto para activar alertas cuando baje de precio.',
-                        style: TextStyle(
-                          fontSize: 12,
-                          color: isDark ? const Color(0xFF94A3B8) : const Color(0xFF64748B),
+                    Row(
+                      children: [
+                        const Icon(Icons.favorite_border_rounded, color: Color(0xFF94A3B8), size: 28),
+                        const SizedBox(width: 12),
+                        Expanded(
+                          child: Text(
+                            'Marcá el corazón en cualquier producto para activar alertas cuando baje de precio.',
+                            style: TextStyle(
+                              fontSize: 12,
+                              color: isDark ? const Color(0xFF94A3B8) : const Color(0xFF64748B),
+                            ),
+                          ),
                         ),
-                      ),
+                      ],
+                    ),
+                    const SizedBox(height: 12),
+                    FilledButton.tonalIcon(
+                      onPressed: () => ref.read(activeTabProvider.notifier).state = 0,
+                      icon: const Icon(Icons.search_rounded, size: 16),
+                      label: const Text('Explorar Catálogo de Precios'),
                     ),
                   ],
                 ),
@@ -506,6 +516,28 @@ class ProfileScreen extends ConsumerWidget {
                               ),
                           ],
                         ),
+                      ),
+                      // Sumar directamente al carrito desde Favoritos
+                      IconButton(
+                        onPressed: () {
+                          ref.read(smartCartProvider.notifier).addOrIncrement(product);
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              backgroundColor: const Color(0xFF10B981),
+                              behavior: SnackBarBehavior.floating,
+                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                              content: Text('${product.normalizedName} sumado a tu lista'),
+                              action: SnackBarAction(
+                                label: 'Ver Lista',
+                                textColor: Colors.white,
+                                onPressed: () => ref.read(activeTabProvider.notifier).state = 3,
+                              ),
+                              duration: const Duration(milliseconds: 1200),
+                            ),
+                          );
+                        },
+                        icon: const Icon(Icons.add_shopping_cart_rounded, size: 19, color: Color(0xFF10B981)),
+                        tooltip: 'Sumar a mi lista',
                       ),
                       IconButton(
                         onPressed: () {
@@ -581,7 +613,78 @@ class ProfileScreen extends ConsumerWidget {
 
           const SizedBox(height: 16),
 
-          // 5. TRANSPARENCIA Y SIFEN e-Kuatia (DNIT)
+          // 5. APARIENCIA / TEMA VISUAL
+          Card(
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+            child: Padding(
+              padding: const EdgeInsets.all(16),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    children: [
+                      Container(
+                        padding: const EdgeInsets.all(8),
+                        decoration: BoxDecoration(
+                          color: const Color(0xFFF59E0B).withValues(alpha: 0.15),
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        child: const Icon(Icons.palette_rounded, color: Color(0xFFF59E0B), size: 22),
+                      ),
+                      const SizedBox(width: 12),
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'Apariencia y Colores',
+                              style: TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.w800,
+                                color: isDark ? Colors.white : const Color(0xFF0F172A),
+                              ),
+                            ),
+                            Text(
+                              'Seleccioná tu tema visual preferido',
+                              style: TextStyle(
+                                fontSize: 11,
+                                color: isDark ? const Color(0xFF94A3B8) : const Color(0xFF64748B),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 12),
+                  SizedBox(
+                    width: double.infinity,
+                    child: SegmentedButton<ThemeMode>(
+                      segments: const [
+                        ButtonSegment(
+                          value: ThemeMode.light,
+                          icon: Icon(Icons.light_mode_rounded, size: 16),
+                          label: Text('Modo Claro', style: TextStyle(fontSize: 12, fontWeight: FontWeight.w700)),
+                        ),
+                        ButtonSegment(
+                          value: ThemeMode.dark,
+                          icon: Icon(Icons.dark_mode_rounded, size: 16),
+                          label: Text('Modo Oscuro', style: TextStyle(fontSize: 12, fontWeight: FontWeight.w700)),
+                        ),
+                      ],
+                      selected: {themeMode},
+                      onSelectionChanged: (newSelection) {
+                        ref.read(themeModeProvider.notifier).state = newSelection.first;
+                      },
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          const SizedBox(height: 12),
+
+          // 6. TRANSPARENCIA Y SIFEN e-Kuatia (DNIT)
           Card(
             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
             child: Padding(
@@ -630,3 +733,4 @@ class ProfileScreen extends ConsumerWidget {
     );
   }
 }
+

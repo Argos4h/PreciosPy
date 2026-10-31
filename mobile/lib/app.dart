@@ -15,8 +15,6 @@ class PreciosPyApp extends ConsumerStatefulWidget {
 }
 
 class _PreciosPyAppState extends ConsumerState<PreciosPyApp> {
-  int _selectedIndex = 0;
-
   static const List<Widget> _screens = [
     SearchScreen(),
     PromosScreen(),
@@ -28,6 +26,7 @@ class _PreciosPyAppState extends ConsumerState<PreciosPyApp> {
   @override
   Widget build(BuildContext context) {
     final themeMode = ref.watch(themeModeProvider);
+    final activeTab = ref.watch(activeTabProvider);
 
     // Tema Claro: Amigable, fresco, limpio y espacioso
     final lightTheme = ThemeData(
@@ -152,12 +151,12 @@ class _PreciosPyAppState extends ConsumerState<PreciosPyApp> {
       themeMode: themeMode,
       home: Scaffold(
         body: IndexedStack(
-          index: _selectedIndex,
+          index: activeTab,
           children: _screens,
         ),
         bottomNavigationBar: NavigationBar(
-          selectedIndex: _selectedIndex,
-          onDestinationSelected: (idx) => setState(() => _selectedIndex = idx),
+          selectedIndex: activeTab,
+          onDestinationSelected: (idx) => ref.read(activeTabProvider.notifier).state = idx,
           destinations: const [
             NavigationDestination(
               icon: Icon(Icons.storefront_outlined),

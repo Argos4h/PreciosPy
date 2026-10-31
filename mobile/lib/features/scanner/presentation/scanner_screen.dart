@@ -178,43 +178,54 @@ class _ScannerScreenState extends ConsumerState<ScannerScreen> {
                           ),
                           const SizedBox(height: 12),
                           Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              FilledButton.icon(
-                                style: FilledButton.styleFrom(
-                                  backgroundColor: const Color(0xFF10B981),
-                                  foregroundColor: Colors.white,
-                                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                              Expanded(
+                                child: FilledButton.icon(
+                                  style: FilledButton.styleFrom(
+                                    backgroundColor: const Color(0xFF10B981),
+                                    foregroundColor: Colors.white,
+                                    padding: const EdgeInsets.symmetric(vertical: 12),
+                                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                                  ),
+                                  onPressed: () => setState(() => _cameraEnabled = true),
+                                  icon: const Icon(Icons.camera_alt_rounded, size: 17),
+                                  label: const Text(
+                                    'Cámara 60 FPS',
+                                    style: TextStyle(fontSize: 12, fontWeight: FontWeight.w700),
+                                  ),
                                 ),
-                                onPressed: () => setState(() => _cameraEnabled = true),
-                                icon: const Icon(Icons.camera_alt_rounded, size: 18),
-                                label: const Text('Activar Cámara (60 FPS)'),
                               ),
                               const SizedBox(width: 8),
-                              OutlinedButton.icon(
-                                style: OutlinedButton.styleFrom(
-                                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-                                ),
-                                onPressed: () {
-                                  final sampleKuatia = KuatiaInvoiceReceipt.parseQrUrl(
-                                    'https://ekuatia.set.gov.py/consultas/qr?nVersion=150&IdGesDat=018000000100100100123456',
-                                  );
-                                  if (sampleKuatia != null) {
-                                    ScaffoldMessenger.of(context).showSnackBar(
-                                      SnackBar(
-                                        backgroundColor: const Color(0xFF10B981),
-                                        behavior: SnackBarBehavior.floating,
-                                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-                                        content: Text(
-                                          '🧾 Factura Electrónica Kuatia verificada (RUC: ${sampleKuatia.rucIssuer}). Precios sincronizados con DNIT.',
-                                          style: const TextStyle(fontWeight: FontWeight.w700),
-                                        ),
-                                      ),
+                              Expanded(
+                                child: OutlinedButton.icon(
+                                  style: OutlinedButton.styleFrom(
+                                    padding: const EdgeInsets.symmetric(vertical: 12),
+                                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                                  ),
+                                  onPressed: () {
+                                    final sampleKuatia = KuatiaInvoiceReceipt.parseQrUrl(
+                                      'https://ekuatia.set.gov.py/consultas/qr?nVersion=150&IdGesDat=018000000100100100123456',
                                     );
-                                  }
-                                },
-                                icon: const Icon(Icons.receipt_long_rounded, size: 18),
-                                label: const Text('Ticket Kuatia'),
+                                    if (sampleKuatia != null) {
+                                      ScaffoldMessenger.of(context).showSnackBar(
+                                        SnackBar(
+                                          backgroundColor: const Color(0xFF10B981),
+                                          behavior: SnackBarBehavior.floating,
+                                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                                          content: Text(
+                                            '🧾 Factura Electrónica Kuatia verificada (RUC: ${sampleKuatia.rucIssuer}). Precios sincronizados con DNIT.',
+                                            style: const TextStyle(fontWeight: FontWeight.w700),
+                                          ),
+                                        ),
+                                      );
+                                    }
+                                  },
+                                  icon: const Icon(Icons.receipt_long_rounded, size: 17),
+                                  label: const Text(
+                                    'Ticket DNIT',
+                                    style: TextStyle(fontSize: 12, fontWeight: FontWeight.w700),
+                                  ),
+                                ),
                               ),
                             ],
                           ),
@@ -246,7 +257,7 @@ class _ScannerScreenState extends ConsumerState<ScannerScreen> {
   }
 }
 
-class _AisleSemaphoreSheet extends StatelessWidget {
+class _AisleSemaphoreSheet extends ConsumerWidget {
   final ProductItem product;
   final List<EvaluatedOffer> rankedOffers;
   final String activeStoreSlug;
@@ -258,7 +269,7 @@ class _AisleSemaphoreSheet extends StatelessWidget {
   });
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     if (rankedOffers.isEmpty) return const SizedBox.shrink();
     final cheapest = rankedOffers.first;
     final currentStoreMatches =
@@ -340,7 +351,7 @@ class _AisleSemaphoreSheet extends StatelessWidget {
                 ],
               ),
             ),
-            const SizedBox(height: 12),
+            const SizedBox(height: 10),
             if (currentStoreEval != null)
               Container(
                 padding: const EdgeInsets.all(12),
@@ -372,6 +383,41 @@ class _AisleSemaphoreSheet extends StatelessWidget {
                   ],
                 ),
               ),
+            const SizedBox(height: 12),
+            // Botón directo para sumar al carrito
+            SizedBox(
+              width: double.infinity,
+              child: FilledButton.icon(
+                style: FilledButton.styleFrom(
+                  backgroundColor: const Color(0xFF10B981),
+                  foregroundColor: Colors.white,
+                  padding: const EdgeInsets.symmetric(vertical: 12),
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                ),
+                icon: const Icon(Icons.add_shopping_cart_rounded, size: 18),
+                label: const Text(
+                  '+ Sumar a Mi Lista',
+                  style: TextStyle(fontSize: 13, fontWeight: FontWeight.w800),
+                ),
+                onPressed: () {
+                  ref.read(smartCartProvider.notifier).addOrIncrement(product);
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      backgroundColor: const Color(0xFF10B981),
+                      behavior: SnackBarBehavior.floating,
+                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                      content: Text('${product.normalizedName} sumado a tu lista'),
+                      action: SnackBarAction(
+                        label: 'Ver Lista',
+                        textColor: Colors.white,
+                        onPressed: () => ref.read(activeTabProvider.notifier).state = 3,
+                      ),
+                      duration: const Duration(milliseconds: 1400),
+                    ),
+                  );
+                },
+              ),
+            ),
           ],
         ),
       ),

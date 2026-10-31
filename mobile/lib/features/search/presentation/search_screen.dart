@@ -380,24 +380,7 @@ class SearchScreen extends ConsumerWidget {
                   ),
                 ),
                 const SizedBox(height: 10),
-                SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: Row(
-                    children: _weekdayLabels.entries.map((entry) {
-                      final isSelected = entry.key == selectedWeekday;
-                      return Padding(
-                        padding: const EdgeInsets.only(right: 6),
-                        child: ChoiceChip(
-                          label: Text(entry.value),
-                          selected: isSelected,
-                          onSelected: (_) =>
-                              ref.read(selectedWeekdayProvider.notifier).state = entry.key,
-                        ),
-                      );
-                    }).toList(),
-                  ),
-                ),
-                const SizedBox(height: 8),
+                // Categorías rápidas
                 SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
                   child: Row(
@@ -416,6 +399,53 @@ class SearchScreen extends ConsumerWidget {
                       );
                     }).toList(),
                   ),
+                ),
+                const SizedBox(height: 8),
+                // Selector de día para aplicar descuentos vigentes
+                Row(
+                  children: [
+                    Icon(
+                      Icons.calendar_today_rounded,
+                      size: 13,
+                      color: isDark ? const Color(0xFF94A3B8) : const Color(0xFF64748B),
+                    ),
+                    const SizedBox(width: 6),
+                    Text(
+                      'Promos de:',
+                      style: TextStyle(
+                        fontSize: 11,
+                        fontWeight: FontWeight.w600,
+                        color: isDark ? const Color(0xFF94A3B8) : const Color(0xFF64748B),
+                      ),
+                    ),
+                    const SizedBox(width: 8),
+                    Expanded(
+                      child: SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+                        child: Row(
+                          children: _weekdayLabels.entries.map((entry) {
+                            final isSelected = entry.key == selectedWeekday;
+                            return Padding(
+                              padding: const EdgeInsets.only(right: 4),
+                              child: ChoiceChip(
+                                visualDensity: VisualDensity.compact,
+                                label: Text(
+                                  entry.value,
+                                  style: TextStyle(
+                                    fontSize: 11,
+                                    fontWeight: isSelected ? FontWeight.w800 : FontWeight.w600,
+                                  ),
+                                ),
+                                selected: isSelected,
+                                onSelected: (_) =>
+                                    ref.read(selectedWeekdayProvider.notifier).state = entry.key,
+                              ),
+                            );
+                          }).toList(),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),
@@ -555,21 +585,49 @@ class _ProductComparisonCard extends StatelessWidget {
               Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // Imagen / Thumbnail del Producto
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(14),
-                    child: (product.imageUrl != null && product.imageUrl!.isNotEmpty)
-                        ? Image.network(
-                            product.imageUrl!,
-                            width: 54,
-                            height: 54,
-                            fit: BoxFit.cover,
-                            errorBuilder: (ctx, _, __) => _buildCategoryThumbnail(context, product.category),
-                          )
-                        : _buildCategoryThumbnail(context, product.category),
+                  // Imagen / Thumbnail con botón corazón de favoritos integrado en la esquina
+                  Stack(
+                    children: [
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(14),
+                        child: (product.imageUrl != null && product.imageUrl!.isNotEmpty)
+                            ? Image.network(
+                                product.imageUrl!,
+                                width: 58,
+                                height: 58,
+                                fit: BoxFit.cover,
+                                errorBuilder: (ctx, _, __) => _buildCategoryThumbnail(context, product.category),
+                              )
+                            : _buildCategoryThumbnail(context, product.category),
+                      ),
+                      Positioned(
+                        top: 2,
+                        right: 2,
+                        child: InkWell(
+                          onTap: onToggleFavorite,
+                          borderRadius: BorderRadius.circular(12),
+                          child: Container(
+                            padding: const EdgeInsets.all(3.5),
+                            decoration: BoxDecoration(
+                              color: isFavorite
+                                  ? const Color(0xFFEF4444).withValues(alpha: 0.2)
+                                  : (isDark ? const Color(0x99000000) : const Color(0xB3FFFFFF)),
+                              shape: BoxShape.circle,
+                            ),
+                            child: Icon(
+                              isFavorite ? Icons.favorite_rounded : Icons.favorite_border_rounded,
+                              color: isFavorite
+                                  ? const Color(0xFFEF4444)
+                                  : (isDark ? Colors.white70 : const Color(0xFF64748B)),
+                              size: 15,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                   const SizedBox(width: 12),
-                  // Nombre y Detalles
+                  // Nombre, categoría y precio unitario
                   Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -579,7 +637,7 @@ class _ProductComparisonCard extends StatelessWidget {
                           maxLines: 2,
                           overflow: TextOverflow.ellipsis,
                           style: TextStyle(
-                            fontSize: 15,
+                            fontSize: 14.5,
                             fontWeight: FontWeight.w700,
                             color: isDark ? Colors.white : const Color(0xFF0F172A),
                           ),
@@ -638,24 +696,22 @@ class _ProductComparisonCard extends StatelessWidget {
                       ],
                     ),
                   ),
-                  const SizedBox(width: 4),
-                  IconButton(
-                    onPressed: onToggleFavorite,
-                    icon: Icon(
-                      isFavorite ? Icons.favorite_rounded : Icons.favorite_border_rounded,
-                      color: isFavorite ? const Color(0xFFEF4444) : (isDark ? const Color(0xFF94A3B8) : const Color(0xFF64748B)),
-                      size: 20,
-                    ),
-                    tooltip: isFavorite ? 'En Alertas de Precio' : 'Guardar en Favoritos',
-                  ),
-                  IconButton.filledTonal(
+                  const SizedBox(width: 8),
+                  // Botón "+ Lista" limpio y fácil de presionar
+                  FilledButton.tonalIcon(
                     onPressed: onAddToCart,
-                    style: IconButton.styleFrom(
+                    style: FilledButton.styleFrom(
                       backgroundColor: const Color(0xFF10B981).withValues(alpha: 0.15),
                       foregroundColor: const Color(0xFF10B981),
+                      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+                      minimumSize: const Size(0, 32),
+                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
                     ),
-                    icon: const Icon(Icons.add_shopping_cart_rounded, size: 20),
-                    tooltip: 'Agregar a Mi Lista',
+                    icon: const Icon(Icons.add_shopping_cart_rounded, size: 15),
+                    label: const Text(
+                      '+ Lista',
+                      style: TextStyle(fontSize: 11, fontWeight: FontWeight.w800),
+                    ),
                   ),
                 ],
               ),
@@ -666,11 +722,12 @@ class _ProductComparisonCard extends StatelessWidget {
               ),
               const SizedBox(height: 10),
 
-              // Lista de ofertas por supermercado
+              // Lista de ofertas por supermercado (con diferencias claras vs el más barato)
               ...rankedOffers.asMap().entries.map((entry) {
                 final idx = entry.key;
                 final eval = entry.value;
                 final isBest = idx == 0;
+                final diffGs = eval.effectiveFinalPriceGs - best.effectiveFinalPriceGs;
 
                 final tileBg = isBest
                     ? (isDark ? const Color(0x2610B981) : const Color(0xFFECFDF5))
@@ -781,6 +838,15 @@ class _ProductComparisonCard extends StatelessWidget {
                                 color: isDark ? const Color(0xFF64748B) : const Color(0xFF94A3B8),
                                 decoration: TextDecoration.lineThrough,
                               ),
+                            )
+                          else if (!isBest && diffGs > 0)
+                            Text(
+                              '+${GuaraniFormatter.format(diffGs)}',
+                              style: const TextStyle(
+                                fontSize: 10,
+                                fontWeight: FontWeight.w600,
+                                color: Color(0xFFEF4444),
+                              ),
                             ),
                         ],
                       ),
@@ -788,6 +854,28 @@ class _ProductComparisonCard extends StatelessWidget {
                   ),
                 );
               }),
+
+              // Hint sutil al pie de la tarjeta para invitar al detalle de transparencia
+              const SizedBox(height: 4),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Text(
+                    'Ver historial de precios DNIT y ofertas falsas',
+                    style: TextStyle(
+                      fontSize: 10.5,
+                      fontWeight: FontWeight.w600,
+                      color: isDark ? const Color(0xFF38BDF8) : const Color(0xFF0284C7),
+                    ),
+                  ),
+                  const SizedBox(width: 4),
+                  Icon(
+                    Icons.chevron_right_rounded,
+                    size: 14,
+                    color: isDark ? const Color(0xFF38BDF8) : const Color(0xFF0284C7),
+                  ),
+                ],
+              ),
             ],
           ),
         ),
@@ -795,3 +883,4 @@ class _ProductComparisonCard extends StatelessWidget {
     );
   }
 }
+
