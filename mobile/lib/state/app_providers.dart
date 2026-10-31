@@ -28,9 +28,216 @@ final searchQueryProvider = StateProvider<String>((ref) => '');
 /// Día de la semana simulado (ISO 1=Lunes ... 7=Domingo). Por defecto: Martes (2) o el día actual.
 final selectedWeekdayProvider = StateProvider<int>((ref) => DateTime.now().weekday);
 
-/// Tarjetas activas en la billetera del usuario paraguayo
-final userWalletCardsProvider = StateProvider<Set<String>>((ref) {
-  return {'ueno_credito_n4', 'itau_credito_clasica'};
+/// Estado detallado de la billetera del usuario por banco y nivel/tier
+class UserWalletProfilesNotifier extends StateNotifier<Map<String, UserCardProfile>> {
+  UserWalletProfilesNotifier()
+      : super({
+          'ueno': const UserCardProfile(
+            bankSlug: 'ueno',
+            bankName: 'ueno bank',
+            isEnabled: true,
+            cardType: 'credito',
+            tier: 'n4',
+            uenoLevel: 4,
+            isQrPayment: true,
+            spentThisMonthGs: 0,
+          ),
+          'itau': const UserCardProfile(
+            bankSlug: 'itau',
+            bankName: 'Banco Itaú',
+            isEnabled: true,
+            cardType: 'credito',
+            tier: 'clasica',
+            isQrPayment: true,
+            spentThisMonthGs: 0,
+          ),
+          'continental': const UserCardProfile(
+            bankSlug: 'continental',
+            bankName: 'Banco Continental',
+            isEnabled: false,
+            cardType: 'credito',
+            tier: 'clasica',
+            isQrPayment: true,
+            spentThisMonthGs: 0,
+          ),
+          'familiar': const UserCardProfile(
+            bankSlug: 'familiar',
+            bankName: 'Banco Familiar',
+            isEnabled: false,
+            cardType: 'credito',
+            tier: 'clasica',
+            isQrPayment: true,
+            spentThisMonthGs: 0,
+          ),
+          'atlas': const UserCardProfile(
+            bankSlug: 'atlas',
+            bankName: 'Banco Atlas',
+            isEnabled: false,
+            cardType: 'credito',
+            tier: 'clasica',
+            isQrPayment: true,
+            spentThisMonthGs: 0,
+          ),
+          'sudameris': const UserCardProfile(
+            bankSlug: 'sudameris',
+            bankName: 'Banco Sudameris',
+            isEnabled: false,
+            cardType: 'credito',
+            tier: 'infinite',
+            isQrPayment: false,
+            spentThisMonthGs: 0,
+          ),
+          'gnb': const UserCardProfile(
+            bankSlug: 'gnb',
+            bankName: 'Banco GNB',
+            isEnabled: false,
+            cardType: 'credito',
+            tier: 'clasica',
+            isQrPayment: true,
+            spentThisMonthGs: 0,
+          ),
+          'zeta': const UserCardProfile(
+            bankSlug: 'zeta',
+            bankName: 'Zeta Banco',
+            isEnabled: false,
+            cardType: 'credito',
+            tier: 'clasica',
+            isQrPayment: true,
+            spentThisMonthGs: 0,
+          ),
+          'basa': const UserCardProfile(
+            bankSlug: 'basa',
+            bankName: 'Banco Basa',
+            isEnabled: false,
+            cardType: 'credito',
+            tier: 'clasica',
+            isQrPayment: false,
+            spentThisMonthGs: 0,
+          ),
+        });
+
+  void toggleBank(String bankSlug) {
+    final current = state[bankSlug];
+    if (current == null) return;
+    state = {
+      ...state,
+      bankSlug: current.copyWith(isEnabled: !current.isEnabled),
+    };
+  }
+
+  void setTier(String bankSlug, String tier) {
+    final current = state[bankSlug];
+    if (current == null) return;
+    state = {
+      ...state,
+      bankSlug: current.copyWith(tier: tier),
+    };
+  }
+
+  void setUenoLevel(int level) {
+    final current = state['ueno'];
+    if (current == null) return;
+    state = {
+      ...state,
+      'ueno': current.copyWith(uenoLevel: level, tier: 'n$level'),
+    };
+  }
+
+  void setCardType(String bankSlug, String cardType) {
+    final current = state[bankSlug];
+    if (current == null) return;
+    state = {
+      ...state,
+      bankSlug: current.copyWith(cardType: cardType),
+    };
+  }
+
+  void setPaymentMethod(String bankSlug, bool isQr) {
+    final current = state[bankSlug];
+    if (current == null) return;
+    state = {
+      ...state,
+      bankSlug: current.copyWith(isQrPayment: isQr),
+    };
+  }
+
+  void setSpentThisMonth(String bankSlug, int spentGs) {
+    final current = state[bankSlug];
+    if (current == null) return;
+    state = {
+      ...state,
+      bankSlug: current.copyWith(spentThisMonthGs: spentGs),
+    };
+  }
+
+  static Set<String> deriveCardSlugs(Map<String, UserCardProfile> profiles) {
+    final slugs = <String>{};
+    for (final entry in profiles.entries) {
+      final p = entry.value;
+      if (!p.isEnabled) continue;
+
+      if (p.bankSlug == 'ueno') {
+        slugs.add('ueno_credito_n${p.uenoLevel}');
+        slugs.add('ueno_superseis');
+      } else if (p.bankSlug == 'itau') {
+        if (p.tier == 'infinite') {
+          slugs.add('itau_credito_infinite');
+          slugs.add('itau_credito_platinum');
+          slugs.add('itau_credito_clasica');
+        } else if (p.tier == 'platinum') {
+          slugs.add('itau_credito_platinum');
+          slugs.add('itau_credito_clasica');
+        } else if (p.tier == 'afinidad') {
+          slugs.add('itau_afinidad');
+          slugs.add('itau_credito_clasica');
+        } else {
+          slugs.add('itau_credito_clasica');
+        }
+      } else if (p.bankSlug == 'continental') {
+        if (p.tier == 'infinite') {
+          slugs.add('continental_black');
+          slugs.add('continental_credito');
+        } else {
+          slugs.add('continental_credito');
+        }
+      } else if (p.bankSlug == 'familiar') {
+        if (p.tier == 'platinum' || p.tier == 'infinite') {
+          slugs.add('familiar_platinum');
+          slugs.add('familiar_credito');
+        } else {
+          slugs.add('familiar_credito');
+        }
+      } else if (p.bankSlug == 'atlas') {
+        if (p.tier == 'infinite') {
+          slugs.add('atlas_black');
+          slugs.add('atlas_credito');
+        } else {
+          slugs.add('atlas_credito');
+        }
+      } else if (p.bankSlug == 'sudameris') {
+        slugs.add('sudameris_infinite');
+      } else if (p.bankSlug == 'gnb') {
+        slugs.add('gnb_credito');
+      } else if (p.bankSlug == 'zeta') {
+        slugs.add('zeta_qr');
+      } else if (p.bankSlug == 'basa') {
+        slugs.add('basa_credito');
+      }
+    }
+    return slugs;
+  }
+}
+
+/// Provider de perfiles bancarios configurables por el usuario
+final userWalletProfilesProvider =
+    StateNotifierProvider<UserWalletProfilesNotifier, Map<String, UserCardProfile>>((ref) {
+  return UserWalletProfilesNotifier();
+});
+
+/// Tarjetas activas derivadas en la billetera del usuario paraguayo
+final userWalletCardsProvider = Provider<Set<String>>((ref) {
+  final profiles = ref.watch(userWalletProfilesProvider);
+  return UserWalletProfilesNotifier.deriveCardSlugs(profiles);
 });
 
 /// Supermercado donde el usuario está parado físicamente cuando usa el Escáner de Pasillo

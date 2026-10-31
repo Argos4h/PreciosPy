@@ -3,12 +3,55 @@ enum DiscountMechanism {
   instantPos, // Descuento directo en la caja registradora
 }
 
+class UserCardProfile {
+  final String bankSlug;
+  final String bankName;
+  final bool isEnabled;
+  final String cardType;     // 'credito', 'debito'
+  final String tier;         // 'clasica', 'platinum', 'infinite', 'afinidad'
+  final int uenoLevel;       // 1..5 (Gamificación ueno bank)
+  final bool isQrPayment;    // true = Pago con código QR, false = Plástico físico
+  final int spentThisMonthGs; // Cuánto cupo de compra ya consumió el usuario este mes
+
+  const UserCardProfile({
+    required this.bankSlug,
+    required this.bankName,
+    this.isEnabled = false,
+    this.cardType = 'credito',
+    this.tier = 'clasica',
+    this.uenoLevel = 4,
+    this.isQrPayment = true,
+    this.spentThisMonthGs = 0,
+  });
+
+  UserCardProfile copyWith({
+    bool? isEnabled,
+    String? cardType,
+    String? tier,
+    int? uenoLevel,
+    bool? isQrPayment,
+    int? spentThisMonthGs,
+  }) {
+    return UserCardProfile(
+      bankSlug: bankSlug,
+      bankName: bankName,
+      isEnabled: isEnabled ?? this.isEnabled,
+      cardType: cardType ?? this.cardType,
+      tier: tier ?? this.tier,
+      uenoLevel: uenoLevel ?? this.uenoLevel,
+      isQrPayment: isQrPayment ?? this.isQrPayment,
+      spentThisMonthGs: spentThisMonthGs ?? this.spentThisMonthGs,
+    );
+  }
+}
+
 class BankPromotion {
   final int id;
   final String supermarketSlug;
   final String cardSlug;
   final String cardName;
   final String entityName;
+  final String bankSlug;
   final String title;
   final double discountPct;
   final DiscountMechanism mechanism;
@@ -16,6 +59,9 @@ class BankPromotion {
   final List<int> daysOfWeek; // ISO 1=Lunes ... 7=Domingo
   final int? spendingCapGs;   // Tope de compra en Guaraníes (ej. 800000)
   final int? maxRefundGs;     // Tope de reintegro en Guaraníes (ej. 280000)
+  final String? tier;         // 'clasica', 'platinum', 'infinite', 'afinidad'
+  final int? minUenoLevel;    // 1..5
+  final bool requiresQr;
 
   const BankPromotion({
     required this.id,
@@ -23,6 +69,7 @@ class BankPromotion {
     required this.cardSlug,
     required this.cardName,
     required this.entityName,
+    this.bankSlug = 'general',
     required this.title,
     required this.discountPct,
     required this.mechanism,
@@ -30,6 +77,9 @@ class BankPromotion {
     required this.daysOfWeek,
     this.spendingCapGs,
     this.maxRefundGs,
+    this.tier,
+    this.minUenoLevel,
+    this.requiresQr = false,
   });
 
   bool isValidOnWeekday(int isoWeekday) => daysOfWeek.contains(isoWeekday);
