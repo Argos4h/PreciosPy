@@ -16,6 +16,7 @@ class WalletScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final profiles = ref.watch(userWalletProfilesProvider);
+    final isCashOnly = ref.watch(cashOnlyModeProvider);
     final activeCardsCount = profiles.values.where((p) => p.isEnabled).length;
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
@@ -51,10 +52,15 @@ class WalletScreen extends ConsumerWidget {
                         ),
                       ),
                       Text(
-                        '$activeCardsCount bancos activos para comparar',
+                        isCashOnly
+                            ? '💵 Modo Solo Efectivo activado'
+                            : '$activeCardsCount bancos activos para comparar',
                         style: TextStyle(
                           fontSize: 12,
-                          color: isDark ? const Color(0xFF94A3B8) : const Color(0xFF64748B),
+                          fontWeight: isCashOnly ? FontWeight.w700 : FontWeight.w500,
+                          color: isCashOnly
+                              ? const Color(0xFF10B981)
+                              : (isDark ? const Color(0xFF94A3B8) : const Color(0xFF64748B)),
                         ),
                       ),
                     ],
@@ -64,13 +70,15 @@ class WalletScreen extends ConsumerWidget {
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
                 decoration: BoxDecoration(
-                  color: const Color(0xFF10B981).withValues(alpha: 0.12),
+                  color: isCashOnly
+                      ? const Color(0xFF10B981).withValues(alpha: 0.2)
+                      : const Color(0xFF10B981).withValues(alpha: 0.12),
                   borderRadius: BorderRadius.circular(16),
                   border: Border.all(color: const Color(0xFF10B981).withValues(alpha: 0.3)),
                 ),
-                child: const Text(
-                  'Topes Activos',
-                  style: TextStyle(fontSize: 11, fontWeight: FontWeight.w700, color: Color(0xFF10B981)),
+                child: Text(
+                  isCashOnly ? '💵 Solo Efectivo' : 'Topes Activos',
+                  style: const TextStyle(fontSize: 11, fontWeight: FontWeight.w700, color: Color(0xFF10B981)),
                 ),
               ),
             ],
@@ -85,6 +93,95 @@ class WalletScreen extends ConsumerWidget {
             ),
           ),
           const SizedBox(height: 16),
+
+          // OPCIÓN MODO SOLO EFECTIVO
+          Card(
+            margin: const EdgeInsets.only(bottom: 16),
+            color: isCashOnly
+                ? (isDark ? const Color(0x2610B981) : const Color(0xFFD1FAE5))
+                : (isDark ? const Color(0xFF1E293B) : const Color(0xFFF8FAFC)),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(18),
+              side: BorderSide(
+                color: isCashOnly
+                    ? const Color(0xFF10B981)
+                    : (isDark ? const Color(0xFF334155) : const Color(0xFFE2E8F0)),
+                width: isCashOnly ? 1.5 : 1.0,
+              ),
+            ),
+            child: Padding(
+              padding: const EdgeInsets.all(14),
+              child: Row(
+                children: [
+                  Container(
+                    padding: const EdgeInsets.all(10),
+                    decoration: BoxDecoration(
+                      color: isCashOnly
+                          ? const Color(0xFF10B981).withValues(alpha: 0.2)
+                          : (isDark ? const Color(0xFF334155) : const Color(0xFFE2E8F0)),
+                      borderRadius: BorderRadius.circular(14),
+                    ),
+                    child: Icon(
+                      Icons.payments_rounded,
+                      color: isCashOnly ? const Color(0xFF10B981) : (isDark ? Colors.white70 : Colors.black87),
+                      size: 24,
+                    ),
+                  ),
+                  const SizedBox(width: 12),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          children: [
+                            Text(
+                              'Modo Solo Efectivo',
+                              style: TextStyle(
+                                fontSize: 15,
+                                fontWeight: FontWeight.w800,
+                                color: isDark ? Colors.white : const Color(0xFF0F172A),
+                              ),
+                            ),
+                            if (isCashOnly) ...[
+                              const SizedBox(width: 6),
+                              Container(
+                                padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+                                decoration: BoxDecoration(
+                                  color: const Color(0xFF10B981),
+                                  borderRadius: BorderRadius.circular(6),
+                                ),
+                                child: const Text(
+                                  'ACTIVO',
+                                  style: TextStyle(fontSize: 9, fontWeight: FontWeight.w900, color: Colors.white),
+                                ),
+                              ),
+                            ],
+                          ],
+                        ),
+                        const SizedBox(height: 2),
+                        Text(
+                          isCashOnly
+                              ? 'Comparando precios directos de góndola (sin tarjetas bancarias).'
+                              : 'Ignora las tarjetas y compara precios pagando únicamente en efectivo.',
+                          style: TextStyle(
+                            fontSize: 11,
+                            color: isDark ? const Color(0xFF94A3B8) : const Color(0xFF64748B),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Switch(
+                    value: isCashOnly,
+                    activeThumbColor: const Color(0xFF10B981),
+                    onChanged: (val) {
+                      ref.read(cashOnlyModeProvider.notifier).state = val;
+                    },
+                  ),
+                ],
+              ),
+            ),
+          ),
 
           // 1. TARJETA DESTACADA: UENO BANK (NIVELES 1..5)
           if (uenoProfile != null)

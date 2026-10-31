@@ -188,6 +188,7 @@ class SearchScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final products = ref.watch(filteredProductsProvider);
     final wallet = ref.watch(userWalletCardsProvider);
+    final isCashOnly = ref.watch(cashOnlyModeProvider);
     final selectedWeekday = ref.watch(selectedWeekdayProvider);
     final promotions = ref.watch(bankPromotionsProvider);
     final selectedCity = ref.watch(selectedCityProvider);
@@ -254,27 +255,59 @@ class SearchScreen extends ConsumerWidget {
                     ),
                     Row(
                       children: [
-                        Container(
-                          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-                          decoration: BoxDecoration(
-                            color: const Color(0xFF10B981).withValues(alpha: 0.12),
-                            borderRadius: BorderRadius.circular(16),
-                            border: Border.all(color: const Color(0xFF10B981).withValues(alpha: 0.3)),
-                          ),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              const Icon(Icons.credit_card_rounded, size: 14, color: Color(0xFF10B981)),
-                              const SizedBox(width: 4),
-                              Text(
-                                '${wallet.length} tarjetas',
-                                style: const TextStyle(
-                                  fontSize: 11,
-                                  color: Color(0xFF10B981),
-                                  fontWeight: FontWeight.w700,
+                        InkWell(
+                          onTap: () {
+                            final next = !ref.read(cashOnlyModeProvider);
+                            ref.read(cashOnlyModeProvider.notifier).state = next;
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                backgroundColor: next ? const Color(0xFF10B981) : const Color(0xFF0284C7),
+                                behavior: SnackBarBehavior.floating,
+                                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                                content: Text(
+                                  next
+                                      ? '💵 Modo Solo Efectivo: precios de góndola sin tarjetas'
+                                      : '💳 Modo Tarjetas: aplicando tus promociones bancarias',
+                                  style: const TextStyle(fontWeight: FontWeight.w700, color: Colors.white),
                                 ),
+                                duration: const Duration(milliseconds: 1400),
                               ),
-                            ],
+                            );
+                          },
+                          borderRadius: BorderRadius.circular(16),
+                          child: Container(
+                            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                            decoration: BoxDecoration(
+                              color: isCashOnly
+                                  ? const Color(0xFF10B981).withValues(alpha: 0.22)
+                                  : const Color(0xFF10B981).withValues(alpha: 0.12),
+                              borderRadius: BorderRadius.circular(16),
+                              border: Border.all(
+                                color: isCashOnly
+                                    ? const Color(0xFF10B981)
+                                    : const Color(0xFF10B981).withValues(alpha: 0.3),
+                                width: isCashOnly ? 1.5 : 1.0,
+                              ),
+                            ),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Icon(
+                                  isCashOnly ? Icons.payments_rounded : Icons.credit_card_rounded,
+                                  size: 14,
+                                  color: const Color(0xFF10B981),
+                                ),
+                                const SizedBox(width: 4),
+                                Text(
+                                  isCashOnly ? '💵 Efectivo' : '${wallet.length} tarjetas',
+                                  style: const TextStyle(
+                                    fontSize: 11,
+                                    color: Color(0xFF10B981),
+                                    fontWeight: FontWeight.w700,
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                         const SizedBox(width: 6),
@@ -293,6 +326,44 @@ class SearchScreen extends ConsumerWidget {
                     ),
                   ],
                 ),
+                if (isCashOnly)
+                  Container(
+                    margin: const EdgeInsets.only(top: 8),
+                    padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                    decoration: BoxDecoration(
+                      color: const Color(0xFF10B981).withValues(alpha: 0.12),
+                      borderRadius: BorderRadius.circular(10),
+                      border: Border.all(color: const Color(0xFF10B981).withValues(alpha: 0.3)),
+                    ),
+                    child: Row(
+                      children: [
+                        const Icon(Icons.payments_rounded, size: 14, color: Color(0xFF10B981)),
+                        const SizedBox(width: 6),
+                        const Expanded(
+                          child: Text(
+                            'Modo Solo Efectivo: precios directos de góndola',
+                            style: TextStyle(
+                              fontSize: 11,
+                              fontWeight: FontWeight.w700,
+                              color: Color(0xFF10B981),
+                            ),
+                          ),
+                        ),
+                        InkWell(
+                          onTap: () => ref.read(cashOnlyModeProvider.notifier).state = false,
+                          child: const Text(
+                            'Usar Tarjetas',
+                            style: TextStyle(
+                              fontSize: 11,
+                              fontWeight: FontWeight.w800,
+                              color: Color(0xFF10B981),
+                              decoration: TextDecoration.underline,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
                 const SizedBox(height: 12),
                 TextField(
                   onChanged: (value) => ref.read(searchQueryProvider.notifier).state = value,

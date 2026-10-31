@@ -30,6 +30,7 @@ class _ScannerScreenState extends ConsumerState<ScannerScreen> {
     final promotions = ref.watch(bankPromotionsProvider);
     final cityStores = ref.watch(currentCitySupermarketsProvider);
     final selectedCity = ref.watch(selectedCityProvider);
+    final isCashOnly = ref.watch(cashOnlyModeProvider);
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
     final effectiveActiveStoreSlug = cityStores.containsKey(activeStoreSlug)
@@ -67,11 +68,13 @@ class _ScannerScreenState extends ConsumerState<ScannerScreen> {
                       ),
                     ),
                     Text(
-                      '📍 $selectedCity • Semáforo inteligente',
+                      '📍 $selectedCity • ${isCashOnly ? "💵 Solo Efectivo" : "Semáforo en tiempo real"}',
                       style: TextStyle(
                         fontSize: 12,
                         fontWeight: FontWeight.w600,
-                        color: isDark ? const Color(0xFF38BDF8) : const Color(0xFF0284C7),
+                        color: isCashOnly
+                            ? const Color(0xFF10B981)
+                            : (isDark ? const Color(0xFF38BDF8) : const Color(0xFF0284C7)),
                       ),
                     ),
                   ],

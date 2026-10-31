@@ -10,9 +10,11 @@ class SmartCartScreen extends ConsumerWidget {
 
   void _showBestStoreReport({
     required BuildContext context,
+    required WidgetRef ref,
     required List<SmartCartSummary> rankings,
     required SplitCartResult splitResult,
     required String cityName,
+    required bool isCashOnly,
   }) {
     if (rankings.isEmpty) return;
 
@@ -73,11 +75,15 @@ class SmartCartScreen extends ConsumerWidget {
                           ),
                         ),
                         Text(
-                          '📍 Sucursales en $cityName • Descuentos bancarios de hoy',
+                          isCashOnly
+                              ? '📍 Sucursales en $cityName • 💵 Solo Efectivo (Precios de góndola)'
+                              : '📍 Sucursales en $cityName • 💳 Descuentos bancarios de hoy',
                           style: TextStyle(
                             fontSize: 12,
                             fontWeight: FontWeight.w600,
-                            color: isDark ? const Color(0xFF38BDF8) : const Color(0xFF0284C7),
+                            color: isCashOnly
+                                ? const Color(0xFF10B981)
+                                : (isDark ? const Color(0xFF38BDF8) : const Color(0xFF0284C7)),
                           ),
                         ),
                       ],
@@ -85,7 +91,100 @@ class SmartCartScreen extends ConsumerWidget {
                   ),
                 ],
               ),
-              const SizedBox(height: 16),
+              const SizedBox(height: 12),
+
+              // SELECTOR SEGMENTADO: [ 💳 MIS TARJETAS ] vs [ 💵 SOLO EFECTIVO ]
+              Container(
+                padding: const EdgeInsets.all(4),
+                decoration: BoxDecoration(
+                  color: isDark ? const Color(0xFF0F172A) : const Color(0xFFF1F5F9),
+                  borderRadius: BorderRadius.circular(14),
+                  border: Border.all(
+                    color: isDark ? const Color(0xFF334155) : const Color(0xFFE2E8F0),
+                  ),
+                ),
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: InkWell(
+                        onTap: () {
+                          if (isCashOnly) {
+                            ref.read(cashOnlyModeProvider.notifier).state = false;
+                          }
+                        },
+                        borderRadius: BorderRadius.circular(10),
+                        child: Container(
+                          padding: const EdgeInsets.symmetric(vertical: 8),
+                          decoration: BoxDecoration(
+                            color: !isCashOnly
+                                ? const Color(0xFF10B981)
+                                : Colors.transparent,
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Icon(
+                                Icons.credit_card_rounded,
+                                size: 15,
+                                color: !isCashOnly ? Colors.white : (isDark ? Colors.white70 : Colors.black87),
+                              ),
+                              const SizedBox(width: 6),
+                              Text(
+                                'Con Mis Tarjetas',
+                                style: TextStyle(
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w800,
+                                  color: !isCashOnly ? Colors.white : (isDark ? Colors.white70 : Colors.black87),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                    Expanded(
+                      child: InkWell(
+                        onTap: () {
+                          if (!isCashOnly) {
+                            ref.read(cashOnlyModeProvider.notifier).state = true;
+                          }
+                        },
+                        borderRadius: BorderRadius.circular(10),
+                        child: Container(
+                          padding: const EdgeInsets.symmetric(vertical: 8),
+                          decoration: BoxDecoration(
+                            color: isCashOnly
+                                ? const Color(0xFF10B981)
+                                : Colors.transparent,
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Icon(
+                                Icons.payments_rounded,
+                                size: 15,
+                                color: isCashOnly ? Colors.white : (isDark ? Colors.white70 : Colors.black87),
+                              ),
+                              const SizedBox(width: 6),
+                              Text(
+                                'Solo Efectivo',
+                                style: TextStyle(
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w800,
+                                  color: isCashOnly ? Colors.white : (isDark ? Colors.white70 : Colors.black87),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 14),
               Expanded(
                 child: ListView(
                   children: [
@@ -196,13 +295,19 @@ class SmartCartScreen extends ConsumerWidget {
                           const SizedBox(height: 6),
                           Row(
                             children: [
-                              const Icon(Icons.credit_card_rounded, size: 16, color: Color(0xFF10B981)),
+                              Icon(
+                                isCashOnly ? Icons.payments_rounded : Icons.credit_card_rounded,
+                                size: 16,
+                                color: const Color(0xFF10B981),
+                              ),
                               const SizedBox(width: 6),
                               Expanded(
                                 child: Text(
-                                  winner.appliedCardName != null
-                                      ? 'Pagas en caja ${GuaraniFormatter.format(winner.totalCashAtPosGs)} con ${winner.appliedCardName} (Reintegro: ${GuaraniFormatter.format(winner.totalCashbackGs)})'
-                                      : 'Pagas en caja ${GuaraniFormatter.format(winner.totalCashAtPosGs)} (Sin promo bancaria aplicable hoy)',
+                                  isCashOnly
+                                      ? 'Pagas en caja ${GuaraniFormatter.format(winner.totalCashAtPosGs)} en Efectivo (Precios directos de góndola)'
+                                      : (winner.appliedCardName != null
+                                          ? 'Pagas en caja ${GuaraniFormatter.format(winner.totalCashAtPosGs)} con ${winner.appliedCardName} (Reintegro: ${GuaraniFormatter.format(winner.totalCashbackGs)})'
+                                          : 'Pagas en caja ${GuaraniFormatter.format(winner.totalCashAtPosGs)} en Efectivo (Sin promo bancaria hoy)'),
                                   style: TextStyle(
                                     fontSize: 11,
                                     fontWeight: FontWeight.w600,
@@ -441,6 +546,7 @@ class SmartCartScreen extends ConsumerWidget {
     final rankings = ref.watch(smartCartRankingsProvider);
     final splitResult = ref.watch(splitCartResultProvider);
     final selectedCity = ref.watch(selectedCityProvider);
+    final isCashOnly = ref.watch(cashOnlyModeProvider);
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
     final cartItems = cart.entries.toList();
@@ -467,12 +573,12 @@ class SmartCartScreen extends ConsumerWidget {
                     ),
                     Text(
                       cart.isEmpty
-                          ? '📍 $selectedCity • Agrega productos para comparar'
-                          : '${cart.length} productos cargados • 📍 $selectedCity',
+                          ? '📍 $selectedCity • ${isCashOnly ? "💵 Solo Efectivo" : "💳 Con Tarjetas"}'
+                          : '${cart.length} productos cargados • 📍 $selectedCity • ${isCashOnly ? "💵 Solo Efectivo" : "💳 Con Tarjetas"}',
                       style: TextStyle(
                         fontSize: 12,
                         fontWeight: FontWeight.w600,
-                        color: isDark ? const Color(0xFF38BDF8) : const Color(0xFF0284C7),
+                        color: isCashOnly ? const Color(0xFF10B981) : (isDark ? const Color(0xFF38BDF8) : const Color(0xFF0284C7)),
                       ),
                     ),
                   ],
@@ -661,9 +767,11 @@ class SmartCartScreen extends ConsumerWidget {
                   onPressed: () {
                     _showBestStoreReport(
                       context: context,
+                      ref: ref,
                       rankings: rankings,
                       splitResult: splitResult,
                       cityName: selectedCity,
+                      isCashOnly: isCashOnly,
                     );
                   },
                 ),

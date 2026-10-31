@@ -101,5 +101,33 @@ void main() {
         expect(caacupeSlugs, contains(s.supermarketSlug));
       }
     });
+
+    test('Modo Solo Efectivo: compara exclusivamente precios góndola ignorando tarjetas bancarias', () {
+      final yerba = LocalCatalogRepository.initialCatalog.first;
+
+      // Ranking con Solo Efectivo (userCardSlugs = {})
+      final rankedCash = PromoCalculator.rankProductOffers(
+        product: yerba,
+        allPromotions: LocalCatalogRepository.paraguayPromotions,
+        userCardSlugs: <String>{}, // Sin tarjetas
+        isoWeekday: 2,
+        availableSupermarketSlugs: {'superseis', 'stock', 'biggie', 'tuti'},
+      );
+
+      // Superseis tiene oferta de góndola a Gs. 14.500 para todo público
+      expect(rankedCash.first.offer.supermarketSlug, 'superseis');
+      expect(rankedCash.first.effectiveFinalPriceGs, 14500);
+      expect(rankedCash.first.appliedPromotion, isNull);
+      expect(rankedCash.first.pricingNote, contains('Oferta directa de góndola'));
+
+      // Biggie tiene regular 17.500 y no aplica el 35% de ueno porque es en efectivo
+      final biggieOffer = rankedCash.firstWhere((o) => o.offer.supermarketSlug == 'biggie');
+      expect(biggieOffer.effectiveFinalPriceGs, 17500);
+      expect(biggieOffer.appliedPromotion, isNull);
+
+      // Tuti tiene regular 16.500
+      final tutiOffer = rankedCash.firstWhere((o) => o.offer.supermarketSlug == 'tuti');
+      expect(tutiOffer.effectiveFinalPriceGs, 16500);
+    });
   });
 }

@@ -247,8 +247,13 @@ final userWalletProfilesProvider =
   return UserWalletProfilesNotifier();
 });
 
-/// Tarjetas activas derivadas en la billetera del usuario paraguayo
+/// Modo Solo Efectivo (true = ignorar tarjetas bancarias y comparar solo precios directos de góndola)
+final cashOnlyModeProvider = StateProvider<bool>((ref) => false);
+
+/// Tarjetas activas derivadas en la billetera del usuario paraguayo (vacío si está en Modo Solo Efectivo)
 final userWalletCardsProvider = Provider<Set<String>>((ref) {
+  final isCashOnly = ref.watch(cashOnlyModeProvider);
+  if (isCashOnly) return <String>{};
   final profiles = ref.watch(userWalletProfilesProvider);
   return UserWalletProfilesNotifier.deriveCardSlugs(profiles);
 });
