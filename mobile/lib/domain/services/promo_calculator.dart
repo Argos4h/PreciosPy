@@ -129,7 +129,15 @@ class PromoCalculator {
         final offer = matchingOffers.first;
         availableItems.add(MapEntry(offer, qty));
         totalRegular += offer.regularPriceGs * qty;
-        totalGondola += offer.gondolaBestPriceGs * qty;
+
+        // Si el usuario compra por fardo/pack (>= wholesaleMinQty en mayoristas), aplica precio mayorista
+        final effectiveUnit = (offer.wholesalePriceGs != null &&
+                offer.wholesaleMinQty != null &&
+                qty >= offer.wholesaleMinQty!)
+            ? offer.wholesalePriceGs!
+            : offer.gondolaBestPriceGs;
+
+        totalGondola += effectiveUnit * qty;
       }
 
       if (availableItems.isEmpty) {

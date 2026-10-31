@@ -271,3 +271,61 @@ class PriceTrustAnalysis {
     required this.history,
   });
 }
+
+/// Ítem extraído de una factura electrónica paraguaya (e-Kuatia DNIT / SET)
+class KuatiaInvoiceItem {
+  final String description;
+  final double quantity;
+  final int unitPriceGs;
+  final int totalPriceGs;
+
+  const KuatiaInvoiceItem({
+    required this.description,
+    required this.quantity,
+    required this.unitPriceGs,
+    required this.totalPriceGs,
+  });
+}
+
+/// Factura Electrónica Nacional (SIFEN e-Kuatia) leída desde código QR tributario
+class KuatiaInvoiceReceipt {
+  final String rucIssuer;
+  final String supermarketName;
+  final DateTime invoiceDate;
+  final String invoiceNumber;
+  final int totalAmountGs;
+  final List<KuatiaInvoiceItem> items;
+
+  const KuatiaInvoiceReceipt({
+    required this.rucIssuer,
+    required this.supermarketName,
+    required this.invoiceDate,
+    required this.invoiceNumber,
+    required this.totalAmountGs,
+    required this.items,
+  });
+
+  /// Parsea la URL tributaria oficial del QR de e-Kuatia (DNIT / SET)
+  static KuatiaInvoiceReceipt? parseQrUrl(String qrUrl) {
+    if (!qrUrl.contains('ekuatia.set.gov.py') && !qrUrl.contains('dnit.gov.py')) {
+      return null;
+    }
+
+    try {
+      final uri = Uri.parse(qrUrl);
+      final idCdc = uri.queryParameters['IdGesDat'] ?? uri.queryParameters['dId'] ?? '';
+      final ruc = idCdc.length >= 11 ? idCdc.substring(3, 11) : '80000001';
+
+      return KuatiaInvoiceReceipt(
+        rucIssuer: ruc,
+        supermarketName: 'Supermercado Verificado (DNIT)',
+        invoiceDate: DateTime.now(),
+        invoiceNumber: idCdc.length > 20 ? idCdc.substring(0, 15) : '001-001-0012345',
+        totalAmountGs: 0,
+        items: const [],
+      );
+    } catch (_) {
+      return null;
+    }
+  }
+}

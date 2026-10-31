@@ -460,6 +460,25 @@ class _ProductComparisonCard extends StatelessWidget {
                                 color: isDark ? const Color(0xFF94A3B8) : const Color(0xFF64748B),
                               ),
                             ),
+                            if (eval.offer.wholesalePriceGs != null && eval.offer.wholesaleMinQty != null) ...[
+                              const SizedBox(height: 3),
+                              Container(
+                                padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+                                decoration: BoxDecoration(
+                                  color: const Color(0xFFF59E0B).withValues(alpha: 0.15),
+                                  borderRadius: BorderRadius.circular(6),
+                                  border: Border.all(color: const Color(0xFFF59E0B).withValues(alpha: 0.3)),
+                                ),
+                                child: Text(
+                                  '📦 ${GuaraniFormatter.format(eval.offer.wholesalePriceGs!)} llevando ${eval.offer.wholesaleMinQty}+ un.',
+                                  style: const TextStyle(
+                                    fontSize: 9,
+                                    fontWeight: FontWeight.w800,
+                                    color: Color(0xFFF59E0B),
+                                  ),
+                                ),
+                              ),
+                            ],
                           ],
                         ),
                       ),

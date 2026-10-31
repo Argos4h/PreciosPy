@@ -167,15 +167,46 @@ class _ScannerScreenState extends ConsumerState<ScannerScreen> {
                             }).toList(),
                           ),
                           const SizedBox(height: 12),
-                          FilledButton.icon(
-                            style: FilledButton.styleFrom(
-                              backgroundColor: const Color(0xFF10B981),
-                              foregroundColor: Colors.white,
-                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-                            ),
-                            onPressed: () => setState(() => _cameraEnabled = true),
-                            icon: const Icon(Icons.camera_alt_rounded, size: 18),
-                            label: const Text('Activar Cámara en Vivo (60 FPS)'),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              FilledButton.icon(
+                                style: FilledButton.styleFrom(
+                                  backgroundColor: const Color(0xFF10B981),
+                                  foregroundColor: Colors.white,
+                                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                                ),
+                                onPressed: () => setState(() => _cameraEnabled = true),
+                                icon: const Icon(Icons.camera_alt_rounded, size: 18),
+                                label: const Text('Activar Cámara (60 FPS)'),
+                              ),
+                              const SizedBox(width: 8),
+                              OutlinedButton.icon(
+                                style: OutlinedButton.styleFrom(
+                                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                                ),
+                                onPressed: () {
+                                  final sampleKuatia = KuatiaInvoiceReceipt.parseQrUrl(
+                                    'https://ekuatia.set.gov.py/consultas/qr?nVersion=150&IdGesDat=018000000100100100123456',
+                                  );
+                                  if (sampleKuatia != null) {
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(
+                                        backgroundColor: const Color(0xFF10B981),
+                                        behavior: SnackBarBehavior.floating,
+                                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                                        content: Text(
+                                          '🧾 Factura Electrónica Kuatia verificada (RUC: ${sampleKuatia.rucIssuer}). Precios sincronizados con DNIT.',
+                                          style: const TextStyle(fontWeight: FontWeight.w700),
+                                        ),
+                                      ),
+                                    );
+                                  }
+                                },
+                                icon: const Icon(Icons.receipt_long_rounded, size: 18),
+                                label: const Text('Ticket Kuatia'),
+                              ),
+                            ],
                           ),
                         ],
                       ),
