@@ -21,6 +21,7 @@ class ProductDetailSheet extends ConsumerWidget {
       return const SizedBox(height: 200, child: Center(child: Text('Sin ofertas disponibles.')));
     }
 
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     final best = rankedOffers.first;
     final trustAnalysis = PromoCalculator.analyzePriceTrust(offer: best.offer);
 
@@ -30,28 +31,32 @@ class ProductDetailSheet extends ConsumerWidget {
 
     switch (trustAnalysis.level) {
       case PriceTrustLevel.allTimeLow:
-        badgeColor = const Color(0xFF3FB950);
-        badgeBg = const Color(0x3300875A);
+        badgeColor = const Color(0xFF10B981);
+        badgeBg = isDark ? const Color(0x2610B981) : const Color(0xFFD1FAE5);
         badgeIcon = Icons.stars_rounded;
       case PriceTrustLevel.suspiciousInflation:
-        badgeColor = Colors.amberAccent;
-        badgeBg = const Color(0x33FFC107);
+        badgeColor = const Color(0xFFF59E0B);
+        badgeBg = isDark ? const Color(0x26F59E0B) : const Color(0xFFFEF3C7);
         badgeIcon = Icons.warning_rounded;
       case PriceTrustLevel.fairDiscount:
-        badgeColor = Colors.lightBlueAccent;
-        badgeBg = const Color(0x330288D1);
+        badgeColor = const Color(0xFF0284C7);
+        badgeBg = isDark ? const Color(0x260284C7) : const Color(0xFFE0F2FE);
         badgeIcon = Icons.verified_rounded;
       case PriceTrustLevel.stable:
-        badgeColor = Colors.white70;
-        badgeBg = const Color(0xFF21262D);
+        badgeColor = isDark ? const Color(0xFF94A3B8) : const Color(0xFF64748B);
+        badgeBg = isDark ? const Color(0xFF1E293B) : const Color(0xFFF1F5F9);
         badgeIcon = Icons.info_outline_rounded;
     }
 
+    final sheetBg = isDark ? const Color(0xFF1E293B) : Colors.white;
+    final cardBg = isDark ? const Color(0xFF0F172A) : const Color(0xFFF8FAFC);
+    final cardBorder = isDark ? const Color(0xFF334155) : const Color(0xFFE2E8F0);
+
     return Container(
       padding: const EdgeInsets.fromLTRB(20, 12, 20, 28),
-      decoration: const BoxDecoration(
-        color: Color(0xFF161B22),
-        borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
+      decoration: BoxDecoration(
+        color: sheetBg,
+        borderRadius: const BorderRadius.vertical(top: Radius.circular(28)),
       ),
       child: ListView(
         shrinkWrap: true,
@@ -62,7 +67,7 @@ class ProductDetailSheet extends ConsumerWidget {
               height: 4,
               margin: const EdgeInsets.only(bottom: 16),
               decoration: BoxDecoration(
-                color: const Color(0xFF30363D),
+                color: isDark ? const Color(0xFF475569) : const Color(0xFFCBD5E1),
                 borderRadius: BorderRadius.circular(2),
               ),
             ),
@@ -76,12 +81,19 @@ class ProductDetailSheet extends ConsumerWidget {
                   children: [
                     Text(
                       product.normalizedName,
-                      style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w800),
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w800,
+                        color: isDark ? Colors.white : const Color(0xFF0F172A),
+                      ),
                     ),
                     const SizedBox(height: 4),
                     Text(
                       'Código EAN: ${product.ean ?? "Sin código"} • Marca: ${product.brand ?? "Genérica"}',
-                      style: const TextStyle(fontSize: 12, color: Colors.white60),
+                      style: TextStyle(
+                        fontSize: 12,
+                        color: isDark ? const Color(0xFF94A3B8) : const Color(0xFF64748B),
+                      ),
                     ),
                   ],
                 ),
@@ -92,13 +104,23 @@ class ProductDetailSheet extends ConsumerWidget {
                   Navigator.pop(context);
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(
-                      content: Text('${product.normalizedName} agregado al Carrito PY'),
+                      backgroundColor: const Color(0xFF10B981),
+                      behavior: SnackBarBehavior.floating,
+                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                      content: Text(
+                        '${product.normalizedName} agregado a tu lista',
+                        style: const TextStyle(fontWeight: FontWeight.w700, color: Colors.white),
+                      ),
                       duration: const Duration(milliseconds: 900),
                     ),
                   );
                 },
+                style: IconButton.styleFrom(
+                  backgroundColor: const Color(0xFF10B981).withValues(alpha: 0.15),
+                  foregroundColor: const Color(0xFF10B981),
+                ),
                 icon: const Icon(Icons.add_shopping_cart_rounded),
-                tooltip: 'Agregar al Carrito',
+                tooltip: 'Agregar a Mi Lista',
               ),
             ],
           ),
@@ -109,8 +131,8 @@ class ProductDetailSheet extends ConsumerWidget {
             padding: const EdgeInsets.all(14),
             decoration: BoxDecoration(
               color: badgeBg,
-              borderRadius: BorderRadius.circular(14),
-              border: Border.all(color: badgeColor),
+              borderRadius: BorderRadius.circular(16),
+              border: Border.all(color: badgeColor.withValues(alpha: 0.5)),
             ),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -132,7 +154,10 @@ class ProductDetailSheet extends ConsumerWidget {
                       const SizedBox(height: 2),
                       Text(
                         trustAnalysis.explanation,
-                        style: const TextStyle(fontSize: 12, color: Colors.white),
+                        style: TextStyle(
+                          fontSize: 12,
+                          color: isDark ? const Color(0xFFE2E8F0) : const Color(0xFF334155),
+                        ),
                       ),
                     ],
                   ),
@@ -143,9 +168,13 @@ class ProductDetailSheet extends ConsumerWidget {
           const SizedBox(height: 16),
 
           // 2. Historial de Precios (Visual Timeline)
-          const Text(
+          Text(
             'Evolución del Precio (Últimos 30 días)',
-            style: TextStyle(fontSize: 14, fontWeight: FontWeight.w700),
+            style: TextStyle(
+              fontSize: 14,
+              fontWeight: FontWeight.w700,
+              color: isDark ? Colors.white : const Color(0xFF0F172A),
+            ),
           ),
           const SizedBox(height: 8),
           SingleChildScrollView(
@@ -156,19 +185,29 @@ class ProductDetailSheet extends ConsumerWidget {
                 final label = daysAgo == 0 ? 'Hoy' : 'Hace ${daysAgo}d';
                 return Container(
                   margin: const EdgeInsets.only(right: 8),
-                  padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+                  padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
                   decoration: BoxDecoration(
-                    color: const Color(0xFF0D1117),
-                    borderRadius: BorderRadius.circular(12),
-                    border: Border.all(color: const Color(0xFF30363D)),
+                    color: cardBg,
+                    borderRadius: BorderRadius.circular(14),
+                    border: Border.all(color: cardBorder),
                   ),
                   child: Column(
                     children: [
-                      Text(label, style: const TextStyle(fontSize: 11, color: Colors.white60)),
+                      Text(
+                        label,
+                        style: TextStyle(
+                          fontSize: 11,
+                          color: isDark ? const Color(0xFF94A3B8) : const Color(0xFF64748B),
+                        ),
+                      ),
                       const SizedBox(height: 4),
                       Text(
                         GuaraniFormatter.format(point.effectivePriceGs),
-                        style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w800),
+                        style: TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w800,
+                          color: isDark ? Colors.white : const Color(0xFF0F172A),
+                        ),
                       ),
                     ],
                   ),
@@ -179,19 +218,23 @@ class ProductDetailSheet extends ConsumerWidget {
           const SizedBox(height: 16),
 
           // 3. Comparativa en Vivo en Góndolas
-          const Text(
+          Text(
             'Precios Actuales por Supermercado',
-            style: TextStyle(fontSize: 14, fontWeight: FontWeight.w700),
+            style: TextStyle(
+              fontSize: 14,
+              fontWeight: FontWeight.w700,
+              color: isDark ? Colors.white : const Color(0xFF0F172A),
+            ),
           ),
           const SizedBox(height: 8),
           ...rankedOffers.map((eval) {
             return Container(
               margin: const EdgeInsets.only(bottom: 8),
-              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+              padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 11),
               decoration: BoxDecoration(
-                color: const Color(0xFF0D1117),
-                borderRadius: BorderRadius.circular(12),
-                border: Border.all(color: const Color(0xFF30363D)),
+                color: cardBg,
+                borderRadius: BorderRadius.circular(14),
+                border: Border.all(color: cardBorder),
               ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -202,11 +245,18 @@ class ProductDetailSheet extends ConsumerWidget {
                       children: [
                         Text(
                           eval.offer.supermarketName,
-                          style: const TextStyle(fontWeight: FontWeight.w700),
+                          style: TextStyle(
+                            fontWeight: FontWeight.w700,
+                            fontSize: 13,
+                            color: isDark ? Colors.white : const Color(0xFF0F172A),
+                          ),
                         ),
                         Text(
                           eval.pricingNote,
-                          style: const TextStyle(fontSize: 11, color: Colors.white70),
+                          style: TextStyle(
+                            fontSize: 11,
+                            color: isDark ? const Color(0xFF94A3B8) : const Color(0xFF64748B),
+                          ),
                         ),
                       ],
                     ),
@@ -219,15 +269,15 @@ class ProductDetailSheet extends ConsumerWidget {
                         style: const TextStyle(
                           fontSize: 15,
                           fontWeight: FontWeight.w800,
-                          color: Color(0xFF3FB950),
+                          color: Color(0xFF10B981),
                         ),
                       ),
                       if (eval.effectiveFinalPriceGs < eval.offer.regularPriceGs)
                         Text(
                           GuaraniFormatter.format(eval.offer.regularPriceGs),
-                          style: const TextStyle(
+                          style: TextStyle(
                             fontSize: 11,
-                            color: Colors.white54,
+                            color: isDark ? const Color(0xFF64748B) : const Color(0xFF94A3B8),
                             decoration: TextDecoration.lineThrough,
                           ),
                         ),

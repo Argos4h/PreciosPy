@@ -190,6 +190,37 @@ class LocalCatalogRepository {
     ),
   ];
 
+  static String? resolveProductImageUrl(String normalizedName, String? brand, String? ean) {
+    final lower = normalizedName.toLowerCase();
+    if (lower.contains('yerba') || lower.contains('kurupi') || lower.contains('pajarito') || lower.contains('taragui')) {
+      return 'https://images.unsplash.com/photo-1544787219-7f47ccb76574?w=200&auto=format&fit=crop&q=80';
+    } else if (lower.contains('leche') || lower.contains('trebol') || lower.contains('lacteo') || lower.contains('yogur') || lower.contains('queso')) {
+      return 'https://images.unsplash.com/photo-1550583724-b2692b85b150?w=200&auto=format&fit=crop&q=80';
+    } else if (lower.contains('coca') || lower.contains('gaseosa') || lower.contains('pepsi') || lower.contains('fanta') || lower.contains('sprite')) {
+      return 'https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=200&auto=format&fit=crop&q=80';
+    } else if (lower.contains('cerveza') || lower.contains('pilsen') || lower.contains('munich') || lower.contains('heineken') || lower.contains('brahma')) {
+      return 'https://images.unsplash.com/photo-1608270586620-248524c67de9?w=200&auto=format&fit=crop&q=80';
+    } else if (lower.contains('carne') || lower.contains('vacio') || lower.contains('costilla') || lower.contains('tapa') || lower.contains('asado')) {
+      return 'https://images.unsplash.com/photo-1603048588665-791ca8aea617?w=200&auto=format&fit=crop&q=80';
+    } else if (lower.contains('pan') || lower.contains('chipa') || lower.contains('galletita') || lower.contains('harina')) {
+      return 'https://images.unsplash.com/photo-1509440159596-0249088772ff?w=200&auto=format&fit=crop&q=80';
+    } else if (lower.contains('aceite') || lower.contains('arroz') || lower.contains('fideo') || lower.contains('azucar')) {
+      return 'https://images.unsplash.com/photo-1471193945509-9ad0617afabf?w=200&auto=format&fit=crop&q=80';
+    }
+    return null;
+  }
+
+  static String resolveProductCategory(String normalizedName) {
+    final lower = normalizedName.toLowerCase();
+    if (lower.contains('yerba')) return '🌿 Yerba';
+    if (lower.contains('leche') || lower.contains('queso') || lower.contains('yogur')) return '🥛 Lácteos';
+    if (lower.contains('cerveza')) return '🍺 Cerveza';
+    if (lower.contains('coca') || lower.contains('gaseosa') || lower.contains('jugo')) return '🥤 Bebidas';
+    if (lower.contains('carne') || lower.contains('costilla') || lower.contains('vacio')) return '🥩 Carnicería';
+    if (lower.contains('chipa') || lower.contains('pan')) return '🥖 Panadería';
+    return '🛒 Almacén';
+  }
+
   static const List<ProductItem> initialCatalog = [
     ProductItem(
       id: 1,
@@ -200,6 +231,8 @@ class LocalCatalogRepository {
       unitQuantity: 500,
       baseUnit: 'KG',
       baseMultiplier: 0.5,
+      imageUrl: 'https://images.unsplash.com/photo-1544787219-7f47ccb76574?w=200&auto=format&fit=crop&q=80',
+      category: '🌿 Yerba',
       offers: [
         StoreOffer(
           supermarketSlug: 'superseis',
@@ -234,6 +267,8 @@ class LocalCatalogRepository {
       unitQuantity: 1.0,
       baseUnit: 'LT',
       baseMultiplier: 1.0,
+      imageUrl: 'https://images.unsplash.com/photo-1550583724-b2692b85b150?w=200&auto=format&fit=crop&q=80',
+      category: '🥛 Lácteos',
       offers: [
         StoreOffer(
           supermarketSlug: 'superseis',
@@ -268,6 +303,8 @@ class LocalCatalogRepository {
       unitQuantity: 2.0,
       baseUnit: 'LT',
       baseMultiplier: 2.0,
+      imageUrl: 'https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=200&auto=format&fit=crop&q=80',
+      category: '🥤 Bebidas',
       offers: [
         StoreOffer(
           supermarketSlug: 'biggie',
@@ -296,6 +333,8 @@ class LocalCatalogRepository {
       unitQuantity: 1980,
       baseUnit: 'LT',
       baseMultiplier: 1.98,
+      imageUrl: 'https://images.unsplash.com/photo-1608270586620-248524c67de9?w=200&auto=format&fit=crop&q=80',
+      category: '🍺 Cerveza',
       offers: [
         StoreOffer(
           supermarketSlug: 'biggie',
@@ -425,15 +464,21 @@ class LocalCatalogRepository {
           multiplier = uQty / 1000.0;
         }
 
+        final pName = r['normalized_name'] as String;
+        final pBrand = r['brand'] as String?;
+        final pEan = r['ean'] as String?;
+
         map[id] = ProductItem(
           id: id,
-          ean: r['ean'] as String?,
-          normalizedName: r['normalized_name'] as String,
-          brand: r['brand'] as String?,
+          ean: pEan,
+          normalizedName: pName,
+          brand: pBrand,
           unitMeasure: uMeasure,
           unitQuantity: uQty,
           baseUnit: bUnit,
           baseMultiplier: multiplier > 0 ? multiplier : 1.0,
+          imageUrl: resolveProductImageUrl(pName, pBrand, pEan),
+          category: resolveProductCategory(pName),
           offers: const [],
         );
         offersMap[id] = [];
@@ -465,6 +510,8 @@ class LocalCatalogRepository {
           unitQuantity: p.unitQuantity,
           baseUnit: p.baseUnit,
           baseMultiplier: p.baseMultiplier,
+          imageUrl: p.imageUrl,
+          category: p.category,
           offers: offersMap[p.id] ?? const [],
         ),
       );
@@ -523,15 +570,19 @@ class LocalCatalogRepository {
     String? brand,
   }) {
     final now = DateTime.now();
+    final trimmedEan = ean.trim();
+    final trimmedName = productName.trim();
     final newProd = ProductItem(
       id: DateTime.now().millisecondsSinceEpoch % 1000000,
-      ean: ean.trim(),
-      normalizedName: productName.trim(),
+      ean: trimmedEan,
+      normalizedName: trimmedName,
       brand: brand,
       unitMeasure: 'UN',
       unitQuantity: 1.0,
       baseUnit: 'UN',
       baseMultiplier: 1.0,
+      imageUrl: resolveProductImageUrl(trimmedName, brand, trimmedEan),
+      category: resolveProductCategory(trimmedName),
       offers: [
         StoreOffer(
           supermarketSlug: supermarketSlug,

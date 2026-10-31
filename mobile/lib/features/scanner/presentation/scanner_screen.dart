@@ -29,6 +29,7 @@ class _ScannerScreenState extends ConsumerState<ScannerScreen> {
     final activeStoreSlug = ref.watch(activeStoreInAisleProvider);
     final promotions = ref.watch(bankPromotionsProvider);
     final supermarkets = ref.watch(supermarketsProvider);
+    final isDark = Theme.of(context).brightness == Brightness.dark;
 
     final scannedProduct = repo.findByBarcode(_currentBarcode);
     final rankedOffers = scannedProduct != null
@@ -44,30 +45,63 @@ class _ScannerScreenState extends ConsumerState<ScannerScreen> {
       child: Column(
         children: [
           Padding(
-            padding: const EdgeInsets.all(16),
+            padding: const EdgeInsets.fromLTRB(16, 12, 16, 8),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Text(
-                  'Escáner de Pasillo',
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.w800),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Escáner de Pasillo',
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.w900,
+                        color: isDark ? Colors.white : const Color(0xFF0F172A),
+                      ),
+                    ),
+                    Text(
+                      'Semáforo inteligente en tiempo real',
+                      style: TextStyle(
+                        fontSize: 12,
+                        color: isDark ? const Color(0xFF94A3B8) : const Color(0xFF64748B),
+                      ),
+                    ),
+                  ],
                 ),
-                DropdownButton<String>(
-                  value: activeStoreSlug,
-                  underline: const SizedBox.shrink(),
-                  items: supermarkets.entries
-                      .map(
-                        (e) => DropdownMenuItem(
-                          value: e.key,
-                          child: Text('Estoy en: ${e.value}'),
-                        ),
-                      )
-                      .toList(),
-                  onChanged: (val) {
-                    if (val != null) {
-                      ref.read(activeStoreInAisleProvider.notifier).state = val;
-                    }
-                  },
+                Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                  decoration: BoxDecoration(
+                    color: isDark ? const Color(0xFF1E293B) : const Color(0xFFF1F5F9),
+                    borderRadius: BorderRadius.circular(12),
+                    border: Border.all(
+                      color: isDark ? const Color(0xFF334155) : const Color(0xFFCBD5E1),
+                    ),
+                  ),
+                  child: DropdownButtonHideUnderline(
+                    child: DropdownButton<String>(
+                      value: activeStoreSlug,
+                      isDense: true,
+                      style: TextStyle(
+                        fontSize: 12,
+                        fontWeight: FontWeight.w700,
+                        color: isDark ? Colors.white : const Color(0xFF0F172A),
+                      ),
+                      items: supermarkets.entries
+                          .map(
+                            (e) => DropdownMenuItem(
+                              value: e.key,
+                              child: Text(e.value),
+                            ),
+                          )
+                          .toList(),
+                      onChanged: (val) {
+                        if (val != null) {
+                          ref.read(activeStoreInAisleProvider.notifier).state = val;
+                        }
+                      },
+                    ),
+                  ),
                 ),
               ],
             ),
@@ -78,9 +112,11 @@ class _ScannerScreenState extends ConsumerState<ScannerScreen> {
               margin: const EdgeInsets.symmetric(horizontal: 16),
               clipBehavior: Clip.antiAlias,
               decoration: BoxDecoration(
-                color: const Color(0xFF161B22),
+                color: isDark ? const Color(0xFF1E293B) : const Color(0xFFF8FAFC),
                 borderRadius: BorderRadius.circular(20),
-                border: Border.all(color: const Color(0xFF30363D)),
+                border: Border.all(
+                  color: isDark ? const Color(0xFF334155) : const Color(0xFFE2E8F0),
+                ),
               ),
               child: _cameraEnabled
                   ? MobileScanner(
@@ -94,32 +130,55 @@ class _ScannerScreenState extends ConsumerState<ScannerScreen> {
                         }
                       },
                     )
-                  : Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const Icon(Icons.qr_code_scanner_rounded, size: 64, color: Color(0xFF3FB950)),
-                        const SizedBox(height: 12),
-                        Text(
-                          'EAN Simulado: $_currentBarcode',
-                          style: const TextStyle(fontWeight: FontWeight.w700),
-                        ),
-                        const SizedBox(height: 12),
-                        Wrap(
-                          spacing: 8,
-                          children: LocalCatalogRepository.initialCatalog.map((prod) {
-                            return ActionChip(
-                              label: Text(prod.brand ?? prod.normalizedName),
-                              onPressed: () => setState(() => _currentBarcode = prod.ean ?? ''),
-                            );
-                          }).toList(),
-                        ),
-                        const SizedBox(height: 12),
-                        FilledButton.icon(
-                          onPressed: () => setState(() => _cameraEnabled = true),
-                          icon: const Icon(Icons.camera_alt_rounded),
-                          label: const Text('Activar Cámara en Vivo (60 FPS)'),
-                        ),
-                      ],
+                  : Padding(
+                      padding: const EdgeInsets.all(16),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Container(
+                            padding: const EdgeInsets.all(16),
+                            decoration: BoxDecoration(
+                              color: const Color(0xFF10B981).withValues(alpha: 0.15),
+                              shape: BoxShape.circle,
+                            ),
+                            child: const Icon(Icons.qr_code_scanner_rounded, size: 48, color: Color(0xFF10B981)),
+                          ),
+                          const SizedBox(height: 10),
+                          Text(
+                            'EAN Simulado: $_currentBarcode',
+                            style: TextStyle(
+                              fontWeight: FontWeight.w700,
+                              fontSize: 13,
+                              color: isDark ? Colors.white : const Color(0xFF0F172A),
+                            ),
+                          ),
+                          const SizedBox(height: 10),
+                          Wrap(
+                            spacing: 6,
+                            runSpacing: 6,
+                            alignment: WrapAlignment.center,
+                            children: LocalCatalogRepository.initialCatalog.map((prod) {
+                              final isSelected = _currentBarcode == prod.ean;
+                              return ChoiceChip(
+                                label: Text(prod.brand ?? prod.normalizedName.split(' ').first),
+                                selected: isSelected,
+                                onSelected: (_) => setState(() => _currentBarcode = prod.ean ?? ''),
+                              );
+                            }).toList(),
+                          ),
+                          const SizedBox(height: 12),
+                          FilledButton.icon(
+                            style: FilledButton.styleFrom(
+                              backgroundColor: const Color(0xFF10B981),
+                              foregroundColor: Colors.white,
+                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                            ),
+                            onPressed: () => setState(() => _cameraEnabled = true),
+                            icon: const Icon(Icons.camera_alt_rounded, size: 18),
+                            label: const Text('Activar Cámara en Vivo (60 FPS)'),
+                          ),
+                        ],
+                      ),
                     ),
             ),
           ),
@@ -166,6 +225,7 @@ class _AisleSemaphoreSheet extends StatelessWidget {
     final currentStoreEval = currentStoreMatches.isNotEmpty ? currentStoreMatches.first : null;
     final isCheapestHere = currentStoreEval != null &&
         currentStoreEval.effectiveFinalPriceGs <= cheapest.effectiveFinalPriceGs;
+    final isDark = Theme.of(context).brightness == Brightness.dark;
 
     return Card(
       child: Padding(
@@ -173,27 +233,52 @@ class _AisleSemaphoreSheet extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              product.normalizedName,
-              style: const TextStyle(fontSize: 17, fontWeight: FontWeight.w800),
+            Row(
+              children: [
+                Expanded(
+                  child: Text(
+                    product.normalizedName,
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w800,
+                      color: isDark ? Colors.white : const Color(0xFF0F172A),
+                    ),
+                  ),
+                ),
+                Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
+                  decoration: BoxDecoration(
+                    color: isDark ? const Color(0xFF334155) : const Color(0xFFE2E8F0),
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  child: Text(
+                    product.category ?? '🛒 Almacén',
+                    style: TextStyle(
+                      fontSize: 10,
+                      fontWeight: FontWeight.w600,
+                      color: isDark ? const Color(0xFFCBD5E1) : const Color(0xFF475569),
+                    ),
+                  ),
+                ),
+              ],
             ),
-            const SizedBox(height: 10),
+            const SizedBox(height: 12),
             Container(
-              padding: const EdgeInsets.all(12),
+              padding: const EdgeInsets.all(14),
               decoration: BoxDecoration(
                 color: isCheapestHere
-                    ? const Color(0x3300875A)
-                    : const Color(0x26FF5252),
-                borderRadius: BorderRadius.circular(12),
+                    ? (isDark ? const Color(0x2610B981) : const Color(0xFFD1FAE5))
+                    : (isDark ? const Color(0x26EF4444) : const Color(0xFFFEE2E2)),
+                borderRadius: BorderRadius.circular(16),
                 border: Border.all(
-                  color: isCheapestHere ? const Color(0xFF3FB950) : Colors.redAccent,
+                  color: isCheapestHere ? const Color(0xFF10B981) : const Color(0xFFEF4444),
                 ),
               ),
               child: Row(
                 children: [
                   Icon(
                     isCheapestHere ? Icons.check_circle_rounded : Icons.warning_amber_rounded,
-                    color: isCheapestHere ? const Color(0xFF3FB950) : Colors.redAccent,
+                    color: isCheapestHere ? const Color(0xFF10B981) : const Color(0xFFEF4444),
                     size: 28,
                   ),
                   const SizedBox(width: 12),
@@ -202,7 +287,13 @@ class _AisleSemaphoreSheet extends StatelessWidget {
                       isCheapestHere
                           ? '¡Llevalo! Estás en el súper más barato hoy (${GuaraniFormatter.format(cheapest.effectiveFinalPriceGs)}).'
                           : 'En ${cheapest.offer.supermarketName} te sale ${GuaraniFormatter.format(cheapest.effectiveFinalPriceGs)} (${cheapest.pricingNote}).',
-                      style: const TextStyle(fontSize: 13, fontWeight: FontWeight.w600),
+                      style: TextStyle(
+                        fontSize: 13,
+                        fontWeight: FontWeight.w700,
+                        color: isCheapestHere
+                            ? (isDark ? const Color(0xFF34D399) : const Color(0xFF065F46))
+                            : (isDark ? const Color(0xFFF87171) : const Color(0xFF991B1B)),
+                      ),
                     ),
                   ),
                 ],
@@ -210,9 +301,35 @@ class _AisleSemaphoreSheet extends StatelessWidget {
             ),
             const SizedBox(height: 12),
             if (currentStoreEval != null)
-              Text(
-                'Precio aquí (${currentStoreEval.offer.supermarketName}): ${GuaraniFormatter.format(currentStoreEval.effectiveFinalPriceGs)} • En caja: ${GuaraniFormatter.format(currentStoreEval.cashOutflowAtPosGs)}',
-                style: const TextStyle(fontSize: 13, color: Colors.white70),
+              Container(
+                padding: const EdgeInsets.all(12),
+                decoration: BoxDecoration(
+                  color: isDark ? const Color(0xFF0F172A) : const Color(0xFFF8FAFC),
+                  borderRadius: BorderRadius.circular(12),
+                  border: Border.all(
+                    color: isDark ? const Color(0xFF334155) : const Color(0xFFE2E8F0),
+                  ),
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      'Precio aquí (${currentStoreEval.offer.supermarketName}):',
+                      style: TextStyle(
+                        fontSize: 12,
+                        color: isDark ? const Color(0xFF94A3B8) : const Color(0xFF64748B),
+                      ),
+                    ),
+                    Text(
+                      GuaraniFormatter.format(currentStoreEval.effectiveFinalPriceGs),
+                      style: TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w800,
+                        color: isDark ? Colors.white : const Color(0xFF0F172A),
+                      ),
+                    ),
+                  ],
+                ),
               ),
           ],
         ),
@@ -272,7 +389,7 @@ class _PriceHunterFormState extends ConsumerState<_PriceHunterForm> {
     ScaffoldMessenger.of(context).showSnackBar(
       const SnackBar(
         content: Text('🎖️ ¡+50 Puntos de Cazador ganados! Producto registrado en la comunidad.'),
-        backgroundColor: Color(0xFF00875A),
+        backgroundColor: Color(0xFF10B981),
       ),
     );
 
@@ -282,6 +399,8 @@ class _PriceHunterFormState extends ConsumerState<_PriceHunterForm> {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+
     return Card(
       child: Padding(
         padding: const EdgeInsets.all(16),
@@ -290,23 +409,27 @@ class _PriceHunterFormState extends ConsumerState<_PriceHunterForm> {
           children: [
             Row(
               children: [
-                const Icon(Icons.military_tech_rounded, color: Colors.amberAccent, size: 28),
+                const Icon(Icons.military_tech_rounded, color: Color(0xFFF59E0B), size: 28),
                 const SizedBox(width: 8),
-                const Text(
+                Text(
                   '¡Modo Cazador de Precios!',
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w800),
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.w800,
+                    color: isDark ? Colors.white : const Color(0xFF0F172A),
+                  ),
                 ),
                 const Spacer(),
                 Container(
                   padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
                   decoration: BoxDecoration(
-                    color: const Color(0x33FFC107),
+                    color: const Color(0xFFF59E0B).withValues(alpha: 0.15),
                     borderRadius: BorderRadius.circular(12),
-                    border: Border.all(color: Colors.amberAccent),
+                    border: Border.all(color: const Color(0xFFF59E0B)),
                   ),
                   child: const Text(
                     '+50 PTS',
-                    style: TextStyle(fontSize: 10, fontWeight: FontWeight.w900, color: Colors.amberAccent),
+                    style: TextStyle(fontSize: 10, fontWeight: FontWeight.w900, color: Color(0xFFF59E0B)),
                   ),
                 ),
               ],
@@ -314,34 +437,36 @@ class _PriceHunterFormState extends ConsumerState<_PriceHunterForm> {
             const SizedBox(height: 6),
             Text(
               'El código ${widget.ean} aún no está catalogado. Registralo para que toda la comunidad pueda comparar su precio.',
-              style: const TextStyle(fontSize: 12, color: Colors.white70),
+              style: TextStyle(
+                fontSize: 12,
+                color: isDark ? const Color(0xFF94A3B8) : const Color(0xFF64748B),
+              ),
             ),
             const SizedBox(height: 12),
             TextField(
               controller: _nameCtrl,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 labelText: 'Nombre del Producto',
                 hintText: 'Ej: Empanada de Carne, Yerba 500g...',
-                filled: true,
-                fillColor: const Color(0xFF0D1117),
-                border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
               ),
             ),
             const SizedBox(height: 10),
             TextField(
               controller: _priceCtrl,
               keyboardType: TextInputType.number,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 labelText: 'Precio en Góndola (Gs.)',
                 hintText: 'Ej: 14500',
                 prefixText: 'Gs. ',
-                filled: true,
-                fillColor: const Color(0xFF0D1117),
-                border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
               ),
             ),
             const SizedBox(height: 14),
             FilledButton.icon(
+              style: FilledButton.styleFrom(
+                backgroundColor: const Color(0xFF10B981),
+                foregroundColor: Colors.white,
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+              ),
               onPressed: _isSaving ? null : _submit,
               icon: const Icon(Icons.check_circle_rounded),
               label: const Text('Guardar y Compartir en la Comunidad'),
@@ -352,4 +477,3 @@ class _PriceHunterFormState extends ConsumerState<_PriceHunterForm> {
     );
   }
 }
-

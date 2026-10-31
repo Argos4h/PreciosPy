@@ -13,35 +13,79 @@ class WalletScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final activeCards = ref.watch(userWalletCardsProvider);
     final promotions = ref.watch(bankPromotionsProvider);
+    final isDark = Theme.of(context).brightness == Brightness.dark;
 
     return SafeArea(
       child: ListView(
         padding: const EdgeInsets.all(16),
         children: [
-          const Text(
-            'Mi Billetera PY',
-            style: TextStyle(fontSize: 22, fontWeight: FontWeight.w800),
+          Row(
+            children: [
+              Container(
+                padding: const EdgeInsets.all(8),
+                decoration: BoxDecoration(
+                  color: const Color(0xFF10B981).withValues(alpha: 0.15),
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                child: const Icon(Icons.credit_card_rounded, color: Color(0xFF10B981), size: 22),
+              ),
+              const SizedBox(width: 10),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Mi Billetera PY',
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.w900,
+                      color: isDark ? Colors.white : const Color(0xFF0F172A),
+                    ),
+                  ),
+                  Text(
+                    'Activa tus tarjetas bancarias',
+                    style: TextStyle(
+                      fontSize: 12,
+                      color: isDark ? const Color(0xFF94A3B8) : const Color(0xFF64748B),
+                    ),
+                  ),
+                ],
+              ),
+            ],
           ),
-          const SizedBox(height: 4),
-          const Text(
-            'Seleccioná tus tarjetas y niveles para que PreciosPy calcule tu Precio Final Real en cada góndola.',
-            style: TextStyle(fontSize: 13, color: Colors.white60),
+          const SizedBox(height: 12),
+          Text(
+            'Seleccioná tus tarjetas y niveles para que PreciosPy calcule tu Precio Final Real en cada góndola de Asunción y Gran Asunción.',
+            style: TextStyle(
+              fontSize: 13,
+              color: isDark ? const Color(0xFF94A3B8) : const Color(0xFF64748B),
+            ),
           ),
           const SizedBox(height: 16),
           ...promotions.map((promo) {
             final isSelected = activeCards.contains(promo.cardSlug);
             return Card(
-              margin: const EdgeInsets.only(bottom: 10),
+              margin: const EdgeInsets.only(bottom: 12),
               child: SwitchListTile(
                 value: isSelected,
-                activeThumbColor: const Color(0xFF3FB950),
+                activeTrackColor: const Color(0xFF10B981),
+                activeThumbColor: Colors.white,
                 title: Text(
                   promo.cardName,
-                  style: const TextStyle(fontWeight: FontWeight.w700),
+                  style: TextStyle(
+                    fontWeight: FontWeight.w800,
+                    fontSize: 15,
+                    color: isDark ? Colors.white : const Color(0xFF0F172A),
+                  ),
                 ),
-                subtitle: Text(
-                  '${promo.title}\nTope compra: ${promo.spendingCapGs != null ? GuaraniFormatter.format(promo.spendingCapGs!) : "Sin tope"} • ${promo.appliesToPromoPrice ? "Acumulable con ofertas" : "No acumulable con ofertas"}',
-                  style: const TextStyle(fontSize: 12, color: Colors.white70),
+                subtitle: Padding(
+                  padding: const EdgeInsets.only(top: 4),
+                  child: Text(
+                    '${promo.title}\nTope compra: ${promo.spendingCapGs != null ? GuaraniFormatter.format(promo.spendingCapGs!) : "Sin tope"} • ${promo.appliesToPromoPrice ? "Acumulable con ofertas" : "No acumulable"}',
+                    style: TextStyle(
+                      fontSize: 12,
+                      color: isDark ? const Color(0xFF94A3B8) : const Color(0xFF64748B),
+                    ),
+                  ),
                 ),
                 isThreeLine: true,
                 onChanged: (checked) {
@@ -61,4 +105,3 @@ class WalletScreen extends ConsumerWidget {
     );
   }
 }
-

@@ -243,3 +243,4 @@ class PreciosPyApiHandler(BaseHTTPRequestHandler):
 
 def create_gateway_server(host: str = "127.0.0.1", port: int = 8080) -> HTTPServer:
     return HTTPServer((host, port), PreciosPyApiHandler)
+

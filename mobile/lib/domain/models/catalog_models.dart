@@ -69,6 +69,8 @@ class ProductItem {
   final double unitQuantity;
   final String baseUnit;    // 'KG', 'LT', 'UN'
   final double baseMultiplier;
+  final String? imageUrl;
+  final String? category;
   final List<StoreOffer> offers;
 
   const ProductItem({
@@ -80,6 +82,8 @@ class ProductItem {
     required this.unitQuantity,
     required this.baseUnit,
     required this.baseMultiplier,
+    this.imageUrl,
+    this.category,
     required this.offers,
   });
 }

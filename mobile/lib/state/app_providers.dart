@@ -1,7 +1,11 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../data/local/local_catalog_repository.dart';
 import '../domain/models/catalog_models.dart';
 import '../domain/services/promo_calculator.dart';
+
+/// Modo Claro / Oscuro amigable
+final themeModeProvider = StateProvider<ThemeMode>((ref) => ThemeMode.light);
 
 /// Repositorio local Offline-First
 final catalogRepositoryProvider = Provider<LocalCatalogRepository>((ref) {
@@ -60,6 +64,10 @@ class SmartCartNotifier extends StateNotifier<Map<ProductItem, int>> {
         product: current - 1,
       };
     }
+  }
+
+  void clearCart() {
+    state = {};
   }
 }
 

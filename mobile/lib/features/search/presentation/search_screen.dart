@@ -22,10 +22,11 @@ class SearchScreen extends ConsumerWidget {
   static const List<MapEntry<String, String>> _quickCategories = [
     MapEntry('', 'Todos'),
     MapEntry('yerba', '🌿 Yerba'),
-    MapEntry('leche', '🥛 Leche'),
+    MapEntry('leche', '🥛 Lácteos'),
     MapEntry('cerveza', '🍺 Cerveza'),
     MapEntry('coca', '🥤 Gaseosas'),
     MapEntry('carne', '🥩 Carne'),
+    MapEntry('pan', '🥖 Panadería'),
   ];
 
   @override
@@ -34,6 +35,8 @@ class SearchScreen extends ConsumerWidget {
     final wallet = ref.watch(userWalletCardsProvider);
     final selectedWeekday = ref.watch(selectedWeekdayProvider);
     final promotions = ref.watch(bankPromotionsProvider);
+    final themeMode = ref.watch(themeModeProvider);
+    final isDark = Theme.of(context).brightness == Brightness.dark;
 
     return SafeArea(
       child: Column(
@@ -46,41 +49,93 @@ class SearchScreen extends ConsumerWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const Text(
-                      'PreciosPy',
-                      style: TextStyle(fontSize: 22, fontWeight: FontWeight.w800),
-                    ),
-                    Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
-                      decoration: BoxDecoration(
-                        color: const Color(0x3300875A),
-                        borderRadius: BorderRadius.circular(20),
-                        border: Border.all(color: const Color(0xFF00875A)),
-                      ),
-                      child: Text(
-                        'Offline-First • ${wallet.length} tarjetas activas',
-                        style: const TextStyle(
-                          fontSize: 12,
-                          color: Color(0xFF3FB950),
-                          fontWeight: FontWeight.w600,
+                    Row(
+                      children: [
+                        Container(
+                          padding: const EdgeInsets.all(8),
+                          decoration: BoxDecoration(
+                            color: const Color(0xFF10B981).withValues(alpha: 0.15),
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                          child: const Icon(Icons.shopping_bag_rounded, color: Color(0xFF10B981), size: 22),
                         ),
-                      ),
+                        const SizedBox(width: 10),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'PreciosPy',
+                              style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.w900,
+                                color: isDark ? Colors.white : const Color(0xFF0F172A),
+                              ),
+                            ),
+                            Text(
+                              'Comparador en Paraguay',
+                              style: TextStyle(
+                                fontSize: 11,
+                                fontWeight: FontWeight.w500,
+                                color: isDark ? const Color(0xFF94A3B8) : const Color(0xFF64748B),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        Container(
+                          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                          decoration: BoxDecoration(
+                            color: const Color(0xFF10B981).withValues(alpha: 0.12),
+                            borderRadius: BorderRadius.circular(16),
+                            border: Border.all(color: const Color(0xFF10B981).withValues(alpha: 0.3)),
+                          ),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              const Icon(Icons.credit_card_rounded, size: 14, color: Color(0xFF10B981)),
+                              const SizedBox(width: 4),
+                              Text(
+                                '${wallet.length} tarjetas',
+                                style: const TextStyle(
+                                  fontSize: 11,
+                                  color: Color(0xFF10B981),
+                                  fontWeight: FontWeight.w700,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        const SizedBox(width: 6),
+                        IconButton(
+                          tooltip: isDark ? 'Cambiar a Modo Claro' : 'Cambiar a Modo Oscuro',
+                          icon: Icon(
+                            isDark ? Icons.light_mode_rounded : Icons.dark_mode_rounded,
+                            color: isDark ? Colors.amber : const Color(0xFF475569),
+                          ),
+                          onPressed: () {
+                            ref.read(themeModeProvider.notifier).state =
+                                themeMode == ThemeMode.dark ? ThemeMode.light : ThemeMode.dark;
+                          },
+                        ),
+                      ],
                     ),
                   ],
                 ),
-                const SizedBox(height: 10),
+                const SizedBox(height: 12),
                 TextField(
                   onChanged: (value) => ref.read(searchQueryProvider.notifier).state = value,
                   decoration: InputDecoration(
                     hintText: 'Buscar yerba, leche trébol, cerveza o EAN...',
-                    prefixIcon: const Icon(Icons.bolt_rounded, color: Color(0xFF3FB950)),
-                    filled: true,
-                    fillColor: const Color(0xFF161B22),
-                    contentPadding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(14),
-                      borderSide: const BorderSide(color: Color(0xFF30363D)),
-                    ),
+                    prefixIcon: const Icon(Icons.search_rounded, color: Color(0xFF10B981)),
+                    suffixIcon: ref.watch(searchQueryProvider).isNotEmpty
+                        ? IconButton(
+                            icon: const Icon(Icons.clear_rounded, size: 18),
+                            onPressed: () => ref.read(searchQueryProvider.notifier).state = '',
+                          )
+                        : null,
                   ),
                 ),
                 const SizedBox(height: 10),
@@ -125,32 +180,60 @@ class SearchScreen extends ConsumerWidget {
             ),
           ),
           Expanded(
-            child: ListView.builder(
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-              itemCount: products.length,
-              itemBuilder: (context, index) {
-                final product = products[index];
-                final rankedOffers = PromoCalculator.rankProductOffers(
-                  product: product,
-                  allPromotions: promotions,
-                  userCardSlugs: wallet,
-                  isoWeekday: selectedWeekday,
-                );
-                return _ProductComparisonCard(
-                  product: product,
-                  rankedOffers: rankedOffers,
-                  onAddToCart: () {
-                    ref.read(smartCartProvider.notifier).addOrIncrement(product);
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(
-                        content: Text('${product.normalizedName} agregado al Carrito PY'),
-                        duration: const Duration(milliseconds: 900),
-                      ),
-                    );
-                  },
-                );
-              },
-            ),
+            child: products.isEmpty
+                ? Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(
+                          Icons.search_off_rounded,
+                          size: 48,
+                          color: isDark ? const Color(0xFF64748B) : const Color(0xFF94A3B8),
+                        ),
+                        const SizedBox(height: 8),
+                        Text(
+                          'No encontramos productos con esa búsqueda',
+                          style: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w600,
+                            color: isDark ? const Color(0xFF94A3B8) : const Color(0xFF64748B),
+                          ),
+                        ),
+                      ],
+                    ),
+                  )
+                : ListView.builder(
+                    padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                    itemCount: products.length,
+                    itemBuilder: (context, index) {
+                      final product = products[index];
+                      final rankedOffers = PromoCalculator.rankProductOffers(
+                        product: product,
+                        allPromotions: promotions,
+                        userCardSlugs: wallet,
+                        isoWeekday: selectedWeekday,
+                      );
+                      return _ProductComparisonCard(
+                        product: product,
+                        rankedOffers: rankedOffers,
+                        onAddToCart: () {
+                          ref.read(smartCartProvider.notifier).addOrIncrement(product);
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              backgroundColor: const Color(0xFF10B981),
+                              behavior: SnackBarBehavior.floating,
+                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                              content: Text(
+                                '${product.normalizedName} agregado a tu lista',
+                                style: const TextStyle(fontWeight: FontWeight.w700, color: Colors.white),
+                              ),
+                              duration: const Duration(milliseconds: 900),
+                            ),
+                          );
+                        },
+                      );
+                    },
+                  ),
           ),
         ],
       ),
@@ -169,10 +252,35 @@ class _ProductComparisonCard extends StatelessWidget {
     required this.onAddToCart,
   });
 
+  Widget _buildCategoryThumbnail(BuildContext context, String? category) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final cat = category ?? '🛒 Almacén';
+    String emoji = '🛒';
+    if (cat.contains('Yerba')) emoji = '🌿';
+    if (cat.contains('Lácteos')) emoji = '🥛';
+    if (cat.contains('Cerveza')) emoji = '🍺';
+    if (cat.contains('Bebidas')) emoji = '🥤';
+    if (cat.contains('Carne')) emoji = '🥩';
+    if (cat.contains('Pan')) emoji = '🥖';
+
+    return Container(
+      width: 54,
+      height: 54,
+      decoration: BoxDecoration(
+        color: isDark ? const Color(0xFF334155) : const Color(0xFFF1F5F9),
+        borderRadius: BorderRadius.circular(14),
+      ),
+      child: Center(
+        child: Text(emoji, style: const TextStyle(fontSize: 26)),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     if (rankedOffers.isEmpty) return const SizedBox.shrink();
     final best = rankedOffers.first;
+    final isDark = Theme.of(context).brightness == Brightness.dark;
 
     return Card(
       margin: const EdgeInsets.only(bottom: 12),
@@ -192,127 +300,202 @@ class _ProductComparisonCard extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(14),
           child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  // Imagen / Thumbnail del Producto
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(14),
+                    child: (product.imageUrl != null && product.imageUrl!.isNotEmpty)
+                        ? Image.network(
+                            product.imageUrl!,
+                            width: 54,
+                            height: 54,
+                            fit: BoxFit.cover,
+                            errorBuilder: (ctx, _, __) => _buildCategoryThumbnail(context, product.category),
+                          )
+                        : _buildCategoryThumbnail(context, product.category),
+                  ),
+                  const SizedBox(width: 12),
+                  // Nombre y Detalles
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          product.normalizedName,
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyle(
+                            fontSize: 15,
+                            fontWeight: FontWeight.w700,
+                            color: isDark ? Colors.white : const Color(0xFF0F172A),
+                          ),
+                        ),
+                        const SizedBox(height: 4),
+                        Row(
+                          children: [
+                            if (product.category != null) ...[
+                              Container(
+                                padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+                                decoration: BoxDecoration(
+                                  color: isDark ? const Color(0xFF334155) : const Color(0xFFE2E8F0),
+                                  borderRadius: BorderRadius.circular(6),
+                                ),
+                                child: Text(
+                                  product.category!,
+                                  style: TextStyle(
+                                    fontSize: 10,
+                                    fontWeight: FontWeight.w600,
+                                    color: isDark ? const Color(0xFFCBD5E1) : const Color(0xFF475569),
+                                  ),
+                                ),
+                              ),
+                              const SizedBox(width: 6),
+                            ],
+                            Expanded(
+                              child: Text(
+                                GuaraniFormatter.formatPerBaseUnit(best.pricePerBaseUnitGs, best.baseUnit),
+                                style: TextStyle(
+                                  fontSize: 11,
+                                  fontWeight: FontWeight.w500,
+                                  color: isDark ? const Color(0xFF94A3B8) : const Color(0xFF64748B),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(width: 6),
+                  IconButton.filledTonal(
+                    onPressed: onAddToCart,
+                    style: IconButton.styleFrom(
+                      backgroundColor: const Color(0xFF10B981).withValues(alpha: 0.15),
+                      foregroundColor: const Color(0xFF10B981),
+                    ),
+                    icon: const Icon(Icons.add_shopping_cart_rounded, size: 20),
+                    tooltip: 'Agregar a Mi Lista',
+                  ),
+                ],
+              ),
+              const SizedBox(height: 12),
+              Divider(
+                height: 1,
+                color: isDark ? const Color(0xFF334155) : const Color(0xFFE2E8F0),
+              ),
+              const SizedBox(height: 10),
+
+              // Lista de ofertas por supermercado
+              ...rankedOffers.asMap().entries.map((entry) {
+                final idx = entry.key;
+                final eval = entry.value;
+                final isBest = idx == 0;
+
+                final tileBg = isBest
+                    ? (isDark ? const Color(0x2610B981) : const Color(0xFFECFDF5))
+                    : (isDark ? const Color(0xFF0F172A) : const Color(0xFFF8FAFC));
+
+                final tileBorder = isBest
+                    ? const Color(0xFF10B981)
+                    : (isDark ? const Color(0xFF334155) : const Color(0xFFE2E8F0));
+
+                return Container(
+                  margin: const EdgeInsets.only(bottom: 8),
+                  padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 9),
+                  decoration: BoxDecoration(
+                    color: tileBg,
+                    borderRadius: BorderRadius.circular(14),
+                    border: Border.all(color: tileBorder),
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(
-                        product.normalizedName,
-                        style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w700),
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Row(
+                              children: [
+                                Text(
+                                  eval.offer.supermarketName,
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.w700,
+                                    fontSize: 13,
+                                    color: isBest
+                                        ? const Color(0xFF10B981)
+                                        : (isDark ? Colors.white : const Color(0xFF0F172A)),
+                                  ),
+                                ),
+                                if (isBest) ...[
+                                  const SizedBox(width: 6),
+                                  Container(
+                                    padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+                                    decoration: BoxDecoration(
+                                      color: const Color(0xFF10B981),
+                                      borderRadius: BorderRadius.circular(6),
+                                    ),
+                                    child: const Text(
+                                      'MÁS BARATO',
+                                      style: TextStyle(
+                                        fontSize: 9,
+                                        fontWeight: FontWeight.w900,
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ],
+                            ),
+                            const SizedBox(height: 2),
+                            Text(
+                              eval.pricingNote,
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                              style: TextStyle(
+                                fontSize: 11,
+                                color: isDark ? const Color(0xFF94A3B8) : const Color(0xFF64748B),
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
-                      const SizedBox(height: 4),
-                      Text(
-                        'EAN: ${product.ean ?? "S/D"} • ${GuaraniFormatter.formatPerBaseUnit(best.pricePerBaseUnitGs, best.baseUnit)}',
-                        style: const TextStyle(fontSize: 12, color: Colors.white60),
+                      const SizedBox(width: 8),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: [
+                          Text(
+                            GuaraniFormatter.format(eval.effectiveFinalPriceGs),
+                            style: TextStyle(
+                              fontSize: 15,
+                              fontWeight: FontWeight.w800,
+                              color: isBest
+                                  ? const Color(0xFF10B981)
+                                  : (isDark ? Colors.white : const Color(0xFF0F172A)),
+                            ),
+                          ),
+                          if (eval.effectiveFinalPriceGs < eval.offer.regularPriceGs)
+                            Text(
+                              'Góndola: ${GuaraniFormatter.format(eval.offer.regularPriceGs)}',
+                              style: TextStyle(
+                                fontSize: 10,
+                                color: isDark ? const Color(0xFF64748B) : const Color(0xFF94A3B8),
+                                decoration: TextDecoration.lineThrough,
+                              ),
+                            ),
+                        ],
                       ),
                     ],
                   ),
-                ),
-                IconButton.filledTonal(
-                  onPressed: onAddToCart,
-                  icon: const Icon(Icons.add_shopping_cart_rounded, size: 20),
-                  tooltip: 'Agregar al Carrito Inteligente',
-                ),
-              ],
-            ),
-            const Divider(height: 20, color: Color(0xFF30363D)),
-            ...rankedOffers.asMap().entries.map((entry) {
-              final idx = entry.key;
-              final eval = entry.value;
-              final isBest = idx == 0;
-
-              return Container(
-                margin: const EdgeInsets.only(bottom: 8),
-                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
-                decoration: BoxDecoration(
-                  color: isBest
-                      ? const Color(0x2400875A)
-                      : const Color(0xFF0D1117),
-                  borderRadius: BorderRadius.circular(12),
-                  border: Border.all(
-                    color: isBest ? const Color(0xFF3FB950) : const Color(0xFF21262D),
-                  ),
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Row(
-                            children: [
-                              Text(
-                                eval.offer.supermarketName,
-                                style: TextStyle(
-                                  fontWeight: FontWeight.w700,
-                                  color: isBest ? const Color(0xFF3FB950) : Colors.white,
-                                ),
-                              ),
-                              if (isBest) ...[
-                                const SizedBox(width: 6),
-                                Container(
-                                  padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
-                                  decoration: BoxDecoration(
-                                    color: const Color(0xFF3FB950),
-                                    borderRadius: BorderRadius.circular(6),
-                                  ),
-                                  child: const Text(
-                                    'MÁS BARATO HOY',
-                                    style: TextStyle(
-                                      fontSize: 9,
-                                      fontWeight: FontWeight.w900,
-                                      color: Colors.black,
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ],
-                          ),
-                          const SizedBox(height: 2),
-                          Text(
-                            eval.pricingNote,
-                            style: const TextStyle(fontSize: 11, color: Colors.white70),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.end,
-                      children: [
-                        Text(
-                          GuaraniFormatter.format(eval.effectiveFinalPriceGs),
-                          style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w800,
-                            color: isBest ? const Color(0xFF3FB950) : Colors.white,
-                          ),
-                        ),
-                        if (eval.effectiveFinalPriceGs < eval.offer.regularPriceGs)
-                          Text(
-                            'Góndola: ${GuaraniFormatter.format(eval.offer.regularPriceGs)}',
-                            style: const TextStyle(
-                              fontSize: 11,
-                              color: Colors.white54,
-                              decoration: TextDecoration.lineThrough,
-                            ),
-                          ),
-                      ],
-                    ),
-                  ],
-                ),
-              );
-            }),
-          ],
+                );
+              }),
+            ],
+          ),
         ),
       ),
-    ),
-  );
+    );
   }
 }
-
