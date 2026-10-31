@@ -56,5 +56,50 @@ void main() {
       print('Costo Dividido: Gs. ${splitResult.combinedNetCostGs} (Ahorro Extra: Gs. ${splitResult.additionalSavingsGs})');
       print('¿Se recomienda dividir?: ${splitResult.isSplitRecommended}');
     });
+
+    test('Filtro por ciudad: Caacupé solo evalúa supermercados con sucursales en Caacupé', () {
+      final repo = LocalCatalogRepository();
+      final caacupeSlugs = repo.getSupermarketsInCity('Caacupé');
+
+      // Caacupé solo cuenta con Stock, Superseis, Biggie y Tuti
+      expect(caacupeSlugs, containsAll(['stock', 'superseis', 'biggie', 'tuti']));
+      expect(caacupeSlugs, isNot(contains('casarica')));
+      expect(caacupeSlugs, isNot(contains('arete')));
+      expect(caacupeSlugs, isNot(contains('fortis')));
+      expect(caacupeSlugs, isNot(contains('delimarket')));
+
+      // Ranking de ofertas de Yerba solo debe mostrar súper de Caacupé
+      final yerba = LocalCatalogRepository.initialCatalog.first;
+      final rankedCaacupe = PromoCalculator.rankProductOffers(
+        product: yerba,
+        allPromotions: LocalCatalogRepository.paraguayPromotions,
+        userCardSlugs: {'ueno_credito_n4', 'itau_credito_clasica'},
+        isoWeekday: 2, // Martes
+        availableSupermarketSlugs: caacupeSlugs.toSet(),
+      );
+
+      for (final offer in rankedCaacupe) {
+        expect(caacupeSlugs, contains(offer.offer.supermarketSlug));
+      }
+
+      // Simulación de carrito en Caacupé
+      final cart = {yerba: 2};
+      final caacupeStores = Map.fromEntries(
+        repo.supermarkets.entries.where((e) => caacupeSlugs.contains(e.key)),
+      );
+
+      final summaries = PromoCalculator.simulateCartAcrossSupermarkets(
+        cartQuantities: cart,
+        supermarketsBySlug: caacupeStores,
+        allPromotions: LocalCatalogRepository.paraguayPromotions,
+        userCardSlugs: {'ueno_credito_n4', 'itau_credito_clasica'},
+        isoWeekday: 2,
+      );
+
+      expect(summaries.length, caacupeStores.length);
+      for (final s in summaries) {
+        expect(caacupeSlugs, contains(s.supermarketSlug));
+      }
+    });
   });
 }

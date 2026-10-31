@@ -12,6 +12,7 @@ class SmartCartScreen extends ConsumerWidget {
     required BuildContext context,
     required List<SmartCartSummary> rankings,
     required SplitCartResult splitResult,
+    required String cityName,
   }) {
     if (rankings.isEmpty) return;
 
@@ -72,10 +73,11 @@ class SmartCartScreen extends ConsumerWidget {
                           ),
                         ),
                         Text(
-                          'Calculado con tus promociones bancarias de hoy',
+                          '📍 Sucursales en $cityName • Descuentos bancarios de hoy',
                           style: TextStyle(
                             fontSize: 12,
-                            color: isDark ? const Color(0xFF94A3B8) : const Color(0xFF64748B),
+                            fontWeight: FontWeight.w600,
+                            color: isDark ? const Color(0xFF38BDF8) : const Color(0xFF0284C7),
                           ),
                         ),
                       ],
@@ -438,6 +440,7 @@ class SmartCartScreen extends ConsumerWidget {
     final cart = ref.watch(smartCartProvider);
     final rankings = ref.watch(smartCartRankingsProvider);
     final splitResult = ref.watch(splitCartResultProvider);
+    final selectedCity = ref.watch(selectedCityProvider);
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
     final cartItems = cart.entries.toList();
@@ -464,11 +467,12 @@ class SmartCartScreen extends ConsumerWidget {
                     ),
                     Text(
                       cart.isEmpty
-                          ? 'Agrega productos para comparar súpermercados'
-                          : '${cart.length} productos cargados (${cart.values.fold(0, (a, b) => a + b)} unidades)',
+                          ? '📍 $selectedCity • Agrega productos para comparar'
+                          : '${cart.length} productos cargados • 📍 $selectedCity',
                       style: TextStyle(
                         fontSize: 12,
-                        color: isDark ? const Color(0xFF94A3B8) : const Color(0xFF64748B),
+                        fontWeight: FontWeight.w600,
+                        color: isDark ? const Color(0xFF38BDF8) : const Color(0xFF0284C7),
                       ),
                     ),
                   ],
@@ -659,6 +663,7 @@ class SmartCartScreen extends ConsumerWidget {
                       context: context,
                       rankings: rankings,
                       splitResult: splitResult,
+                      cityName: selectedCity,
                     );
                   },
                 ),

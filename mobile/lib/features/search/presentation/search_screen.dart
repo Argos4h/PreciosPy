@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../core/formatters/guarani_formatter.dart';
+import '../../../data/local/local_catalog_repository.dart';
 import '../../../domain/models/catalog_models.dart';
 import '../../../domain/services/promo_calculator.dart';
 import '../../../state/app_providers.dart';
@@ -29,12 +30,168 @@ class SearchScreen extends ConsumerWidget {
     MapEntry('pan', '🥖 Panadería'),
   ];
 
+  void _showCityPicker(BuildContext context, WidgetRef ref) {
+    final currentCity = ref.read(selectedCityProvider);
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      backgroundColor: Colors.transparent,
+      builder: (ctx) {
+        return Container(
+          decoration: BoxDecoration(
+            color: isDark ? const Color(0xFF1E293B) : Colors.white,
+            borderRadius: const BorderRadius.vertical(top: Radius.circular(28)),
+          ),
+          padding: const EdgeInsets.fromLTRB(20, 16, 20, 24),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Center(
+                child: Container(
+                  width: 44,
+                  height: 4,
+                  margin: const EdgeInsets.only(bottom: 16),
+                  decoration: BoxDecoration(
+                    color: isDark ? const Color(0xFF475569) : const Color(0xFFCBD5E1),
+                    borderRadius: BorderRadius.circular(2),
+                  ),
+                ),
+              ),
+              Row(
+                children: [
+                  Container(
+                    padding: const EdgeInsets.all(8),
+                    decoration: BoxDecoration(
+                      color: const Color(0xFF0284C7).withValues(alpha: 0.15),
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: const Icon(Icons.location_on_rounded, color: Color(0xFF0284C7), size: 24),
+                  ),
+                  const SizedBox(width: 12),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Seleccionar tu Ciudad',
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.w900,
+                            color: isDark ? Colors.white : const Color(0xFF0F172A),
+                          ),
+                        ),
+                        Text(
+                          'Solo verás supermercados con sucursal física cercana',
+                          style: TextStyle(
+                            fontSize: 12,
+                            color: isDark ? const Color(0xFF94A3B8) : const Color(0xFF64748B),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 16),
+              ...LocalCatalogRepository.paraguayCities.map((item) {
+                final cityName = item['city']!;
+                final dept = item['dept']!;
+                final badge = item['badge']!;
+                final isSelected = cityName.toLowerCase() == currentCity.toLowerCase();
+
+                return Container(
+                  margin: const EdgeInsets.only(bottom: 8),
+                  child: InkWell(
+                    borderRadius: BorderRadius.circular(14),
+                    onTap: () {
+                      ref.read(selectedCityProvider.notifier).state = cityName;
+                      Navigator.of(ctx).pop();
+                    },
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
+                      decoration: BoxDecoration(
+                        color: isSelected
+                            ? (isDark ? const Color(0x260284C7) : const Color(0xFFE0F2FE))
+                            : (isDark ? const Color(0xFF0F172A) : const Color(0xFFF8FAFC)),
+                        borderRadius: BorderRadius.circular(14),
+                        border: Border.all(
+                          color: isSelected
+                              ? const Color(0xFF0284C7)
+                              : (isDark ? const Color(0xFF334155) : const Color(0xFFE2E8F0)),
+                          width: isSelected ? 1.5 : 1.0,
+                        ),
+                      ),
+                      child: Row(
+                        children: [
+                          Icon(
+                            cityName == 'Todas' ? Icons.public_rounded : Icons.location_city_rounded,
+                            color: isSelected ? const Color(0xFF0284C7) : const Color(0xFF64748B),
+                            size: 20,
+                          ),
+                          const SizedBox(width: 12),
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Row(
+                                  children: [
+                                    Text(
+                                      cityName,
+                                      style: TextStyle(
+                                        fontSize: 15,
+                                        fontWeight: FontWeight.w800,
+                                        color: isSelected
+                                            ? const Color(0xFF0284C7)
+                                            : (isDark ? Colors.white : const Color(0xFF0F172A)),
+                                      ),
+                                    ),
+                                    const SizedBox(width: 6),
+                                    Text(
+                                      '($dept)',
+                                      style: TextStyle(
+                                        fontSize: 11,
+                                        color: isDark ? const Color(0xFF94A3B8) : const Color(0xFF64748B),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                const SizedBox(height: 2),
+                                Text(
+                                  badge,
+                                  style: TextStyle(
+                                    fontSize: 11,
+                                    color: isDark ? const Color(0xFFCBD5E1) : const Color(0xFF475569),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          if (isSelected)
+                            const Icon(Icons.check_circle_rounded, color: Color(0xFF0284C7), size: 22),
+                        ],
+                      ),
+                    ),
+                  ),
+                );
+              }),
+            ],
+          ),
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final products = ref.watch(filteredProductsProvider);
     final wallet = ref.watch(userWalletCardsProvider);
     final selectedWeekday = ref.watch(selectedWeekdayProvider);
     final promotions = ref.watch(bankPromotionsProvider);
+    final selectedCity = ref.watch(selectedCityProvider);
+    final cityStores = ref.watch(currentCitySupermarketsProvider);
     final themeMode = ref.watch(themeModeProvider);
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
@@ -71,12 +228,24 @@ class SearchScreen extends ConsumerWidget {
                                 color: isDark ? Colors.white : const Color(0xFF0F172A),
                               ),
                             ),
-                            Text(
-                              'Comparador en Paraguay',
-                              style: TextStyle(
-                                fontSize: 11,
-                                fontWeight: FontWeight.w500,
-                                color: isDark ? const Color(0xFF94A3B8) : const Color(0xFF64748B),
+                            InkWell(
+                              onTap: () => _showCityPicker(context, ref),
+                              borderRadius: BorderRadius.circular(6),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  const Icon(Icons.location_on_rounded, size: 12, color: Color(0xFF0284C7)),
+                                  const SizedBox(width: 2),
+                                  Text(
+                                    selectedCity == 'Todas' ? 'Todo Paraguay' : selectedCity,
+                                    style: const TextStyle(
+                                      fontSize: 11,
+                                      fontWeight: FontWeight.w700,
+                                      color: Color(0xFF0284C7),
+                                    ),
+                                  ),
+                                  const Icon(Icons.arrow_drop_down_rounded, size: 16, color: Color(0xFF0284C7)),
+                                ],
                               ),
                             ),
                           ],
@@ -212,6 +381,7 @@ class SearchScreen extends ConsumerWidget {
                         allPromotions: promotions,
                         userCardSlugs: wallet,
                         isoWeekday: selectedWeekday,
+                        availableSupermarketSlugs: cityStores.keys.toSet(),
                       );
                       return _ProductComparisonCard(
                         product: product,

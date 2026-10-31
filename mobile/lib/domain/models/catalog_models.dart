@@ -272,6 +272,31 @@ class PriceTrustAnalysis {
   });
 }
 
+/// Sucursal física de un supermercado en una ciudad de Paraguay
+class SupermarketBranch {
+  final int id;
+  final String supermarketSlug;
+  final String supermarketName;
+  final String branchName;
+  final String city;
+  final String department;
+  final double latitude;
+  final double longitude;
+  final String address;
+
+  const SupermarketBranch({
+    required this.id,
+    required this.supermarketSlug,
+    required this.supermarketName,
+    required this.branchName,
+    required this.city,
+    required this.department,
+    required this.latitude,
+    required this.longitude,
+    required this.address,
+  });
+}
+
 /// Ítem extraído de una factura electrónica paraguaya (e-Kuatia DNIT / SET)
 class KuatiaInvoiceItem {
   final String description;

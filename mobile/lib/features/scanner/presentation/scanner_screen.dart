@@ -28,8 +28,13 @@ class _ScannerScreenState extends ConsumerState<ScannerScreen> {
     final weekday = ref.watch(selectedWeekdayProvider);
     final activeStoreSlug = ref.watch(activeStoreInAisleProvider);
     final promotions = ref.watch(bankPromotionsProvider);
-    final supermarkets = ref.watch(supermarketsProvider);
+    final cityStores = ref.watch(currentCitySupermarketsProvider);
+    final selectedCity = ref.watch(selectedCityProvider);
     final isDark = Theme.of(context).brightness == Brightness.dark;
+
+    final effectiveActiveStoreSlug = cityStores.containsKey(activeStoreSlug)
+        ? activeStoreSlug
+        : (cityStores.isNotEmpty ? cityStores.keys.first : 'stock');
 
     final scannedProduct = repo.findByBarcode(_currentBarcode);
     final rankedOffers = scannedProduct != null
@@ -38,6 +43,7 @@ class _ScannerScreenState extends ConsumerState<ScannerScreen> {
             allPromotions: promotions,
             userCardSlugs: wallet,
             isoWeekday: weekday,
+            availableSupermarketSlugs: cityStores.keys.toSet(),
           )
         : <EvaluatedOffer>[];
 
@@ -61,10 +67,11 @@ class _ScannerScreenState extends ConsumerState<ScannerScreen> {
                       ),
                     ),
                     Text(
-                      'Semáforo inteligente en tiempo real',
+                      '📍 $selectedCity • Semáforo inteligente',
                       style: TextStyle(
                         fontSize: 12,
-                        color: isDark ? const Color(0xFF94A3B8) : const Color(0xFF64748B),
+                        fontWeight: FontWeight.w600,
+                        color: isDark ? const Color(0xFF38BDF8) : const Color(0xFF0284C7),
                       ),
                     ),
                   ],
@@ -80,14 +87,14 @@ class _ScannerScreenState extends ConsumerState<ScannerScreen> {
                   ),
                   child: DropdownButtonHideUnderline(
                     child: DropdownButton<String>(
-                      value: activeStoreSlug,
+                      value: effectiveActiveStoreSlug,
                       isDense: true,
                       style: TextStyle(
                         fontSize: 12,
                         fontWeight: FontWeight.w700,
                         color: isDark ? Colors.white : const Color(0xFF0F172A),
                       ),
-                      items: supermarkets.entries
+                      items: cityStores.entries
                           .map(
                             (e) => DropdownMenuItem(
                               value: e.key,
@@ -220,13 +227,13 @@ class _ScannerScreenState extends ConsumerState<ScannerScreen> {
               child: scannedProduct == null
                   ? _PriceHunterForm(
                       ean: _currentBarcode,
-                      activeStoreSlug: activeStoreSlug,
+                      activeStoreSlug: effectiveActiveStoreSlug,
                       onRegistered: () => setState(() {}),
                     )
                   : _AisleSemaphoreSheet(
                       product: scannedProduct,
                       rankedOffers: rankedOffers,
-                      activeStoreSlug: activeStoreSlug,
+                      activeStoreSlug: effectiveActiveStoreSlug,
                     ),
             ),
           ),

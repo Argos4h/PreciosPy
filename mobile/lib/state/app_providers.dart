@@ -22,6 +22,19 @@ final supermarketsProvider = Provider<Map<String, String>>((ref) {
   return ref.watch(catalogRepositoryProvider).supermarkets;
 });
 
+/// Ciudad seleccionada o detectada por GPS (por defecto 'Caacupé')
+final selectedCityProvider = StateProvider<String>((ref) => 'Caacupé');
+
+/// Supermercados con sucursales físicas activas en la ciudad seleccionada
+final currentCitySupermarketsProvider = Provider<Map<String, String>>((ref) {
+  final repo = ref.watch(catalogRepositoryProvider);
+  final city = ref.watch(selectedCityProvider);
+  final activeSlugs = repo.getSupermarketsInCity(city);
+  return Map.fromEntries(
+    repo.supermarkets.entries.where((e) => activeSlugs.contains(e.key)),
+  );
+});
+
 /// Consulta de búsqueda instantánea en la barra superior
 final searchQueryProvider = StateProvider<String>((ref) => '');
 
@@ -295,10 +308,11 @@ final smartCartRankingsProvider = Provider<List<SmartCartSummary>>((ref) {
   final cart = ref.watch(smartCartProvider);
   final wallet = ref.watch(userWalletCardsProvider);
   final weekday = ref.watch(selectedWeekdayProvider);
+  final cityStores = ref.watch(currentCitySupermarketsProvider);
 
   return PromoCalculator.simulateCartAcrossSupermarkets(
     cartQuantities: cart,
-    supermarketsBySlug: repo.supermarkets,
+    supermarketsBySlug: cityStores,
     allPromotions: repo.promotions,
     userCardSlugs: wallet,
     isoWeekday: weekday,
@@ -311,10 +325,11 @@ final splitCartResultProvider = Provider<SplitCartResult>((ref) {
   final cart = ref.watch(smartCartProvider);
   final wallet = ref.watch(userWalletCardsProvider);
   final weekday = ref.watch(selectedWeekdayProvider);
+  final cityStores = ref.watch(currentCitySupermarketsProvider);
 
   return PromoCalculator.optimizeSplitCart(
     cartQuantities: cart,
-    supermarketsBySlug: repo.supermarkets,
+    supermarketsBySlug: cityStores,
     allPromotions: repo.promotions,
     userCardSlugs: wallet,
     isoWeekday: weekday,

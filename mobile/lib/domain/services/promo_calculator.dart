@@ -75,14 +75,19 @@ class PromoCalculator {
   }
 
   /// Ordena todas las ofertas de un producto desde la más barata hoy (con las tarjetas del usuario)
-  /// hasta la más cara.
+  /// hasta la más cara, filtrando opcionalmente por supermercados disponibles en la ciudad del usuario.
   static List<EvaluatedOffer> rankProductOffers({
     required ProductItem product,
     required List<BankPromotion> allPromotions,
     required Set<String> userCardSlugs,
     required int isoWeekday,
+    Set<String>? availableSupermarketSlugs,
   }) {
-    final evaluated = product.offers
+    final candidateOffers = (availableSupermarketSlugs != null && availableSupermarketSlugs.isNotEmpty)
+        ? product.offers.where((o) => availableSupermarketSlugs.contains(o.supermarketSlug))
+        : product.offers;
+
+    final evaluated = candidateOffers
         .map(
           (offer) => evaluateOfferForWallet(
             product: product,

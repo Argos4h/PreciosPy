@@ -68,6 +68,323 @@ class LocalCatalogRepository {
     'tuti': 'Tiendas Tuti',
   };
 
+  /// Sucursales físicas reales de supermercados geolocalizadas por ciudad
+  static const List<Map<String, String>> paraguayCities = [
+    {'city': 'Caacupé', 'dept': 'Cordillera', 'badge': 'Stock, Superseis, Biggie, Tuti'},
+    {'city': 'Asunción', 'dept': 'Capital', 'badge': 'Todas las cadenas'},
+    {'city': 'Luque', 'dept': 'Central', 'badge': 'Fortis, Box, Superseis, Stock'},
+    {'city': 'San Lorenzo', 'dept': 'Central', 'badge': 'Salemma, Real, Fortis, Stock'},
+    {'city': 'Ciudad del Este', 'dept': 'Alto Paraná', 'badge': 'Fortis, Box, Gran Vía, Stock'},
+    {'city': 'Encarnación', 'dept': 'Itapúa', 'badge': 'Superseis, Stock'},
+    {'city': 'Todas', 'dept': 'Nacional', 'badge': 'Todos los supermercados'},
+  ];
+
+  static const List<SupermarketBranch> paraguayBranches = [
+    // CAACUPÉ (Cordillera)
+    SupermarketBranch(
+      id: 1,
+      supermarketSlug: 'stock',
+      supermarketName: 'Supermercados Stock',
+      branchName: 'Stock Caacupé',
+      city: 'Caacupé',
+      department: 'Cordillera',
+      latitude: -25.3855,
+      longitude: -57.1422,
+      address: 'Ruta PY02 Km 54',
+    ),
+    SupermarketBranch(
+      id: 2,
+      supermarketSlug: 'superseis',
+      supermarketName: 'Superseis',
+      branchName: 'Superseis Caacupé',
+      city: 'Caacupé',
+      department: 'Cordillera',
+      latitude: -25.3860,
+      longitude: -57.1405,
+      address: 'Av. Dr. Eligio Ayala c/ Alberdi',
+    ),
+    SupermarketBranch(
+      id: 3,
+      supermarketSlug: 'biggie',
+      supermarketName: 'Biggie Express',
+      branchName: 'Biggie Caacupé Basílica',
+      city: 'Caacupé',
+      department: 'Cordillera',
+      latitude: -25.3872,
+      longitude: -57.1418,
+      address: 'Concepción e/ 14 de Mayo',
+    ),
+    SupermarketBranch(
+      id: 4,
+      supermarketSlug: 'tuti',
+      supermarketName: 'Tiendas Tuti',
+      branchName: 'Tuti Caacupé Centro',
+      city: 'Caacupé',
+      department: 'Cordillera',
+      latitude: -25.3880,
+      longitude: -57.1430,
+      address: 'Asunción c/ Variante',
+    ),
+
+    // ASUNCIÓN (Capital)
+    SupermarketBranch(
+      id: 10,
+      supermarketSlug: 'superseis',
+      supermarketName: 'Superseis',
+      branchName: 'Superseis España',
+      city: 'Asunción',
+      department: 'Capital',
+      latitude: -25.2950,
+      longitude: -57.6010,
+      address: 'Av. España c/ Pitiantuta',
+    ),
+    SupermarketBranch(
+      id: 11,
+      supermarketSlug: 'stock',
+      supermarketName: 'Supermercados Stock',
+      branchName: 'Stock Sacramento',
+      city: 'Asunción',
+      department: 'Capital',
+      latitude: -25.2760,
+      longitude: -57.5890,
+      address: 'Av. Santísimo Sacramento',
+    ),
+    SupermarketBranch(
+      id: 12,
+      supermarketSlug: 'biggie',
+      supermarketName: 'Biggie Express',
+      branchName: 'Biggie Villa Morra',
+      city: 'Asunción',
+      department: 'Capital',
+      latitude: -25.2980,
+      longitude: -57.5820,
+      address: 'Senador Long c/ España',
+    ),
+    SupermarketBranch(
+      id: 13,
+      supermarketSlug: 'casarica',
+      supermarketName: 'Casa Rica Gourmet',
+      branchName: 'Casa Rica España',
+      city: 'Asunción',
+      department: 'Capital',
+      latitude: -25.2920,
+      longitude: -57.5980,
+      address: 'Av. España c/ Dr. Bestard',
+    ),
+    SupermarketBranch(
+      id: 14,
+      supermarketSlug: 'arete',
+      supermarketName: 'Supermercados Areté',
+      branchName: 'Areté Shopping Mariscal',
+      city: 'Asunción',
+      department: 'Capital',
+      latitude: -25.2965,
+      longitude: -57.5795,
+      address: 'Quesada c/ Roque González',
+    ),
+    SupermarketBranch(
+      id: 15,
+      supermarketSlug: 'delimarket',
+      supermarketName: 'Delimarket',
+      branchName: 'Delimarket Shopping del Sol',
+      city: 'Asunción',
+      department: 'Capital',
+      latitude: -25.2820,
+      longitude: -57.5650,
+      address: 'Av. Aviadores del Chaco',
+    ),
+    SupermarketBranch(
+      id: 16,
+      supermarketSlug: 'real',
+      supermarketName: 'Cadena Real',
+      branchName: 'Real Villa Morra',
+      city: 'Asunción',
+      department: 'Capital',
+      latitude: -25.2970,
+      longitude: -57.5850,
+      address: 'Av. Boggiani c/ R.I. 3 Corrales',
+    ),
+    SupermarketBranch(
+      id: 17,
+      supermarketSlug: 'salemma',
+      supermarketName: 'Supermercados Salemma',
+      branchName: 'Salemma Carmelitas',
+      city: 'Asunción',
+      department: 'Capital',
+      latitude: -25.2840,
+      longitude: -57.5720,
+      address: 'Av. San Martín c/ España',
+    ),
+    SupermarketBranch(
+      id: 18,
+      supermarketSlug: 'labomba',
+      supermarketName: 'Supermercados La Bomba',
+      branchName: 'La Bomba Sajonia',
+      city: 'Asunción',
+      department: 'Capital',
+      latitude: -25.2990,
+      longitude: -57.6530,
+      address: 'Av. Carlos Antonio López',
+    ),
+
+    // LUQUE (Central)
+    SupermarketBranch(
+      id: 20,
+      supermarketSlug: 'losjardines',
+      supermarketName: 'Los Jardines (Luque)',
+      branchName: 'Los Jardines Luque Central',
+      city: 'Luque',
+      department: 'Central',
+      latitude: -25.2670,
+      longitude: -57.4890,
+      address: 'Gral. Aquino c/ San Martín',
+    ),
+    SupermarketBranch(
+      id: 21,
+      supermarketSlug: 'fortis',
+      supermarketName: 'Fortis Mayorista',
+      branchName: 'Fortis Luque',
+      city: 'Luque',
+      department: 'Central',
+      latitude: -25.2550,
+      longitude: -57.4980,
+      address: 'Ruta Luque - San Lorenzo',
+    ),
+    SupermarketBranch(
+      id: 22,
+      supermarketSlug: 'box',
+      supermarketName: 'Box Mayorista',
+      branchName: 'Box Luque',
+      city: 'Luque',
+      department: 'Central',
+      latitude: -25.2600,
+      longitude: -57.5020,
+      address: 'Corredor Luque',
+    ),
+    SupermarketBranch(
+      id: 23,
+      supermarketSlug: 'superseis',
+      supermarketName: 'Superseis',
+      branchName: 'Superseis Luque',
+      city: 'Luque',
+      department: 'Central',
+      latitude: -25.2710,
+      longitude: -57.4850,
+      address: 'Rosario c/ Cerro Corá',
+    ),
+    SupermarketBranch(
+      id: 24,
+      supermarketSlug: 'stock',
+      supermarketName: 'Supermercados Stock',
+      branchName: 'Stock Luque',
+      city: 'Luque',
+      department: 'Central',
+      latitude: -25.2730,
+      longitude: -57.4870,
+      address: 'Las Residentas',
+    ),
+
+    // SAN LORENZO (Central)
+    SupermarketBranch(
+      id: 30,
+      supermarketSlug: 'salemma',
+      supermarketName: 'Supermercados Salemma',
+      branchName: 'Salemma Super Center',
+      city: 'San Lorenzo',
+      department: 'Central',
+      latitude: -25.3340,
+      longitude: -57.5180,
+      address: 'Ruta PY02 Mcal. Estigarribia Km 9.5',
+    ),
+    SupermarketBranch(
+      id: 31,
+      supermarketSlug: 'real',
+      supermarketName: 'Cadena Real',
+      branchName: 'Real San Lorenzo',
+      city: 'San Lorenzo',
+      department: 'Central',
+      latitude: -25.3380,
+      longitude: -57.5120,
+      address: 'Av. Defensores del Chaco',
+    ),
+
+    // CIUDAD DEL ESTE (Alto Paraná)
+    SupermarketBranch(
+      id: 40,
+      supermarketSlug: 'fortis',
+      supermarketName: 'Fortis Mayorista',
+      branchName: 'Fortis Ciudad del Este',
+      city: 'Ciudad del Este',
+      department: 'Alto Paraná',
+      latitude: -25.5090,
+      longitude: -54.6380,
+      address: 'Ruta PY02 Km 4',
+    ),
+    SupermarketBranch(
+      id: 41,
+      supermarketSlug: 'box',
+      supermarketName: 'Box Mayorista',
+      branchName: 'Box Mayorista CDE',
+      city: 'Ciudad del Este',
+      department: 'Alto Paraná',
+      latitude: -25.5120,
+      longitude: -54.6450,
+      address: 'Av. Monseñor Rodríguez Km 5.5',
+    ),
+    SupermarketBranch(
+      id: 42,
+      supermarketSlug: 'granvia',
+      supermarketName: 'Cadena Gran Vía',
+      branchName: 'Gran Vía CDE Centro',
+      city: 'Ciudad del Este',
+      department: 'Alto Paraná',
+      latitude: -25.5100,
+      longitude: -54.6150,
+      address: 'Av. Adrián Jara c/ Curupayty',
+    ),
+
+    // ENCARNACIÓN (Itapúa)
+    SupermarketBranch(
+      id: 50,
+      supermarketSlug: 'superseis',
+      supermarketName: 'Superseis',
+      branchName: 'Superseis Costanera Encarnación',
+      city: 'Encarnación',
+      department: 'Itapúa',
+      latitude: -27.3320,
+      longitude: -55.8670,
+      address: 'Av. Costanera República del Paraguay',
+    ),
+    SupermarketBranch(
+      id: 51,
+      supermarketSlug: 'stock',
+      supermarketName: 'Supermercados Stock',
+      branchName: 'Stock Encarnación Centro',
+      city: 'Encarnación',
+      department: 'Itapúa',
+      latitude: -27.3380,
+      longitude: -55.8610,
+      address: 'Av. Caballero e/ Mariscal López',
+    ),
+  ];
+
+  /// Devuelve los slugs de supermercados que tienen al menos una sucursal física en la ciudad
+  List<String> getSupermarketsInCity(String city) {
+    if (city.toLowerCase() == 'todas' || city.trim().isEmpty) {
+      return defaultSupermarkets.keys.toList();
+    }
+    final cleanCity = normalizeDiacritics(city.trim().toLowerCase());
+    final matchingSlugs = paraguayBranches
+        .where((b) => normalizeDiacritics(b.city.toLowerCase()) == cleanCity)
+        .map((b) => b.supermarketSlug)
+        .toSet();
+
+    if (matchingSlugs.isEmpty) {
+      return defaultSupermarkets.keys.toList();
+    }
+    return matchingSlugs.toList();
+  }
+
   List<BankPromotion> get promotions {
     if (_db != null) {
       final rows = _db.select('''
@@ -561,6 +878,11 @@ class LocalCatalogRepository {
           supermarketSlug: 'casarica',
           supermarketName: 'Casa Rica Gourmet',
           regularPriceGs: 18200,
+        ),
+        StoreOffer(
+          supermarketSlug: 'tuti',
+          supermarketName: 'Tiendas Tuti',
+          regularPriceGs: 16500,
         ),
       ],
     ),
