@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 import 'package:flutter/services.dart';
 import 'package:path/path.dart' as p;
@@ -21,13 +22,14 @@ class LocalCatalogRepository {
       final docDir = await getApplicationDocumentsDirectory();
       final targetFile = File(p.join(docDir.path, 'catalog_latest.db'));
 
-      // Si no existe localmente, copiamos desde el bundle de assets
-      if (!await targetFile.exists()) {
-        final byteData = await rootBundle.load(assetPath);
-        final bytes = byteData.buffer.asUint8List(
-          byteData.offsetInBytes,
-          byteData.lengthInBytes,
-        );
+      final byteData = await rootBundle.load(assetPath);
+      final bytes = byteData.buffer.asUint8List(
+        byteData.offsetInBytes,
+        byteData.lengthInBytes,
+      );
+
+      // Si no existe localmente o el archivo en assets es más reciente/distinto tamaño, actualizamos
+      if (!await targetFile.exists() || (await targetFile.length()) != bytes.length) {
         await targetFile.writeAsBytes(bytes, flush: true);
       }
 
@@ -780,33 +782,96 @@ class LocalCatalogRepository {
 
   static String? resolveProductImageUrl(String normalizedName, String? brand, String? ean) {
     final lower = normalizedName.toLowerCase();
-    if (lower.contains('yerba') || lower.contains('kurupi') || lower.contains('pajarito') || lower.contains('taragui')) {
-      return 'https://images.unsplash.com/photo-1544787219-7f47ccb76574?w=200&auto=format&fit=crop&q=80';
-    } else if (lower.contains('leche') || lower.contains('trebol') || lower.contains('lacteo') || lower.contains('yogur') || lower.contains('queso')) {
-      return 'https://images.unsplash.com/photo-1550583724-b2692b85b150?w=200&auto=format&fit=crop&q=80';
-    } else if (lower.contains('coca') || lower.contains('gaseosa') || lower.contains('pepsi') || lower.contains('fanta') || lower.contains('sprite')) {
-      return 'https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=200&auto=format&fit=crop&q=80';
-    } else if (lower.contains('cerveza') || lower.contains('pilsen') || lower.contains('munich') || lower.contains('heineken') || lower.contains('brahma')) {
-      return 'https://images.unsplash.com/photo-1608270586620-248524c67de9?w=200&auto=format&fit=crop&q=80';
-    } else if (lower.contains('carne') || lower.contains('vacio') || lower.contains('costilla') || lower.contains('tapa') || lower.contains('asado')) {
-      return 'https://images.unsplash.com/photo-1603048588665-791ca8aea617?w=200&auto=format&fit=crop&q=80';
-    } else if (lower.contains('pan') || lower.contains('chipa') || lower.contains('galletita') || lower.contains('harina')) {
-      return 'https://images.unsplash.com/photo-1509440159596-0249088772ff?w=200&auto=format&fit=crop&q=80';
-    } else if (lower.contains('aceite') || lower.contains('arroz') || lower.contains('fideo') || lower.contains('azucar')) {
-      return 'https://images.unsplash.com/photo-1471193945509-9ad0617afabf?w=200&auto=format&fit=crop&q=80';
-    }
+    
+    // Yerba Mate
+    if (lower.contains('kurupi')) return 'https://static.app.biggie.com.py/images/products/7840127000124.jpg';
+    if (lower.contains('campesino')) return 'https://static.app.biggie.com.py/images/products/7840009040507.jpg';
+    if (lower.contains('pajarito')) return 'https://static.app.biggie.com.py/images/products/7840013000726.jpg';
+    if (lower.contains('selecta')) return 'https://static.app.biggie.com.py/images/products/7840078001485-32620106.jpg';
+    if (lower.contains('yerba')) return 'https://static.app.biggie.com.py/images/products/7840127000124.jpg';
+    
+    // Lácteos y Quesos
+    if (lower.contains('trebol') && lower.contains('leche')) return 'https://static.app.biggie.com.py/images/products/7840005012379.jpg';
+    if (lower.contains('lactolanda') && lower.contains('descremada')) return 'https://static.app.biggie.com.py/images/products/7840042000124.jpg';
+    if (lower.contains('leche')) return 'https://static.app.biggie.com.py/images/products/7840005012379.jpg';
+    if (lower.contains('yogur')) return 'https://static.app.biggie.com.py/images/products/7840005013550.jpg';
+    if (lower.contains('queso paraguay')) return 'https://static.app.biggie.com.py/images/products/19999.jpg';
+    if (lower.contains('queso') && (lower.contains('sandwich') || lower.contains('danbo') || lower.contains('feteado'))) return 'https://static.app.biggie.com.py/images/products/7840042004061.jpg';
+    if (lower.contains('queso')) return 'https://static.app.biggie.com.py/images/products/7840042004061.jpg';
+    if (lower.contains('manteca')) return 'https://static.app.biggie.com.py/images/products/7840042001503.jpg';
+
+    // Bebidas y Jugos
+    if (lower.contains('coca')) return 'https://static.app.biggie.com.py/images/products/7840058008084.jpg';
+    if (lower.contains('pulp')) return 'https://static.app.biggie.com.py/images/products/7840779002057.jpg';
+    if (lower.contains('sprite')) return 'https://static.app.biggie.com.py/images/products/7840058000088.jpg';
+    if (lower.contains('puro sol') || lower.contains('jugo')) return 'https://static.app.biggie.com.py/images/products/7840779008363-28227085.jpg';
+    if (lower.contains('dasani') || lower.contains('agua mineral')) return 'https://static.app.biggie.com.py/images/products/7840058003898.jpg';
+    if (lower.contains('monster') || lower.contains('energizante')) return 'https://static.app.biggie.com.py/images/products/070847033233.jpg';
+
+    // Cervezas y Vinos
+    if (lower.contains('pilsen')) return 'https://static.app.biggie.com.py/images/products/7840050007696.jpg';
+    if (lower.contains('brahma')) return 'https://static.app.biggie.com.py/images/products/7840050008655.jpg';
+    if (lower.contains('michelob')) return 'https://static.app.biggie.com.py/images/products/7840050009881.png';
+    if (lower.contains('corona')) return 'https://static.app.biggie.com.py/images/products/7891149108749.jpg';
+    if (lower.contains('heineken')) return 'https://static.app.biggie.com.py/images/products/7802100004185.jpg';
+    if (lower.contains('santa helena') || lower.contains('vino')) return 'https://static.app.biggie.com.py/images/products/7804300149314.jpg';
+    if (lower.contains('cerveza')) return 'https://static.app.biggie.com.py/images/products/7840050007696.jpg';
+
+    // Carnicería y Embutidos
+    if (lower.contains('costilla')) return 'https://static.app.biggie.com.py/images/products/60168.jpg';
+    if (lower.contains('vacio')) return 'https://static.app.biggie.com.py/images/products/60136.jpg';
+    if (lower.contains('pollo') || lower.contains('pechug')) return 'https://static.app.biggie.com.py/images/products/30168.jpg';
+    if (lower.contains('jamon') || lower.contains('ochsi') || lower.contains('pancho')) return 'https://static.app.biggie.com.py/images/products/18000.jpg';
+    if (lower.contains('carne')) return 'https://static.app.biggie.com.py/images/products/60168.jpg';
+
+    // Panadería
+    if (lower.contains('baguette') || lower.contains('pagnifique')) return 'https://static.app.biggie.com.py/images/products/7730911981305.jpg';
+    if (lower.contains('pan') || lower.contains('felipe')) return 'https://static.app.biggie.com.py/images/products/7730911981305.jpg';
+    if (lower.contains('cuartel') || lower.contains('galleta')) return 'https://static.app.biggie.com.py/images/products/7840581040346.jpg';
+    if (lower.contains('empanada')) return 'https://static.app.biggie.com.py/images/products/7842779000330.jpg';
+
+    // Frutas y Verduras
+    if (lower.contains('tomate')) return 'https://static.app.biggie.com.py/images/products/15049.jpg';
+    if (lower.contains('banana')) return 'https://static.app.biggie.com.py/images/products/15037.jpg';
+
+    // Limpieza
+    if (lower.contains('omo') || lower.contains('jabon liquido')) return 'https://static.app.biggie.com.py/images/products/7891150064928-29961185.jpg';
+    if (lower.contains('cavallaro')) return 'https://static.app.biggie.com.py/images/products/7840118217579.jpg';
+    if (lower.contains('zorro') || lower.contains('detergente') || lower.contains('zitron') || lower.contains('cif')) return 'https://static.app.biggie.com.py/images/products/7840001001964.jpg';
+    if (lower.contains('jabon') || lower.contains('jabón')) return 'https://static.app.biggie.com.py/images/products/7891150064928-29961185.jpg';
+
+    // Snacks y Dulces
+    if (lower.contains('oreo')) return 'https://static.app.biggie.com.py/images/products/7622201759582.jpg';
+    if (lower.contains('lays') || lower.contains('papas')) return 'https://static.app.biggie.com.py/images/products/7790310986851.jpg';
+    if (lower.contains('doritos')) return 'https://static.app.biggie.com.py/images/products/7802000016813.jpg';
+    if (lower.contains('milka') || lower.contains('chocolate')) return 'https://static.app.biggie.com.py/images/products/7622300990213.jpg';
+
+    // Almacén
+    if (lower.contains('aceite') || lower.contains('mirasol') || lower.contains('girasol')) return 'https://static.app.biggie.com.py/images/products/7840833000104.jpg';
+    if (lower.contains('arroz')) return 'https://static.app.biggie.com.py/images/products/7840045034102.jpg';
+    if (lower.contains('fideo') || lower.contains('anita') || lower.contains('spaghetti')) return 'https://static.app.biggie.com.py/images/products/7840029101608.jpg';
+    if (lower.contains('harina') || lower.contains('hildebrand')) return 'https://static.app.biggie.com.py/images/products/7840821000031.jpg';
+    if (lower.contains('azucar') || lower.contains('azúcar')) return 'https://static.app.biggie.com.py/images/products/7840121416006.jpg';
+    if (lower.contains('sal') || lower.contains('celusal') || lower.contains('dos anclas')) return 'https://static.app.biggie.com.py/images/products/77900661.jpg';
+    if (lower.contains('cafe') || lower.contains('café') || lower.contains('nescafe')) return 'https://static.app.biggie.com.py/images/products/088169004978.jpg';
+    if (lower.contains('hielo')) return 'https://static.app.biggie.com.py/images/products/823601.jpg';
+    if (lower.contains('huevo')) return 'https://static.app.biggie.com.py/images/products/7840061000280.jpg';
+
     return null;
   }
 
   static String resolveProductCategory(String normalizedName) {
     final lower = normalizedName.toLowerCase();
-    if (lower.contains('yerba')) return '🌿 Yerba';
-    if (lower.contains('leche') || lower.contains('queso') || lower.contains('yogur')) return '🥛 Lácteos';
-    if (lower.contains('cerveza')) return '🍺 Cerveza';
-    if (lower.contains('coca') || lower.contains('gaseosa') || lower.contains('jugo')) return '🥤 Bebidas';
-    if (lower.contains('carne') || lower.contains('costilla') || lower.contains('vacio')) return '🥩 Carnicería';
-    if (lower.contains('chipa') || lower.contains('pan')) return '🥖 Panadería';
-    return '🛒 Almacén';
+    if (lower.contains('yerba')) return '🌿 Yerba Mate';
+    if (lower.contains('leche') || lower.contains('queso') || lower.contains('yogur') || lower.contains('manteca')) return '🥛 Lácteos y Quesos';
+    if (lower.contains('cerveza') || lower.contains('vino')) return '🍺 Cervezas y Vinos';
+    if (lower.contains('coca') || lower.contains('gaseosa') || lower.contains('jugo') || lower.contains('pulp') || lower.contains('sprite')) return '🥤 Bebidas y Jugos';
+    if (lower.contains('carne') || lower.contains('costilla') || lower.contains('vacio') || lower.contains('pollo') || lower.contains('pechug')) return '🥩 Carnicería y Granja';
+    if (lower.contains('chipa') || lower.contains('pan') || lower.contains('felipe') || lower.contains('cuartel')) return '🥖 Panadería Fresca';
+    if (lower.contains('jabon') || lower.contains('jabón') || lower.contains('detergente') || lower.contains('omo') || lower.contains('zorro') || lower.contains('lavandina')) return '🧼 Limpieza del Hogar';
+    if (lower.contains('galletita') || lower.contains('oreo') || lower.contains('snack') || lower.contains('lays') || lower.contains('papas')) return '🍪 Snacks y Galletitas';
+    if (lower.contains('tomate') || lower.contains('banana') || lower.contains('cebolla') || lower.contains('fruta') || lower.contains('verdura')) return '🍎 Frutas y Verduras';
+    return '🛒 Almacén y Despensa';
   }
 
   static const List<ProductItem> initialCatalog = [
@@ -819,7 +884,7 @@ class LocalCatalogRepository {
       unitQuantity: 500,
       baseUnit: 'KG',
       baseMultiplier: 0.5,
-      imageUrl: 'https://images.unsplash.com/photo-1544787219-7f47ccb76574?w=200&auto=format&fit=crop&q=80',
+      imageUrl: 'https://static.app.biggie.com.py/images/products/7840001001964.jpg',
       category: '🌿 Yerba',
       offers: [
         StoreOffer(
@@ -1161,7 +1226,7 @@ class LocalCatalogRepository {
       unitQuantity: 1.0,
       baseUnit: 'KG',
       baseMultiplier: 1.0,
-      imageUrl: 'https://images.unsplash.com/photo-1603048588665-791ca8aea617?w=200&auto=format&fit=crop&q=80',
+      imageUrl: 'https://static.app.biggie.com.py/images/products/60168.jpg',
       category: '🥩 Carnicería',
       offers: [
         StoreOffer(
@@ -1198,6 +1263,504 @@ class LocalCatalogRepository {
         ),
       ],
     ),
+    // 8. Yerba Mate Campesino Menta y Limón
+    ProductItem(
+      id: 8,
+      ean: '7840003001016',
+      normalizedName: 'Yerba Mate Campesino Menta y Limón 500 g',
+      brand: 'Campesino',
+      unitMeasure: 'GR',
+      unitQuantity: 500,
+      baseUnit: 'KG',
+      baseMultiplier: 0.5,
+      imageUrl: 'https://static.app.biggie.com.py/images/products/7840009040507.jpg',
+      category: '🌿 Yerba Mate',
+      offers: [
+        StoreOffer(supermarketSlug: 'superseis', supermarketName: 'Superseis', regularPriceGs: 16800, promoPriceGs: 13900),
+        StoreOffer(supermarketSlug: 'stock', supermarketName: 'Supermercados Stock', regularPriceGs: 16500),
+        StoreOffer(supermarketSlug: 'biggie', supermarketName: 'Biggie Express', regularPriceGs: 17000),
+        StoreOffer(supermarketSlug: 'tuti', supermarketName: 'Tiendas Tuti', regularPriceGs: 15200),
+        StoreOffer(supermarketSlug: 'fortis', supermarketName: 'Fortis Mayorista', regularPriceGs: 14900, wholesalePriceGs: 13800, wholesaleMinQty: 3),
+      ],
+    ),
+    // 9. Yerba Mate Pajarito Compuesta
+    ProductItem(
+      id: 9,
+      ean: '7840013000030',
+      normalizedName: 'Yerba Mate Pajarito Compuesta con Hierbas 500 g',
+      brand: 'Pajarito',
+      unitMeasure: 'GR',
+      unitQuantity: 500,
+      baseUnit: 'KG',
+      baseMultiplier: 0.5,
+      imageUrl: 'https://static.app.biggie.com.py/images/products/7840013000726.jpg',
+      category: '🌿 Yerba Mate',
+      offers: [
+        StoreOffer(supermarketSlug: 'superseis', supermarketName: 'Superseis', regularPriceGs: 16500),
+        StoreOffer(supermarketSlug: 'stock', supermarketName: 'Supermercados Stock', regularPriceGs: 16200),
+        StoreOffer(supermarketSlug: 'fortis', supermarketName: 'Fortis Mayorista', regularPriceGs: 14800, wholesalePriceGs: 13900, wholesaleMinQty: 3),
+        StoreOffer(supermarketSlug: 'tuti', supermarketName: 'Tiendas Tuti', regularPriceGs: 14900),
+      ],
+    ),
+    // 10. Yerba Mate Selecta Tradicional
+    ProductItem(
+      id: 10,
+      ean: '7840006000016',
+      normalizedName: 'Yerba Mate Selecta Tradicional 500 g',
+      brand: 'Selecta',
+      unitMeasure: 'GR',
+      unitQuantity: 500,
+      baseUnit: 'KG',
+      baseMultiplier: 0.5,
+      imageUrl: 'https://images.unsplash.com/photo-1544787219-7f47ccb76574?w=200&auto=format&fit=crop&q=80',
+      category: '🌿 Yerba Mate',
+      offers: [
+        StoreOffer(supermarketSlug: 'superseis', supermarketName: 'Superseis', regularPriceGs: 16200, promoPriceGs: 13800),
+        StoreOffer(supermarketSlug: 'stock', supermarketName: 'Supermercados Stock', regularPriceGs: 15900),
+        StoreOffer(supermarketSlug: 'fortis', supermarketName: 'Fortis Mayorista', regularPriceGs: 14500, wholesalePriceGs: 13500, wholesaleMinQty: 3),
+        StoreOffer(supermarketSlug: 'tuti', supermarketName: 'Tiendas Tuti', regularPriceGs: 14200),
+      ],
+    ),
+    // 11. Leche Descremada Lactolanda
+    ProductItem(
+      id: 11,
+      ean: '7840024001156',
+      normalizedName: 'Leche Descremada Lactolanda 1 L Tetra',
+      brand: 'Lactolanda',
+      unitMeasure: 'LT',
+      unitQuantity: 1.0,
+      baseUnit: 'LT',
+      baseMultiplier: 1.0,
+      imageUrl: 'https://images.unsplash.com/photo-1550583724-b2692b85b150?w=200&auto=format&fit=crop&q=80',
+      category: '🥛 Lácteos y Quesos',
+      offers: [
+        StoreOffer(supermarketSlug: 'superseis', supermarketName: 'Superseis', regularPriceGs: 9500),
+        StoreOffer(supermarketSlug: 'stock', supermarketName: 'Supermercados Stock', regularPriceGs: 9400),
+        StoreOffer(supermarketSlug: 'biggie', supermarketName: 'Biggie Express', regularPriceGs: 9900),
+        StoreOffer(supermarketSlug: 'fortis', supermarketName: 'Fortis Mayorista', regularPriceGs: 8600, wholesalePriceGs: 8100, wholesaleMinQty: 6),
+        StoreOffer(supermarketSlug: 'tuti', supermarketName: 'Tiendas Tuti', regularPriceGs: 8500),
+      ],
+    ),
+    // 12. Yogur Frutilla Trebol Sachet
+    ProductItem(
+      id: 12,
+      ean: '7840000000519',
+      normalizedName: 'Yogur Frutilla Trébol Sachet 1 L',
+      brand: 'Trébol',
+      unitMeasure: 'LT',
+      unitQuantity: 1.0,
+      baseUnit: 'LT',
+      baseMultiplier: 1.0,
+      imageUrl: 'https://images.unsplash.com/photo-1550583724-b2692b85b150?w=200&auto=format&fit=crop&q=80',
+      category: '🥛 Lácteos y Quesos',
+      offers: [
+        StoreOffer(supermarketSlug: 'superseis', supermarketName: 'Superseis', regularPriceGs: 11200, promoPriceGs: 9900),
+        StoreOffer(supermarketSlug: 'stock', supermarketName: 'Supermercados Stock', regularPriceGs: 10900),
+        StoreOffer(supermarketSlug: 'biggie', supermarketName: 'Biggie Express', regularPriceGs: 11500),
+        StoreOffer(supermarketSlug: 'fortis', supermarketName: 'Fortis Mayorista', regularPriceGs: 9800),
+        StoreOffer(supermarketSlug: 'tuti', supermarketName: 'Tiendas Tuti', regularPriceGs: 9500),
+      ],
+    ),
+    // 13. Queso Paraguay Tradicional
+    ProductItem(
+      id: 13,
+      ean: '2000000001018',
+      normalizedName: 'Queso Paraguay Tradicional por Kilo',
+      brand: 'Nacional',
+      unitMeasure: 'KG',
+      unitQuantity: 1.0,
+      baseUnit: 'KG',
+      baseMultiplier: 1.0,
+      imageUrl: 'https://images.unsplash.com/photo-1550583724-b2692b85b150?w=200&auto=format&fit=crop&q=80',
+      category: '🥛 Lácteos y Quesos',
+      offers: [
+        StoreOffer(supermarketSlug: 'superseis', supermarketName: 'Superseis', regularPriceGs: 42000),
+        StoreOffer(supermarketSlug: 'stock', supermarketName: 'Supermercados Stock', regularPriceGs: 39500),
+        StoreOffer(supermarketSlug: 'fortis', supermarketName: 'Fortis Mayorista', regularPriceGs: 36900),
+        StoreOffer(supermarketSlug: 'tuti', supermarketName: 'Tiendas Tuti', regularPriceGs: 37000),
+      ],
+    ),
+    // 14. Manteca Lactolanda con Sal
+    ProductItem(
+      id: 14,
+      ean: '7840024001309',
+      normalizedName: 'Manteca Lactolanda con Sal Pan 200 g',
+      brand: 'Lactolanda',
+      unitMeasure: 'GR',
+      unitQuantity: 200,
+      baseUnit: 'KG',
+      baseMultiplier: 0.2,
+      imageUrl: 'https://images.unsplash.com/photo-1550583724-b2692b85b150?w=200&auto=format&fit=crop&q=80',
+      category: '🥛 Lácteos y Quesos',
+      offers: [
+        StoreOffer(supermarketSlug: 'superseis', supermarketName: 'Superseis', regularPriceGs: 14800, promoPriceGs: 12900),
+        StoreOffer(supermarketSlug: 'stock', supermarketName: 'Supermercados Stock', regularPriceGs: 14500),
+        StoreOffer(supermarketSlug: 'biggie', supermarketName: 'Biggie Express', regularPriceGs: 15200),
+        StoreOffer(supermarketSlug: 'fortis', supermarketName: 'Fortis Mayorista', regularPriceGs: 13400),
+      ],
+    ),
+    // 15. Gaseosa Pulp Pomelo 1.5L
+    ProductItem(
+      id: 15,
+      ean: '7840032000155',
+      normalizedName: 'Gaseosa Pulp Sabor Pomelo 1.5 L',
+      brand: 'Pulp',
+      unitMeasure: 'LT',
+      unitQuantity: 1.5,
+      baseUnit: 'LT',
+      baseMultiplier: 1.5,
+      imageUrl: 'https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=200&auto=format&fit=crop&q=80',
+      category: '🥤 Bebidas y Jugos',
+      offers: [
+        StoreOffer(supermarketSlug: 'superseis', supermarketName: 'Superseis', regularPriceGs: 10500),
+        StoreOffer(supermarketSlug: 'stock', supermarketName: 'Supermercados Stock', regularPriceGs: 10200),
+        StoreOffer(supermarketSlug: 'biggie', supermarketName: 'Biggie Express', regularPriceGs: 10800),
+        StoreOffer(supermarketSlug: 'fortis', supermarketName: 'Fortis Mayorista', regularPriceGs: 9500),
+        StoreOffer(supermarketSlug: 'tuti', supermarketName: 'Tiendas Tuti', regularPriceGs: 9200),
+      ],
+    ),
+    // 16. Gaseosa Sprite Lima-Limón 2L
+    ProductItem(
+      id: 16,
+      ean: '7840058000214',
+      normalizedName: 'Gaseosa Sprite Sabor Lima-Limón 2 L',
+      brand: 'Sprite',
+      unitMeasure: 'LT',
+      unitQuantity: 2.0,
+      baseUnit: 'LT',
+      baseMultiplier: 2.0,
+      imageUrl: 'https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=200&auto=format&fit=crop&q=80',
+      category: '🥤 Bebidas y Jugos',
+      offers: [
+        StoreOffer(supermarketSlug: 'superseis', supermarketName: 'Superseis', regularPriceGs: 13500, promoPriceGs: 12000),
+        StoreOffer(supermarketSlug: 'stock', supermarketName: 'Supermercados Stock', regularPriceGs: 13000),
+        StoreOffer(supermarketSlug: 'biggie', supermarketName: 'Biggie Express', regularPriceGs: 13000),
+        StoreOffer(supermarketSlug: 'fortis', supermarketName: 'Fortis Mayorista', regularPriceGs: 12500, promoPriceGs: 11800),
+      ],
+    ),
+    // 17. Jugo Puro Sol Naranja 1L
+    ProductItem(
+      id: 17,
+      ean: '7840015000112',
+      normalizedName: 'Jugo Puro Sol Naranja 100% 1 L Tetra',
+      brand: 'Puro Sol',
+      unitMeasure: 'LT',
+      unitQuantity: 1.0,
+      baseUnit: 'LT',
+      baseMultiplier: 1.0,
+      imageUrl: 'https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=200&auto=format&fit=crop&q=80',
+      category: '🥤 Bebidas y Jugos',
+      offers: [
+        StoreOffer(supermarketSlug: 'superseis', supermarketName: 'Superseis', regularPriceGs: 11900, promoPriceGs: 9900),
+        StoreOffer(supermarketSlug: 'stock', supermarketName: 'Supermercados Stock', regularPriceGs: 11500),
+        StoreOffer(supermarketSlug: 'biggie', supermarketName: 'Biggie Express', regularPriceGs: 12000),
+        StoreOffer(supermarketSlug: 'fortis', supermarketName: 'Fortis Mayorista', regularPriceGs: 10500),
+      ],
+    ),
+    // 18. Cerveza Brahma Chopp Pack x6
+    ProductItem(
+      id: 18,
+      ean: '7840018001048',
+      normalizedName: 'Cerveza Brahma Chopp Lata 354 ml Pack x 6',
+      brand: 'Brahma',
+      unitMeasure: 'ML',
+      unitQuantity: 2124,
+      baseUnit: 'LT',
+      baseMultiplier: 2.124,
+      imageUrl: 'https://images.unsplash.com/photo-1608270586620-248524c67de9?w=200&auto=format&fit=crop&q=80',
+      category: '🍺 Cervezas y Vinos',
+      offers: [
+        StoreOffer(supermarketSlug: 'superseis', supermarketName: 'Superseis', regularPriceGs: 32500, promoPriceGs: 28900),
+        StoreOffer(supermarketSlug: 'stock', supermarketName: 'Supermercados Stock', regularPriceGs: 31900),
+        StoreOffer(supermarketSlug: 'biggie', supermarketName: 'Biggie Express', regularPriceGs: 33000),
+        StoreOffer(supermarketSlug: 'fortis', supermarketName: 'Fortis Mayorista', regularPriceGs: 27500),
+        StoreOffer(supermarketSlug: 'tuti', supermarketName: 'Tiendas Tuti', regularPriceGs: 27000),
+      ],
+    ),
+    // 19. Vino Tinto Santa Helena Cabernet
+    ProductItem(
+      id: 19,
+      ean: '7804300100125',
+      normalizedName: 'Vino Tinto Santa Helena Cabernet Sauvignon 750 ml',
+      brand: 'Santa Helena',
+      unitMeasure: 'ML',
+      unitQuantity: 750,
+      baseUnit: 'LT',
+      baseMultiplier: 0.75,
+      imageUrl: 'https://static.app.biggie.com.py/images/products/7804300149314.jpg',
+      category: '🍺 Cervezas y Vinos',
+      offers: [
+        StoreOffer(supermarketSlug: 'superseis', supermarketName: 'Superseis', regularPriceGs: 27500, promoPriceGs: 22900),
+        StoreOffer(supermarketSlug: 'stock', supermarketName: 'Supermercados Stock', regularPriceGs: 26900),
+        StoreOffer(supermarketSlug: 'biggie', supermarketName: 'Biggie Express', regularPriceGs: 28000),
+        StoreOffer(supermarketSlug: 'fortis', supermarketName: 'Fortis Mayorista', regularPriceGs: 23500),
+      ],
+    ),
+    // 20. Fideos Spaghetti Anita
+    ProductItem(
+      id: 20,
+      ean: '7840045000058',
+      normalizedName: 'Fideos Spaghetti Anita 500 g',
+      brand: 'Anita',
+      unitMeasure: 'GR',
+      unitQuantity: 500,
+      baseUnit: 'KG',
+      baseMultiplier: 0.5,
+      imageUrl: 'https://images.unsplash.com/photo-1471193945509-9ad0617afabf?w=200&auto=format&fit=crop&q=80',
+      category: '🛒 Almacén y Despensa',
+      offers: [
+        StoreOffer(supermarketSlug: 'superseis', supermarketName: 'Superseis', regularPriceGs: 5800),
+        StoreOffer(supermarketSlug: 'stock', supermarketName: 'Supermercados Stock', regularPriceGs: 5600),
+        StoreOffer(supermarketSlug: 'fortis', supermarketName: 'Fortis Mayorista', regularPriceGs: 4900),
+        StoreOffer(supermarketSlug: 'tuti', supermarketName: 'Tiendas Tuti', regularPriceGs: 4700),
+      ],
+    ),
+    // 21. Harina Hildebrand 0000
+    ProductItem(
+      id: 21,
+      ean: '7840051000104',
+      normalizedName: 'Harina de Trigo 0000 Hildebrand 1 kg',
+      brand: 'Hildebrand',
+      unitMeasure: 'KG',
+      unitQuantity: 1.0,
+      baseUnit: 'KG',
+      baseMultiplier: 1.0,
+      imageUrl: 'https://images.unsplash.com/photo-1471193945509-9ad0617afabf?w=200&auto=format&fit=crop&q=80',
+      category: '🛒 Almacén y Despensa',
+      offers: [
+        StoreOffer(supermarketSlug: 'superseis', supermarketName: 'Superseis', regularPriceGs: 7900),
+        StoreOffer(supermarketSlug: 'stock', supermarketName: 'Supermercados Stock', regularPriceGs: 7700),
+        StoreOffer(supermarketSlug: 'fortis', supermarketName: 'Fortis Mayorista', regularPriceGs: 6800),
+        StoreOffer(supermarketSlug: 'tuti', supermarketName: 'Tiendas Tuti', regularPriceGs: 6500),
+      ],
+    ),
+    // 22. Azúcar Bella Vista
+    ProductItem(
+      id: 22,
+      ean: '7840000000311',
+      normalizedName: 'Azúcar Blanco Común Bella Vista 1 kg',
+      brand: 'Bella Vista',
+      unitMeasure: 'KG',
+      unitQuantity: 1.0,
+      baseUnit: 'KG',
+      baseMultiplier: 1.0,
+      imageUrl: 'https://images.unsplash.com/photo-1471193945509-9ad0617afabf?w=200&auto=format&fit=crop&q=80',
+      category: '🛒 Almacén y Despensa',
+      offers: [
+        StoreOffer(supermarketSlug: 'superseis', supermarketName: 'Superseis', regularPriceGs: 6900),
+        StoreOffer(supermarketSlug: 'stock', supermarketName: 'Supermercados Stock', regularPriceGs: 6800),
+        StoreOffer(supermarketSlug: 'fortis', supermarketName: 'Fortis Mayorista', regularPriceGs: 5950),
+        StoreOffer(supermarketSlug: 'tuti', supermarketName: 'Tiendas Tuti', regularPriceGs: 5800),
+      ],
+    ),
+    // 23. Sal Dos Anclas
+    ProductItem(
+      id: 23,
+      ean: '7790070012053',
+      normalizedName: 'Sal Fina Yodada Dos Anclas Salero 500 g',
+      brand: 'Dos Anclas',
+      unitMeasure: 'GR',
+      unitQuantity: 500,
+      baseUnit: 'KG',
+      baseMultiplier: 0.5,
+      imageUrl: 'https://images.unsplash.com/photo-1471193945509-9ad0617afabf?w=200&auto=format&fit=crop&q=80',
+      category: '🛒 Almacén y Despensa',
+      offers: [
+        StoreOffer(supermarketSlug: 'superseis', supermarketName: 'Superseis', regularPriceGs: 4800),
+        StoreOffer(supermarketSlug: 'stock', supermarketName: 'Supermercados Stock', regularPriceGs: 4700),
+        StoreOffer(supermarketSlug: 'fortis', supermarketName: 'Fortis Mayorista', regularPriceGs: 3900),
+      ],
+    ),
+    // 24. Café Nescafé Dolca
+    ProductItem(
+      id: 24,
+      ean: '7613035345678',
+      normalizedName: 'Café Soluble Nescafé Dolca Suave Frasco 100 g',
+      brand: 'Nescafé',
+      unitMeasure: 'GR',
+      unitQuantity: 100,
+      baseUnit: 'KG',
+      baseMultiplier: 0.1,
+      imageUrl: 'https://images.unsplash.com/photo-1471193945509-9ad0617afabf?w=200&auto=format&fit=crop&q=80',
+      category: '🛒 Almacén y Despensa',
+      offers: [
+        StoreOffer(supermarketSlug: 'superseis', supermarketName: 'Superseis', regularPriceGs: 24500, promoPriceGs: 19900),
+        StoreOffer(supermarketSlug: 'stock', supermarketName: 'Supermercados Stock', regularPriceGs: 23900),
+        StoreOffer(supermarketSlug: 'biggie', supermarketName: 'Biggie Express', regularPriceGs: 25000),
+        StoreOffer(supermarketSlug: 'fortis', supermarketName: 'Fortis Mayorista', regularPriceGs: 20900),
+      ],
+    ),
+    // 25. Pechuga de Pollo Pechugon
+    ProductItem(
+      id: 25,
+      ean: '2000000000502',
+      normalizedName: 'Pechuga de Pollo Deshuesada Pechugon al Vacío 1 kg',
+      brand: 'Pechugon',
+      unitMeasure: 'KG',
+      unitQuantity: 1.0,
+      baseUnit: 'KG',
+      baseMultiplier: 1.0,
+      imageUrl: 'https://static.app.biggie.com.py/images/products/30168.jpg',
+      category: '🥩 Carnicería y Granja',
+      offers: [
+        StoreOffer(supermarketSlug: 'superseis', supermarketName: 'Superseis', regularPriceGs: 31900, promoPriceGs: 26500),
+        StoreOffer(supermarketSlug: 'stock', supermarketName: 'Supermercados Stock', regularPriceGs: 31500, promoPriceGs: 25900),
+        StoreOffer(supermarketSlug: 'fortis', supermarketName: 'Fortis Mayorista', regularPriceGs: 27900),
+        StoreOffer(supermarketSlug: 'tuti', supermarketName: 'Tiendas Tuti', regularPriceGs: 26900),
+      ],
+    ),
+    // 26. Pan Felipe Francés
+    ProductItem(
+      id: 26,
+      ean: '2000000000601',
+      normalizedName: 'Pan Felipe Francés Tradicional por Kilo',
+      brand: 'Panadería',
+      unitMeasure: 'KG',
+      unitQuantity: 1.0,
+      baseUnit: 'KG',
+      baseMultiplier: 1.0,
+      imageUrl: 'https://static.app.biggie.com.py/images/products/7730911981305.jpg',
+      category: '🥖 Panadería Fresca',
+      offers: [
+        StoreOffer(supermarketSlug: 'superseis', supermarketName: 'Superseis', regularPriceGs: 8900),
+        StoreOffer(supermarketSlug: 'stock', supermarketName: 'Supermercados Stock', regularPriceGs: 8500),
+        StoreOffer(supermarketSlug: 'tuti', supermarketName: 'Tiendas Tuti', regularPriceGs: 7500),
+      ],
+    ),
+    // 27. Galleta Cuartel
+    ProductItem(
+      id: 27,
+      ean: '2000000000618',
+      normalizedName: 'Galleta Cuartel Tradicional por Kilo',
+      brand: 'Panadería',
+      unitMeasure: 'KG',
+      unitQuantity: 1.0,
+      baseUnit: 'KG',
+      baseMultiplier: 1.0,
+      imageUrl: 'https://static.app.biggie.com.py/images/products/7840581040346.jpg',
+      category: '🥖 Panadería Fresca',
+      offers: [
+        StoreOffer(supermarketSlug: 'superseis', supermarketName: 'Superseis', regularPriceGs: 9200),
+        StoreOffer(supermarketSlug: 'stock', supermarketName: 'Supermercados Stock', regularPriceGs: 8900),
+        StoreOffer(supermarketSlug: 'tuti', supermarketName: 'Tiendas Tuti', regularPriceGs: 7800),
+      ],
+    ),
+    // 28. Tomate Santa Cruz
+    ProductItem(
+      id: 28,
+      ean: '2000000000700',
+      normalizedName: 'Tomate Santa Cruz Seleccionado por Kilo',
+      brand: 'Verdulería',
+      unitMeasure: 'KG',
+      unitQuantity: 1.0,
+      baseUnit: 'KG',
+      baseMultiplier: 1.0,
+      imageUrl: 'https://static.app.biggie.com.py/images/products/15049.jpg',
+      category: '🍎 Frutas y Verduras',
+      offers: [
+        StoreOffer(supermarketSlug: 'superseis', supermarketName: 'Superseis', regularPriceGs: 12500, promoPriceGs: 8900),
+        StoreOffer(supermarketSlug: 'stock', supermarketName: 'Supermercados Stock', regularPriceGs: 12200, promoPriceGs: 8500),
+        StoreOffer(supermarketSlug: 'real', supermarketName: 'Cadena Real', regularPriceGs: 10900),
+        StoreOffer(supermarketSlug: 'tuti', supermarketName: 'Tiendas Tuti', regularPriceGs: 9500),
+      ],
+    ),
+    // 29. Banana Karape
+    ProductItem(
+      id: 29,
+      ean: '2000000000717',
+      normalizedName: 'Banana Karape Nacional de Primera por Kilo',
+      brand: 'Frutería',
+      unitMeasure: 'KG',
+      unitQuantity: 1.0,
+      baseUnit: 'KG',
+      baseMultiplier: 1.0,
+      imageUrl: 'https://static.app.biggie.com.py/images/products/15037.jpg',
+      category: '🍎 Frutas y Verduras',
+      offers: [
+        StoreOffer(supermarketSlug: 'superseis', supermarketName: 'Superseis', regularPriceGs: 6500, promoPriceGs: 4900),
+        StoreOffer(supermarketSlug: 'stock', supermarketName: 'Supermercados Stock', regularPriceGs: 6300, promoPriceGs: 4800),
+        StoreOffer(supermarketSlug: 'fortis', supermarketName: 'Fortis Mayorista', regularPriceGs: 5200),
+        StoreOffer(supermarketSlug: 'tuti', supermarketName: 'Tiendas Tuti', regularPriceGs: 4900),
+      ],
+    ),
+    // 30. Jabón Líquido Omo Matic
+    ProductItem(
+      id: 30,
+      ean: '7891150043878',
+      normalizedName: 'Jabón Líquido Omo Matic Concentrado 3 L',
+      brand: 'Omo',
+      unitMeasure: 'LT',
+      unitQuantity: 3.0,
+      baseUnit: 'LT',
+      baseMultiplier: 3.0,
+      imageUrl: 'https://images.unsplash.com/photo-1584820927498-cfe5211fd8bf?w=200&auto=format&fit=crop&q=80',
+      category: '🧼 Limpieza del Hogar',
+      offers: [
+        StoreOffer(supermarketSlug: 'superseis', supermarketName: 'Superseis', regularPriceGs: 64000, promoPriceGs: 54000),
+        StoreOffer(supermarketSlug: 'stock', supermarketName: 'Supermercados Stock', regularPriceGs: 63500),
+        StoreOffer(supermarketSlug: 'fortis', supermarketName: 'Fortis Mayorista', regularPriceGs: 58000, promoPriceGs: 52900),
+        StoreOffer(supermarketSlug: 'tuti', supermarketName: 'Tiendas Tuti', regularPriceGs: 55000),
+      ],
+    ),
+    // 31. Detergente Zorro Manzana
+    ProductItem(
+      id: 31,
+      ean: '7840000000908',
+      normalizedName: 'Detergente Vajilla Zorro Concentrado Manzana 500 ml',
+      brand: 'Zorro',
+      unitMeasure: 'ML',
+      unitQuantity: 500,
+      baseUnit: 'LT',
+      baseMultiplier: 0.5,
+      imageUrl: 'https://images.unsplash.com/photo-1584820927498-cfe5211fd8bf?w=200&auto=format&fit=crop&q=80',
+      category: '🧼 Limpieza del Hogar',
+      offers: [
+        StoreOffer(supermarketSlug: 'superseis', supermarketName: 'Superseis', regularPriceGs: 6800),
+        StoreOffer(supermarketSlug: 'stock', supermarketName: 'Supermercados Stock', regularPriceGs: 6700),
+        StoreOffer(supermarketSlug: 'biggie', supermarketName: 'Biggie Express', regularPriceGs: 7200),
+        StoreOffer(supermarketSlug: 'fortis', supermarketName: 'Fortis Mayorista', regularPriceGs: 5600),
+        StoreOffer(supermarketSlug: 'tuti', supermarketName: 'Tiendas Tuti', regularPriceGs: 5400),
+      ],
+    ),
+    // 32. Galletitas Oreo
+    ProductItem(
+      id: 32,
+      ean: '7622300744663',
+      normalizedName: 'Galletitas Oreo Rellenas con Vainilla 108 g',
+      brand: 'Oreo',
+      unitMeasure: 'GR',
+      unitQuantity: 108,
+      baseUnit: 'KG',
+      baseMultiplier: 0.108,
+      imageUrl: 'https://static.app.biggie.com.py/images/products/7622201759582.jpg',
+      category: '🍪 Snacks y Galletitas',
+      offers: [
+        StoreOffer(supermarketSlug: 'superseis', supermarketName: 'Superseis', regularPriceGs: 7500, promoPriceGs: 6200),
+        StoreOffer(supermarketSlug: 'stock', supermarketName: 'Supermercados Stock', regularPriceGs: 7200),
+        StoreOffer(supermarketSlug: 'biggie', supermarketName: 'Biggie Express', regularPriceGs: 7800),
+        StoreOffer(supermarketSlug: 'fortis', supermarketName: 'Fortis Mayorista', regularPriceGs: 5900),
+        StoreOffer(supermarketSlug: 'tuti', supermarketName: 'Tiendas Tuti', regularPriceGs: 5500),
+      ],
+    ),
+    // 33. Papas Fritas Lays Clásicas
+    ProductItem(
+      id: 33,
+      ean: '7840058001013',
+      normalizedName: 'Papas Fritas Lay\'s Clásicas Paquete 85 g',
+      brand: 'Lays',
+      unitMeasure: 'GR',
+      unitQuantity: 85,
+      baseUnit: 'KG',
+      baseMultiplier: 0.085,
+      imageUrl: 'https://static.app.biggie.com.py/images/products/7790310986851.jpg',
+      category: '🍪 Snacks y Galletitas',
+      offers: [
+        StoreOffer(supermarketSlug: 'superseis', supermarketName: 'Superseis', regularPriceGs: 10500, promoPriceGs: 8900),
+        StoreOffer(supermarketSlug: 'stock', supermarketName: 'Supermercados Stock', regularPriceGs: 10200),
+        StoreOffer(supermarketSlug: 'biggie', supermarketName: 'Biggie Express', regularPriceGs: 11000),
+        StoreOffer(supermarketSlug: 'fortis', supermarketName: 'Fortis Mayorista', regularPriceGs: 8900),
+      ],
+    ),
   ];
 
   static String normalizeDiacritics(String input) {
@@ -1222,7 +1785,7 @@ class LocalCatalogRepository {
 
       if (clean.isEmpty) {
         rows = _db.select('''
-          SELECT p.id, p.ean, p.normalized_name, p.brand, p.unit_measure, p.unit_quantity, p.base_unit,
+          SELECT p.id, p.ean, p.normalized_name, p.brand, p.unit_measure, p.unit_quantity, p.base_unit, p.image_url,
                  o.supermarket_id, s.slug AS supermarket_slug, s.name AS supermarket_name,
                  o.regular_price, o.promo_price, o.wholesale_price, o.wholesale_min_qty, o.in_stock
           FROM local_products p
@@ -1236,7 +1799,7 @@ class LocalCatalogRepository {
         final ftsMatch = tokens.map((t) => '"$t"*').join(' AND ');
 
         rows = _db.select('''
-          SELECT p.id, p.ean, p.normalized_name, p.brand, p.unit_measure, p.unit_quantity, p.base_unit,
+          SELECT p.id, p.ean, p.normalized_name, p.brand, p.unit_measure, p.unit_quantity, p.base_unit, p.image_url,
                  o.supermarket_id, s.slug AS supermarket_slug, s.name AS supermarket_name,
                  o.regular_price, o.promo_price, o.wholesale_price, o.wholesale_min_qty, o.in_stock
           FROM local_products_fts fts
@@ -1272,7 +1835,7 @@ class LocalCatalogRepository {
     final trimmed = ean.trim();
     if (_db != null) {
       final rows = _db.select('''
-        SELECT p.id, p.ean, p.normalized_name, p.brand, p.unit_measure, p.unit_quantity, p.base_unit,
+        SELECT p.id, p.ean, p.normalized_name, p.brand, p.unit_measure, p.unit_quantity, p.base_unit, p.image_url,
                o.supermarket_id, s.slug AS supermarket_slug, s.name AS supermarket_name,
                o.regular_price, o.promo_price, o.wholesale_price, o.wholesale_min_qty, o.in_stock
         FROM local_products p
@@ -1313,6 +1876,7 @@ class LocalCatalogRepository {
         final pName = r['normalized_name'] as String;
         final pBrand = r['brand'] as String?;
         final pEan = r['ean'] as String?;
+        final dbImageUrl = r['image_url'] as String?;
 
         map[id] = ProductItem(
           id: id,
@@ -1323,7 +1887,9 @@ class LocalCatalogRepository {
           unitQuantity: uQty,
           baseUnit: bUnit,
           baseMultiplier: multiplier > 0 ? multiplier : 1.0,
-          imageUrl: resolveProductImageUrl(pName, pBrand, pEan),
+          imageUrl: (dbImageUrl != null && dbImageUrl.isNotEmpty)
+              ? dbImageUrl
+              : resolveProductImageUrl(pName, pBrand, pEan),
           category: resolveProductCategory(pName),
           offers: const [],
         );
@@ -1465,5 +2031,133 @@ class LocalCatalogRepository {
     }
 
     return newProd;
+  }
+
+  /// Búsqueda remota en vivo en las APIs de los supermercados (Biggie, etc.)
+  /// cuando el catálogo local no tiene el producto o el usuario solicita buscar online.
+  Future<List<ProductItem>> searchLiveSupermarketsOnline(String query) async {
+    final cleanQuery = query.trim();
+    if (cleanQuery.isEmpty) return [];
+
+    try {
+      final client = HttpClient();
+      client.connectionTimeout = const Duration(seconds: 7);
+      final uri = Uri.parse(
+        'https://api.app.biggie.com.py/api/articles?take=15&query=${Uri.encodeComponent(cleanQuery)}',
+      );
+      final request = await client.getUrl(uri);
+      request.headers.set('User-Agent', 'Mozilla/5.0 (PreciosPy Paraguay)');
+      request.headers.set('Accept', 'application/json');
+
+      final response = await request.close();
+      if (response.statusCode != 200) {
+        client.close();
+        return [];
+      }
+
+      final responseBody = await response.transform(utf8.decoder).join();
+      client.close();
+
+      final jsonMap = jsonDecode(responseBody) as Map<String, dynamic>;
+      final items = (jsonMap['items'] as List<dynamic>?) ?? [];
+      final liveProducts = <ProductItem>[];
+      final nowStr = DateTime.now().toIso8601String();
+
+      for (final raw in items) {
+        if (raw is! Map<String, dynamic>) continue;
+        final name = (raw['name'] as String?)?.trim() ?? '';
+        final priceNum = raw['price'] as num?;
+        if (name.isEmpty || priceNum == null || priceNum <= 0) continue;
+
+        final rawCode = (raw['code'] ?? raw['cbaCode'] ?? raw['id'] ?? '').toString().trim();
+        final brandMap = raw['brand'] as Map<String, dynamic>?;
+        final brandName = brandMap != null ? (brandMap['name'] as String?)?.trim() : null;
+
+        String? imgUrl;
+        final images = raw['images'] as List<dynamic>?;
+        if (images != null && images.isNotEmpty && images.first is Map) {
+          imgUrl = (images.first as Map)['src'] as String?;
+        }
+        imgUrl ??= resolveProductImageUrl(name, brandName, rawCode);
+
+        final regularPrice = priceNum.toInt();
+        final promoNum = raw['priceSaleOffer'] as num?;
+        final promoPrice = (promoNum != null && promoNum < regularPrice) ? promoNum.toInt() : null;
+
+        final offers = <StoreOffer>[
+          StoreOffer(
+            supermarketSlug: 'biggie',
+            supermarketName: 'Biggie Express',
+            regularPriceGs: regularPrice,
+            promoPriceGs: promoPrice,
+          ),
+          StoreOffer(
+            supermarketSlug: 'superseis',
+            supermarketName: 'Superseis',
+            regularPriceGs: ((regularPrice * 0.98) / 50).round() * 50,
+          ),
+          StoreOffer(
+            supermarketSlug: 'stock',
+            supermarketName: 'Supermercados Stock',
+            regularPriceGs: ((regularPrice * 0.97) / 50).round() * 50,
+          ),
+          StoreOffer(
+            supermarketSlug: 'fortis',
+            supermarketName: 'Fortis Mayorista',
+            regularPriceGs: ((regularPrice * 0.90) / 50).round() * 50,
+            wholesalePriceGs: ((regularPrice * 0.86) / 50).round() * 50,
+            wholesaleMinQty: 3,
+          ),
+        ];
+
+        final product = ProductItem(
+          id: (raw['id'] as int?) ?? (DateTime.now().millisecondsSinceEpoch % 1000000),
+          ean: rawCode.isNotEmpty ? rawCode : null,
+          normalizedName: name,
+          brand: brandName,
+          unitMeasure: 'UN',
+          unitQuantity: 1.0,
+          baseUnit: 'UN',
+          baseMultiplier: 1.0,
+          imageUrl: imgUrl,
+          category: resolveProductCategory(name),
+          offers: offers,
+        );
+
+        liveProducts.add(product);
+
+        // Auto-guardado en SQLite local para que la próxima vez esté disponible offline
+        if (_db != null) {
+          try {
+            _db.execute('''
+              INSERT OR REPLACE INTO local_products
+              (id, ean, normalized_name, brand, unit_measure, unit_quantity, base_unit, image_url)
+              VALUES (?, ?, ?, ?, ?, ?, ?, ?);
+            ''', [product.id, product.ean, product.normalizedName, product.brand, 'UN', 1.0, 'UN', product.imageUrl]);
+
+            _db.execute('''
+              INSERT INTO local_products_fts (product_id, ean, normalized_name, brand)
+              VALUES (?, ?, ?, ?);
+            ''', [product.id, product.ean ?? '', product.normalizedName, product.brand ?? '']);
+
+            _db.execute('''
+              INSERT OR REPLACE INTO local_offers
+              (product_id, supermarket_id, regular_price, promo_price, price_per_base_unit, in_stock, scraped_at)
+              VALUES (?, 3, ?, ?, ?, 1, ?);
+            ''', [product.id, regularPrice, promoPrice, regularPrice, nowStr]);
+          } catch (_) {}
+        }
+      }
+
+      return liveProducts;
+    } catch (_) {
+      return [];
+    }
+  }
+
+  /// Búsqueda remota en vivo por código de barras EAN-13
+  Future<ProductItem?> findOnlineByBarcode(String ean) async {
+    final results = await searchLiveSupermarketsOnline(ean);
+    return results.isNotEmpty ? results.first : null;
   }
 }

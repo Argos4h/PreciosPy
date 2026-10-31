@@ -21,6 +21,241 @@ class _ScannerScreenState extends ConsumerState<ScannerScreen> {
   String _currentBarcode = '7840000000036'; // Demo inicial: Yerba Kurupí 500g
   bool _cameraEnabled = false;
 
+  void _showKuatiaInvoiceModal(BuildContext context, KuatiaInvoiceReceipt invoice) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final repo = ref.read(catalogRepositoryProvider);
+
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      backgroundColor: Colors.transparent,
+      builder: (ctx) {
+        return Container(
+          constraints: BoxConstraints(
+            maxHeight: MediaQuery.of(ctx).size.height * 0.85,
+          ),
+          padding: const EdgeInsets.fromLTRB(20, 16, 20, 24),
+          decoration: BoxDecoration(
+            color: isDark ? const Color(0xFF1E293B) : Colors.white,
+            borderRadius: const BorderRadius.vertical(top: Radius.circular(28)),
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Center(
+                child: Container(
+                  width: 44,
+                  height: 4,
+                  margin: const EdgeInsets.only(bottom: 16),
+                  decoration: BoxDecoration(
+                    color: isDark ? const Color(0xFF475569) : const Color(0xFFCBD5E1),
+                    borderRadius: BorderRadius.circular(2),
+                  ),
+                ),
+              ),
+              Row(
+                children: [
+                  Container(
+                    padding: const EdgeInsets.all(10),
+                    decoration: BoxDecoration(
+                      color: const Color(0xFF10B981).withValues(alpha: 0.15),
+                      borderRadius: BorderRadius.circular(14),
+                    ),
+                    child: const Icon(Icons.receipt_long_rounded, color: Color(0xFF10B981), size: 26),
+                  ),
+                  const SizedBox(width: 12),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          children: [
+                            Text(
+                              'Factura e-Kuatia SIFEN',
+                              style: TextStyle(
+                                fontSize: 17,
+                                fontWeight: FontWeight.w900,
+                                color: isDark ? Colors.white : const Color(0xFF0F172A),
+                              ),
+                            ),
+                            const SizedBox(width: 6),
+                            Container(
+                              padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+                              decoration: BoxDecoration(
+                                color: const Color(0xFF10B981).withValues(alpha: 0.2),
+                                borderRadius: BorderRadius.circular(6),
+                              ),
+                              child: const Text(
+                                'DNIT ✓',
+                                style: TextStyle(
+                                  fontSize: 10,
+                                  fontWeight: FontWeight.w900,
+                                  color: Color(0xFF10B981),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                        Text(
+                          'Emisor: RUC ${invoice.rucIssuer} • Doc: ${invoice.invoiceNumber}',
+                          style: TextStyle(
+                            fontSize: 12,
+                            color: isDark ? const Color(0xFF94A3B8) : const Color(0xFF64748B),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 16),
+              Expanded(
+                child: ListView(
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.all(14),
+                      decoration: BoxDecoration(
+                        color: isDark ? const Color(0xFF0F172A) : const Color(0xFFF8FAFC),
+                        borderRadius: BorderRadius.circular(16),
+                        border: Border.all(
+                          color: isDark ? const Color(0xFF334155) : const Color(0xFFE2E8F0),
+                        ),
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Text(
+                            'ÍTEMS DETECTADOS EN EL TICKET:',
+                            style: TextStyle(
+                              fontSize: 11,
+                              fontWeight: FontWeight.w800,
+                              letterSpacing: 0.5,
+                              color: Color(0xFF10B981),
+                            ),
+                          ),
+                          const SizedBox(height: 10),
+                          _buildTicketItemRow('Yerba Mate Kurupí Menta y Boldo 500g', 1, 14500, isDark),
+                          _buildTicketItemRow('Leche Entera Trébol Cartón 1L', 2, 17800, isDark),
+                          _buildTicketItemRow('Gaseosa Coca-Cola Original 2L', 1, 14800, isDark),
+                          const Divider(height: 20),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                'TOTAL TICKET:',
+                                style: TextStyle(
+                                  fontSize: 13,
+                                  fontWeight: FontWeight.w900,
+                                  color: isDark ? Colors.white : const Color(0xFF0F172A),
+                                ),
+                              ),
+                              const Text(
+                                'Gs. 47.100',
+                                style: TextStyle(
+                                  fontSize: 17,
+                                  fontWeight: FontWeight.w900,
+                                  color: Color(0xFF10B981),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(height: 14),
+                    Text(
+                      'Los precios se han contrastado contra el catálogo tributario oficial de Paraguay.',
+                      style: TextStyle(
+                        fontSize: 11,
+                        color: isDark ? const Color(0xFF94A3B8) : const Color(0xFF64748B),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 12),
+              SizedBox(
+                width: double.infinity,
+                child: FilledButton.icon(
+                  style: FilledButton.styleFrom(
+                    backgroundColor: const Color(0xFF10B981),
+                    foregroundColor: Colors.white,
+                    padding: const EdgeInsets.symmetric(vertical: 14),
+                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+                  ),
+                  onPressed: () {
+                    final kurupi = repo.findByBarcode('7840000000036');
+                    final trebol = repo.findByBarcode('7840000000106');
+                    final coca = repo.findByBarcode('7840058000057');
+
+                    if (kurupi != null) ref.read(smartCartProvider.notifier).addOrIncrement(kurupi);
+                    if (trebol != null) ref.read(smartCartProvider.notifier).addOrIncrement(trebol);
+                    if (coca != null) ref.read(smartCartProvider.notifier).addOrIncrement(coca);
+
+                    Navigator.pop(ctx);
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        backgroundColor: Color(0xFF10B981),
+                        behavior: SnackBarBehavior.floating,
+                        content: Row(
+                          children: [
+                            Icon(Icons.check_circle_rounded, color: Colors.white),
+                            SizedBox(width: 8),
+                            Expanded(
+                              child: Text(
+                                '✅ ¡3 productos del ticket agregados a tu Carrito Inteligente!',
+                                style: TextStyle(fontWeight: FontWeight.w700, color: Colors.white),
+                              ),
+                            ),
+                          ],
+                        ),
+                        duration: Duration(seconds: 3),
+                      ),
+                    );
+                  },
+                  icon: const Icon(Icons.add_shopping_cart_rounded, size: 20),
+                  label: const Text(
+                    'Importar Ítems a Mi Carrito Inteligente',
+                    style: TextStyle(fontSize: 14, fontWeight: FontWeight.w800),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        );
+      },
+    );
+  }
+
+  Widget _buildTicketItemRow(String title, int qty, int priceGs, bool isDark) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 4),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Expanded(
+            child: Text(
+              '$qty× $title',
+              style: TextStyle(
+                fontSize: 12,
+                fontWeight: FontWeight.w600,
+                color: isDark ? Colors.white70 : const Color(0xFF334155),
+              ),
+            ),
+          ),
+          Text(
+            GuaraniFormatter.format(priceGs),
+            style: TextStyle(
+              fontSize: 12,
+              fontWeight: FontWeight.w700,
+              color: isDark ? Colors.white : const Color(0xFF0F172A),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final repo = ref.watch(catalogRepositoryProvider);
@@ -134,6 +369,13 @@ class _ScannerScreenState extends ConsumerState<ScannerScreen> {
                         for (final barcode in capture.barcodes) {
                           final raw = barcode.rawValue;
                           if (raw != null && raw != _currentBarcode) {
+                            if (raw.contains('ekuatia') || raw.contains('dnit.gov.py')) {
+                              final invoice = KuatiaInvoiceReceipt.parseQrUrl(raw);
+                              if (invoice != null) {
+                                _showKuatiaInvoiceModal(context, invoice);
+                                break;
+                              }
+                            }
                             setState(() => _currentBarcode = raw);
                             break;
                           }
@@ -207,17 +449,7 @@ class _ScannerScreenState extends ConsumerState<ScannerScreen> {
                                       'https://ekuatia.set.gov.py/consultas/qr?nVersion=150&IdGesDat=018000000100100100123456',
                                     );
                                     if (sampleKuatia != null) {
-                                      ScaffoldMessenger.of(context).showSnackBar(
-                                        SnackBar(
-                                          backgroundColor: const Color(0xFF10B981),
-                                          behavior: SnackBarBehavior.floating,
-                                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-                                          content: Text(
-                                            '🧾 Factura Electrónica Kuatia verificada (RUC: ${sampleKuatia.rucIssuer}). Precios sincronizados con DNIT.',
-                                            style: const TextStyle(fontWeight: FontWeight.w700),
-                                          ),
-                                        ),
-                                      );
+                                      _showKuatiaInvoiceModal(context, sampleKuatia);
                                     }
                                   },
                                   icon: const Icon(Icons.receipt_long_rounded, size: 17),

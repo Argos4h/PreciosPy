@@ -1,0 +1,50 @@
+[
+  {
+    "name": "Yerba Kurupi Menta y Boldo Caja de 500 gr.",
+    "price": 13400,
+    "image": "https://static.app.biggie.com.py/images/products/7840127000124.jpg",
+    "family": "Yerba"
+  },
+  {
+    "name": "Leche Lactolanda Entera Ultra Sachet de 1.000 ml.",
+    "price": 6250,
+    "image": "https://static.app.biggie.com.py/images/products/7840042000216.jpg",
+    "family": "Leche"
+  },
+  {
+    "name": "Gaseosa Coca Cola Original de 2.000 ml.",
+    "price": 14900,
+    "image": "https://static.app.biggie.com.py/images/products/7840058008084.jpg",
+    "family": "Gaseosa Diet"
+  },
+  {
+    "name": "Cerveza Michelob Ultra de 269 ml x12 unidades",
+    "price": 48000,
+    "image": "https://static.app.biggie.com.py/images/products/7840050009881.png",
+    "family": "Cerveza"
+  },
+  {
+    "name": "Costilla de Primera Biggie Envasado al Vacio x Kg",
+    "price": 42950,
+    "image": "https://static.app.biggie.com.py/images/products/60168.jpg",
+    "family": "Carne Envasada Biggie"
+  },
+  {
+    "name": "Galletita Oreo Original de 118 gr.",
+    "price": 7400,
+    "image": "https://static.app.biggie.com.py/images/products/7622201759582.jpg",
+    "family": "Galletitas Dulces"
+  },
+  {
+    "name": "Cafe Tradicion Nescafe Instantaneo De 160 gr",
+    "price": 39900,
+    "image": "https://static.app.biggie.com.py/images/products/7891000414903.jpg",
+    "family": "Cafe"
+  },
+  {
+    "name": "Papas Fritas Pringles Original de 104 gr.",
+    "price": 21800,
+    "image": "https://static.app.biggie.com.py/images/products/7896004006277.jpg",
+    "family": "Papas Fritas"
+  }
+]

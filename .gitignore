@@ -50,3 +50,10 @@ xcuserdata/
 .DS_Store
 Thumbs.db
 
+
+
+# Android build cache
+.kotlin/
+.gradle/
+*.apk
+*.aab

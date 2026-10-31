@@ -1,0 +1,322 @@
+[
+  {
+    "id": 1,
+    "ean": "7840000000036",
+    "name": "Yerba Mate Kurupí Compuesta Menta y Boldo 500 g",
+    "brand": "Kurupí",
+    "image": "https://static.app.biggie.com.py/images/products/7840127000124.jpg",
+    "price": 17200
+  },
+  {
+    "id": 2,
+    "ean": "7840003001016",
+    "name": "Yerba Mate Campesino Menta y Limón 500 g",
+    "brand": "Campesino",
+    "image": "https://static.app.biggie.com.py/images/products/7840005012379.jpg",
+    "price": 16800
+  },
+  {
+    "id": 3,
+    "ean": "7840013000030",
+    "name": "Yerba Mate Pajarito Compuesta con Hierbas 500 g",
+    "brand": "Pajarito",
+    "image": "https://static.app.biggie.com.py/images/products/7840058008084.jpg",
+    "price": 16500
+  },
+  {
+    "id": 4,
+    "ean": "7840000000106",
+    "name": "Leche Entera Trébol UAT Cartón 1 L",
+    "brand": "Trébol",
+    "image": "https://static.app.biggie.com.py/images/products/7840050007696.jpg",
+    "price": 9800
+  },
+  {
+    "id": 5,
+    "ean": "7840024001156",
+    "name": "Leche Descremada Lactolanda 1 L Tetra",
+    "brand": "Lactolanda",
+    "image": "https://static.app.biggie.com.py/images/products/7840833000104.jpg",
+    "price": 9500
+  },
+  {
+    "id": 6,
+    "ean": "7840000000519",
+    "name": "Yogur Frutilla Trébol Sachet 1 L",
+    "brand": "Trébol",
+    "image": "https://static.app.biggie.com.py/images/products/7840045034102.jpg",
+    "price": 11200
+  },
+  {
+    "id": 7,
+    "ean": "2000000001018",
+    "name": "Queso Paraguay Tradicional por Kilo",
+    "brand": "Nacional",
+    "image": "https://static.app.biggie.com.py/images/products/60168.jpg",
+    "price": 42000
+  },
+  {
+    "id": 8,
+    "ean": "7840058000122",
+    "name": "Gaseosa Coca-Cola Sabor Original 2 L",
+    "brand": "Coca-Cola",
+    "image": "https://static.app.biggie.com.py/images/products/7840009040507.jpg",
+    "price": 13500
+  },
+  {
+    "id": 9,
+    "ean": "7840032000155",
+    "name": "Gaseosa Pulp Sabor Pomelo 1.5 L",
+    "brand": "Pulp",
+    "image": "https://static.app.biggie.com.py/images/products/7840013000726.jpg",
+    "price": 10500
+  },
+  {
+    "id": 10,
+    "ean": "7840000000205",
+    "name": "Cerveza Pilsen 940 ml Retornable",
+    "brand": "Pilsen",
+    "image": "https://static.app.biggie.com.py/images/products/7840078001485-32620106.jpg",
+    "price": 11000
+  },
+  {
+    "id": 11,
+    "ean": "7840018001048",
+    "name": "Cerveza Brahma Chopp Lata 354 ml Pack x 6",
+    "brand": "Brahma",
+    "image": "https://static.app.biggie.com.py/images/products/7840042000124.jpg",
+    "price": 32500
+  },
+  {
+    "id": 12,
+    "ean": "7840000000212",
+    "name": "Aceite de Girasol Siglo de Oro 900 ml",
+    "brand": "Siglo de Oro",
+    "image": "https://static.app.biggie.com.py/images/products/7840005013550.jpg",
+    "price": 14500
+  },
+  {
+    "id": 13,
+    "ean": "7840000000304",
+    "name": "Arroz Blanco Tipo 1 Tío Nico 1 kg",
+    "brand": "Tío Nico",
+    "image": "https://static.app.biggie.com.py/images/products/19999.jpg",
+    "price": 8500
+  },
+  {
+    "id": 14,
+    "ean": "7840045000058",
+    "name": "Fideos Spaghetti Anita 500 g",
+    "brand": "Anita",
+    "image": "https://static.app.biggie.com.py/images/products/7840042001503.jpg",
+    "price": 5800
+  },
+  {
+    "id": 15,
+    "ean": "7840051000104",
+    "name": "Harina de Trigo 0000 Hildebrand 1 kg",
+    "brand": "Hildebrand",
+    "image": "https://static.app.biggie.com.py/images/products/7840779002057.jpg",
+    "price": 7900
+  },
+  {
+    "id": 16,
+    "ean": "2000000000403",
+    "name": "Costilla de Primera para Asado al Vacío 1 kg",
+    "brand": "Chortitzer",
+    "image": "https://static.app.biggie.com.py/images/products/7840058000088.jpg",
+    "price": 42500
+  },
+  {
+    "id": 17,
+    "ean": "2000000000601",
+    "name": "Pan Felipe Francés Tradicional por Kilo",
+    "brand": "Panadería",
+    "image": "https://static.app.biggie.com.py/images/products/7840779008363-28227085.jpg",
+    "price": 8900
+  },
+  {
+    "id": 18,
+    "ean": "7891150043878",
+    "name": "Jabón Líquido Omo Matic Concentrado 3 L",
+    "brand": "Omo",
+    "image": "https://static.app.biggie.com.py/images/products/7840050008655.jpg",
+    "price": 64000
+  },
+  {
+    "id": 19,
+    "ean": "7622300744663",
+    "name": "Galletitas Oreo Rellenas con Vainilla 108 g",
+    "brand": "Oreo",
+    "image": "https://static.app.biggie.com.py/images/products/7804300149314.jpg",
+    "price": 7500
+  },
+  {
+    "id": 20,
+    "ean": "7840006000016",
+    "name": "Yerba Mate Selecta Tradicional 500 g",
+    "brand": "Selecta",
+    "image": "https://static.app.biggie.com.py/images/products/7840029101608.jpg",
+    "price": 16200
+  },
+  {
+    "id": 21,
+    "ean": "7840024001309",
+    "name": "Manteca Lactolanda con Sal Pan 200 g",
+    "brand": "Lactolanda",
+    "image": "https://static.app.biggie.com.py/images/products/7840821000031.jpg",
+    "price": 14800
+  },
+  {
+    "id": 22,
+    "ean": "7840058000214",
+    "name": "Gaseosa Sprite Sabor Lima-Limón 2 L",
+    "brand": "Sprite",
+    "image": "https://static.app.biggie.com.py/images/products/7840121416006.jpg",
+    "price": 13500
+  },
+  {
+    "id": 23,
+    "ean": "7840015000112",
+    "name": "Jugo Puro Sol Naranja 100% 1 L Tetra",
+    "brand": "Puro Sol",
+    "image": "https://static.app.biggie.com.py/images/products/77900661.jpg",
+    "price": 11900
+  },
+  {
+    "id": 24,
+    "ean": "7804300100125",
+    "name": "Vino Tinto Santa Helena Cabernet Sauvignon 750 ml",
+    "brand": "Santa Helena",
+    "image": "https://static.app.biggie.com.py/images/products/088169004978.jpg",
+    "price": 27500
+  },
+  {
+    "id": 25,
+    "ean": "7840000000311",
+    "name": "Azúcar Blanco Común Bella Vista 1 kg",
+    "brand": "Bella Vista",
+    "image": "https://static.app.biggie.com.py/images/products/30168.jpg",
+    "price": 6900
+  },
+  {
+    "id": 26,
+    "ean": "7790070012053",
+    "name": "Sal Fina Yodada Dos Anclas Salero 500 g",
+    "brand": "Dos Anclas",
+    "image": "https://static.app.biggie.com.py/images/products/7730911981305.jpg",
+    "price": 4800
+  },
+  {
+    "id": 27,
+    "ean": "7613035345678",
+    "name": "Café Soluble Nescafé Dolca Suave Frasco 100 g",
+    "brand": "Nescafé",
+    "image": "https://static.app.biggie.com.py/images/products/7840581040346.jpg",
+    "price": 24500
+  },
+  {
+    "id": 28,
+    "ean": "2000000000502",
+    "name": "Pechuga de Pollo Deshuesada Pechugon al Vacío 1 kg",
+    "brand": "Pechugon",
+    "image": "https://static.app.biggie.com.py/images/products/15049.jpg",
+    "price": 31900
+  },
+  {
+    "id": 29,
+    "ean": "2000000000618",
+    "name": "Galleta Cuartel Tradicional por Kilo",
+    "brand": "Panadería",
+    "image": "https://static.app.biggie.com.py/images/products/15037.jpg",
+    "price": 9200
+  },
+  {
+    "id": 30,
+    "ean": "2000000000700",
+    "name": "Tomate Santa Cruz Seleccionado por Kilo",
+    "brand": "Verdulería",
+    "image": "https://static.app.biggie.com.py/images/products/7891150064928-29961185.jpg",
+    "price": 12500
+  },
+  {
+    "id": 31,
+    "ean": "2000000000717",
+    "name": "Banana Karape Nacional de Primera por Kilo",
+    "brand": "Frutería",
+    "image": "https://static.app.biggie.com.py/images/products/7840001001964.jpg",
+    "price": 6500
+  },
+  {
+    "id": 32,
+    "ean": "7840000000908",
+    "name": "Detergente Vajilla Zorro Concentrado Manzana 500 ml",
+    "brand": "Zorro",
+    "image": "https://static.app.biggie.com.py/images/products/7622201759582.jpg",
+    "price": 6800
+  },
+  {
+    "id": 33,
+    "ean": "7840058001013",
+    "name": "Papas Fritas Lay's Clásicas Paquete 85 g",
+    "brand": "Lays",
+    "image": "https://static.app.biggie.com.py/images/products/7790310986851.jpg",
+    "price": 10500
+  },
+  {
+    "id": 34,
+    "ean": null,
+    "name": "Costilla de Primera Biggie Envasado al Vacio x Kg",
+    "brand": "Biggie",
+    "image": "https://static.app.biggie.com.py/images/products/7840050009881.png",
+    "price": 42950
+  },
+  {
+    "id": 35,
+    "ean": "7840050009881",
+    "name": "Cerveza Michelob Ultra de 269 ml x12 unidades",
+    "brand": "Michelob",
+    "image": "https://static.app.biggie.com.py/images/products/7840050009881.png",
+    "price": 48000
+  },
+  {
+    "id": 36,
+    "ean": null,
+    "name": "Carne Vacio Biggie x kg.",
+    "brand": "Neuland",
+    "image": "https://static.app.biggie.com.py/images/products/7730911981305.jpg",
+    "price": 31950
+  },
+  {
+    "id": 37,
+    "ean": "7840050009867",
+    "name": "Cerveza Michelob Ultra Edicion Limitada de 269 ml Pack x 15 Uni.",
+    "brand": "Michelob",
+    "image": "https://static.app.biggie.com.py/images/products/7840050009867.jpg",
+    "price": 60000
+  },
+  {
+    "id": 38,
+    "ean": null,
+    "name": "Tomate perita-santacruz x kg.",
+    "brand": "Finca",
+    "image": "https://static.app.biggie.com.py/images/products/7840042004061.jpg",
+    "price": 8950
+  },
+  {
+    "id": 39,
+    "ean": "7840058008084",
+    "name": "Gaseosa Coca Cola Original de 2.000 ml.",
+    "brand": "Coca Cola",
+    "image": "https://static.app.biggie.com.py/images/products/7840058008084.jpg",
+    "price": 14900
+  },
+  {
+    "id": 40,
+    "ean": null,
+    "name": "Banana x kg.",
+    "brand": "Finca",
+    "image": "https://static.app.biggie.com.py/images/products/7840061000280.jpg",
+    "price": 6550
+  }
+]

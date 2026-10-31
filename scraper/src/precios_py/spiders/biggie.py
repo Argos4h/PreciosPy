@@ -23,7 +23,7 @@ class BiggieSpider(BaseSupermarketSpider):
     def fetch_live_articles(self, take: int = 80, skip: int = 0, query: str | None = None) -> list[ScrapedOffer]:
         params: dict[str, str | int] = {"take": take, "skip": skip}
         if query:
-            params["ech"] = query
+            params["query"] = query
         url = f"{self.api_url}?{urllib.parse.urlencode(params)}"
         req = urllib.request.Request(url, headers={**self.default_headers, "Accept": "application/json"})
         with urllib.request.urlopen(req, timeout=self.timeout_sec) as resp:

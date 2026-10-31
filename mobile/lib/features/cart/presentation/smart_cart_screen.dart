@@ -500,6 +500,78 @@ class SmartCartScreen extends ConsumerWidget {
                         ),
                       );
                     }),
+                    const SizedBox(height: 16),
+                    // BOTÓN COMPARTIR POR WHATSAPP
+                    SizedBox(
+                      width: double.infinity,
+                      child: FilledButton.icon(
+                        style: FilledButton.styleFrom(
+                          backgroundColor: const Color(0xFF25D366),
+                          foregroundColor: Colors.white,
+                          padding: const EdgeInsets.symmetric(vertical: 14),
+                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+                        ),
+                        onPressed: () {
+                          final cartItems = ref.read(smartCartProvider);
+                          final buffer = StringBuffer();
+                          buffer.writeln('🛒 *Plan de Compras Inteligente — PreciosPy*');
+                          buffer.writeln('📍 *Ciudad:* $cityName');
+                          buffer.writeln('💳 *Modalidad:* ${isCashOnly ? "💵 Solo Efectivo (Precios de góndola)" : (winner.appliedCardName ?? "💳 Descuentos Bancarios")}');
+                          buffer.writeln();
+
+                          if (splitResult.isSplitRecommended) {
+                            buffer.writeln('⚡ *RECOMENDACIÓN COMPRA DIVIDIDA (2 Paradas):*');
+                            for (final group in splitResult.splitGroups) {
+                              buffer.writeln('\n🏪 *${group.supermarketName}* (Total: ${GuaraniFormatter.format(group.netCostGs)})');
+                              for (final item in group.items) {
+                                buffer.writeln('  • ${item.value}x ${item.key.normalizedName}');
+                              }
+                            }
+                            buffer.writeln('\n💰 *Gasto Total Dividido:* ${GuaraniFormatter.format(splitResult.combinedNetCostGs)}');
+                            buffer.writeln('🎉 *Ahorro Extra:* ${GuaraniFormatter.format(splitResult.additionalSavingsGs)} vs ir a uno solo');
+                          } else {
+                            buffer.writeln('🏆 *SUPERMERCADO GANADOR:* *${winner.supermarketName}*');
+                            buffer.writeln('💰 *Total a Pagar:* ${GuaraniFormatter.format(winner.netFinalCostGs)}');
+                            if (winner.totalCashbackGs > 0) {
+                              buffer.writeln('🎁 *Reintegro:* ${GuaraniFormatter.format(winner.totalCashbackGs)} con ${winner.appliedCardName}');
+                            }
+                            buffer.writeln('\n📋 *Artículos:*');
+                            for (final entry in cartItems.entries) {
+                              buffer.writeln('  • ${entry.value}x ${entry.key.normalizedName}');
+                            }
+                          }
+                          buffer.writeln('\n✨ Generado por PreciosPy — El comparador más rápido de Paraguay');
+
+                          Clipboard.setData(ClipboardData(text: buffer.toString()));
+                          Navigator.pop(ctx);
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              backgroundColor: const Color(0xFF10B981),
+                              behavior: SnackBarBehavior.floating,
+                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                              content: const Row(
+                                children: [
+                                  Icon(Icons.check_circle_rounded, color: Colors.white),
+                                  SizedBox(width: 8),
+                                  Expanded(
+                                    child: Text(
+                                      '¡Lista optimizada copiada para enviar por WhatsApp!',
+                                      style: TextStyle(fontWeight: FontWeight.w700, color: Colors.white),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              duration: const Duration(seconds: 3),
+                            ),
+                          );
+                        },
+                        icon: const Icon(Icons.share_rounded, size: 20),
+                        label: const Text(
+                          'Compartir Lista por WhatsApp',
+                          style: TextStyle(fontSize: 14, fontWeight: FontWeight.w800),
+                        ),
+                      ),
+                    ),
                   ],
                 ),
               ),

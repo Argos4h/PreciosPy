@@ -300,11 +300,133 @@ final smartCartProvider = StateNotifierProvider<SmartCartNotifier, Map<ProductIt
   return SmartCartNotifier();
 });
 
-/// Productos filtrados en tiempo real (< 4 ms) según la búsqueda del usuario
+/// Categoría de producto seleccionada para filtrado (vacío = todas las categorías)
+final selectedCategoryProvider = StateProvider<String>((ref) => '');
+
+/// Supermercado específico seleccionado para filtrado (vacío = todos los supermercados)
+final selectedSupermarketFilterProvider = StateProvider<String>((ref) => '');
+
+/// Productos filtrados en tiempo real (< 4 ms) según búsqueda, categoría y supermercado
+
+/// Estado de búsqueda remota en vivo en supermercados (Biggie API)
+final isSearchingOnlineProvider = StateProvider<bool>((ref) => false);
+final onlineSearchResultsProvider = StateProvider<List<ProductItem>>((ref) => []);
+
+final onlineSearchActionProvider = Provider((ref) {
+  return (String query) async {
+    final clean = query.trim();
+    if (clean.isEmpty) return;
+    ref.read(isSearchingOnlineProvider.notifier).state = true;
+    try {
+      final repo = ref.read(catalogRepositoryProvider);
+      final liveResults = await repo.searchLiveSupermarketsOnline(clean);
+      ref.read(onlineSearchResultsProvider.notifier).state = liveResults;
+    } finally {
+      ref.read(isSearchingOnlineProvider.notifier).state = false;
+    }
+  };
+});
+
 final filteredProductsProvider = Provider<List<ProductItem>>((ref) {
   final repo = ref.watch(catalogRepositoryProvider);
   final query = ref.watch(searchQueryProvider);
-  return repo.searchInstant(query);
+  final category = ref.watch(selectedCategoryProvider);
+  final selectedStore = ref.watch(selectedSupermarketFilterProvider);
+  var items = repo.searchInstant(query, limit: 120);
+
+  // Si no hay resultados locales pero hubo búsqueda online en vivo, usar los resultados encontrados
+  if (items.isEmpty && query.trim().isNotEmpty) {
+    final onlineItems = ref.watch(onlineSearchResultsProvider);
+    if (onlineItems.isNotEmpty) {
+      items = onlineItems;
+    }
+  }
+
+  // Filtrar por supermercado si el usuario eligió uno específico (ej. Biggie, Stock, Fortis)
+  if (selectedStore.isNotEmpty) {
+    items = items.where((p) => p.offers.any((o) => o.supermarketSlug == selectedStore)).toList();
+  }
+
+  if (category.isEmpty) return items;
+
+  return items.where((p) {
+    final cat = (p.category ?? '').toLowerCase();
+    final name = p.normalizedName.toLowerCase();
+    switch (category) {
+      case 'yerba':
+        return cat.contains('yerba') || name.contains('yerba');
+      case 'lacteos':
+        return cat.contains('lácteo') ||
+            cat.contains('lacteo') ||
+            name.contains('leche') ||
+            name.contains('queso') ||
+            name.contains('yogur') ||
+            name.contains('manteca');
+      case 'carniceria':
+        return cat.contains('carne') ||
+            cat.contains('carnicería') ||
+            name.contains('carne') ||
+            name.contains('costilla') ||
+            name.contains('asado') ||
+            name.contains('pollo') ||
+            name.contains('pechug');
+      case 'bebidas':
+        return (cat.contains('bebida') && !cat.contains('vino') && !cat.contains('cerveza')) ||
+            name.contains('coca') ||
+            name.contains('gaseosa') ||
+            name.contains('pulp') ||
+            name.contains('sprite') ||
+            name.contains('jugo') ||
+            name.contains('puro sol');
+      case 'cerveza':
+        return cat.contains('cerveza') ||
+            cat.contains('vino') ||
+            name.contains('pilsen') ||
+            name.contains('brahma') ||
+            name.contains('vino') ||
+            name.contains('helena');
+      case 'almacen':
+        return cat.contains('almacén') ||
+            cat.contains('almacen') ||
+            name.contains('arroz') ||
+            name.contains('fideo') ||
+            name.contains('aceite') ||
+            name.contains('harina') ||
+            name.contains('azúcar') ||
+            name.contains('azucar') ||
+            name.contains('sal') ||
+            name.contains('café') ||
+            name.contains('cafe');
+      case 'panaderia':
+        return cat.contains('pan') ||
+            name.contains('pan') ||
+            name.contains('felipe') ||
+            name.contains('cuartel') ||
+            name.contains('chipa');
+      case 'limpieza':
+        return cat.contains('limpieza') ||
+            name.contains('jabón') ||
+            name.contains('jabon') ||
+            name.contains('omo') ||
+            name.contains('detergente') ||
+            name.contains('zorro') ||
+            name.contains('lavandina');
+      case 'galletitas':
+        return cat.contains('snack') ||
+            cat.contains('galletita') ||
+            name.contains('oreo') ||
+            name.contains('lay') ||
+            name.contains('papa');
+      case 'frutas':
+        return cat.contains('fruta') ||
+            cat.contains('verdura') ||
+            name.contains('tomate') ||
+            name.contains('banana') ||
+            name.contains('cebolla');
+      default:
+        return cat.contains(category) || name.contains(category);
+    }
+  }).toList();
 });
 
 /// Ranking en tiempo real de qué supermercado conviene más para comprar el Carrito Inteligente hoy

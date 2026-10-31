@@ -1,0 +1,2802 @@
+[
+  {
+    "name": "Costilla de Primera Biggie Envasado al Vacio x Kg",
+    "price": 42950,
+    "ean": "60168",
+    "brand": "Biggie                                  ",
+    "family": "Carne Envasada Biggie                                                                               ",
+    "image": "https://static.app.biggie.com.py/images/products/60168.jpg"
+  },
+  {
+    "name": "Cerveza Michelob Ultra de 269 ml x12 unidades",
+    "price": 48000,
+    "ean": "7840050009881",
+    "brand": "Michelob                                ",
+    "family": "Cerveza                                                                                             ",
+    "image": "https://static.app.biggie.com.py/images/products/7840050009881.png"
+  },
+  {
+    "name": "Carne Vacio Biggie x kg.",
+    "price": 51450,
+    "ean": "60136",
+    "brand": "Neuland                                 ",
+    "family": "Carne Envasada Biggie                                                                               ",
+    "image": "https://static.app.biggie.com.py/images/products/60136.jpg"
+  },
+  {
+    "name": "Cerveza Michelob Ultra Edicion Limitada de 269 ml Pack x 15 Uni.",
+    "price": 60000,
+    "ean": "7840050009867",
+    "brand": "Michelob                                ",
+    "family": "Cerveza                                                                                             ",
+    "image": "https://static.app.biggie.com.py/images/products/7840050009867.jpg"
+  },
+  {
+    "name": "Tomate perita-santacruz x kg.",
+    "price": 8950,
+    "ean": "15049",
+    "brand": "Finca                                   ",
+    "family": "Verduras                                                                                            ",
+    "image": "https://static.app.biggie.com.py/images/products/15049.jpg"
+  },
+  {
+    "name": "Gaseosa Coca Cola Original de 2.000 ml.",
+    "price": 14900,
+    "ean": "7840058008084",
+    "brand": "Coca Cola                               ",
+    "family": "Gaseosa Diet                                                                                        ",
+    "image": "https://static.app.biggie.com.py/images/products/7840058008084.jpg"
+  },
+  {
+    "name": "Banana x kg.",
+    "price": 6550,
+    "ean": "15037",
+    "brand": "Finca                                   ",
+    "family": "Frutas                                                                                              ",
+    "image": "https://static.app.biggie.com.py/images/products/15037.jpg"
+  },
+  {
+    "name": "Pan Baguette Pagnifique x Uni",
+    "price": 9700,
+    "ean": "7730911981305",
+    "brand": "Pagnifique                              ",
+    "family": "Panes Frescos                                                                                       ",
+    "image": "https://static.app.biggie.com.py/images/products/7730911981305.jpg"
+  },
+  {
+    "name": "Gaseosa Coca Cola Descartable de 1.500 ml.",
+    "price": 12000,
+    "ean": "7840058000675",
+    "brand": "Coca Cola                               ",
+    "family": "Gaseosa Normal                                                                                      ",
+    "image": "https://static.app.biggie.com.py/images/products/7840058000675.jpg"
+  },
+  {
+    "name": "Hielo Biggie de 3kg.",
+    "price": 7000,
+    "ean": "823601",
+    "brand": "Biggie                                  ",
+    "family": "Hielo                                                                                               ",
+    "image": "https://static.app.biggie.com.py/images/products/823601.jpg"
+  },
+  {
+    "name": "Costilla Especial Biggie envasado al vacio x kg.",
+    "price": 43950,
+    "ean": "60133",
+    "brand": "Neuland                                 ",
+    "family": "Carne Envasada Biggie                                                                               ",
+    "image": "https://static.app.biggie.com.py/images/products/60133.jpg"
+  },
+  {
+    "name": "Costilla Ancha Biggie envasado al vacio x kg.",
+    "price": 48450,
+    "ean": "60161",
+    "brand": "Biggie                                  ",
+    "family": "Carne Envasada Biggie                                                                               ",
+    "image": "https://static.app.biggie.com.py/images/products/60161.jpg"
+  },
+  {
+    "name": "Cerveza Corona Extra de 210 ml.",
+    "price": 7000,
+    "ean": "7891149108749",
+    "brand": "Corona                                  ",
+    "family": "Cerveza                                                                                             ",
+    "image": "https://static.app.biggie.com.py/images/products/7891149108749.jpg"
+  },
+  {
+    "name": "Gaseosa Coca Cola Descartable Sabor Original de 3.000 ml.",
+    "price": 19900,
+    "ean": "7840058008565",
+    "brand": "Coca Cola                               ",
+    "family": "Gaseosa Normal                                                                                      ",
+    "image": "https://static.app.biggie.com.py/images/products/7840058008565.jpg"
+  },
+  {
+    "name": "Cerveza Munich Ultra de 269 ml.",
+    "price": 3750,
+    "ean": "7840025000011",
+    "brand": "MUNICH ULTRA                            ",
+    "family": "Cerveza                                                                                             ",
+    "image": "https://static.app.biggie.com.py/images/products/7840025000011.jpg"
+  },
+  {
+    "name": "Lechuga Hidroponica Biggie x Mazo.",
+    "price": 4150,
+    "ean": "15120",
+    "brand": "Biggie                                  ",
+    "family": "Verdeos                                                                                             ",
+    "image": "https://static.app.biggie.com.py/images/products/15120.jpg"
+  },
+  {
+    "name": "Cerveza Heineken Botella de 650 ml.",
+    "price": 16000,
+    "ean": "7802100004185",
+    "brand": "Heineken                                ",
+    "family": "Cerveza                                                                                             ",
+    "image": "https://static.app.biggie.com.py/images/products/7802100004185.jpg"
+  },
+  {
+    "name": "Gaseosa Coca Cola Zero Descartable de 2.000 ml.",
+    "price": 14900,
+    "ean": "7840058004086",
+    "brand": "Coca Cola                               ",
+    "family": "Gaseosa Normal                                                                                      ",
+    "image": "https://static.app.biggie.com.py/images/products/7840058004086.jpg"
+  },
+  {
+    "name": "Fernet Branca Botella de 750 ml.",
+    "price": 80000,
+    "ean": "7790290101602",
+    "brand": "FERNET BRANCA                           ",
+    "family": "Destilados                                                                                          ",
+    "image": "https://static.app.biggie.com.py/images/products/7790290101602-31360289.jpg"
+  },
+  {
+    "name": "Manzana roja x kg.",
+    "price": 19950,
+    "ean": "15041",
+    "brand": "Finca                                   ",
+    "family": "Frutas                                                                                              ",
+    "image": "https://static.app.biggie.com.py/images/products/15041.jpg"
+  },
+  {
+    "name": "Carne falda Biggie x kg.",
+    "price": 29750,
+    "ean": "60140",
+    "brand": "Biggie                                  ",
+    "family": "Carne Envasada Biggie                                                                               ",
+    "image": "https://static.app.biggie.com.py/images/products/60140.jpg"
+  },
+  {
+    "name": "Cebolla Blanca x kg.",
+    "price": 10950,
+    "ean": "15010",
+    "brand": "Finca                                   ",
+    "family": "Verduras                                                                                            ",
+    "image": "https://static.app.biggie.com.py/images/products/15010.jpg"
+  },
+  {
+    "name": "Gaseosa Coca Cola Zero Descartable de 1.500 ml.",
+    "price": 12000,
+    "ean": "7840058002549",
+    "brand": "Coca Cola                               ",
+    "family": "Gaseosa Normal                                                                                      ",
+    "image": "https://static.app.biggie.com.py/images/products/7840058002549.jpg"
+  },
+  {
+    "name": "Naranja x kg.",
+    "price": 4950,
+    "ean": "15078",
+    "brand": "Finca                                   ",
+    "family": "Frutas                                                                                              ",
+    "image": "https://static.app.biggie.com.py/images/products/15078.jpg"
+  },
+  {
+    "name": "Leche Lactolanda Entera Ultra Sachet de 1.000 ml.",
+    "price": 6250,
+    "ean": "7840042000216",
+    "brand": "Lactolanda                              ",
+    "family": "Leche                                                                                               ",
+    "image": "https://static.app.biggie.com.py/images/products/7840042000216.jpg"
+  },
+  {
+    "name": "Whisky Johnnie Walker Black Label de 1.000 ml.",
+    "price": 225000,
+    "ean": "5000267125046",
+    "brand": "Johnnie Walker                          ",
+    "family": "Whisky                                                                                              ",
+    "image": "https://static.app.biggie.com.py/images/products/5000267125046.jpg"
+  },
+  {
+    "name": "Gaseosa Coca Cola de 500 ml.",
+    "price": 6500,
+    "ean": "7840058000019",
+    "brand": "Coca Cola                               ",
+    "family": "Gaseosa Normal                                                                                      ",
+    "image": "https://static.app.biggie.com.py/images/products/7840058000019.jpg"
+  },
+  {
+    "name": "Leche Lactolanda Entera Tetra de 1.000 ml.",
+    "price": 7400,
+    "ean": "7840042000117",
+    "brand": "Lactolanda                              ",
+    "family": "Leche                                                                                               ",
+    "image": "https://static.app.biggie.com.py/images/products/7840042000117.jpg"
+  },
+  {
+    "name": "Papa negra x kg.",
+    "price": 8550,
+    "ean": "15027",
+    "brand": "Finca                                   ",
+    "family": "Verduras                                                                                            ",
+    "image": "https://static.app.biggie.com.py/images/products/15027.jpg"
+  },
+  {
+    "name": "Leche Lactolanda semi descremada  sin lacto de 1.000 ml.",
+    "price": 8850,
+    "ean": "7840042000414",
+    "brand": "Lactolanda                              ",
+    "family": "Leche                                                                                               ",
+    "image": "https://static.app.biggie.com.py/images/products/7840042000414.jpg"
+  },
+  {
+    "name": "Fernet Branca botella de 1.000 ml.",
+    "price": 107000,
+    "ean": "7790290000523",
+    "brand": "FERNET BRANCA                           ",
+    "family": "Destilados                                                                                          ",
+    "image": "https://static.app.biggie.com.py/images/products/7790290000523-32611671.jpg"
+  },
+  {
+    "name": "Cerveza Heineken Botella de 250 ml.",
+    "price": 7500,
+    "ean": "7802100005441",
+    "brand": "Heineken                                ",
+    "family": "Cerveza                                                                                             ",
+    "image": "https://static.app.biggie.com.py/images/products/7802100005441.jpg"
+  },
+  {
+    "name": "Cerveza Polar Ice Lata de 269 ml.",
+    "price": 2500,
+    "ean": "7840025110857",
+    "brand": "Polar                                   ",
+    "family": "Cerveza                                                                                             ",
+    "image": "https://static.app.biggie.com.py/images/products/7840025110857.jpg"
+  },
+  {
+    "name": "Gaseosa Coca Cola Retornable de 2.000 ml.",
+    "price": 10000,
+    "ean": "7840058000477",
+    "brand": "Coca Cola                               ",
+    "family": "Gaseosa Normal                                                                                      ",
+    "image": "https://static.app.biggie.com.py/images/products/7840058000477.jpg"
+  },
+  {
+    "name": "Cerveza Corona Botella de 330 ml.",
+    "price": 8500,
+    "ean": "7891149108718",
+    "brand": "Corona                                  ",
+    "family": "Cerveza                                                                                             ",
+    "image": "https://static.app.biggie.com.py/images/products/7891149108718.jpg"
+  },
+  {
+    "name": "Chorizo con queso Franz al vacio x 4 unidades.",
+    "price": 24900,
+    "ean": "7841554000060",
+    "brand": "Franz                                   ",
+    "family": "Chorizos                                                                                            ",
+    "image": "https://static.app.biggie.com.py/images/products/7841554000060.jpg"
+  },
+  {
+    "name": "Carne Colita Cuadril Frigomerc Pul x kg.",
+    "price": 61500,
+    "ean": "26032",
+    "brand": "SELECCION                               ",
+    "family": "Carne Vacuna                                                                                        ",
+    "image": "https://static.app.biggie.com.py/images/products/26032.png"
+  },
+  {
+    "name": "Whisky Johnnie Walker Red Label de 1.000 ml.",
+    "price": 120000,
+    "ean": "5000267190143",
+    "brand": "Johnnie Walker                          ",
+    "family": "Whisky                                                                                              ",
+    "image": "https://static.app.biggie.com.py/images/products/5000267190143.jpg"
+  },
+  {
+    "name": "Energizante Monster Energy lata de 473 ml.",
+    "price": 15000,
+    "ean": "070847033233",
+    "brand": "MONSTER                                 ",
+    "family": "Bebidas Energizantes                                                                                ",
+    "image": "https://static.app.biggie.com.py/images/products/070847033233.jpg"
+  },
+  {
+    "name": "Carne falda Parrillera Biggie x kg.",
+    "price": 31950,
+    "ean": "60190",
+    "brand": "Biggie                                  ",
+    "family": "Carne Envasada Biggie                                                                               ",
+    "image": null
+  },
+  {
+    "name": "Kit parrillero Franz x uni.",
+    "price": 42750,
+    "ean": "7841554000176",
+    "brand": "Franz                                   ",
+    "family": "Chorizos                                                                                            ",
+    "image": "https://static.app.biggie.com.py/images/products/7841554000176.png"
+  },
+  {
+    "name": "Smirnoff ice botellita de 275 ml.",
+    "price": 7500,
+    "ean": "7893218003603",
+    "brand": "Smirnoff                                ",
+    "family": "Ready to drink                                                                                      ",
+    "image": "https://static.app.biggie.com.py/images/products/7893218003603.jpg"
+  },
+  {
+    "name": "Cerveza Amstel Botellita de 250 ml.",
+    "price": 5000,
+    "ean": "7802100006080",
+    "brand": "AMSTEL                                  ",
+    "family": "Cerveza                                                                                             ",
+    "image": "https://static.app.biggie.com.py/images/products/7802100006080.jpg"
+  },
+  {
+    "name": "Cerveza Brahma Ultra Cero de 269 ml.",
+    "price": 2750,
+    "ean": "7840050008655",
+    "brand": "Brahma                                  ",
+    "family": "Cerveza                                                                                             ",
+    "image": "https://static.app.biggie.com.py/images/products/7840050008655.jpg"
+  },
+  {
+    "name": "Gaseosa Coca Cola Lata Sabor Original 354 ml.",
+    "price": 6500,
+    "ean": "7790895000232",
+    "brand": "Coca Cola                               ",
+    "family": "Gaseosa Normal                                                                                      ",
+    "image": "https://static.app.biggie.com.py/images/products/7790895000232.jpg"
+  },
+  {
+    "name": "Cerveza Pilsen Lata de 355 ml.",
+    "price": 4500,
+    "ean": "7840050007696",
+    "brand": "Pilsen                                  ",
+    "family": "Cerveza                                                                                             ",
+    "image": "https://static.app.biggie.com.py/images/products/7840050007696.jpg"
+  },
+  {
+    "name": "Huevos Yemita Tipo A de 30 Unidades.",
+    "price": 33200,
+    "ean": "7840061000051",
+    "brand": "YEMITA                                  ",
+    "family": "Huevos                                                                                              ",
+    "image": "https://static.app.biggie.com.py/images/products/7840061000051.jpg"
+  },
+  {
+    "name": "Cigarrillo Lucky Strike click roll de 20 s x Uni.",
+    "price": 10000,
+    "ean": "78421974",
+    "brand": "LUCKY STRIKE                            ",
+    "family": "Cigarrillos                                                                                         ",
+    "image": null
+  },
+  {
+    "name": "Smirnoff Ice original lata de 269 ml.",
+    "price": 6500,
+    "ean": "7893218003610",
+    "brand": "Smirnoff                                ",
+    "family": "Ready to drink                                                                                      ",
+    "image": "https://static.app.biggie.com.py/images/products/7893218003610.jpg"
+  },
+  {
+    "name": "Fernet Branca Botella de 450 ml.",
+    "price": 49500,
+    "ean": "7790290001179",
+    "brand": "FERNET BRANCA                           ",
+    "family": "Destilados                                                                                          ",
+    "image": "https://static.app.biggie.com.py/images/products/7790290001179.jpg"
+  },
+  {
+    "name": "Bebida Isotonica Powerade mountain blast de 500 ml.",
+    "price": 10000,
+    "ean": "7840058002877",
+    "brand": "Powerade                                ",
+    "family": "Bebidas Isotonicas                                                                                  ",
+    "image": "https://static.app.biggie.com.py/images/products/7840058002877.jpg"
+  },
+  {
+    "name": "Gaseosa Pepsi Cola de 2.000 ml.",
+    "price": 12000,
+    "ean": "7840028202092",
+    "brand": "Pepsi                                   ",
+    "family": "Gaseosa Normal                                                                                      ",
+    "image": "https://static.app.biggie.com.py/images/products/7840028202092.jpg"
+  },
+  {
+    "name": "Cerveza Skol Botella Abre Facil de 275 ml.",
+    "price": 6000,
+    "ean": "7840050008884",
+    "brand": "SKOL                                    ",
+    "family": "Cerveza                                                                                             ",
+    "image": "https://static.app.biggie.com.py/images/products/7840050008884.jpg"
+  },
+  {
+    "name": "Cigarrillo Palermo Duo Box 20´s x Uni.",
+    "price": 7000,
+    "ean": "78411081",
+    "brand": "Palermo                                 ",
+    "family": "Cigarrillos                                                                                         ",
+    "image": "https://static.app.biggie.com.py/images/products/78411081.jpg"
+  },
+  {
+    "name": "Carne Vacio Seleccion Frigomerc/Pul x kg.",
+    "price": 60000,
+    "ean": "26053",
+    "brand": "PUL                                     ",
+    "family": "Carne Vacuna                                                                                        ",
+    "image": "https://static.app.biggie.com.py/images/products/26053.jpg"
+  },
+  {
+    "name": "Hamburguesa Guarani Tipo Casera x 6 Uni.",
+    "price": 40000,
+    "ean": "7840699001802",
+    "brand": "Guaraní                                ",
+    "family": "Hamburguesas                                                                                        ",
+    "image": "https://static.app.biggie.com.py/images/products/7840699001802.jpg"
+  },
+  {
+    "name": "Leche descremada Lactolanda Vital Light de 1.000 ml.",
+    "price": 7400,
+    "ean": "7840042000124",
+    "brand": "Lactolanda                              ",
+    "family": "Bebidas Lacteas                                                                                     ",
+    "image": "https://static.app.biggie.com.py/images/products/7840042000124.jpg"
+  },
+  {
+    "name": "Jamon y Queso Guarani Mixto x Uni.",
+    "price": 24100,
+    "ean": "7840699002380",
+    "brand": "Guaraní                                ",
+    "family": "Jamones                                                                                             ",
+    "image": "https://static.app.biggie.com.py/images/products/7840699002380.jpg"
+  },
+  {
+    "name": "Cerveza Michelob Ultra de 269 ml por unidad",
+    "price": 4000,
+    "ean": "7840050009508",
+    "brand": "Michelob                                ",
+    "family": "Cerveza                                                                                             ",
+    "image": "https://static.app.biggie.com.py/images/products/7840050009508.png"
+  },
+  {
+    "name": "Cerveza Michelob Ultra Lata de 350 ml.",
+    "price": 5500,
+    "ean": "7840050009515",
+    "brand": "Michelob                                ",
+    "family": "Cerveza                                                                                             ",
+    "image": "https://static.app.biggie.com.py/images/products/7840050009515.png"
+  },
+  {
+    "name": "Cigarrillo Lucky Strike Compact Chill 20's x Uni.",
+    "price": 7000,
+    "ean": "78422094",
+    "brand": "LUCKY STRIKE                            ",
+    "family": "Cigarrillos                                                                                         ",
+    "image": null
+  },
+  {
+    "name": "Cerveza Heineken Lata de 269 ml.",
+    "price": 6000,
+    "ean": "7802100005373",
+    "brand": "Heineken                                ",
+    "family": "Cerveza                                                                                             ",
+    "image": "https://static.app.biggie.com.py/images/products/7802100005373.jpg"
+  },
+  {
+    "name": "Limon tahiti x kg.",
+    "price": 15950,
+    "ean": "15039",
+    "brand": "Finca                                   ",
+    "family": "Frutas                                                                                              ",
+    "image": "https://static.app.biggie.com.py/images/products/15039.jpg"
+  },
+  {
+    "name": "Carne Tapa Cuadril Chorti x kg.",
+    "price": 101800,
+    "ean": "12508",
+    "brand": "Chorti                                  ",
+    "family": "Carne Vacuna                                                                                        ",
+    "image": "https://static.app.biggie.com.py/images/products/12508.jpg"
+  },
+  {
+    "name": "Cerveza Amstel Export Lata de 269 ml.",
+    "price": 4500,
+    "ean": "7802100005526",
+    "brand": "AMSTEL                                  ",
+    "family": "Cerveza                                                                                             ",
+    "image": "https://static.app.biggie.com.py/images/products/7802100005526.jpg"
+  },
+  {
+    "name": "Gaseosa Paso de los Toros pomelo de 2.000 ml.",
+    "price": 13000,
+    "ean": "7840028202443",
+    "brand": "PASO DE LOS TOROS                       ",
+    "family": "Gaseosa Normal                                                                                      ",
+    "image": "https://static.app.biggie.com.py/images/products/7840028202443.jpg"
+  },
+  {
+    "name": "Gaseosa Pepsi Black de 2.000 ml.",
+    "price": 12000,
+    "ean": "7840028205246",
+    "brand": "Pepsi                                   ",
+    "family": "Gaseosa Normal                                                                                      ",
+    "image": "https://static.app.biggie.com.py/images/products/7840028205246.jpg"
+  },
+  {
+    "name": "Carne Tapa Cuadril Neuland Especial env. al vacio x kg.",
+    "price": 138000,
+    "ean": "60100",
+    "brand": "Neuland                                 ",
+    "family": "Carne Vacuna                                                                                        ",
+    "image": "https://static.app.biggie.com.py/images/products/60100.jpg"
+  },
+  {
+    "name": "Huevo Yemita paquete x 12 Unidades.",
+    "price": 12500,
+    "ean": "7840061000280",
+    "brand": "YEMITA                                  ",
+    "family": "Huevos                                                                                              ",
+    "image": "https://static.app.biggie.com.py/images/products/7840061000280.jpg"
+  },
+  {
+    "name": "Pancho Ochsi x Paq.",
+    "price": 13000,
+    "ean": "0798190153711",
+    "brand": "Ochsi                                   ",
+    "family": "Panchos                                                                                             ",
+    "image": "https://static.app.biggie.com.py/images/products/0798190153711.jpg"
+  },
+  {
+    "name": "Energizante Monster Ultra Lata de 473 ml.",
+    "price": 15000,
+    "ean": "0070847037033",
+    "brand": "MONSTER                                 ",
+    "family": "Bebidas Energizantes                                                                                ",
+    "image": "https://static.app.biggie.com.py/images/products/0070847037033.jpg"
+  },
+  {
+    "name": "Cigarrillo Kent Blue Bc Hw26 20´s x Uni.",
+    "price": 16000,
+    "ean": "78422940",
+    "brand": "KENT                                    ",
+    "family": "Cigarrillos                                                                                         ",
+    "image": "https://static.app.biggie.com.py/images/products/78422940.jpg"
+  },
+  {
+    "name": "Leche Trebol Entera Tetra de 1.000 ml.",
+    "price": 7850,
+    "ean": "7840005012379",
+    "brand": "Trebol                                  ",
+    "family": "Leche                                                                                               ",
+    "image": "https://static.app.biggie.com.py/images/products/7840005012379.jpg"
+  },
+  {
+    "name": "Cerveza Miller Genuine Draft Botella de 600 ml.",
+    "price": 11500,
+    "ean": "7898032910168",
+    "brand": "Miller                                  ",
+    "family": "Cerveza                                                                                             ",
+    "image": "https://static.app.biggie.com.py/images/products/7898032910168.jpg"
+  },
+  {
+    "name": "Cigarrillo Marlboro box FF 20´s x Uni.",
+    "price": 17000,
+    "ean": "78406810",
+    "brand": "MARLBORO                                ",
+    "family": "Cigarrillos                                                                                         ",
+    "image": "https://static.app.biggie.com.py/images/products/78406810.jpg"
+  },
+  {
+    "name": "Gaseosa Coca Cola Zero de 500 ml.",
+    "price": 6500,
+    "ean": "7840058002532",
+    "brand": "Coca Cola                               ",
+    "family": "Gaseosa Normal                                                                                      ",
+    "image": "https://static.app.biggie.com.py/images/products/7840058002532.jpg"
+  },
+  {
+    "name": "Matambrito de Cerdo Guarani Condimentado x kg.",
+    "price": 74000,
+    "ean": "96038",
+    "brand": "Guaraní                                ",
+    "family": "Carne de Cerdo                                                                                      ",
+    "image": "https://static.app.biggie.com.py/images/products/96038.jpg"
+  },
+  {
+    "name": "Combo Parrillero Ochsi x kg.",
+    "price": 44650,
+    "ean": "17001",
+    "brand": "Ochsi                                   ",
+    "family": "Embutido Envasado Biggie                                                                            ",
+    "image": "https://static.app.biggie.com.py/images/products/17001.jpg"
+  },
+  {
+    "name": "Locote verde x kg.",
+    "price": 10950,
+    "ean": "15024",
+    "brand": "Finca                                   ",
+    "family": "Verduras                                                                                            ",
+    "image": "https://static.app.biggie.com.py/images/products/15024.jpg"
+  },
+  {
+    "name": "Pechuga Pechugon en Bandeja x kg.",
+    "price": 20150,
+    "ean": "30168",
+    "brand": "Pechugon                                ",
+    "family": "Carne de Ave                                                                                        ",
+    "image": "https://static.app.biggie.com.py/images/products/30168.jpg"
+  },
+  {
+    "name": "Cigarrillo Chesterfield remix box 20´S. x Uni.",
+    "price": 10000,
+    "ean": "78413658",
+    "brand": "CHESTERFIELD                            ",
+    "family": "Cigarrillos                                                                                         ",
+    "image": "https://static.app.biggie.com.py/images/products/78413658.jpg"
+  },
+  {
+    "name": "Gaseosa Pulp naranja de 2.000 ml.",
+    "price": 12000,
+    "ean": "7840779001050",
+    "brand": "Pulp                                    ",
+    "family": "Gaseosa Normal                                                                                      ",
+    "image": "https://static.app.biggie.com.py/images/products/7840779001050.jpg"
+  },
+  {
+    "name": "Smirnoff Ice Red Berries de 473ml",
+    "price": 9500,
+    "ean": "7791250003189",
+    "brand": "Smirnoff                                ",
+    "family": "Ready to drink                                                                                      ",
+    "image": "https://static.app.biggie.com.py/images/products/7791250003189.png"
+  },
+  {
+    "name": "Smirnoff Ice Green Apple de 473ml",
+    "price": 9500,
+    "ean": "7791250003127",
+    "brand": "Smirnoff                                ",
+    "family": "Ready to drink                                                                                      ",
+    "image": "https://static.app.biggie.com.py/images/products/7791250003127.png"
+  },
+  {
+    "name": "Cafe Tradicion Nescafe Instantaneo De 160 gr",
+    "price": 39900,
+    "ean": "7891000414903",
+    "brand": "Nescafé                                ",
+    "family": "Cafe                                                                                                ",
+    "image": "https://static.app.biggie.com.py/images/products/7891000414903.jpg"
+  },
+  {
+    "name": "Jamon Cocido Ochsi al vacio x kg.",
+    "price": 93200,
+    "ean": "18000",
+    "brand": "Ochsi                                   ",
+    "family": "Embutido Envasado Biggie                                                                            ",
+    "image": "https://static.app.biggie.com.py/images/products/18000.jpg"
+  },
+  {
+    "name": "Combo Parrillero Guarani x Uni.",
+    "price": 39100,
+    "ean": "7840699002304",
+    "brand": "Guaraní                                ",
+    "family": "Chorizos                                                                                            ",
+    "image": "https://static.app.biggie.com.py/images/products/7840699002304.jpg"
+  },
+  {
+    "name": "Milanesa Pechumila de pollo de 100 gr.",
+    "price": 4200,
+    "ean": "7840369041084",
+    "brand": "Pechugon                                ",
+    "family": "Apanados de Pollo y Carne                                                                           ",
+    "image": "https://static.app.biggie.com.py/images/products/7840369041084.jpg"
+  },
+  {
+    "name": "Huevo Biggie Tipo A x 30 Uni.",
+    "price": 33200,
+    "ean": "7840061000334",
+    "brand": "Biggie                                  ",
+    "family": "Huevos                                                                                              ",
+    "image": "https://static.app.biggie.com.py/images/products/7840061000334.jpg"
+  },
+  {
+    "name": "Cigarrillo Marlboro advance box 20",
+    "price": 17000,
+    "ean": "78406827",
+    "brand": "MARLBORO                                ",
+    "family": "Cigarrillos                                                                                         ",
+    "image": "https://static.app.biggie.com.py/images/products/78406827.jpg"
+  },
+  {
+    "name": "Cerveza Skol Lata de 269 ml Edicion Pack Promo x 15 Uni.",
+    "price": 60000,
+    "ean": "7840050009157",
+    "brand": "SKOL                                    ",
+    "family": "Cerveza                                                                                             ",
+    "image": "https://static.app.biggie.com.py/images/products/7840050009157.jpg"
+  },
+  {
+    "name": "Gaseosa Sprite limon descartabe de 2.000 ml.",
+    "price": 14900,
+    "ean": "7840058000088",
+    "brand": "Sprite                                  ",
+    "family": "Gaseosa Normal                                                                                      ",
+    "image": "https://static.app.biggie.com.py/images/products/7840058000088.jpg"
+  },
+  {
+    "name": "Cerveza Skol Lata de 269 ml.",
+    "price": 4000,
+    "ean": "7891149103102",
+    "brand": "SKOL                                    ",
+    "family": "Cerveza                                                                                             ",
+    "image": "https://static.app.biggie.com.py/images/products/7891149103102.jpg"
+  },
+  {
+    "name": "Carne Neuland Costilla Popular x kg.",
+    "price": 54000,
+    "ean": "60182",
+    "brand": "Neuland                                 ",
+    "family": "Carne Vacuna                                                                                        ",
+    "image": "https://static.app.biggie.com.py/images/products/60182.jpg"
+  },
+  {
+    "name": "Manzana Colegiala x Kg.",
+    "price": 17950,
+    "ean": "15800",
+    "brand": "Biggie                                  ",
+    "family": "Frutas                                                                                              ",
+    "image": "https://static.app.biggie.com.py/images/products/15800.jpg"
+  },
+  {
+    "name": "Bebido Isotonica Powerade Mountain Blast de 990 ml.",
+    "price": 14000,
+    "ean": "7840058008824",
+    "brand": "Powerade                                ",
+    "family": "Bebidas Isotonicas                                                                                  ",
+    "image": "https://static.app.biggie.com.py/images/products/7840058008824.jpg"
+  },
+  {
+    "name": "Cerveza Heineken Silver Botellita de 250 ml.",
+    "price": 7500,
+    "ean": "7802100005946",
+    "brand": "Heineken                                ",
+    "family": "Cerveza                                                                                             ",
+    "image": "https://static.app.biggie.com.py/images/products/7802100005946.jpg"
+  },
+  {
+    "name": "Carne Vacio Frigomerc / Pulx Kg.",
+    "price": 61000,
+    "ean": "26031",
+    "brand": "PUL                                     ",
+    "family": "Carne Vacuna                                                                                        ",
+    "image": "https://static.app.biggie.com.py/images/products/26031.jpg"
+  },
+  {
+    "name": "Cerveza Amstel Ow Export de 650 ml.",
+    "price": 11500,
+    "ean": "7802100005472",
+    "brand": "AMSTEL                                  ",
+    "family": "Cerveza                                                                                             ",
+    "image": "https://static.app.biggie.com.py/images/products/7802100005472.jpg"
+  },
+  {
+    "name": "Cigarrillo Palermo Duo Box 10´s x Uni.",
+    "price": 3500,
+    "ean": "78411098",
+    "brand": "Palermo                                 ",
+    "family": "Cigarrillos                                                                                         ",
+    "image": "https://static.app.biggie.com.py/images/products/78411098.jpg"
+  },
+  {
+    "name": "Gaseosa Coca Cola Zero de 3.000 ml.",
+    "price": 19900,
+    "ean": "7840058007537",
+    "brand": "Coca Cola                               ",
+    "family": "Gaseosa Normal                                                                                      ",
+    "image": "https://static.app.biggie.com.py/images/products/7840058007537.jpg"
+  },
+  {
+    "name": "Cerveza Michelob Ultra de 275 ml.",
+    "price": 6000,
+    "ean": "7840050009737",
+    "brand": "Michelob                                ",
+    "family": "Cerveza                                                                                             ",
+    "image": "https://static.app.biggie.com.py/images/products/7840050009737.png"
+  },
+  {
+    "name": "Energizante Red Bull de 250 ml.",
+    "price": 14000,
+    "ean": "9002490100070",
+    "brand": "RED BULL                                ",
+    "family": "Bebidas Energizantes                                                                                ",
+    "image": "https://static.app.biggie.com.py/images/products/9002490100070.jpg"
+  },
+  {
+    "name": "Cerveza Munich Original Lata de 269 ml.",
+    "price": 3333,
+    "ean": "7840025110994",
+    "brand": "MUNICH                                  ",
+    "family": "Cerveza                                                                                             ",
+    "image": "https://static.app.biggie.com.py/images/products/7840025110994.jpg"
+  },
+  {
+    "name": "Cerveza Ouro Fino Retornable de 940 ml.",
+    "price": 7500,
+    "ean": "78409736",
+    "brand": "Ouro Fino                               ",
+    "family": "Cerveza                                                                                             ",
+    "image": "https://static.app.biggie.com.py/images/products/78409736.jpg"
+  },
+  {
+    "name": "Cigarrillo Kent Switch Bc Hw26 20´s x Uni.",
+    "price": 16000,
+    "ean": "78422926",
+    "brand": "KENT                                    ",
+    "family": "Cigarrillos                                                                                         ",
+    "image": "https://static.app.biggie.com.py/images/products/78422926.jpg"
+  },
+  {
+    "name": "Cerveza Pilsen Lata de 269 ml.",
+    "price": 3500,
+    "ean": "7840050004992",
+    "brand": "Pilsen                                  ",
+    "family": "Cerveza                                                                                             ",
+    "image": "https://static.app.biggie.com.py/images/products/7840050004992.jpg"
+  },
+  {
+    "name": "Carne Colita Cuadril Seleccion Frigomerc/Pul x kg.",
+    "price": 76100,
+    "ean": "26044",
+    "brand": "PUL                                     ",
+    "family": "Carne Vacuna                                                                                        ",
+    "image": "https://static.app.biggie.com.py/images/products/26044.jpg"
+  },
+  {
+    "name": "Caderitas de Pollo Pechugon en Bandeja x Kg.",
+    "price": 20250,
+    "ean": "30164",
+    "brand": "Pechugon                                ",
+    "family": "Carne de Ave                                                                                        ",
+    "image": "https://static.app.biggie.com.py/images/products/30164.jpg"
+  },
+  {
+    "name": "Whisky Buchanans 12 Años Sin Estuche de 1.000 ml.",
+    "price": 230000,
+    "ean": "5000196002807",
+    "brand": "BUCHANANS                               ",
+    "family": "Whisky                                                                                              ",
+    "image": "https://static.app.biggie.com.py/images/products/5000196002807.jpg"
+  },
+  {
+    "name": "Huevos Yemita de 6 Unidades.",
+    "price": 6500,
+    "ean": "7840061000303",
+    "brand": "YEMITA                                  ",
+    "family": "Huevos                                                                                              ",
+    "image": "https://static.app.biggie.com.py/images/products/7840061000303.jpg"
+  },
+  {
+    "name": "Maquina de Afeitar Gillette Prestobarba UltraGrip2 x Uni.",
+    "price": 8650,
+    "ean": "7500435154420",
+    "brand": "GILLETTE                                ",
+    "family": "Maquina de afeitar                                                                                  ",
+    "image": "https://static.app.biggie.com.py/images/products/7500435154420.jpg"
+  },
+  {
+    "name": "Pan de Ajo Tradicional Santa Massa de 400 gr.",
+    "price": 29900,
+    "ean": "7898067340091",
+    "brand": "Santa Massa                             ",
+    "family": "Panes de Ajo                                                                                        ",
+    "image": "https://static.app.biggie.com.py/images/products/7898067340091.jpg"
+  },
+  {
+    "name": "Energizante Monster Mango Loco Lata de 473 ml.",
+    "price": 15000,
+    "ean": "0070847038979",
+    "brand": "MONSTER                                 ",
+    "family": "Bebidas Energizantes                                                                                ",
+    "image": "https://static.app.biggie.com.py/images/products/0070847038979.jpg"
+  },
+  {
+    "name": "Cigarrillo Lucky Strike doble click wild 20´s. x Uni.",
+    "price": 10000,
+    "ean": "78421998",
+    "brand": "LUCKY STRIKE                            ",
+    "family": "Cigarrillos                                                                                         ",
+    "image": null
+  },
+  {
+    "name": "Jamon de Pavo Sadia Ahumada Light de 150 gr.",
+    "price": 24700,
+    "ean": "7841328000197",
+    "brand": "Sadia                                   ",
+    "family": "Jamones                                                                                             ",
+    "image": "https://static.app.biggie.com.py/images/products/7841328000197.jpg"
+  },
+  {
+    "name": "Carne Tapa Cuadril Chorti Premium x Kg.",
+    "price": 146300,
+    "ean": "12510",
+    "brand": "Chorti                                  ",
+    "family": "Carne Vacuna                                                                                        ",
+    "image": "https://static.app.biggie.com.py/images/products/12510.jpg"
+  },
+  {
+    "name": "Helado Amandau Clasico Napolitano de 2.000 ml.",
+    "price": 65000,
+    "ean": "7840356002289",
+    "brand": "Amandau                                 ",
+    "family": "Helados                                                                                             ",
+    "image": "https://static.app.biggie.com.py/images/products/7840356002289.jpg"
+  },
+  {
+    "name": "Chocolate Arcor Cofler bolck con mani de 38 gr.",
+    "price": 5700,
+    "ean": "77953124",
+    "brand": "ARCOR                                   ",
+    "family": "Chocolates                                                                                          ",
+    "image": "https://static.app.biggie.com.py/images/products/77953124.jpg"
+  },
+  {
+    "name": "Cigarrillo Marlboro Artesanal 20´s x Uni.",
+    "price": 7000,
+    "ean": "78420847",
+    "brand": "MARLBORO                                ",
+    "family": "Cigarrillos                                                                                         ",
+    "image": "https://static.app.biggie.com.py/images/products/78420847.jpg"
+  },
+  {
+    "name": "Carne Tapa Cuadril Pul Regular x Kg.",
+    "price": 101500,
+    "ean": "26030",
+    "brand": "PUL                                     ",
+    "family": "Carne Vacuna                                                                                        ",
+    "image": "https://static.app.biggie.com.py/images/products/26030.jpg"
+  },
+  {
+    "name": "Galleta Milagros El Germano de 750 gr.",
+    "price": 19900,
+    "ean": "7840581040346",
+    "brand": "EL GERMANO                              ",
+    "family": "Panes Envasados                                                                                     ",
+    "image": "https://static.app.biggie.com.py/images/products/7840581040346.jpg"
+  },
+  {
+    "name": "Gaseosa Fanta Naranja Descartable Ow de 2.000 ml.",
+    "price": 14900,
+    "ean": "7840058010391",
+    "brand": "Fanta                                   ",
+    "family": "Gaseosa Normal                                                                                      ",
+    "image": "https://static.app.biggie.com.py/images/products/7840058010391.jpg"
+  },
+  {
+    "name": "Cerveza Heineken Silver Botella de 650 ml.",
+    "price": 16000,
+    "ean": "7802100004789",
+    "brand": "Heineken                                ",
+    "family": "Cerveza                                                                                             ",
+    "image": "https://static.app.biggie.com.py/images/products/7802100004789.jpg"
+  },
+  {
+    "name": "Filets de Pechuga Pechugon congeladas de 800 gr.",
+    "price": 35750,
+    "ean": "7840369040926",
+    "brand": "Pechugon                                ",
+    "family": "Carne de Ave                                                                                        ",
+    "image": "https://static.app.biggie.com.py/images/products/7840369040926.jpg"
+  },
+  {
+    "name": "Recortes de Carne Neuland x kg.",
+    "price": 45600,
+    "ean": "60155",
+    "brand": "Neuland                                 ",
+    "family": "Carne Vacuna                                                                                        ",
+    "image": "https://static.app.biggie.com.py/images/products/60155.jpg"
+  },
+  {
+    "name": "Cerveza Heineken Holanda 0.0 Botellita de 330 ml.",
+    "price": 9000,
+    "ean": "7802100003270",
+    "brand": "Heineken                                ",
+    "family": "Cerveza                                                                                             ",
+    "image": "https://static.app.biggie.com.py/images/products/7802100003270.jpg"
+  },
+  {
+    "name": "Pechuga Deshuesado Pechugon sin Piel x kg.",
+    "price": 30000,
+    "ean": "30169",
+    "brand": "Pechugon                                ",
+    "family": "Carne de Ave                                                                                        ",
+    "image": "https://static.app.biggie.com.py/images/products/30169.jpg"
+  },
+  {
+    "name": "Cerveza Budweiser 66 Lata de 310 ml.",
+    "price": 5500,
+    "ean": "7840050003605",
+    "brand": "Budweiser                               ",
+    "family": "Cerveza                                                                                             ",
+    "image": "https://static.app.biggie.com.py/images/products/7840050003605.jpg"
+  },
+  {
+    "name": "Cerveza Ouro Fino lata de 354 ml.",
+    "price": 3750,
+    "ean": "78404533",
+    "brand": "Ouro Fino                               ",
+    "family": "Cerveza                                                                                             ",
+    "image": "https://static.app.biggie.com.py/images/products/78404533.jpg"
+  },
+  {
+    "name": "Kiwi x kg",
+    "price": 51950,
+    "ean": "15038",
+    "brand": "Finca                                   ",
+    "family": "Frutas                                                                                              ",
+    "image": "https://static.app.biggie.com.py/images/products/15038.jpg"
+  },
+  {
+    "name": "Cerveza Corona Cero Botella de 330 ml.",
+    "price": 8500,
+    "ean": "7891991305679",
+    "brand": "Corona                                  ",
+    "family": "Cerveza                                                                                             ",
+    "image": "https://static.app.biggie.com.py/images/products/7891991305679.jpg"
+  },
+  {
+    "name": "Queso Muzzarella Ilolay Light de 200 gr.",
+    "price": 28800,
+    "ean": "7841231000116",
+    "brand": "iLoLay                                  ",
+    "family": "Quesos Blandos                                                                                      ",
+    "image": "https://static.app.biggie.com.py/images/products/7841231000116.jpg"
+  },
+  {
+    "name": "Cerveza Pilsen Clasica botella retornable 940 ml.",
+    "price": 8000,
+    "ean": "78409613",
+    "brand": "Pilsen                                  ",
+    "family": "Cerveza                                                                                             ",
+    "image": "https://static.app.biggie.com.py/images/products/78409613.jpg"
+  },
+  {
+    "name": "Gaseosa Schweppes Citrus de 2.000 ml.",
+    "price": 14900,
+    "ean": "7840058001061",
+    "brand": "Schweppes                               ",
+    "family": "Gaseosa Normal                                                                                      ",
+    "image": "https://static.app.biggie.com.py/images/products/7840058001061.jpg"
+  },
+  {
+    "name": "Huevos Nutrihuevos tipo A de 30 unidades.",
+    "price": 23450,
+    "ean": "7840471000054",
+    "brand": "NUTRIHUEVOS                             ",
+    "family": "Huevos                                                                                              ",
+    "image": "https://static.app.biggie.com.py/images/products/7840471000054.jpg"
+  },
+  {
+    "name": "Cerveza Polar Lata de 350 ml.",
+    "price": 2500,
+    "ean": "7840025011024",
+    "brand": "Polar                                   ",
+    "family": "Cerveza                                                                                             ",
+    "image": "https://static.app.biggie.com.py/images/products/7840025011024.jpg"
+  },
+  {
+    "name": "Whisky Johnnie Walker Gold Label Reserve de 750 ml.",
+    "price": 370000,
+    "ean": "5000267197630",
+    "brand": "Johnnie Walker                          ",
+    "family": "Whisky                                                                                              ",
+    "image": "https://static.app.biggie.com.py/images/products/5000267197630.jpg"
+  },
+  {
+    "name": "Chicle Topline Ultra Greenmint de 24 gr.",
+    "price": 9000,
+    "ean": "7790580120702",
+    "brand": "ARCOR                                   ",
+    "family": "Chicles                                                                                             ",
+    "image": "https://static.app.biggie.com.py/images/products/7790580120702.jpg"
+  },
+  {
+    "name": "Cerveza Heineken sin Alcohol 0,0 Lata de 350 ml.",
+    "price": 7500,
+    "ean": "7802100003287",
+    "brand": "Heineken                                ",
+    "family": "Cerveza                                                                                             ",
+    "image": "https://static.app.biggie.com.py/images/products/7802100003287.jpg"
+  },
+  {
+    "name": "Milanesa Pechumila de pollo de 800 gr.",
+    "price": 29750,
+    "ean": "7840369041077",
+    "brand": "Pechugon                                ",
+    "family": "Apanados de Pollo y Carne                                                                           ",
+    "image": "https://static.app.biggie.com.py/images/products/7840369041077.jpg"
+  },
+  {
+    "name": "Carne Vacio Neuland Especial envasado al vacio x kg.",
+    "price": 102000,
+    "ean": "60104",
+    "brand": "Neuland                                 ",
+    "family": "Carne Vacuna                                                                                        ",
+    "image": "https://static.app.biggie.com.py/images/products/60104.jpg"
+  },
+  {
+    "name": "Manzana verde x kg.",
+    "price": 20950,
+    "ean": "15042",
+    "brand": "Finca                                   ",
+    "family": "Frutas                                                                                              ",
+    "image": "https://static.app.biggie.com.py/images/products/15042.jpg"
+  },
+  {
+    "name": "Huevo Biggie Tipo A x 12 Uni.",
+    "price": 12500,
+    "ean": "7840061000211",
+    "brand": "Biggie                                  ",
+    "family": "Huevos                                                                                              ",
+    "image": "https://static.app.biggie.com.py/images/products/7840061000211.jpg"
+  },
+  {
+    "name": "Carne Colita Cuadril Neuland Envasado al Vacio x kg.",
+    "price": 99600,
+    "ean": "60101",
+    "brand": "Neuland                                 ",
+    "family": "Carne Vacuna                                                                                        ",
+    "image": "https://static.app.biggie.com.py/images/products/60101.jpg"
+  },
+  {
+    "name": "Gaseosa Sprite zero de 2.000 ml.",
+    "price": 14900,
+    "ean": "7840058006615",
+    "brand": "Sprite                                  ",
+    "family": "Gaseosa Normal                                                                                      ",
+    "image": "https://static.app.biggie.com.py/images/products/7840058006615.jpg"
+  },
+  {
+    "name": "Cigarrillo Lucky Strike Red de 20´s Patter x Uni.",
+    "price": 8000,
+    "ean": "78419803",
+    "brand": "LUCKY STRIKE                            ",
+    "family": "Cigarrillos                                                                                         ",
+    "image": "https://static.app.biggie.com.py/images/products/78419803-26483560.jpg"
+  },
+  {
+    "name": "Cerveza Ouro Fino Lata de 269 ml.",
+    "price": 3333,
+    "ean": "7840050002639",
+    "brand": "Ouro Fino                               ",
+    "family": "Cerveza                                                                                             ",
+    "image": "https://static.app.biggie.com.py/images/products/7840050002639.jpg"
+  },
+  {
+    "name": "Cerveza Stella Artois de 600 ml.",
+    "price": 13000,
+    "ean": "7891991295109",
+    "brand": "Stella Artois                           ",
+    "family": "Cerveza                                                                                             ",
+    "image": "https://static.app.biggie.com.py/images/products/7891991295109.jpg"
+  },
+  {
+    "name": "Whisky Johnnie Walker double black de 1.000 ml.",
+    "price": 260000,
+    "ean": "5000267112077",
+    "brand": "Johnnie Walker                          ",
+    "family": "Whisky                                                                                              ",
+    "image": "https://static.app.biggie.com.py/images/products/5000267112077.jpg"
+  },
+  {
+    "name": "Chicle Topline Ultra Cleanmint de 24 gr.",
+    "price": 9000,
+    "ean": "7790580120573",
+    "brand": "ARCOR                                   ",
+    "family": "Chicles                                                                                             ",
+    "image": "https://static.app.biggie.com.py/images/products/7790580120573.jpg"
+  },
+  {
+    "name": "Cerveza Miller Genuine Draft Lata de 350 ml.",
+    "price": 5500,
+    "ean": "7898032910083",
+    "brand": "Miller                                  ",
+    "family": "Cerveza                                                                                             ",
+    "image": "https://static.app.biggie.com.py/images/products/7898032910083.jpg"
+  },
+  {
+    "name": "Carnaza negra Biggie x kg.",
+    "price": 63950,
+    "ean": "61204",
+    "brand": "Biggie                                  ",
+    "family": "Carne Envasada Biggie                                                                               ",
+    "image": "https://static.app.biggie.com.py/images/products/61204.jpg"
+  },
+  {
+    "name": "Chorizo Parrillero Ochsi S/P x Paquete",
+    "price": 13000,
+    "ean": "0798190153759",
+    "brand": "Ochsi                                   ",
+    "family": "Embutido Envasado Biggie                                                                            ",
+    "image": "https://static.app.biggie.com.py/images/products/0798190153759.jpg"
+  },
+  {
+    "name": "Vino Tinto Santa Helena de 1.500 ml.",
+    "price": 51500,
+    "ean": "7804300120566",
+    "brand": "Santa Helena                            ",
+    "family": "Vino Tinto                                                                                          ",
+    "image": "https://static.app.biggie.com.py/images/products/7804300120566.jpg"
+  },
+  {
+    "name": "Queso Lactolanda Danbo feteado de 250 gr.",
+    "price": 19900,
+    "ean": "7840042004061",
+    "brand": "Lactolanda                              ",
+    "family": "Queso Sandwich                                                                                      ",
+    "image": "https://static.app.biggie.com.py/images/products/7840042004061.jpg"
+  },
+  {
+    "name": "Pan Integral Bauducco de 390 gr.",
+    "price": 11500,
+    "ean": "7891962064055",
+    "brand": "Bauducco                                ",
+    "family": "Panes Envasados                                                                                     ",
+    "image": "https://static.app.biggie.com.py/images/products/7891962064055.jpg"
+  },
+  {
+    "name": "Patitas de Pollo Pechugon en Bandeja x Kg.",
+    "price": 18200,
+    "ean": "30165",
+    "brand": "Pechugon                                ",
+    "family": "Carne de Ave                                                                                        ",
+    "image": "https://static.app.biggie.com.py/images/products/30165.jpg"
+  },
+  {
+    "name": "Ciruela x kg.",
+    "price": 36950,
+    "ean": "15063",
+    "brand": "Finca                                   ",
+    "family": "Frutas                                                                                              ",
+    "image": "https://static.app.biggie.com.py/images/products/15063.jpg"
+  },
+  {
+    "name": "Energizante Monster Pipeline Punch Lata de 473 ml.",
+    "price": 15000,
+    "ean": "070847898115",
+    "brand": "MONSTER                                 ",
+    "family": "Bebidas Energizantes                                                                                ",
+    "image": "https://static.app.biggie.com.py/images/products/070847898115.jpg"
+  },
+  {
+    "name": "Sopa Paraguaya Guarani de 1.000 gr.",
+    "price": 42900,
+    "ean": "7840699001680",
+    "brand": "Guaraní                                ",
+    "family": "Sopa Paraguaya                                                                                      ",
+    "image": "https://static.app.biggie.com.py/images/products/7840699001680.jpg"
+  },
+  {
+    "name": "Hamburguesa Guarani parrillera x 6 Unidades.",
+    "price": 37450,
+    "ean": "7840699000270",
+    "brand": "Guaraní                                ",
+    "family": "Hamburguesas                                                                                        ",
+    "image": "https://static.app.biggie.com.py/images/products/7840699000270.jpg"
+  },
+  {
+    "name": "Yoghurt Los Colonos Hiperproteico Frutos Rojos de 190 gr.",
+    "price": 6950,
+    "ean": "7840037015744",
+    "brand": "Los Colonos                             ",
+    "family": "Yogures Dieteticos                                                                                  ",
+    "image": "https://static.app.biggie.com.py/images/products/7840037015744.jpg"
+  },
+  {
+    "name": "Pan Felipe El Germano de 500 gr.",
+    "price": 10800,
+    "ean": "7840581040360",
+    "brand": "EL GERMANO                              ",
+    "family": "Panes Envasados                                                                                     ",
+    "image": "https://static.app.biggie.com.py/images/products/7840581040360.jpg"
+  },
+  {
+    "name": "Yogurt Trebol Griegur Natural de 200 gr.",
+    "price": 6900,
+    "ean": "7840005013550",
+    "brand": "Trebol                                  ",
+    "family": "Yogures Dieteticos                                                                                  ",
+    "image": "https://static.app.biggie.com.py/images/products/7840005013550.jpg"
+  },
+  {
+    "name": "Locote Rojo x kg.",
+    "price": 28950,
+    "ean": "15023",
+    "brand": "Finca                                   ",
+    "family": "Verduras                                                                                            ",
+    "image": "https://static.app.biggie.com.py/images/products/15023.jpg"
+  },
+  {
+    "name": "Rapiditas Bimbo Light de 310 gr.",
+    "price": 14400,
+    "ean": "7840131003067",
+    "brand": "Bimbo                                   ",
+    "family": "Panes Envasados                                                                                     ",
+    "image": "https://static.app.biggie.com.py/images/products/7840131003067.jpg"
+  },
+  {
+    "name": "Cigarrillo Lucky Strike Crush de 20´s x Uni.",
+    "price": 10000,
+    "ean": "78422018",
+    "brand": "LUCKY STRIKE                            ",
+    "family": "Cigarrillos                                                                                         ",
+    "image": "https://static.app.biggie.com.py/images/products/78422018.jpg"
+  },
+  {
+    "name": "Torta Helada Amandau Gourmet Dulce Explosion de 800 gr.",
+    "price": 88000,
+    "ean": "7840356002418",
+    "brand": "Amandau                                 ",
+    "family": "Helados                                                                                             ",
+    "image": "https://static.app.biggie.com.py/images/products/7840356002418.jpg"
+  },
+  {
+    "name": "Cigarrillo Kent Neo Tropic Bc Hw26 20´s x Uni.",
+    "price": 13000,
+    "ean": "78422902",
+    "brand": "KENT                                    ",
+    "family": "Cigarrillos                                                                                         ",
+    "image": "https://static.app.biggie.com.py/images/products/78422902.jpg"
+  },
+  {
+    "name": "Chorizo con queso Ochsi x Paq.",
+    "price": 13000,
+    "ean": "0798190153698",
+    "brand": "Ochsi                                   ",
+    "family": "Embutido Envasado Biggie                                                                            ",
+    "image": "https://static.app.biggie.com.py/images/products/0798190153698.jpg"
+  },
+  {
+    "name": "Licor Aperol Aperitivo de 750 ml.",
+    "price": 94000,
+    "ean": "7891136057029",
+    "brand": "APEROL                                  ",
+    "family": "Destilados                                                                                          ",
+    "image": "https://static.app.biggie.com.py/images/products/7891136057029-32611780.jpg"
+  },
+  {
+    "name": "Matambrito El Patron Caramelizado x kg.",
+    "price": 66950,
+    "ean": "20121",
+    "brand": "EL PATRON                               ",
+    "family": "Carne de Cerdo                                                                                      ",
+    "image": "https://static.app.biggie.com.py/images/products/20121.jpg"
+  },
+  {
+    "name": "Chicle Topline Seven xplosive mint de 14 gr.",
+    "price": 4950,
+    "ean": "78024465",
+    "brand": "Topline                                 ",
+    "family": "Chicles                                                                                             ",
+    "image": "https://static.app.biggie.com.py/images/products/78024465-32620276.jpg"
+  },
+  {
+    "name": "Helado Amandau Palito Bombon Diet Americana de 70 gr.",
+    "price": 14500,
+    "ean": "7840356002630",
+    "brand": "Amandau                                 ",
+    "family": "Helados                                                                                             ",
+    "image": "https://static.app.biggie.com.py/images/products/7840356002630.jpg"
+  },
+  {
+    "name": "Queso Los Colonos Sandwich Feteado de 200 gr.",
+    "price": 19200,
+    "ean": "7840037015676",
+    "brand": "Los Colonos                             ",
+    "family": "Queso Sandwich                                                                                      ",
+    "image": null
+  },
+  {
+    "name": "Carne Tapa Cuadril B PUL Selection x kg.",
+    "price": 114950,
+    "ean": "20802",
+    "brand": "SELECCION                               ",
+    "family": "Carne Vacuna                                                                                        ",
+    "image": "https://static.app.biggie.com.py/images/products/20802.jpg"
+  },
+  {
+    "name": "Gaseosa Fanta Guarana Descartable de 2.000 ml.",
+    "price": 14900,
+    "ean": "7840058004673",
+    "brand": "Coca Cola                               ",
+    "family": "Gaseosa Normal                                                                                      ",
+    "image": "https://static.app.biggie.com.py/images/products/7840058004673.jpg"
+  },
+  {
+    "name": "Mortadela Ochsi al Vacío x Kg.",
+    "price": 51250,
+    "ean": "17006",
+    "brand": "Ochsi                                   ",
+    "family": "Embutido Envasado Biggie                                                                            ",
+    "image": "https://static.app.biggie.com.py/images/products/17006.jpg"
+  },
+  {
+    "name": "Huevos Nutrihuevos tipo A de 12 unidades.",
+    "price": 11900,
+    "ean": "7840471000016",
+    "brand": "NUTRIHUEVOS                             ",
+    "family": "Huevos                                                                                              ",
+    "image": "https://static.app.biggie.com.py/images/products/7840471000016.jpg"
+  },
+  {
+    "name": "Yerba Kurupi Menta y Boldo Caja de 500 gr.",
+    "price": 13400,
+    "ean": "7840127000124",
+    "brand": "Kurupi                                  ",
+    "family": "Yerba                                                                                               ",
+    "image": "https://static.app.biggie.com.py/images/products/7840127000124.jpg"
+  },
+  {
+    "name": "Pan de Ajo Zinho Tradicional con Queso de 300 gr.",
+    "price": 19950,
+    "ean": "7898337980248",
+    "brand": "Zinho                                   ",
+    "family": "Panes de Ajo                                                                                        ",
+    "image": "https://static.app.biggie.com.py/images/products/7898337980248.png"
+  },
+  {
+    "name": "Pate de higado Ochsi x kg.",
+    "price": 42450,
+    "ean": "17045",
+    "brand": "Ochsi                                   ",
+    "family": "Embutido Envasado Biggie                                                                            ",
+    "image": "https://static.app.biggie.com.py/images/products/17045.jpg"
+  },
+  {
+    "name": "Pan para Sanwich Pantodos de 420 gr.",
+    "price": 10400,
+    "ean": "7840131000028",
+    "brand": "PANTODOS                                ",
+    "family": "Panes Envasados                                                                                     ",
+    "image": "https://static.app.biggie.com.py/images/products/7840131000028.jpg"
+  },
+  {
+    "name": "Queso Tybo Ilolay de 200 gr.",
+    "price": 25950,
+    "ean": "7841231000086",
+    "brand": "iLoLay                                  ",
+    "family": "Quesos Blandos                                                                                      ",
+    "image": "https://static.app.biggie.com.py/images/products/7841231000086.jpg"
+  },
+  {
+    "name": "Fernet Brancamenta de 750 ml.",
+    "price": 80000,
+    "ean": "7790290101473",
+    "brand": "FERNET BRANCA                           ",
+    "family": "Destilados                                                                                          ",
+    "image": "https://static.app.biggie.com.py/images/products/7790290101473-31671702.jpg"
+  },
+  {
+    "name": "Vino Tinto Santa Helena de 750 ml.",
+    "price": 27500,
+    "ean": "7804300120467",
+    "brand": "Santa Helena                            ",
+    "family": "Vino Tinto                                                                                          ",
+    "image": "https://static.app.biggie.com.py/images/products/7804300120467.jpg"
+  },
+  {
+    "name": "Carne bola de lomo Biggie x kg.",
+    "price": 61450,
+    "ean": "61201",
+    "brand": "Biggie                                  ",
+    "family": "Carne Envasada Biggie                                                                               ",
+    "image": "https://static.app.biggie.com.py/images/products/61201.jpg"
+  },
+  {
+    "name": "Leche Trebol Descremada Vida Sana de 1.000 ml.",
+    "price": 7850,
+    "ean": "7840005012409",
+    "brand": "Trebol                                  ",
+    "family": "Leche                                                                                               ",
+    "image": "https://static.app.biggie.com.py/images/products/7840005012409.jpg"
+  },
+  {
+    "name": "Hamburguesa Efege carne x 6 Unidades.",
+    "price": 13900,
+    "ean": "7840699000102",
+    "brand": "Guaraní                                ",
+    "family": "Hamburguesas                                                                                        ",
+    "image": "https://static.app.biggie.com.py/images/products/7840699000102.jpg"
+  },
+  {
+    "name": "Cerveza Munich Ultra Botella de 275 ml.",
+    "price": 5000,
+    "ean": "7840025000028",
+    "brand": "MUNICH ULTRA                            ",
+    "family": "Cerveza                                                                                             ",
+    "image": "https://static.app.biggie.com.py/images/products/7840025000028.jpg"
+  },
+  {
+    "name": "Cerveza Munich Gluten Free Botella de 275 ml.",
+    "price": 5000,
+    "ean": "7840025000127",
+    "brand": "MUNICH ULTRA                            ",
+    "family": "Cerveza                                                                                             ",
+    "image": "https://static.app.biggie.com.py/images/products/7840025000127.jpg"
+  },
+  {
+    "name": "Fiambre Paris Ochsi sin grasa al vacio x kg.",
+    "price": 49650,
+    "ean": "01094",
+    "brand": "Ochsi                                   ",
+    "family": "Embutido Envasado Biggie                                                                            ",
+    "image": "https://static.app.biggie.com.py/images/products/01094.jpg"
+  },
+  {
+    "name": "Chorizo Franz 4 Quesos env. al vacio x 4 uni.",
+    "price": 28800,
+    "ean": "7841554000671",
+    "brand": "Franz                                   ",
+    "family": "Chorizos                                                                                            ",
+    "image": "https://static.app.biggie.com.py/images/products/7841554000671.png"
+  },
+  {
+    "name": "Torta Helada Amandau Selva Negra 8 Porciones de 900 gr.",
+    "price": 78000,
+    "ean": "7840356001367",
+    "brand": "Amandau                                 ",
+    "family": "Helados                                                                                             ",
+    "image": "https://static.app.biggie.com.py/images/products/7840356001367.jpg"
+  },
+  {
+    "name": "Pera x kg.",
+    "price": 11950,
+    "ean": "15045",
+    "brand": "Finca                                   ",
+    "family": "Frutas                                                                                              ",
+    "image": "https://static.app.biggie.com.py/images/products/15045.jpg"
+  },
+  {
+    "name": "Ron Fortin Coctel Frutos Rojos de 750 ml.",
+    "price": 18700,
+    "ean": "7840138001257",
+    "brand": "Fortin                                  ",
+    "family": "Destilados                                                                                          ",
+    "image": "https://static.app.biggie.com.py/images/products/7840138001257.jpg"
+  },
+  {
+    "name": "Chorizo Parrillero Ochsi con picante x Paq.",
+    "price": 13000,
+    "ean": "0798190153766",
+    "brand": "Ochsi                                   ",
+    "family": "Embutido Envasado Biggie                                                                            ",
+    "image": "https://static.app.biggie.com.py/images/products/0798190153766.jpg"
+  },
+  {
+    "name": "Galletita Bagley Rumba de 110 gr.",
+    "price": 5250,
+    "ean": "7790040143517",
+    "brand": "BAGLEY                                  ",
+    "family": "Galletitas Dulces                                                                                   ",
+    "image": "https://static.app.biggie.com.py/images/products/7790040143517.jpg"
+  },
+  {
+    "name": "Huevo Biggie Tipo A x 6 Uni.",
+    "price": 6500,
+    "ean": "7840061000365",
+    "brand": "Biggie                                  ",
+    "family": "Huevos                                                                                              ",
+    "image": "https://static.app.biggie.com.py/images/products/7840061000365.jpg"
+  },
+  {
+    "name": "Caramelo Halls extra fuerte de 30 gr.",
+    "price": 2650,
+    "ean": "78938816",
+    "brand": "Halls                                   ",
+    "family": "Caramelos                                                                                           ",
+    "image": "https://static.app.biggie.com.py/images/products/78938816.jpg"
+  },
+  {
+    "name": "Pollo Pechugon Entero Congelado Con Menudencia x kg.",
+    "price": 14650,
+    "ean": "30170",
+    "brand": "Pechugon                                ",
+    "family": "Carne de Ave                                                                                        ",
+    "image": "https://static.app.biggie.com.py/images/products/30170.jpg"
+  },
+  {
+    "name": "Papas Fritas Pringles Original de 104 gr.",
+    "price": 21800,
+    "ean": "7896004006277",
+    "brand": "PRINGLES                                ",
+    "family": "Papas Fritas                                                                                        ",
+    "image": "https://static.app.biggie.com.py/images/products/7896004006277.jpg"
+  },
+  {
+    "name": "Agua Mineral Dasani sin Gas de 2.250 ml.",
+    "price": 4950,
+    "ean": "7840058003898",
+    "brand": "Dasani                                  ",
+    "family": "Aguas Minerales                                                                                     ",
+    "image": "https://static.app.biggie.com.py/images/products/7840058003898.jpg"
+  },
+  {
+    "name": "Cigarrillo Marlboro Sunset Fusion Box 20´s x Uni.",
+    "price": 12000,
+    "ean": "78421776",
+    "brand": "MARLBORO                                ",
+    "family": "Cigarrillos                                                                                         ",
+    "image": "https://static.app.biggie.com.py/images/products/78421776-34510562.jpg"
+  },
+  {
+    "name": "Helado Amandau Palito Crock Pistacho de 70 gr.",
+    "price": 19000,
+    "ean": "7840356003231",
+    "brand": "Amandau                                 ",
+    "family": "Helados                                                                                             ",
+    "image": "https://static.app.biggie.com.py/images/products/7840356003231.jpg"
+  },
+  {
+    "name": "Cerveza Miller Genuine Draft de 269 ml.",
+    "price": 4500,
+    "ean": "7898032910106",
+    "brand": "Miller                                  ",
+    "family": "Cerveza                                                                                             ",
+    "image": "https://static.app.biggie.com.py/images/products/7898032910106.jpg"
+  },
+  {
+    "name": "Jugos Del Valle Durazno Tetra de 1.000 ml.",
+    "price": 11500,
+    "ean": "7840058008978",
+    "brand": "DEL VALLE                               ",
+    "family": "Jugos                                                                                               ",
+    "image": "https://static.app.biggie.com.py/images/products/7840058008978.jpg"
+  },
+  {
+    "name": "Carnaza blanca Biggie x kg.",
+    "price": 58450,
+    "ean": "61202",
+    "brand": "Biggie                                  ",
+    "family": "Carne Envasada Biggie                                                                               ",
+    "image": "https://static.app.biggie.com.py/images/products/61202.jpg"
+  },
+  {
+    "name": "Galletita Oreo Original de 118 gr.",
+    "price": 7400,
+    "ean": "7622201759582",
+    "brand": "Oreo                                    ",
+    "family": "Galletitas Dulces                                                                                   ",
+    "image": "https://static.app.biggie.com.py/images/products/7622201759582.jpg"
+  },
+  {
+    "name": "Helado Amandau Palito Bombon x Uni.",
+    "price": 10000,
+    "ean": "7840356000704",
+    "brand": "Amandau                                 ",
+    "family": "Helados                                                                                             ",
+    "image": "https://static.app.biggie.com.py/images/products/7840356000704.jpg"
+  },
+  {
+    "name": "Cerveza Corona Extra de 620 ml.",
+    "price": 15500,
+    "ean": "7802130003585",
+    "brand": "Corona                                  ",
+    "family": "Cerveza                                                                                             ",
+    "image": "https://static.app.biggie.com.py/images/products/7802130003585.jpg"
+  },
+  {
+    "name": "Queso Gouda Ilolay Light de 200 gr.",
+    "price": 28600,
+    "ean": "7841231000055",
+    "brand": "iLoLay                                  ",
+    "family": "Quesos Blandos                                                                                      ",
+    "image": "https://static.app.biggie.com.py/images/products/7841231000055.jpg"
+  },
+  {
+    "name": "Gaseosa Pulp naranja de 1.000 ml.",
+    "price": 7000,
+    "ean": "7840779002972",
+    "brand": "Pulp                                    ",
+    "family": "Gaseosa Normal                                                                                      ",
+    "image": "https://static.app.biggie.com.py/images/products/7840779002972.jpg"
+  },
+  {
+    "name": "Pan de Sandwich Bimbo 3 Semillas de 400 gr.",
+    "price": 13100,
+    "ean": "7840131003807",
+    "brand": "Bimbo                                   ",
+    "family": "Panes Envasados                                                                                     ",
+    "image": "https://static.app.biggie.com.py/images/products/7840131003807.jpg"
+  },
+  {
+    "name": "Jugos Del Valle Durazno Tetra de 1.500 ml.",
+    "price": 14500,
+    "ean": "7840058009012",
+    "brand": "DEL VALLE                               ",
+    "family": "Jugos                                                                                               ",
+    "image": "https://static.app.biggie.com.py/images/products/7840058009012.jpg"
+  },
+  {
+    "name": "Queso Rallado Ilolay de 40 gr.",
+    "price": 9650,
+    "ean": "7790787251780",
+    "brand": "iLoLay                                  ",
+    "family": "Quesos Rallados                                                                                     ",
+    "image": "https://static.app.biggie.com.py/images/products/7790787251780.jpg"
+  },
+  {
+    "name": "Mamon Formosa x kg.",
+    "price": 16950,
+    "ean": "18181",
+    "brand": "NAGAOKA                                 ",
+    "family": "Frutas                                                                                              ",
+    "image": "https://static.app.biggie.com.py/images/products/18181.jpg"
+  },
+  {
+    "name": "Carne Costilla Neuland Especial x kg.",
+    "price": 93600,
+    "ean": "60105",
+    "brand": "Neuland                                 ",
+    "family": "Carne Vacuna                                                                                        ",
+    "image": "https://static.app.biggie.com.py/images/products/60105.jpg"
+  },
+  {
+    "name": "Bolsa Biggie Camisilla de 60 Micrones x Uni.",
+    "price": 1250,
+    "ean": "77788",
+    "brand": "Biggie                                  ",
+    "family": "INSUMOS                                                                                             ",
+    "image": null
+  },
+  {
+    "name": "Chipa Guasu Guaraní de 1.000 gr.",
+    "price": 46400,
+    "ean": "7840699001673",
+    "brand": "Guaraní                                ",
+    "family": "Comidas Preparadas                                                                                  ",
+    "image": "https://static.app.biggie.com.py/images/products/7840699001673.jpg"
+  },
+  {
+    "name": "Cigarrillo Kentucky Red Soft 20's x Uni.",
+    "price": 3500,
+    "ean": "78422872",
+    "brand": "KENTUCKY                                ",
+    "family": "Cigarrillos                                                                                         ",
+    "image": "https://static.app.biggie.com.py/images/products/78422872.jpg"
+  },
+  {
+    "name": "Cerveza Munich Ultra Botella de 600 ml Ow",
+    "price": 10000,
+    "ean": "7840025000219",
+    "brand": "MUNICH ULTRA                            ",
+    "family": "Cerveza                                                                                             ",
+    "image": "https://static.app.biggie.com.py/images/products/7840025000219.jpg"
+  },
+  {
+    "name": "Pan Brioche El Germano de 350 gr.",
+    "price": 15900,
+    "ean": "7840581102242",
+    "brand": "EL GERMANO                              ",
+    "family": "Panes Envasados                                                                                     ",
+    "image": "https://static.app.biggie.com.py/images/products/7840581102242.jpg"
+  },
+  {
+    "name": "Vape Desechable The Black Sheep 3k Tropical Mix 2% Nic x Uni.",
+    "price": 79000,
+    "ean": "7848000561984",
+    "brand": "The Black Sheep                         ",
+    "family": "Vapes                                                                                               ",
+    "image": "https://static.app.biggie.com.py/images/products/7848000561984.jpg"
+  },
+  {
+    "name": "Queso Paraguay La fortuna x Kg.",
+    "price": 39000,
+    "ean": "36532",
+    "brand": "La Fortuna                              ",
+    "family": "Queso Sandwich                                                                                      ",
+    "image": null
+  },
+  {
+    "name": "Queso La Paulina Mozzarella de 150 gr.",
+    "price": 19600,
+    "ean": "7841328000159",
+    "brand": "LA PAULINA                              ",
+    "family": "Quesos Duros                                                                                        ",
+    "image": "https://static.app.biggie.com.py/images/products/7841328000159.jpg"
+  },
+  {
+    "name": "Chicle Topline seven atomic strong de 14 gr.",
+    "price": 4950,
+    "ean": "78024472",
+    "brand": "Topline                                 ",
+    "family": "Chicles                                                                                             ",
+    "image": "https://static.app.biggie.com.py/images/products/78024472.jpg"
+  },
+  {
+    "name": "Leche Chocolatada Trebol de 1.000 ml.",
+    "price": 10700,
+    "ean": "7840005000055",
+    "brand": "Trebol                                  ",
+    "family": "Leche                                                                                               ",
+    "image": "https://static.app.biggie.com.py/images/products/7840005000055.jpg"
+  },
+  {
+    "name": "Carne Milanesa Especial Neuland env. al vacio.",
+    "price": 90000,
+    "ean": "60131",
+    "brand": "Neuland                                 ",
+    "family": "Carne Vacuna                                                                                        ",
+    "image": "https://static.app.biggie.com.py/images/products/60131.jpg"
+  },
+  {
+    "name": "Queso Los Colonos Mozzarella Feteado de 200 gr.",
+    "price": 19200,
+    "ean": "7840037015706",
+    "brand": "Los Colonos                             ",
+    "family": "Queso Sandwich                                                                                      ",
+    "image": null
+  },
+  {
+    "name": "Helado Franui Frambuesa Bañadas en Chocolate Blanco y Leche de 150 gr.",
+    "price": 39000,
+    "ean": "7798147783223",
+    "brand": "Franui                                  ",
+    "family": "Helados                                                                                             ",
+    "image": "https://static.app.biggie.com.py/images/products/7798147783223.png"
+  },
+  {
+    "name": "Carne Paleta Porcionada Biggie envasado al vacio x kg.",
+    "price": 57450,
+    "ean": "61200",
+    "brand": "Biggie                                  ",
+    "family": "Carne Envasada Biggie                                                                               ",
+    "image": null
+  },
+  {
+    "name": "Vino Tinto Santa Claudia de 1.5 ml.",
+    "price": 39500,
+    "ean": "7528300647822",
+    "brand": "SANTA CLAUDIA                           ",
+    "family": "Vino Tinto                                                                                          ",
+    "image": "https://static.app.biggie.com.py/images/products/7528300647822.jpg"
+  },
+  {
+    "name": "Chorizo de Viena Ochsi x Paq.",
+    "price": 13000,
+    "ean": "0798190153728",
+    "brand": "Ochsi                                   ",
+    "family": "Embutido Envasado Biggie                                                                            ",
+    "image": "https://static.app.biggie.com.py/images/products/0798190153728.jpg"
+  },
+  {
+    "name": "Galletita Bagley Criollitas Original de 100 gr.",
+    "price": 4750,
+    "ean": "7790040377707",
+    "brand": "BAGLEY                                  ",
+    "family": "Galletitas Integrales                                                                               ",
+    "image": "https://static.app.biggie.com.py/images/products/7790040377707.jpg"
+  },
+  {
+    "name": "Cigarrillo Lucky Strike Compact Click Purple 20's x Uni.",
+    "price": 7000,
+    "ean": "78422100",
+    "brand": "LUCKY STRIKE                            ",
+    "family": "Cigarrillos                                                                                         ",
+    "image": "https://static.app.biggie.com.py/images/products/78422100.jpg"
+  },
+  {
+    "name": "Jugo Watts Nectar durazno de 1.000 ml.",
+    "price": 12000,
+    "ean": "7840188000040",
+    "brand": "Watts                                   ",
+    "family": "Jugos                                                                                               ",
+    "image": "https://static.app.biggie.com.py/images/products/7840188000040.jpg"
+  },
+  {
+    "name": "Aguacate x kg.",
+    "price": 25950,
+    "ean": "15096",
+    "brand": "Finca                                   ",
+    "family": "Frutas                                                                                              ",
+    "image": "https://static.app.biggie.com.py/images/products/15096.jpg"
+  },
+  {
+    "name": "Vino Blanco Santa Julia Chenin Dulce Natural de 750 ml.",
+    "price": 75000,
+    "ean": "7791728000115",
+    "brand": "Santa Julia                             ",
+    "family": "Vino Blanco                                                                                         ",
+    "image": "https://static.app.biggie.com.py/images/products/7791728000115.jpg"
+  },
+  {
+    "name": "Helado Amandau Copa Brownie de 205 gr.",
+    "price": 24000,
+    "ean": "7840356002760",
+    "brand": "Amandau                                 ",
+    "family": "Helados                                                                                             ",
+    "image": "https://static.app.biggie.com.py/images/products/7840356002760.jpg"
+  },
+  {
+    "name": "Zanahoria x kg.",
+    "price": 5150,
+    "ean": "15051",
+    "brand": "Finca                                   ",
+    "family": "Verduras                                                                                            ",
+    "image": "https://static.app.biggie.com.py/images/products/15051.jpg"
+  },
+  {
+    "name": "Queso Lactolanda Muzzarella de 250 gr.",
+    "price": 19800,
+    "ean": "7840042004108",
+    "brand": "Lactolanda                              ",
+    "family": "Queso Sandwich                                                                                      ",
+    "image": "https://static.app.biggie.com.py/images/products/7840042004108.jpg"
+  },
+  {
+    "name": "Pan de Ajo Tradicional Santa Massa de 240 gr.",
+    "price": 19900,
+    "ean": "7898067340077",
+    "brand": "Santa Massa                             ",
+    "family": "Panes de Ajo                                                                                        ",
+    "image": "https://static.app.biggie.com.py/images/products/7898067340077.jpg"
+  },
+  {
+    "name": "Cerveza Heineken Silver lata de 269 ml",
+    "price": 6000,
+    "ean": "7802100004796",
+    "brand": "Heineken                                ",
+    "family": "Cerveza                                                                                             ",
+    "image": "https://static.app.biggie.com.py/images/products/7802100004796.jpg"
+  },
+  {
+    "name": "Gaseosa Coca Cola Zero Lata de 354 ml.",
+    "price": 6500,
+    "ean": "7790895067587",
+    "brand": "Coca Cola                               ",
+    "family": "Gaseosa Normal                                                                                      ",
+    "image": "https://static.app.biggie.com.py/images/products/7790895067587.jpg"
+  },
+  {
+    "name": "Hamburguesa Guarani Clasica x 6 Unidades.",
+    "price": 23150,
+    "ean": "7840699000027",
+    "brand": "Guaraní                                ",
+    "family": "Hamburguesas                                                                                        ",
+    "image": "https://static.app.biggie.com.py/images/products/7840699000027.jpg"
+  },
+  {
+    "name": "Cigarrillo Marlboro Crafted Rsp 20's x Uni.",
+    "price": 6000,
+    "ean": "78422810",
+    "brand": "MARLBORO                                ",
+    "family": "Cigarrillos                                                                                         ",
+    "image": "https://static.app.biggie.com.py/images/products/78422810.jpg"
+  },
+  {
+    "name": "Panceta Ochsi al Vacío x Kg.",
+    "price": 86150,
+    "ean": "17008",
+    "brand": "Ochsi                                   ",
+    "family": "Embutido Envasado Biggie                                                                            ",
+    "image": "https://static.app.biggie.com.py/images/products/17008.jpg"
+  },
+  {
+    "name": "Torta Helada Amandau Gourmet Frutilla Explosion de 800 gr.",
+    "price": 88000,
+    "ean": "7840356002456",
+    "brand": "Amandau                                 ",
+    "family": "Helados                                                                                             ",
+    "image": "https://static.app.biggie.com.py/images/products/7840356002456.jpg"
+  },
+  {
+    "name": "Manteca Trebol Plateada sin sal de 200 gr.",
+    "price": 15000,
+    "ean": "7840005003100",
+    "brand": "Trebol                                  ",
+    "family": "Mantecas                                                                                            ",
+    "image": "https://static.app.biggie.com.py/images/products/7840005003100.jpg"
+  },
+  {
+    "name": "Vape Desechable The Black Sheep XL Glow Grape x Uni.",
+    "price": 35000,
+    "ean": "7848000564329",
+    "brand": "The Black Sheep                         ",
+    "family": "Vapes                                                                                               ",
+    "image": "https://static.app.biggie.com.py/images/products/7848000564329.jpg"
+  },
+  {
+    "name": "Cerveza Skol Retornable de 940 ml.",
+    "price": 10000,
+    "ean": "7840050006644",
+    "brand": "SKOL                                    ",
+    "family": "Cerveza                                                                                             ",
+    "image": "https://static.app.biggie.com.py/images/products/7840050006644.jpg"
+  },
+  {
+    "name": "Agua Mineral Dasani sin Gas de 500 ml.",
+    "price": 3200,
+    "ean": "7840058008893",
+    "brand": "Dasani                                  ",
+    "family": "Aguas Minerales                                                                                     ",
+    "image": "https://static.app.biggie.com.py/images/products/7840058008893.jpg"
+  },
+  {
+    "name": "Carne Picada Parrillera Seleccion x kg.",
+    "price": 53550,
+    "ean": "26046",
+    "brand": "Frigomerc                               ",
+    "family": "Carne Vacuna                                                                                        ",
+    "image": null
+  },
+  {
+    "name": "Cafe Nescafe instantaneo clasico de 8 gr.",
+    "price": 3550,
+    "ean": "088169004978",
+    "brand": "Nescafé                                ",
+    "family": "Cafe                                                                                                ",
+    "image": "https://static.app.biggie.com.py/images/products/088169004978.jpg"
+  },
+  {
+    "name": "Agua Tonica De La Costa Grapefruit de 2.000 ml.",
+    "price": 10000,
+    "ean": "7840235004274",
+    "brand": "De La Costa                             ",
+    "family": "Agua Tonica                                                                                         ",
+    "image": "https://static.app.biggie.com.py/images/products/7840235004274.jpg"
+  },
+  {
+    "name": "Agua Mineral Dasani sin Gas de 990 ml.",
+    "price": 4200,
+    "ean": "7840058004215",
+    "brand": "Dasani                                  ",
+    "family": "Aguas Minerales                                                                                     ",
+    "image": "https://static.app.biggie.com.py/images/products/7840058004215.jpg"
+  },
+  {
+    "name": "Pan para Pancho La Palmera 12 Unidades.",
+    "price": 10200,
+    "ean": "7840075040050",
+    "brand": "LA PALMERA                              ",
+    "family": "Panes Envasados                                                                                     ",
+    "image": "https://static.app.biggie.com.py/images/products/7840075040050.jpg"
+  },
+  {
+    "name": "Papas Fritas Lays clasica de 30 gr.",
+    "price": 5000,
+    "ean": "7790310986851",
+    "brand": "LAYS                                    ",
+    "family": "Papas Fritas                                                                                        ",
+    "image": "https://static.app.biggie.com.py/images/products/7790310986851.jpg"
+  },
+  {
+    "name": "Cafe Nescafe tradicion sachet de 40 gr.",
+    "price": 14900,
+    "ean": "7891000307083",
+    "brand": "Nestle                                  ",
+    "family": "Cafe                                                                                                ",
+    "image": "https://static.app.biggie.com.py/images/products/7891000307083.jpg"
+  },
+  {
+    "name": "Alfajor Las Colonias Negro Triple de 65 gr.",
+    "price": 2500,
+    "ean": "77917812",
+    "brand": "Las Colonias                            ",
+    "family": "Alfajores                                                                                           ",
+    "image": "https://static.app.biggie.com.py/images/products/77917812.jpg"
+  },
+  {
+    "name": "Batata colorada x kg.",
+    "price": 7950,
+    "ean": "15006",
+    "brand": "Finca                                   ",
+    "family": "Verduras                                                                                            ",
+    "image": "https://static.app.biggie.com.py/images/products/15006.jpg"
+  },
+  {
+    "name": "Galleta El Germano Especiale de 750 gr.",
+    "price": 16900,
+    "ean": "7840581040179",
+    "brand": "EL GERMANO                              ",
+    "family": "Panes Envasados                                                                                     ",
+    "image": "https://static.app.biggie.com.py/images/products/7840581040179.jpg"
+  },
+  {
+    "name": "Helado Franui Frambuesa Bañadas en Chocolate Blanco y Amargo de 150 gr.",
+    "price": 39000,
+    "ean": "7798147780062",
+    "brand": "Franui                                  ",
+    "family": "Helados                                                                                             ",
+    "image": "https://static.app.biggie.com.py/images/products/7798147780062.png"
+  },
+  {
+    "name": "Galletitas Cerealitas de Arroz de 160 gr.",
+    "price": 12600,
+    "ean": "7622201753061",
+    "brand": "Cerealitas                              ",
+    "family": "Galletitas Integrales                                                                               ",
+    "image": "https://static.app.biggie.com.py/images/products/7622201753061.jpg"
+  },
+  {
+    "name": "Gaseosa Fanta piña descartable de 2.000 ml.",
+    "price": 14900,
+    "ean": "7840058004697",
+    "brand": "Coca Cola                               ",
+    "family": "Gaseosa Normal                                                                                      ",
+    "image": "https://static.app.biggie.com.py/images/products/7840058004697.jpg"
+  },
+  {
+    "name": "Cerveza Brahma SubZero Lata de 269 ml.",
+    "price": 3000,
+    "ean": "7840050002561",
+    "brand": "Brahma                                  ",
+    "family": "Cerveza                                                                                             ",
+    "image": "https://static.app.biggie.com.py/images/products/7840050002561.jpg"
+  },
+  {
+    "name": "Vape Desechable The Black Sheep Dual Glow Cherry Rasperry - Watermelon Strawberry 15k",
+    "price": 189000,
+    "ean": "7848000563223",
+    "brand": "The Black Sheep                         ",
+    "family": "Vapes                                                                                               ",
+    "image": "https://static.app.biggie.com.py/images/products/7848000563223.jpg"
+  },
+  {
+    "name": "Galletita Pepitos Cadbury de 119 gr.",
+    "price": 6800,
+    "ean": "7622201735906",
+    "brand": "Pepitos                                 ",
+    "family": "Galletitas Dulces                                                                                   ",
+    "image": "https://static.app.biggie.com.py/images/products/7622201735906.jpg"
+  },
+  {
+    "name": "Galletitas Oreo Original de 182.5 gr.",
+    "price": 9500,
+    "ean": "7622201759612",
+    "brand": "Oreo                                    ",
+    "family": "Galletitas Dulces                                                                                   ",
+    "image": "https://static.app.biggie.com.py/images/products/7622201759612.jpg"
+  },
+  {
+    "name": "Cerveza Munich Retornable de 1.000 ml.",
+    "price": 8000,
+    "ean": "7840025110864",
+    "brand": "MUNICH                                  ",
+    "family": "Cerveza                                                                                             ",
+    "image": "https://static.app.biggie.com.py/images/products/7840025110864.jpg"
+  },
+  {
+    "name": "Jugo Watts frutos rojos de 1.000 ml.",
+    "price": 12000,
+    "ean": "7840779007007",
+    "brand": "Watts                                   ",
+    "family": "Jugos                                                                                               ",
+    "image": "https://static.app.biggie.com.py/images/products/7840779007007.jpg"
+  },
+  {
+    "name": "Zapallo Brasilero x kg.",
+    "price": 4650,
+    "ean": "15055",
+    "brand": "Finca                                   ",
+    "family": "Verduras                                                                                            ",
+    "image": "https://static.app.biggie.com.py/images/products/15055.jpg"
+  },
+  {
+    "name": "Whisky Grants sin caja con gotero de 1.000 m.",
+    "price": 74500,
+    "ean": "5010327000039",
+    "brand": "Grants                                  ",
+    "family": "Whisky                                                                                              ",
+    "image": "https://static.app.biggie.com.py/images/products/5010327000039.jpg"
+  },
+  {
+    "name": "Jugo Purifru Natural Naranja de 900 ml.",
+    "price": 25000,
+    "ean": "7840314000876",
+    "brand": "PURIFRU                                 ",
+    "family": "Jugos Naturales                                                                                     ",
+    "image": null
+  },
+  {
+    "name": "Chocolate Kit Kat 4 finger de 41,5 gr.",
+    "price": 7100,
+    "ean": "7891000248768",
+    "brand": "Nestle                                  ",
+    "family": "Chocolates                                                                                          ",
+    "image": "https://static.app.biggie.com.py/images/products/7891000248768.jpg"
+  },
+  {
+    "name": "Snack Cheese Doritos Queso de 150 gr.",
+    "price": 20000,
+    "ean": "7802000016813",
+    "brand": "DORITOS                                 ",
+    "family": "Snacks Aperitivos                                                                                   ",
+    "image": "https://static.app.biggie.com.py/images/products/7802000016813.jpg"
+  },
+  {
+    "name": "Cerveza Budweiser 66 lata de 269 ml.",
+    "price": 5000,
+    "ean": "7840050003704",
+    "brand": "Budweiser                               ",
+    "family": "Cerveza                                                                                             ",
+    "image": "https://static.app.biggie.com.py/images/products/7840050003704.jpg"
+  },
+  {
+    "name": "Cerveza Miller Genuine Draft Botella de 355 ml.",
+    "price": 7500,
+    "ean": "7898032910144",
+    "brand": "Miller                                  ",
+    "family": "Cerveza                                                                                             ",
+    "image": "https://static.app.biggie.com.py/images/products/7898032910144.jpg"
+  },
+  {
+    "name": "Morcilla Ochsi x Paq.",
+    "price": 13000,
+    "ean": "0798190153742",
+    "brand": "Ochsi                                   ",
+    "family": "Embutido Envasado Biggie                                                                            ",
+    "image": "https://static.app.biggie.com.py/images/products/0798190153742.jpg"
+  },
+  {
+    "name": "Carne Colita Cuadril Chorti x kg.",
+    "price": 95400,
+    "ean": "12505",
+    "brand": "Chorti                                  ",
+    "family": "Carne Vacuna                                                                                        ",
+    "image": "https://static.app.biggie.com.py/images/products/12505.jpg"
+  },
+  {
+    "name": "Torta Helada Amandau Merengue 8 Porciones de 900 gr.",
+    "price": 78000,
+    "ean": "7840356001350",
+    "brand": "Amandau                                 ",
+    "family": "Helados                                                                                             ",
+    "image": "https://static.app.biggie.com.py/images/products/7840356001350.jpg"
+  },
+  {
+    "name": "Cerveza Budweiser 66 Botella de 275 ml.",
+    "price": 7000,
+    "ean": "7840050008549",
+    "brand": "Budweiser                               ",
+    "family": "Cerveza                                                                                             ",
+    "image": "https://static.app.biggie.com.py/images/products/7840050008549.jpg"
+  },
+  {
+    "name": "Pan para Sandwich Pantodos Lacteado de 400 gr.",
+    "price": 9100,
+    "ean": "7840131000714",
+    "brand": "PANTODOS                                ",
+    "family": "Panes Envasados                                                                                     ",
+    "image": "https://static.app.biggie.com.py/images/products/7840131000714.jpg"
+  },
+  {
+    "name": "Vape Desechable The Black Sheep 3k Grape 2% Nic x Uni.",
+    "price": 79000,
+    "ean": "7848000561946",
+    "brand": "The Black Sheep                         ",
+    "family": "Vapes                                                                                               ",
+    "image": "https://static.app.biggie.com.py/images/products/7848000561946.jpg"
+  },
+  {
+    "name": "Helado Postre Nuevo Almendrado de 500 gr.",
+    "price": 50000,
+    "ean": "7840356002319",
+    "brand": "Amandau                                 ",
+    "family": "Helados                                                                                             ",
+    "image": "https://static.app.biggie.com.py/images/products/7840356002319.jpg"
+  },
+  {
+    "name": "Leche Los Colonos Entera ultra Sachet de 1.000 ml.",
+    "price": 6450,
+    "ean": "7840037014587",
+    "brand": "Los Colonos                             ",
+    "family": "Leche                                                                                               ",
+    "image": "https://static.app.biggie.com.py/images/products/7840037014587.jpg"
+  },
+  {
+    "name": "Queso La Paulina Gouda de 150 gr.",
+    "price": 19600,
+    "ean": "7841328000173",
+    "brand": "LA PAULINA                              ",
+    "family": "Quesos Duros                                                                                        ",
+    "image": "https://static.app.biggie.com.py/images/products/7841328000173.jpg"
+  },
+  {
+    "name": "Cerveza Miller High Life Botella de 600 ml.",
+    "price": 13000,
+    "ean": "7898032910281",
+    "brand": "Miller                                  ",
+    "family": "Cerveza                                                                                             ",
+    "image": "https://static.app.biggie.com.py/images/products/7898032910281.jpg"
+  },
+  {
+    "name": "Gaseosa Sprite Descartable de 3.000 ml.",
+    "price": 19900,
+    "ean": "7840058010322",
+    "brand": "Sprite                                  ",
+    "family": "Gaseosa Normal                                                                                      ",
+    "image": "https://static.app.biggie.com.py/images/products/7840058010322.jpg"
+  },
+  {
+    "name": "Leche Chocolatada Trebol de 200 ml.",
+    "price": 2650,
+    "ean": "7840005000062",
+    "brand": "Trebol                                  ",
+    "family": "Leche                                                                                               ",
+    "image": "https://static.app.biggie.com.py/images/products/7840005000062.jpg"
+  },
+  {
+    "name": "Pan de Ajo Guarani Tradicional de 400 gr.",
+    "price": 26800,
+    "ean": "7840699001628",
+    "brand": "Guaraní                                ",
+    "family": "Panes de Ajo                                                                                        ",
+    "image": "https://static.app.biggie.com.py/images/products/7840699001628.jpg"
+  },
+  {
+    "name": "Ajo en Malla por 3 Uni.",
+    "price": 6700,
+    "ean": "780201",
+    "brand": "J.C.V & Hijos S.A.                      ",
+    "family": "Verduras                                                                                            ",
+    "image": "https://static.app.biggie.com.py/images/products/780201.jpg"
+  },
+  {
+    "name": "Pan Bauducco Blanco de 390 gr.",
+    "price": 10500,
+    "ean": "7891962064048",
+    "brand": "Bauducco                                ",
+    "family": "Panes Envasados                                                                                     ",
+    "image": "https://static.app.biggie.com.py/images/products/7891962064048.jpg"
+  },
+  {
+    "name": "Papa Blanca x kg.",
+    "price": 12950,
+    "ean": "20004",
+    "brand": "Finca                                   ",
+    "family": "Verduras                                                                                            ",
+    "image": "https://static.app.biggie.com.py/images/products/20004.jpg"
+  },
+  {
+    "name": "Carne Rabadilla Biggie x kg.",
+    "price": 65450,
+    "ean": "61203",
+    "brand": "Biggie                                  ",
+    "family": "Carne Envasada Biggie                                                                               ",
+    "image": null
+  },
+  {
+    "name": "Jugo Ades manzana de 1.000 ml.",
+    "price": 12000,
+    "ean": "7790895643835",
+    "brand": "Ades                                    ",
+    "family": "Jugos                                                                                               ",
+    "image": "https://static.app.biggie.com.py/images/products/7790895643835.jpg"
+  },
+  {
+    "name": "Carne Molida Guarani Premium De 450 gr.",
+    "price": 25250,
+    "ean": "7840699002243",
+    "brand": "Guaraní                                ",
+    "family": "Carne Vacuna                                                                                        ",
+    "image": "https://static.app.biggie.com.py/images/products/7840699002243.jpg"
+  },
+  {
+    "name": "Queso Requeson Culinario Trebol de 250 gr.",
+    "price": 16000,
+    "ean": "7840005011594",
+    "brand": "Trebol                                  ",
+    "family": "Quesos Untables                                                                                     ",
+    "image": "https://static.app.biggie.com.py/images/products/7840005011594.jpg"
+  },
+  {
+    "name": "Yoghurt Los Colonos Hiperproteico Energy de 190 gr.",
+    "price": 6950,
+    "ean": "7840037003055",
+    "brand": "Los Colonos                             ",
+    "family": "Yogures Dieteticos                                                                                  ",
+    "image": "https://static.app.biggie.com.py/images/products/7840037003055.jpg"
+  },
+  {
+    "name": "Yerba Kurupi Menta y Boldo Caja de 250 gr.",
+    "price": 7550,
+    "ean": "7840127000216",
+    "brand": "Kurupi                                  ",
+    "family": "Yerba                                                                                               ",
+    "image": "https://static.app.biggie.com.py/images/products/7840127000216.jpg"
+  },
+  {
+    "name": "Helado Paletto Frutilla Rellena de Leche Condensada x Uni.",
+    "price": 16000,
+    "ean": "7841699000031",
+    "brand": "paletto                                 ",
+    "family": "Helados                                                                                             ",
+    "image": "https://static.app.biggie.com.py/images/products/7841699000031.jpg"
+  },
+  {
+    "name": "Huevos Nutrihuevos tipo A de 6 unidades.",
+    "price": 6500,
+    "ean": "7840471000030",
+    "brand": "NUTRIHUEVOS                             ",
+    "family": "Huevos                                                                                              ",
+    "image": "https://static.app.biggie.com.py/images/products/7840471000030.jpg"
+  },
+  {
+    "name": "Jamon Cocido Sadia de 150 gr.",
+    "price": 13700,
+    "ean": "7841328000227",
+    "brand": "Sadia                                   ",
+    "family": "Jamones                                                                                             ",
+    "image": "https://static.app.biggie.com.py/images/products/7841328000227.jpg"
+  },
+  {
+    "name": "Cerveza Miller High Life Botella de 355 ml.",
+    "price": 8000,
+    "ean": "7898032910274",
+    "brand": "Miller                                  ",
+    "family": "Cerveza                                                                                             ",
+    "image": "https://static.app.biggie.com.py/images/products/7898032910274.jpg"
+  },
+  {
+    "name": "Jamon Cocido Perdigao de 200 gr.",
+    "price": 15900,
+    "ean": "7841231000222",
+    "brand": "PERDIGAO                                ",
+    "family": "Jamones                                                                                             ",
+    "image": "https://static.app.biggie.com.py/images/products/7841231000222.jpg"
+  },
+  {
+    "name": "Carne entre costilla al vacio Neuland x Kg.",
+    "price": 102000,
+    "ean": "60106",
+    "brand": "Neuland                                 ",
+    "family": "Carne Vacuna                                                                                        ",
+    "image": "https://static.app.biggie.com.py/images/products/60106.jpg"
+  },
+  {
+    "name": "Cigarrillo Lucky Strike Compact Click Green 20's x Uni.",
+    "price": 7000,
+    "ean": "78422759",
+    "brand": "LUCKY STRIKE                            ",
+    "family": "Cigarrillos                                                                                         ",
+    "image": null
+  },
+  {
+    "name": "Jamon Cocido Franz y Queso Gouda Conaprole Pack Merienda de 250 gr.",
+    "price": 39950,
+    "ean": "7841554000947",
+    "brand": "Franz                                   ",
+    "family": "Jamones                                                                                             ",
+    "image": "https://static.app.biggie.com.py/images/products/7841554000947.png"
+  },
+  {
+    "name": "Tarjeta Mas Billetaje Electronico.",
+    "price": 25000,
+    "ean": "0798190151045",
+    "brand": "TDP                                     ",
+    "family": "Ferreteria                                                                                          ",
+    "image": "https://static.app.biggie.com.py/images/products/0798190151045.jpg"
+  },
+  {
+    "name": "Papas Fritas Lays Stax Original de 134 gr.",
+    "price": 24000,
+    "ean": "7802000013607",
+    "brand": "LAYS                                    ",
+    "family": "Papas Fritas                                                                                        ",
+    "image": "https://static.app.biggie.com.py/images/products/7802000013607-32818892.jpg"
+  },
+  {
+    "name": "Galletitas Cerealitas Clasicas de 212 gr.",
+    "price": 7400,
+    "ean": "7622201736033",
+    "brand": "Cerealitas                              ",
+    "family": "Galletitas Integrales                                                                               ",
+    "image": "https://static.app.biggie.com.py/images/products/7622201736033.jpg"
+  },
+  {
+    "name": "Aceite de Girasol Natura de 500 ml.",
+    "price": 14750,
+    "ean": "7790272001050",
+    "brand": "Natura                                  ",
+    "family": "Aceites de Girasol                                                                                  ",
+    "image": "https://static.app.biggie.com.py/images/products/7790272001050.jpg"
+  },
+  {
+    "name": "Jugos Del Valle Naranja Tetra de 1.000 ml.",
+    "price": 11500,
+    "ean": "7840058009098",
+    "brand": "DEL VALLE                               ",
+    "family": "Jugos                                                                                               ",
+    "image": "https://static.app.biggie.com.py/images/products/7840058009098.jpg"
+  },
+  {
+    "name": "Leche Chocolatada Lactolanda de 200 ml.",
+    "price": 2650,
+    "ean": "7840042002517",
+    "brand": "Lactolanda                              ",
+    "family": "Leche                                                                                               ",
+    "image": "https://static.app.biggie.com.py/images/products/7840042002517.jpg"
+  },
+  {
+    "name": "Whisky Johnnie Walker Blonde de 750 ml.",
+    "price": 120000,
+    "ean": "5000267190556",
+    "brand": "Johnnie Walker                          ",
+    "family": "Whisky                                                                                              ",
+    "image": "https://static.app.biggie.com.py/images/products/5000267190556.jpg"
+  },
+  {
+    "name": "Jugos Del Valle Naranja Tetra de 1.500 ml.",
+    "price": 14500,
+    "ean": "7840058009074",
+    "brand": "DEL VALLE                               ",
+    "family": "Jugos                                                                                               ",
+    "image": "https://static.app.biggie.com.py/images/products/7840058009074.jpg"
+  },
+  {
+    "name": "Cubito de Pechuga Pechugon congelada de 800 gr.",
+    "price": 34750,
+    "ean": "7840369041206",
+    "brand": "Pechugon                                ",
+    "family": "Carne de Ave                                                                                        ",
+    "image": "https://static.app.biggie.com.py/images/products/7840369041206.jpg"
+  },
+  {
+    "name": "Cafe Nescafe Dolce Gusto caffe lungo caja de 70 gr.",
+    "price": 39900,
+    "ean": "7891000421390",
+    "brand": "Nescafé                                ",
+    "family": "Cafe                                                                                                ",
+    "image": "https://static.app.biggie.com.py/images/products/7891000421390.jpg"
+  },
+  {
+    "name": "Agua Mineral La Fuente sin Gas de 2.000 ml.",
+    "price": 5000,
+    "ean": "7840779002200",
+    "brand": "La Fuente                               ",
+    "family": "Aguas Minerales                                                                                     ",
+    "image": "https://static.app.biggie.com.py/images/products/7840779002200.jpg"
+  },
+  {
+    "name": "Cartucho para Vape Des. TBS Nomad Tropical Mix de 6000 Puff x Uni.",
+    "price": 90000,
+    "ean": "7848000561809",
+    "brand": "The Black Sheep                         ",
+    "family": "Vapes                                                                                               ",
+    "image": "https://static.app.biggie.com.py/images/products/7848000561809.jpg"
+  },
+  {
+    "name": "Cartucho para Vape Des. TBS Nomad Grape de 6000 Puff x Uni.",
+    "price": 90000,
+    "ean": "7848000561656",
+    "brand": "The Black Sheep                         ",
+    "family": "Vapes                                                                                               ",
+    "image": "https://static.app.biggie.com.py/images/products/7848000561656.jpg"
+  },
+  {
+    "name": "Pan para Sandwich Pantodos Salvado 440 gr.",
+    "price": 11100,
+    "ean": "7840131000066",
+    "brand": "PANTODOS                                ",
+    "family": "Panes Envasados                                                                                     ",
+    "image": "https://static.app.biggie.com.py/images/products/7840131000066.jpg"
+  },
+  {
+    "name": "Vino Blanco Santa Helena Dulce de 750 ml.",
+    "price": 26500,
+    "ean": "7804300157029",
+    "brand": "Santa Helena                            ",
+    "family": "Vino Blanco                                                                                         ",
+    "image": "https://static.app.biggie.com.py/images/products/7804300157029.jpg"
+  },
+  {
+    "name": "Leche Crecimiento Lactolanda de 1.000 ml.",
+    "price": 8300,
+    "ean": "7840042000384",
+    "brand": "Lactolanda                              ",
+    "family": "Bebidas Lacteas                                                                                     ",
+    "image": "https://static.app.biggie.com.py/images/products/7840042000384.jpg"
+  },
+  {
+    "name": "Cafe Nescafe Gold Frasco de 95 gr.",
+    "price": 78100,
+    "ean": "8445291738775",
+    "brand": "Nescafé                                ",
+    "family": "Cafe                                                                                                ",
+    "image": "https://static.app.biggie.com.py/images/products/8445291738775.jpg"
+  },
+  {
+    "name": "Alfajor Las Colonias Blanco Triple de 65 gr.",
+    "price": 2500,
+    "ean": "77917805",
+    "brand": "Las Colonias                            ",
+    "family": "Alfajores                                                                                           ",
+    "image": "https://static.app.biggie.com.py/images/products/77917805.jpg"
+  },
+  {
+    "name": "Vape Desechable The Black Sheep XL Glow Menthol x Uni.",
+    "price": 35000,
+    "ean": "7848000564343",
+    "brand": "The Black Sheep                         ",
+    "family": "Vapes                                                                                               ",
+    "image": "https://static.app.biggie.com.py/images/products/7848000564343.jpg"
+  },
+  {
+    "name": "Vino Santa Helena Dulce de 1.500 ml.",
+    "price": 50500,
+    "ean": "7804300149314",
+    "brand": "Santa Helena                            ",
+    "family": "Vino Tinto                                                                                          ",
+    "image": "https://static.app.biggie.com.py/images/products/7804300149314.jpg"
+  },
+  {
+    "name": "Hamburguesa Guarani premium x 6 Unidades.",
+    "price": 32750,
+    "ean": "7840699001321",
+    "brand": "Guaraní                                ",
+    "family": "Hamburguesas                                                                                        ",
+    "image": "https://static.app.biggie.com.py/images/products/7840699001321.jpg"
+  },
+  {
+    "name": "Cerveza Sajonia Naranjito de 640 ml.",
+    "price": 15000,
+    "ean": "7842132000199",
+    "brand": "Sajonia                                 ",
+    "family": "Cerveza                                                                                             ",
+    "image": "https://static.app.biggie.com.py/images/products/7842132000199.jpg"
+  },
+  {
+    "name": "Jabon en Polvo Omo Lavado Perfecto de 2.200 gr.",
+    "price": 58600,
+    "ean": "7891150069121",
+    "brand": "OMO                                     ",
+    "family": "Jabones de Ropa                                                                                     ",
+    "image": "https://static.app.biggie.com.py/images/products/7891150069121-25993315.jpg"
+  },
+  {
+    "name": "Gaseosa Sprite limón 500 ml.",
+    "price": 6500,
+    "ean": "7840058000071",
+    "brand": "Sprite                                  ",
+    "family": "Gaseosa Normal                                                                                      ",
+    "image": "https://static.app.biggie.com.py/images/products/7840058000071.jpg"
+  },
+  {
+    "name": "Vape Desecheble The Black Sheep Grape 800 Puff x Uni.",
+    "price": 45000,
+    "ean": "7848000561885",
+    "brand": "The Black Sheep                         ",
+    "family": "Vapes                                                                                               ",
+    "image": "https://static.app.biggie.com.py/images/products/7848000561885.jpg"
+  },
+  {
+    "name": "Yogurt Trebol Descremada Sin Lactosa Cookies de 200 gr.",
+    "price": 7150,
+    "ean": "7840005013109",
+    "brand": "Trebol                                  ",
+    "family": "Yogures Dieteticos                                                                                  ",
+    "image": "https://static.app.biggie.com.py/images/products/7840005013109-27796412.jpg"
+  },
+  {
+    "name": "Lechuga Repollada x kg.",
+    "price": 16950,
+    "ean": "15021",
+    "brand": "Finca                                   ",
+    "family": "Verdeos                                                                                             ",
+    "image": "https://static.app.biggie.com.py/images/products/15021.jpg"
+  },
+  {
+    "name": "Galletita Mini Oreo de 50 gr.",
+    "price": 3950,
+    "ean": "7622201752231",
+    "brand": "Oreo                                    ",
+    "family": "Galletitas Dulces                                                                                   ",
+    "image": "https://static.app.biggie.com.py/images/products/7622201752231.jpg"
+  },
+  {
+    "name": "Mini Pate Ochsi x kilo.",
+    "price": 42450,
+    "ean": "17010",
+    "brand": "Ochsi                                   ",
+    "family": "Embutido Envasado Biggie                                                                            ",
+    "image": "https://static.app.biggie.com.py/images/products/17010.jpg"
+  },
+  {
+    "name": "Agua Tonica Costa Grape Fruits de 500 ml.",
+    "price": 4000,
+    "ean": "7840235004731",
+    "brand": "Costa                                   ",
+    "family": "Agua Tonica                                                                                         ",
+    "image": "https://static.app.biggie.com.py/images/products/7840235004731.jpg"
+  },
+  {
+    "name": "Cigarrillo Kentucky Red Box 20's x Uni.",
+    "price": 4000,
+    "ean": "78422858",
+    "brand": "KENTUCKY                                ",
+    "family": "Cigarrillos                                                                                         ",
+    "image": "https://static.app.biggie.com.py/images/products/78422858.jpg"
+  },
+  {
+    "name": "Chicle Topline Ultra Redberry de 24 gr.",
+    "price": 9000,
+    "ean": "7790580121013",
+    "brand": "ARCOR                                   ",
+    "family": "Chicles                                                                                             ",
+    "image": "https://static.app.biggie.com.py/images/products/7790580121013.jpg"
+  },
+  {
+    "name": "Rapiditas Bimbo Clasicas de 310 gr.",
+    "price": 12400,
+    "ean": "7840131003050",
+    "brand": "Bimbo                                   ",
+    "family": "Panes Envasados                                                                                     ",
+    "image": "https://static.app.biggie.com.py/images/products/7840131003050.jpg"
+  },
+  {
+    "name": "Bebida Isotonica Powerade Multifrutas Pet Sport de 990 ml.",
+    "price": 14000,
+    "ean": "7840058010483",
+    "brand": "Powerade                                ",
+    "family": "Bebidas Isotonicas                                                                                  ",
+    "image": "https://static.app.biggie.com.py/images/products/7840058010483.jpg"
+  },
+  {
+    "name": "Chocolate Arcor Cofler con Mani Block de 300 gr.",
+    "price": 39000,
+    "ean": "7790580103743",
+    "brand": "Arcor                                   ",
+    "family": "Chocolates                                                                                          ",
+    "image": "https://static.app.biggie.com.py/images/products/7790580103743.jpg"
+  },
+  {
+    "name": "Gaseosa Paso De Los Toros De 1.000 ml.",
+    "price": 7000,
+    "ean": "7840028206502",
+    "brand": "PASO DE LOS TOROS                       ",
+    "family": "Gaseosa Normal                                                                                      ",
+    "image": "https://static.app.biggie.com.py/images/products/7840028206502.jpg"
+  },
+  {
+    "name": "Jugo Purosol citrus de 1.000 ml.",
+    "price": 11000,
+    "ean": "7840779002729",
+    "brand": "Puro Sol                                ",
+    "family": "Jugos                                                                                               ",
+    "image": "https://static.app.biggie.com.py/images/products/7840779002729.jpg"
+  },
+  {
+    "name": "Chocolates Ferrero Rocher con relleno t3 de 16 gr.",
+    "price": 15000,
+    "ean": "78909434",
+    "brand": "Ferrero                                 ",
+    "family": "Chocolates                                                                                          ",
+    "image": "https://static.app.biggie.com.py/images/products/78909434.jpg"
+  },
+  {
+    "name": "Cartucho para Vape Des. TBS Nomad Berry Blue de 6000 Puff x Uni.",
+    "price": 90000,
+    "ean": "7848000561670",
+    "brand": "The Black Sheep                         ",
+    "family": "Vapes                                                                                               ",
+    "image": "https://static.app.biggie.com.py/images/products/7848000561670.jpg"
+  },
+  {
+    "name": "Gaseosa Fanta Naranja Descartable Ow de 3.000 ml.",
+    "price": 19900,
+    "ean": "7840058010414",
+    "brand": "Fanta                                   ",
+    "family": "Gaseosa Normal                                                                                      ",
+    "image": "https://static.app.biggie.com.py/images/products/7840058010414.jpg"
+  }
+]

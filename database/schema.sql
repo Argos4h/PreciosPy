@@ -126,3 +126,38 @@ CREATE TABLE IF NOT EXISTS bank_promotions (
 
 CREATE INDEX IF NOT EXISTS idx_bank_promos_super_card ON bank_promotions(supermarket_id, card_id) WHERE is_active = TRUE;
 
+
+
+-- ============================================================================
+-- POLÍTICAS DE ROW LEVEL SECURITY (RLS) PARA SUPABASE
+-- ============================================================================
+-- Se habilita RLS para proteger la base de datos de modificaciones no autorizadas
+-- desde clientes anónimos con anon key.
+ALTER TABLE categories ENABLE ROW LEVEL SECURITY;
+ALTER TABLE supermarkets ENABLE ROW LEVEL SECURITY;
+ALTER TABLE products ENABLE ROW LEVEL SECURITY;
+ALTER TABLE store_offers ENABLE ROW LEVEL SECURITY;
+ALTER TABLE price_history ENABLE ROW LEVEL SECURITY;
+ALTER TABLE financial_entities ENABLE ROW LEVEL SECURITY;
+ALTER TABLE payment_cards ENABLE ROW LEVEL SECURITY;
+ALTER TABLE bank_promotions ENABLE ROW LEVEL SECURITY;
+
+-- Políticas de lectura pública para datos del retail
+CREATE POLICY "Public read on categories" ON categories FOR SELECT TO anon, authenticated USING (true);
+CREATE POLICY "Public read on supermarkets" ON supermarkets FOR SELECT TO anon, authenticated USING (is_active = true);
+CREATE POLICY "Public read on products" ON products FOR SELECT TO anon, authenticated USING (true);
+CREATE POLICY "Public read on store_offers" ON store_offers FOR SELECT TO anon, authenticated USING (true);
+CREATE POLICY "Public read on price_history" ON price_history FOR SELECT TO anon, authenticated USING (true);
+CREATE POLICY "Public read on financial_entities" ON financial_entities FOR SELECT TO anon, authenticated USING (is_active = true);
+CREATE POLICY "Public read on payment_cards" ON payment_cards FOR SELECT TO anon, authenticated USING (true);
+CREATE POLICY "Public read on bank_promotions" ON bank_promotions FOR SELECT TO anon, authenticated USING (is_active = true);
+
+-- Políticas de escritura exclusivas para el Service Role (Spiders / Ingesta de Scraper)
+CREATE POLICY "Service role write on categories" ON categories FOR ALL TO service_role USING (true) WITH CHECK (true);
+CREATE POLICY "Service role write on supermarkets" ON supermarkets FOR ALL TO service_role USING (true) WITH CHECK (true);
+CREATE POLICY "Service role write on products" ON products FOR ALL TO service_role USING (true) WITH CHECK (true);
+CREATE POLICY "Service role write on store_offers" ON store_offers FOR ALL TO service_role USING (true) WITH CHECK (true);
+CREATE POLICY "Service role write on price_history" ON price_history FOR ALL TO service_role USING (true) WITH CHECK (true);
+CREATE POLICY "Service role write on financial_entities" ON financial_entities FOR ALL TO service_role USING (true) WITH CHECK (true);
+CREATE POLICY "Service role write on payment_cards" ON payment_cards FOR ALL TO service_role USING (true) WITH CHECK (true);
+CREATE POLICY "Service role write on bank_promotions" ON bank_promotions FOR ALL TO service_role USING (true) WITH CHECK (true);

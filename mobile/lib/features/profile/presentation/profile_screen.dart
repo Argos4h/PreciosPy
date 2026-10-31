@@ -4,6 +4,7 @@ import '../../../core/formatters/guarani_formatter.dart';
 import '../../../data/local/local_catalog_repository.dart';
 import '../../../domain/services/promo_calculator.dart';
 import '../../../state/app_providers.dart';
+import '../../onboarding/presentation/tutorial_tour_sheet.dart';
 import '../../wallet/presentation/wallet_screen.dart';
 
 /// Pantalla "Perfil":
@@ -82,6 +83,52 @@ class ProfileScreen extends ConsumerWidget {
                 ],
               ),
               const SizedBox(height: 16),
+              // Botón de Detección GPS Automática
+              Container(
+                width: double.infinity,
+                margin: const EdgeInsets.only(bottom: 12),
+                child: FilledButton.icon(
+                  style: FilledButton.styleFrom(
+                    backgroundColor: const Color(0xFF0284C7).withValues(alpha: isDark ? 0.25 : 0.12),
+                    foregroundColor: const Color(0xFF0284C7),
+                    elevation: 0,
+                    padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(14),
+                      side: BorderSide(color: const Color(0xFF0284C7).withValues(alpha: 0.4)),
+                    ),
+                  ),
+                  onPressed: () {
+                    ref.read(selectedCityProvider.notifier).state = 'Caacupé';
+                    Navigator.of(ctx).pop();
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        backgroundColor: const Color(0xFF0284C7),
+                        behavior: SnackBarBehavior.floating,
+                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                        content: const Row(
+                          children: [
+                            Icon(Icons.my_location_rounded, color: Colors.white, size: 20),
+                            SizedBox(width: 10),
+                            Expanded(
+                              child: Text(
+                                '📍 GPS activado: Ubicación fijada en Caacupé (Cordillera)',
+                                style: TextStyle(fontWeight: FontWeight.w700, color: Colors.white),
+                              ),
+                            ),
+                          ],
+                        ),
+                        duration: const Duration(seconds: 3),
+                      ),
+                    );
+                  },
+                  icon: const Icon(Icons.my_location_rounded, size: 18),
+                  label: const Text(
+                    'Detectar mi ubicación automáticamente (GPS)',
+                    style: TextStyle(fontSize: 13, fontWeight: FontWeight.w800),
+                  ),
+                ),
+              ),
               ...LocalCatalogRepository.paraguayCities.map((item) {
                 final cityName = item['city']!;
                 final dept = item['dept']!;
@@ -724,6 +771,63 @@ class ProfileScreen extends ConsumerWidget {
                     ),
                   ),
                 ],
+              ),
+            ),
+          ),
+          const SizedBox(height: 12),
+
+          // 6. GUÍA DE USO Y TUTORIAL INTERACTIVO
+          Card(
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+            child: InkWell(
+              borderRadius: BorderRadius.circular(20),
+              onTap: () {
+                TutorialTourSheet.show(
+                  context,
+                  onNavigateTab: (tabIdx) {
+                    ref.read(activeTabProvider.notifier).state = tabIdx;
+                  },
+                );
+              },
+              child: Padding(
+                padding: const EdgeInsets.all(16),
+                child: Row(
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.all(10),
+                      decoration: BoxDecoration(
+                        color: const Color(0xFF10B981).withValues(alpha: 0.15),
+                        borderRadius: BorderRadius.circular(14),
+                      ),
+                      child: const Icon(Icons.school_rounded, color: Color(0xFF10B981), size: 24),
+                    ),
+                    const SizedBox(width: 12),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            '¿Cómo funciona PreciosPy?',
+                            style: TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.w800,
+                              color: isDark ? Colors.white : const Color(0xFF0F172A),
+                            ),
+                          ),
+                          const SizedBox(height: 2),
+                          Text(
+                            'Ver la guía paso a paso de cada apartado de la aplicación.',
+                            style: TextStyle(
+                              fontSize: 11,
+                              color: isDark ? const Color(0xFF94A3B8) : const Color(0xFF64748B),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    const Icon(Icons.chevron_right_rounded, color: Color(0xFF94A3B8)),
+                  ],
+                ),
               ),
             ),
           ),

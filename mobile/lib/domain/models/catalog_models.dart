@@ -43,6 +43,28 @@ class UserCardProfile {
       spentThisMonthGs: spentThisMonthGs ?? this.spentThisMonthGs,
     );
   }
+
+  Map<String, dynamic> toJson() => {
+    'bankSlug': bankSlug,
+    'bankName': bankName,
+    'isEnabled': isEnabled,
+    'cardType': cardType,
+    'tier': tier,
+    'uenoLevel': uenoLevel,
+    'isQrPayment': isQrPayment,
+    'spentThisMonthGs': spentThisMonthGs,
+  };
+
+  factory UserCardProfile.fromJson(Map<String, dynamic> json) => UserCardProfile(
+    bankSlug: json['bankSlug'] as String? ?? '',
+    bankName: json['bankName'] as String? ?? '',
+    isEnabled: json['isEnabled'] as bool? ?? false,
+    cardType: json['cardType'] as String? ?? 'credito',
+    tier: json['tier'] as String? ?? 'clasica',
+    uenoLevel: json['uenoLevel'] as int? ?? 4,
+    isQrPayment: json['isQrPayment'] as bool? ?? true,
+    spentThisMonthGs: json['spentThisMonthGs'] as int? ?? 0,
+  );
 }
 
 class BankPromotion {
