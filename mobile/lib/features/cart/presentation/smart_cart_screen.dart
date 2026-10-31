@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../core/formatters/guarani_formatter.dart';
 import '../../../data/local/local_catalog_repository.dart';
@@ -584,13 +585,54 @@ class SmartCartScreen extends ConsumerWidget {
                   ],
                 ),
                 if (cart.isNotEmpty)
-                  TextButton.icon(
-                    onPressed: () => ref.read(smartCartProvider.notifier).clearCart(),
-                    icon: const Icon(Icons.delete_sweep_rounded, size: 18, color: Color(0xFFEF4444)),
-                    label: const Text(
-                      'Vaciar',
-                      style: TextStyle(fontSize: 12, color: Color(0xFFEF4444), fontWeight: FontWeight.w700),
-                    ),
+                  Row(
+                    children: [
+                      IconButton(
+                        onPressed: () {
+                          final buffer = StringBuffer();
+                          buffer.writeln('🛒 Mi Lista de Compras PreciosPy');
+                          buffer.writeln('📍 Ciudad: $selectedCity (${isCashOnly ? "Solo Efectivo" : "Con Tarjetas"})');
+                          buffer.writeln();
+                          for (final entry in cartItems) {
+                            buffer.writeln('• ${entry.value}x ${entry.key.normalizedName}');
+                          }
+                          if (rankings.isNotEmpty) {
+                            final winner = rankings.first;
+                            buffer.writeln();
+                            buffer.writeln('💡 Mejor opción calculada: ${winner.supermarketName} (${GuaraniFormatter.format(winner.netFinalCostGs)})');
+                          }
+                          Clipboard.setData(ClipboardData(text: buffer.toString()));
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              backgroundColor: const Color(0xFF10B981),
+                              behavior: SnackBarBehavior.floating,
+                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                              content: const Row(
+                                children: [
+                                  Icon(Icons.check_circle_rounded, color: Colors.white, size: 18),
+                                  SizedBox(width: 8),
+                                  Text(
+                                    'Lista copiada para compartir por WhatsApp',
+                                    style: TextStyle(fontWeight: FontWeight.w700, color: Colors.white),
+                                  ),
+                                ],
+                              ),
+                              duration: const Duration(milliseconds: 1400),
+                            ),
+                          );
+                        },
+                        icon: const Icon(Icons.share_rounded, size: 20, color: Color(0xFF0284C7)),
+                        tooltip: 'Compartir Lista',
+                      ),
+                      TextButton.icon(
+                        onPressed: () => ref.read(smartCartProvider.notifier).clearCart(),
+                        icon: const Icon(Icons.delete_sweep_rounded, size: 18, color: Color(0xFFEF4444)),
+                        label: const Text(
+                          'Vaciar',
+                          style: TextStyle(fontSize: 12, color: Color(0xFFEF4444), fontWeight: FontWeight.w700),
+                        ),
+                      ),
+                    ],
                   ),
               ],
             ),

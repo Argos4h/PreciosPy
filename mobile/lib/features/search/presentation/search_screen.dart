@@ -194,6 +194,7 @@ class SearchScreen extends ConsumerWidget {
     final selectedCity = ref.watch(selectedCityProvider);
     final cityStores = ref.watch(currentCitySupermarketsProvider);
     final themeMode = ref.watch(themeModeProvider);
+    final favorites = ref.watch(favoritesProvider);
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
     return SafeArea(
@@ -457,6 +458,10 @@ class SearchScreen extends ConsumerWidget {
                       return _ProductComparisonCard(
                         product: product,
                         rankedOffers: rankedOffers,
+                        isFavorite: favorites.contains(product.id),
+                        onToggleFavorite: () {
+                          ref.read(favoritesProvider.notifier).toggleFavorite(product.id);
+                        },
                         onAddToCart: () {
                           ref.read(smartCartProvider.notifier).addOrIncrement(product);
                           ScaffoldMessenger.of(context).showSnackBar(
@@ -486,11 +491,15 @@ class _ProductComparisonCard extends StatelessWidget {
   final ProductItem product;
   final List<EvaluatedOffer> rankedOffers;
   final VoidCallback onAddToCart;
+  final bool isFavorite;
+  final VoidCallback onToggleFavorite;
 
   const _ProductComparisonCard({
     required this.product,
     required this.rankedOffers,
     required this.onAddToCart,
+    required this.isFavorite,
+    required this.onToggleFavorite,
   });
 
   Widget _buildCategoryThumbnail(BuildContext context, String? category) {
@@ -606,12 +615,39 @@ class _ProductComparisonCard extends StatelessWidget {
                                 ),
                               ),
                             ),
+                            Container(
+                              padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 1.5),
+                              decoration: BoxDecoration(
+                                color: const Color(0xFF10B981).withValues(alpha: 0.15),
+                                borderRadius: BorderRadius.circular(4),
+                              ),
+                              child: const Row(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Text('🟢', style: TextStyle(fontSize: 7)),
+                                  SizedBox(width: 3),
+                                  Text(
+                                    'Hoy',
+                                    style: TextStyle(fontSize: 9, fontWeight: FontWeight.w700, color: Color(0xFF10B981)),
+                                  ),
+                                ],
+                              ),
+                            ),
                           ],
                         ),
                       ],
                     ),
                   ),
-                  const SizedBox(width: 6),
+                  const SizedBox(width: 4),
+                  IconButton(
+                    onPressed: onToggleFavorite,
+                    icon: Icon(
+                      isFavorite ? Icons.favorite_rounded : Icons.favorite_border_rounded,
+                      color: isFavorite ? const Color(0xFFEF4444) : (isDark ? const Color(0xFF94A3B8) : const Color(0xFF64748B)),
+                      size: 20,
+                    ),
+                    tooltip: isFavorite ? 'En Alertas de Precio' : 'Guardar en Favoritos',
+                  ),
                   IconButton.filledTonal(
                     onPressed: onAddToCart,
                     style: IconButton.styleFrom(

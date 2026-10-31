@@ -3,6 +3,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:precios_py_mobile/core/formatters/guarani_formatter.dart';
 import 'package:precios_py_mobile/data/local/local_catalog_repository.dart';
 import 'package:precios_py_mobile/domain/services/promo_calculator.dart';
+import 'package:precios_py_mobile/state/app_providers.dart';
 
 void main() {
   group('PreciosPy Mobile Engine Tests', () {
@@ -128,6 +129,26 @@ void main() {
       // Tuti tiene regular 16.500
       final tutiOffer = rankedCash.firstWhere((o) => o.offer.supermarketSlug == 'tuti');
       expect(tutiOffer.effectiveFinalPriceGs, 16500);
+    });
+
+    test('Favoritos y Alertas (estilo Rebuscate): agrega y quita productos', () {
+      final notifier = FavoritesNotifier();
+      expect(notifier.state.contains(1), isTrue); // Yerba Kurupí por defecto
+      notifier.toggleFavorite(1);
+      expect(notifier.state.contains(1), isFalse);
+      notifier.toggleFavorite(1);
+      expect(notifier.state.contains(1), isTrue);
+    });
+
+    test('Promociones semanales: filtra por día y banco', () {
+      const promos = LocalCatalogRepository.paraguayPromotions;
+      // Martes (2): Itaú en Superseis
+      final tuesdayPromos = promos.where((p) => p.isValidOnWeekday(2)).toList();
+      expect(tuesdayPromos.any((p) => p.entityName == 'Banco Itaú'), isTrue);
+      // Viernes (5): Familiar en Stock y ueno en Superseis
+      final fridayPromos = promos.where((p) => p.isValidOnWeekday(5)).toList();
+      expect(fridayPromos.any((p) => p.entityName == 'Banco Familiar'), isTrue);
+      expect(fridayPromos.any((p) => p.supermarketSlug == 'superseis' && p.bankSlug == 'ueno'), isTrue);
     });
   });
 }

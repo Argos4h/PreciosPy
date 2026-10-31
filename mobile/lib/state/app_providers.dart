@@ -340,3 +340,26 @@ final splitCartResultProvider = Provider<SplitCartResult>((ref) {
     isoWeekday: weekday,
   );
 });
+
+/// Gestión de productos favoritos y alertas de precio (al estilo Rebuscate)
+class FavoritesNotifier extends StateNotifier<Set<int>> {
+  FavoritesNotifier() : super({1, 2}); // Yerba Kurupí (id: 1) y Leche Trébol (id: 2) por defecto
+
+  void toggleFavorite(int productId) {
+    if (state.contains(productId)) {
+      state = Set.from(state)..remove(productId);
+    } else {
+      state = Set.from(state)..add(productId);
+    }
+  }
+
+  bool isFavorite(int productId) => state.contains(productId);
+}
+
+final favoritesProvider = StateNotifierProvider<FavoritesNotifier, Set<int>>((ref) {
+  return FavoritesNotifier();
+});
+
+/// Filtro de la pestaña Promos: ¿mostrar sólo promociones de mis tarjetas o todas las de Paraguay?
+final promosFilterOnlyUserCardsProvider = StateProvider<bool>((ref) => false);
+

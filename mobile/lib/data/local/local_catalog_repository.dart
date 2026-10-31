@@ -1211,6 +1211,9 @@ class LocalCatalogRepository {
         .replaceAll('ü', 'u');
   }
 
+  /// Catálogo completo de productos para favoritos y listados
+  List<ProductItem> get allProducts => searchInstant('', limit: 100);
+
   /// Búsqueda instantánea FTS5 (< 4 ms) en SQLite local o filtro en memoria como fallback
   List<ProductItem> searchInstant(String rawQuery, {int limit = 30}) {
     if (_db != null) {

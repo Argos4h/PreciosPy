@@ -185,7 +185,7 @@ class WalletScreen extends ConsumerWidget {
 
           // 1. TARJETA DESTACADA: UENO BANK (NIVELES 1..5)
           if (uenoProfile != null)
-            _UenoConfigCard(
+            UenoConfigCard(
               profile: uenoProfile,
               onToggle: () => ref.read(userWalletProfilesProvider.notifier).toggleBank('ueno'),
               onLevelChanged: (lvl) => ref.read(userWalletProfilesProvider.notifier).setUenoLevel(lvl),
@@ -202,7 +202,7 @@ class WalletScreen extends ConsumerWidget {
             final bankSlug = entry.key;
             final profile = entry.value;
 
-            return _StandardBankConfigCard(
+            return StandardBankConfigCard(
               profile: profile,
               onToggle: () => ref.read(userWalletProfilesProvider.notifier).toggleBank(bankSlug),
               onTierChanged: (tier) =>
@@ -220,14 +220,15 @@ class WalletScreen extends ConsumerWidget {
 }
 
 /// Tarjeta de Configuración Especial de ueno bank (Gamificación de Niveles)
-class _UenoConfigCard extends StatelessWidget {
+class UenoConfigCard extends StatelessWidget {
   final UserCardProfile profile;
   final VoidCallback onToggle;
   final ValueChanged<int> onLevelChanged;
   final ValueChanged<bool> onPaymentMethodChanged;
   final ValueChanged<int> onSpentChanged;
 
-  const _UenoConfigCard({
+  const UenoConfigCard({
+    super.key,
     required this.profile,
     required this.onToggle,
     required this.onLevelChanged,
@@ -495,14 +496,15 @@ class _UenoConfigCard extends StatelessWidget {
 }
 
 /// Tarjeta de Configuración para Bancos Estándar (Itaú, Continental, Familiar, Atlas, etc.)
-class _StandardBankConfigCard extends StatelessWidget {
+class StandardBankConfigCard extends StatelessWidget {
   final UserCardProfile profile;
   final VoidCallback onToggle;
   final ValueChanged<String> onTierChanged;
   final ValueChanged<bool> onPaymentMethodChanged;
   final ValueChanged<int> onSpentChanged;
 
-  const _StandardBankConfigCard({
+  const StandardBankConfigCard({
+    super.key,
     required this.profile,
     required this.onToggle,
     required this.onTierChanged,

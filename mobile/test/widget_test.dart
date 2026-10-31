@@ -10,10 +10,11 @@ void main() {
       ),
     );
 
-    // Verificar que los destinos de la barra de navegación inferior están presentes
-    expect(find.text('Comparar'), findsOneWidget);
+    // Verificar que los 5 destinos al estilo Rebuscate están presentes en la navegación
+    expect(find.text('Precios'), findsOneWidget);
+    expect(find.text('Promos'), findsOneWidget);
     expect(find.text('Escáner'), findsOneWidget);
-    expect(find.text('Mi Lista PY'), findsOneWidget);
-    expect(find.text('Mis Tarjetas'), findsOneWidget);
+    expect(find.text('Listas'), findsOneWidget);
+    expect(find.text('Perfil'), findsOneWidget);
   });
 }

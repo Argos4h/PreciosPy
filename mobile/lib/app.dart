@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'features/cart/presentation/smart_cart_screen.dart';
+import 'features/profile/presentation/profile_screen.dart';
+import 'features/promos/presentation/promos_screen.dart';
 import 'features/scanner/presentation/scanner_screen.dart';
 import 'features/search/presentation/search_screen.dart';
-import 'features/wallet/presentation/wallet_screen.dart';
 import 'state/app_providers.dart';
 
 class PreciosPyApp extends ConsumerStatefulWidget {
@@ -18,9 +19,10 @@ class _PreciosPyAppState extends ConsumerState<PreciosPyApp> {
 
   static const List<Widget> _screens = [
     SearchScreen(),
+    PromosScreen(),
     ScannerScreen(),
     SmartCartScreen(),
-    WalletScreen(),
+    ProfileScreen(),
   ];
 
   @override
@@ -158,20 +160,29 @@ class _PreciosPyAppState extends ConsumerState<PreciosPyApp> {
           onDestinationSelected: (idx) => setState(() => _selectedIndex = idx),
           destinations: const [
             NavigationDestination(
-              icon: Icon(Icons.search_rounded),
-              label: 'Comparar',
+              icon: Icon(Icons.storefront_outlined),
+              selectedIcon: Icon(Icons.storefront_rounded),
+              label: 'Precios',
             ),
             NavigationDestination(
-              icon: Icon(Icons.qr_code_scanner_rounded),
+              icon: Icon(Icons.local_offer_outlined),
+              selectedIcon: Icon(Icons.local_offer_rounded),
+              label: 'Promos',
+            ),
+            NavigationDestination(
+              icon: Icon(Icons.qr_code_scanner_outlined),
+              selectedIcon: Icon(Icons.qr_code_scanner_rounded),
               label: 'Escáner',
             ),
             NavigationDestination(
-              icon: Icon(Icons.shopping_cart_checkout_rounded),
-              label: 'Mi Lista PY',
+              icon: Icon(Icons.format_list_bulleted_rounded),
+              selectedIcon: Icon(Icons.checklist_rounded),
+              label: 'Listas',
             ),
             NavigationDestination(
-              icon: Icon(Icons.credit_card_rounded),
-              label: 'Mis Tarjetas',
+              icon: Icon(Icons.person_outline_rounded),
+              selectedIcon: Icon(Icons.person_rounded),
+              label: 'Perfil',
             ),
           ],
         ),
