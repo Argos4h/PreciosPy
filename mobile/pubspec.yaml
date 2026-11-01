@@ -20,6 +20,7 @@ dependencies:
   mobile_scanner: ^5.2.3
   # Preferencias ligeras para guardar las tarjetas del usuario ("Mi Billetera")
   shared_preferences: ^2.3.2
+  webview_flutter: ^4.14.1
 
 dev_dependencies:
   flutter_test:
@@ -30,4 +31,5 @@ flutter:
   uses-material-design: true
   assets:
     - assets/db/
+    - assets/www/
 
