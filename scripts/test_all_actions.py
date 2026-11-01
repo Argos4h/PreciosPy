@@ -64,15 +64,14 @@ def test_all():
         # 4b. Test Star Favorite Toggle (Empty ☆ vs Filled ★)
         is_fav_before = driver.execute_script("return favorites.includes(1);")
         print("Product 1 initial favorite status:", is_fav_before)
-        driver.execute_script("toggleFavorite(1);") # toggle off
-        time.sleep(0.3)
-        is_fav_after = driver.execute_script("return favorites.includes(1);")
-        print("Product 1 after toggle off:", is_fav_after)
-        assert is_fav_after == False
         driver.execute_script("toggleFavorite(1);") # toggle on
         time.sleep(0.3)
         assert driver.execute_script("return favorites.includes(1);") == True
-        print("Product 1 toggled back to favorite ★ successfully")
+        print("Product 1 toggled to favorite ★ successfully")
+        driver.execute_script("toggleFavorite(1);") # toggle off
+        time.sleep(0.3)
+        assert driver.execute_script("return favorites.includes(1);") == False
+        print("Product 1 toggled back to un-favorite ☆ successfully")
 
         # 4c. Test Real Price Visibility on Card
         grid_html = driver.execute_script("return document.getElementById('productGrid').innerHTML;")
@@ -80,6 +79,9 @@ def test_all():
         print("Verified 'Precio real:' is clearly displayed on product cards")
 
         # 5. Test Cart Steppers and Calculations
+        # Add products to cart first
+        driver.execute_script("flyToCart(0, null); flyToCart(1, null); flyToCart(3, null);")
+        time.sleep(0.5)
         driver.execute_script("switchTab('viewCart');")
         time.sleep(0.5)
         podium_biggie = driver.find_element(By.ID, "podium1Price").text

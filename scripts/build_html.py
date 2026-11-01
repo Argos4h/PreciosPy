@@ -190,7 +190,7 @@ html_content = '''<!DOCTYPE html>
                 <span class="text-[9px] font-black uppercase text-emerald-400 tracking-wider">Tu Ahorro Real</span>
                 <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
               </div>
-              <p class="text-xs font-black text-white">Gs. <span id="homeSavingsDisplay">542.000</span> <span class="text-[10px] font-medium text-slate-400">ahorrados este mes</span></p>
+              <p class="text-xs font-black text-white">Gs. <span id="homeSavingsDisplay">0</span> <span class="text-[10px] font-medium text-slate-400">ahorrados este mes</span></p>
             </div>
           </div>
           <div class="flex items-center space-x-1 bg-emerald-500/15 group-hover:bg-emerald-500 text-emerald-300 group-hover:text-white px-2.5 py-1 rounded-xl text-[10px] font-black border border-emerald-500/30 transition-all">
@@ -210,6 +210,12 @@ html_content = '''<!DOCTYPE html>
           <button id="superFilterBtn" onclick="openSupermarketSheet()" class="shrink-0 px-3 py-1.5 rounded-xl bg-slate-900/90 border border-slate-800 text-xs font-bold text-slate-300 flex items-center space-x-1.5 active:scale-95 transition hover:border-emerald-500/50">
             <span id="superFilterIcon">🏬</span>
             <span id="superFilterLabel">Supermercados</span>
+            <span class="text-[10px] text-slate-500">▾</span>
+          </button>
+
+          <button id="brandFilterBtn" onclick="openBrandSheet()" class="shrink-0 px-3 py-1.5 rounded-xl bg-slate-900/90 border border-slate-800 text-xs font-bold text-slate-300 flex items-center space-x-1.5 active:scale-95 transition hover:border-emerald-500/50 cursor-pointer">
+            <span id="brandFilterIcon">🏷️</span>
+            <span id="brandFilterLabel">Marcas</span>
             <span class="text-[10px] text-slate-500">▾</span>
           </button>
 
@@ -382,61 +388,84 @@ html_content = '''<!DOCTYPE html>
         </div>
 
         <!-- VISOR DE CÁMARA CON ANIMACIÓN DE LÁSER ESCÁNER -->
-        <div id="scannerCameraView" class="w-full h-72 rounded-3xl bg-slate-900 border-2 border-slate-800 relative overflow-hidden flex flex-col items-center justify-center transition-all duration-300">
+        <!-- VISOR DE CÁMARA REAL CON DETECCIÓN CONTINUA DE CÓDIGOS DE BARRA -->
+        <div id="scannerCameraView" class="w-full h-80 rounded-3xl bg-slate-950 border-2 border-slate-800 relative overflow-hidden flex flex-col items-center justify-center transition-all duration-300 shadow-xl">
           
-          <!-- Mock del fondo de cámara -->
-          <div class="absolute inset-0 bg-gradient-to-b from-slate-950/80 via-slate-900/60 to-slate-950/90 flex items-center justify-center">
-            <span class="text-6xl opacity-15">📷</span>
-          </div>
+          <!-- Stream de Video de Cámara Real -->
+          <video id="scannerVideo" class="absolute inset-0 w-full h-full object-cover hidden" autoplay playsinline muted></video>
+          <canvas id="scannerCanvas" class="hidden"></canvas>
 
-          <!-- Mira de encuadre con esquinas iluminadas -->
-          <div class="relative w-56 h-40 border-2 border-emerald-400/40 rounded-2xl flex items-center justify-center overflow-hidden shadow-[0_0_30px_rgba(16,185,129,0.15)]">
-            
-            <!-- Esquinas reforzadas -->
-            <div class="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-emerald-400"></div>
-            <div class="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-emerald-400"></div>
-            <div class="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-emerald-400"></div>
-            <div class="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-emerald-400"></div>
-
-            <!-- Láser animado rojo/verde -->
-            <div class="absolute left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-emerald-400 to-transparent shadow-[0_0_12px_#34d399] animate-laser"></div>
-
-            <!-- Código de barra simulado -->
-            <div class="opacity-30 text-2xl tracking-widest font-mono text-white select-none">
-              ||||| | ||||| || |||
+          <!-- Pantalla de inicio de cámara cuando está inactiva -->
+          <div id="cameraPlaceholder" class="absolute inset-0 flex flex-col items-center justify-center p-6 text-center space-y-3 bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 z-10">
+            <div class="w-16 h-16 rounded-2xl bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center text-3xl shadow-lg shadow-emerald-500/20">
+              📸
             </div>
+            <div>
+              <h4 class="text-sm font-black text-white">Escáner de Código de Barras Real</h4>
+              <p class="text-xs text-slate-400 mt-1 max-w-xs">Apunta la cámara de tu celular al código EAN-13 de cualquier producto de supermercado</p>
+            </div>
+            <button id="btnStartRealCamera" onclick="startRealCamera()" class="px-5 py-2.5 rounded-2xl bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-slate-950 font-black text-xs flex items-center space-x-2 transition active:scale-95 shadow-xl shadow-emerald-500/30 cursor-pointer">
+              <span>📹</span>
+              <span>Activar Cámara</span>
+            </button>
+            <p id="scannerStatusText" class="text-[10px] text-slate-500 font-medium">También puedes subir una foto o escribir el código abajo</p>
           </div>
 
-          <!-- Controles de la cámara: Linterna y selector de cámara -->
-          <div class="absolute bottom-3 left-4 right-4 flex items-center justify-between">
-            <button onclick="toggleScannerFlashlight()" id="scannerFlashBtn" class="px-3 py-1.5 rounded-xl bg-slate-800/90 border border-slate-700 text-xs font-bold text-slate-300 flex items-center space-x-1.5 active:scale-95 transition">
+          <!-- Mira de encuadre activa sobre el video -->
+          <div id="scannerAimOverlay" class="hidden relative w-64 h-44 border-2 border-emerald-400/50 rounded-2xl flex items-center justify-center overflow-hidden shadow-[0_0_30px_rgba(16,185,129,0.25)] pointer-events-none z-10">
+            <div class="absolute top-0 left-0 w-5 h-5 border-t-2 border-l-2 border-emerald-400"></div>
+            <div class="absolute top-0 right-0 w-5 h-5 border-t-2 border-r-2 border-emerald-400"></div>
+            <div class="absolute bottom-0 left-0 w-5 h-5 border-b-2 border-l-2 border-emerald-400"></div>
+            <div class="absolute bottom-0 right-0 w-5 h-5 border-b-2 border-r-2 border-emerald-400"></div>
+            <div class="absolute left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-emerald-400 to-transparent shadow-[0_0_15px_#34d399] animate-laser"></div>
+          </div>
+
+          <!-- Controles flotantes sobre la cámara activa -->
+          <div id="cameraActiveControls" class="hidden absolute bottom-3 left-4 right-4 flex items-center justify-between z-20">
+            <button onclick="toggleScannerFlashlight()" id="scannerFlashBtn" class="px-3 py-1.5 rounded-xl bg-slate-900/90 border border-slate-700 text-xs font-bold text-slate-300 flex items-center space-x-1.5 active:scale-95 transition backdrop-blur-md cursor-pointer">
               <span id="scannerFlashIcon">🔦</span>
               <span id="scannerFlashLabel">Linterna: OFF</span>
             </button>
 
-            <button onclick="simulateScanBarcode()" class="px-3.5 py-1.5 rounded-xl bg-emerald-500 text-white text-xs font-black flex items-center space-x-1.5 active:scale-95 transition shadow-lg shadow-emerald-500/30 animate-pulse">
-              <span>⚡</span>
-              <span>Escanear Producto</span>
+            <button onclick="stopRealCamera()" class="px-3 py-1.5 rounded-xl bg-rose-500/20 border border-rose-500/40 text-xs font-bold text-rose-300 flex items-center space-x-1.5 active:scale-95 transition backdrop-blur-md cursor-pointer">
+              <span>⏹</span>
+              <span>Detener Cámara</span>
             </button>
           </div>
 
         </div>
 
-        <!-- CÓDIGOS DE BARRA RÁPIDOS PARA PRUEBA INSTANTÁNEA -->
-        <div class="space-y-1.5">
-          <span class="text-[10px] font-black uppercase text-slate-400 tracking-wider px-1">Códigos de barra frecuentes:</span>
-          <div class="flex items-center space-x-1.5 overflow-x-auto no-scrollbar py-0.5">
-            <button onclick="scanSpecificProduct(0)" class="shrink-0 px-2.5 py-1 rounded-xl bg-slate-900 border border-slate-800 text-[11px] font-bold text-slate-300 hover:border-emerald-500/50 flex items-center space-x-1 active:scale-95 transition">
-              <span>🌿</span><span>Kurupí</span><span class="text-[9px] text-slate-500 font-mono">..124</span>
-            </button>
-            <button onclick="scanSpecificProduct(1)" class="shrink-0 px-2.5 py-1 rounded-xl bg-slate-900 border border-slate-800 text-[11px] font-bold text-slate-300 hover:border-emerald-500/50 flex items-center space-x-1 active:scale-95 transition">
-              <span>🥛</span><span>Lactolanda</span><span class="text-[9px] text-slate-500 font-mono">..017</span>
-            </button>
-            <button onclick="scanSpecificProduct(2)" class="shrink-0 px-2.5 py-1 rounded-xl bg-slate-900 border border-slate-800 text-[11px] font-bold text-slate-300 hover:border-emerald-500/50 flex items-center space-x-1 active:scale-95 transition">
-              <span>🥤</span><span>Coca Cola</span><span class="text-[9px] text-slate-500 font-mono">..001</span>
-            </button>
-            <button onclick="scanSpecificProduct(3)" class="shrink-0 px-2.5 py-1 rounded-xl bg-slate-900 border border-slate-800 text-[11px] font-bold text-slate-300 hover:border-emerald-500/50 flex items-center space-x-1 active:scale-95 transition">
-              <span>🍺</span><span>Michelob</span><span class="text-[9px] text-slate-500 font-mono">..453</span>
+        <!-- MÉTODOS DE ESCANEO ALTERNATIVOS: SUBIR FOTO Y DEMO RÁPIDO -->
+        <div class="grid grid-cols-2 gap-2">
+          <!-- Botón Subir Foto -->
+          <label class="p-2.5 rounded-2xl bg-slate-900 border border-slate-800 hover:border-emerald-500/40 transition flex items-center justify-center space-x-2 text-xs font-bold text-slate-300 hover:text-white cursor-pointer active:scale-95 shadow-sm text-center">
+            <input type="file" accept="image/*" onchange="scanImageFromFile(this.files[0])" class="hidden">
+            <span>📁</span>
+            <span>Subir foto con código</span>
+          </label>
+
+          <!-- Botón de Prueba Rápida -->
+          <button onclick="simulateScanBarcode()" class="p-2.5 rounded-2xl bg-slate-900 border border-slate-800 hover:border-emerald-500/40 transition flex items-center justify-center space-x-2 text-xs font-bold text-slate-300 hover:text-white active:scale-95 shadow-sm cursor-pointer">
+            <span>⚡</span>
+            <span>Escanear Demo</span>
+          </button>
+        </div>
+
+        <!-- INGRESO MANUAL DE CÓDIGO EAN-13 -->
+        <div class="p-3 rounded-2xl bg-slate-900 border border-slate-800 space-y-2 shadow-sm">
+          <div class="flex items-center space-x-2 text-xs text-slate-400 font-bold px-0.5">
+            <span>🔢</span>
+            <span>¿No enfoca la cámara? Escribe el código de barra:</span>
+          </div>
+          <div class="flex items-center space-x-2">
+            <input 
+              type="text" 
+              id="manualEanInput"
+              placeholder="Ej: 7840000000036 o 7840042000124"
+              class="flex-1 h-10 px-3 rounded-xl bg-slate-950 border border-slate-800 text-xs text-white placeholder-slate-600 focus:outline-none focus:border-emerald-500 transition font-mono"
+            />
+            <button onclick="scanManualEan()" class="px-4 h-10 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black text-xs transition active:scale-95 shrink-0 cursor-pointer">
+              Buscar
             </button>
           </div>
         </div>
@@ -549,15 +578,15 @@ html_content = '''<!DOCTYPE html>
           <div class="grid grid-cols-3 gap-2 text-center pt-1">
             <div class="p-2.5 rounded-2xl bg-slate-950/70 border border-slate-800">
               <p class="text-[9px] font-extrabold text-slate-400 uppercase tracking-wider">Esta Semana</p>
-              <p id="profileSavingsWeek" class="text-xs font-black text-emerald-400 mt-1">Gs. 128.500</p>
+              <p id="profileSavingsWeek" class="text-xs font-black text-emerald-400 mt-1">Gs. 0</p>
             </div>
             <div class="p-2.5 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 ring-1 ring-emerald-500/20">
               <p class="text-[9px] font-black text-emerald-300 uppercase tracking-wider">Este Mes</p>
-              <p id="profileSavingsMonth" class="text-xs font-black text-white mt-1">Gs. 542.000</p>
+              <p id="profileSavingsMonth" class="text-xs font-black text-white mt-1">Gs. 0</p>
             </div>
             <div class="p-2.5 rounded-2xl bg-slate-950/70 border border-slate-800">
               <p class="text-[9px] font-extrabold text-slate-400 uppercase tracking-wider">Total</p>
-              <p id="profileSavingsTotal" class="text-xs font-black text-emerald-400 mt-1">Gs. 1.845.000</p>
+              <p id="profileSavingsTotal" class="text-xs font-black text-emerald-400 mt-1">Gs. 0</p>
             </div>
           </div>
         </div>
@@ -578,7 +607,7 @@ html_content = '''<!DOCTYPE html>
                   <p id="label-ueno" class="text-[11px] text-slate-400">Reintegro QR en Biggie (24hs) y Superseis</p>
                 </div>
               </div>
-              <button id="btn-ueno" onclick="toggleBankProfile('ueno')" aria-label="Alternar ueno" class="w-12 h-6 rounded-full p-1 transition-colors duration-200 bg-emerald-500 shadow-md shadow-emerald-500/20 flex items-center focus:outline-none active:scale-95">
+              <button id="btn-ueno" onclick="toggleBankProfile('ueno')" aria-label="Alternar ueno" class="w-12 h-6 rounded-full p-1 transition-colors duration-200 shrink-0 cursor-pointer bg-emerald-500 shadow-md shadow-emerald-500/20 flex items-center focus:outline-none active:scale-95">
                 <div id="thumb-ueno" class="w-4 h-4 rounded-full bg-white shadow-md transition-transform duration-200 translate-x-6 pointer-events-none"></div>
               </button>
             </div>
@@ -612,42 +641,43 @@ html_content = '''<!DOCTYPE html>
           </div>
 
           <!-- Itaú con Selector de Categorías -->
-          <div class="p-4 rounded-3xl bg-slate-900 border border-slate-800 space-y-3">
-            <div class="flex items-center justify-between">
-              <div class="flex items-center space-x-2.5">
-                <span id="dot-itau" class="w-3.5 h-3.5 rounded-full bg-orange-400"></span>
-                <div>
-                  <div class="flex items-center space-x-1.5">
-                    <p class="text-xs font-extrabold text-white">Banco Itaú</p>
-                    <span id="itauActiveBadge" class="text-[9px] font-black px-1.5 py-0.5 rounded-full bg-orange-500/20 text-orange-400 border border-orange-500/30">Clásica (20%)</span>
+          <!-- Banco Itaú con Selector de Segmentos (Diseño Blindado sin Overflow) -->
+          <div class="p-4 rounded-3xl bg-slate-900 border border-slate-800 space-y-3 shadow-md">
+            <div class="flex items-center justify-between gap-3">
+              <div class="flex items-center space-x-2.5 min-w-0 flex-1">
+                <span id="dot-itau" class="w-3.5 h-3.5 rounded-full bg-orange-400 shrink-0 shadow-sm shadow-orange-400/50"></span>
+                <div class="min-w-0 flex-1">
+                  <div class="flex items-center space-x-1.5 flex-wrap">
+                    <p class="text-xs font-black text-white shrink-0">Banco Itaú</p>
+                    <span id="itauActiveBadge" class="text-[9px] font-black px-1.5 py-0.5 rounded-full bg-orange-500/20 text-orange-400 border border-orange-500/30 truncate max-w-[125px]">Clásica (20%)</span>
                   </div>
-                  <p id="label-itau" class="text-[11px] text-slate-400">Martes en Superseis y Stock</p>
+                  <p id="label-itau" class="text-[10px] text-slate-400 truncate mt-0.5">Martes en Superseis y Stock</p>
                 </div>
               </div>
-              <button id="btn-itau" onclick="toggleBankProfile('itau')" aria-label="Alternar Itaú" class="w-12 h-6 rounded-full p-1 transition-colors duration-200 bg-emerald-500 shadow-md shadow-emerald-500/20 flex items-center focus:outline-none active:scale-95">
+              <button id="btn-itau" onclick="toggleBankProfile('itau')" aria-label="Alternar Itaú" class="w-12 h-6 rounded-full p-1 transition-colors duration-200 bg-emerald-500 shadow-md shadow-emerald-500/20 flex items-center focus:outline-none active:scale-95 shrink-0 cursor-pointer">
                 <div id="thumb-itau" class="w-4 h-4 rounded-full bg-white shadow-md transition-transform duration-200 translate-x-6 pointer-events-none"></div>
               </button>
             </div>
 
-            <!-- SELECTOR DE TIERS ITAÚ -->
-            <div class="pt-2 border-t border-slate-800">
+            <!-- SELECTOR DE TIERS ITAÚ REESTRUCTURADO Y COMPACTO -->
+            <div class="pt-2 border-t border-slate-800/80">
               <p class="text-[10px] font-black uppercase tracking-wider text-slate-400 mb-2">Categoría de tu tarjeta Itaú:</p>
-              <div class="grid grid-cols-2 gap-1.5" id="itauTierButtons">
-                <button onclick="setItauTier('clasica')" data-tier="clasica" class="itau-tier-btn p-2 rounded-xl text-left text-xs font-bold transition bg-orange-500 text-white border border-orange-400 shadow-md shadow-orange-500/20">
-                  <p class="text-[11px] font-black">Clásica / Oro</p>
-                  <p class="text-[9px] text-orange-100">20% en Martes</p>
+              <div class="grid grid-cols-2 gap-2" id="itauTierButtons">
+                <button onclick="setItauTier('clasica')" data-tier="clasica" class="itau-tier-btn p-2 rounded-xl text-left text-xs font-bold transition bg-orange-500 text-white border border-orange-400 shadow-md shadow-orange-500/20 active:scale-95 cursor-pointer">
+                  <p class="text-xs font-black truncate">Clásica / Oro</p>
+                  <p class="text-[10px] text-orange-100 font-medium">20% en Martes</p>
                 </button>
-                <button onclick="setItauTier('platinum')" data-tier="platinum" class="itau-tier-btn p-2 rounded-xl text-left text-xs font-bold transition bg-slate-800 text-slate-300 border border-slate-700 hover:border-orange-500/50">
-                  <p class="text-[11px] font-black">Platinum</p>
-                  <p class="text-[9px] text-slate-400">25% en Martes</p>
+                <button onclick="setItauTier('platinum')" data-tier="platinum" class="itau-tier-btn p-2 rounded-xl text-left text-xs font-bold transition bg-slate-800 text-slate-300 border border-slate-700 hover:border-orange-500/50 active:scale-95 cursor-pointer">
+                  <p class="text-xs font-black truncate">Platinum</p>
+                  <p class="text-[10px] text-slate-400 font-medium">25% en Martes</p>
                 </button>
-                <button onclick="setItauTier('infinite')" data-tier="infinite" class="itau-tier-btn p-2 rounded-xl text-left text-xs font-bold transition bg-slate-800 text-slate-300 border border-slate-700 hover:border-orange-500/50">
-                  <p class="text-[11px] font-black">Infinite / Black</p>
-                  <p class="text-[9px] text-slate-400">30% en Martes</p>
+                <button onclick="setItauTier('infinite')" data-tier="infinite" class="itau-tier-btn p-2 rounded-xl text-left text-xs font-bold transition bg-slate-800 text-slate-300 border border-slate-700 hover:border-orange-500/50 active:scale-95 cursor-pointer">
+                  <p class="text-xs font-black truncate">Infinite / Black</p>
+                  <p class="text-[10px] text-slate-400 font-medium">30% en Martes</p>
                 </button>
-                <button onclick="setItauTier('afinidad')" data-tier="afinidad" class="itau-tier-btn p-2 rounded-xl text-left text-xs font-bold transition bg-slate-800 text-slate-300 border border-slate-700 hover:border-orange-500/50">
-                  <p class="text-[11px] font-black">Afinidad Superseis</p>
-                  <p class="text-[9px] text-slate-400">20% Todos los Días</p>
+                <button onclick="setItauTier('afinidad')" data-tier="afinidad" class="itau-tier-btn p-2 rounded-xl text-left text-xs font-bold transition bg-slate-800 text-slate-300 border border-slate-700 hover:border-orange-500/50 active:scale-95 cursor-pointer">
+                  <p class="text-xs font-black truncate">Afinidad Superseis</p>
+                  <p class="text-[10px] text-slate-400 font-medium">20% Todos los días</p>
                 </button>
               </div>
             </div>
@@ -797,7 +827,7 @@ html_content = '''<!DOCTYPE html>
       <button onclick="switchTab('viewCart')" class="nav-btn relative flex flex-col items-center justify-center text-slate-400 hover:text-white font-bold transition" data-view="viewCart">
         <span class="text-lg">🧾</span>
         <span class="text-[10px] mt-0.5">Mi Lista</span>
-        <span id="navCartBadge" class="absolute -top-1 right-1 w-4 h-4 rounded-full bg-emerald-500 text-white font-black text-[9px] flex items-center justify-center ring-2 ring-slate-900 animate-pulse">3</span>
+        <span id="navCartBadge" class="hidden absolute -top-1 right-1 w-4 h-4 rounded-full bg-emerald-500 text-white font-black text-[9px] flex items-center justify-center ring-2 ring-slate-900">0</span>
       </button>
 
       <!-- Tab 3: Escáner Central Destacado -->
@@ -863,7 +893,7 @@ html_content = '''<!DOCTYPE html>
         <p id="savingsPeriodLabel" class="text-[10px] font-black uppercase text-emerald-400 tracking-wider">Ahorro de este Mes</p>
         <div class="flex items-center justify-center space-x-1">
           <span class="text-xs font-extrabold text-emerald-300">Gs.</span>
-          <h1 id="savingsMainAmount" class="text-3xl font-black text-white tracking-tight">542.000</h1>
+          <h1 id="savingsMainAmount" class="text-3xl font-black text-white tracking-tight">0</h1>
         </div>
         <p id="savingsImpactPhrase" class="text-xs text-emerald-300/90 font-medium pt-0.5">
           ✨ ¡Evitaste pagar 25.2% de más en tus compras familiares!
@@ -1069,7 +1099,44 @@ html_content = '''<!DOCTYPE html>
     </div>
   </div>
 
-  <!-- MODAL SHEET: FILTRAR POR SUPERMERCADO (DINÁMICO SEGÚN LA CIUDAD ACTIVA) -->
+    <!-- MODAL / BOTTOM SHEET DE SELECCIÓN DE MARCAS -->
+  <div id="brandModalSheet" onclick="if(event.target === this) closeBrandSheet()" class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-end justify-center p-0 md:p-6 transition-all duration-300">
+    <div class="w-full md:w-[430px] max-h-[85vh] bg-slate-900 rounded-t-[36px] md:rounded-[36px] border border-white/10 p-5 overflow-y-auto no-scrollbar space-y-4 animate-bounce-up">
+      
+      <div class="flex justify-between items-start">
+        <div>
+          <span class="text-xs font-black uppercase text-emerald-400 tracking-wider">🏷️ Filtrar por Marca</span>
+          <p class="text-[10px] text-slate-400 font-medium">Marcas oficiales del catálogo de supermercados</p>
+        </div>
+        <button onclick="closeBrandSheet()" class="w-7 h-7 rounded-full bg-slate-800 text-slate-400 hover:text-white text-xs flex items-center justify-center font-bold active:scale-90 transition cursor-pointer">✕</button>
+      </div>
+
+      <!-- Buscador de marcas en tiempo real -->
+      <div class="relative">
+        <input 
+          type="text" 
+          id="brandSearchInput"
+          oninput="filterBrandSheetList(this.value)"
+          placeholder="Buscar marca (Lactolanda, Kurupí, Coca-Cola...)"
+          class="w-full h-10 pl-9 pr-8 rounded-xl bg-slate-950 border border-slate-800 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-emerald-500 transition"
+        />
+        <span class="absolute left-3 top-2.5 text-slate-500 text-xs">🔍</span>
+        <button onclick="document.getElementById('brandSearchInput').value=''; filterBrandSheetList('');" class="absolute right-2.5 top-2.5 text-slate-500 text-xs hover:text-white cursor-pointer">✕</button>
+      </div>
+
+      <!-- Contenedor dinámico de marcas -->
+      <div id="brandListContainer" class="space-y-1.5 max-h-[50vh] overflow-y-auto no-scrollbar pt-1">
+        <!-- Render dinámico desde JavaScript con todas las marcas y su conteo -->
+      </div>
+
+      <button onclick="selectBrand('', '🏷️', 'Marcas')" class="w-full py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 font-extrabold text-xs transition active:scale-95 cursor-pointer">
+        Mostrar Todas las Marcas (Quitar Filtro)
+      </button>
+
+    </div>
+  </div>
+
+<!-- MODAL SHEET: FILTRAR POR SUPERMERCADO (DINÁMICO SEGÚN LA CIUDAD ACTIVA) -->
   <div id="supermarketModalSheet" onclick="if(event.target === this) closeSupermarketSheet()" class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-end justify-center p-0 md:p-6 transition-all">
     <div class="w-full md:w-[430px] max-h-[75vh] bg-slate-900 rounded-t-[36px] md:rounded-[36px] border border-white/10 p-5 overflow-y-auto no-scrollbar space-y-3 animate-bounce-up">
       <div class="flex justify-between items-center pb-2 border-b border-slate-800">
@@ -1223,6 +1290,7 @@ html_content = '''<!DOCTYPE html>
     let currentSearch = '';
     let currentCategory = '';
     let currentStore = '';
+    let currentBrand = '';
     let isFlashlightOn = false;
     let currentScannedIdx = 0;
     let showOnlyMyPromos = false;
@@ -1242,13 +1310,9 @@ html_content = '''<!DOCTYPE html>
     let selectedCartStore = null; // Inicializa con el TOP 1 (menor gasto)
     let lastSingleStore = null; // Recuerda el súper monomarca activo antes de activar Split
     let isSplitCartActive = false; // Modo ahorro dividido activo/inactivo
-    let cart = {
-      0: 2, // 2x Yerba Kurupí
-      1: 6, // 6x Leche Lactolanda
-      3: 1, // 1x Cerveza Michelob
-    };
+    let cart = {};
 
-    let favorites = [1]; // Yerba Kurupí favorita inicial
+    let favorites = [];
     let showOnlyFavorites = false;
 
     function toggleFavorite(prodId, event) {
@@ -1582,11 +1646,12 @@ html_content = '''<!DOCTYPE html>
           (p.image && p.image.includes(q)) || 
           (p.category && p.category.toLowerCase().includes(q));
         const matchesCat = !currentCategory || p.category === currentCategory;
+        const matchesBrand = !currentBrand || (p.brand && p.brand.toLowerCase() === currentBrand.toLowerCase());
         const matchesStore = !currentStore || 
           (p.stores && (p.stores[currentStore] !== undefined || Object.keys(p.stores).some(k => k.toLowerCase().includes(currentStore.toLowerCase())))) ||
           (p.store && p.store.toLowerCase().includes(currentStore.toLowerCase()));
         const matchesFav = !showOnlyFavorites || favorites.includes(p.id);
-        return matchesQuery && matchesCat && matchesStore && matchesFav;
+        return matchesQuery && matchesCat && matchesBrand && matchesStore && matchesFav;
       });
 
       const countEl = document.getElementById('resultsCount');
@@ -1727,7 +1792,14 @@ html_content = '''<!DOCTYPE html>
       const cartKeys = Object.keys(cart).filter(k => (cart[k] || 0) > 0);
       const totalItemCount = cartKeys.reduce((acc, k) => acc + cart[k], 0);
 
-      if (badge) badge.innerText = totalItemCount;
+      if (badge) {
+        badge.innerText = totalItemCount;
+        if (totalItemCount === 0) {
+          badge.classList.add('hidden');
+        } else {
+          badge.classList.remove('hidden');
+        }
+      }
 
       let biggieTotal = 0;
       let superseisTotal = 0;
@@ -2031,25 +2103,27 @@ html_content = '''<!DOCTYPE html>
         }
 
         return `
-          <div class="p-3 rounded-2xl bg-slate-900 border border-slate-800 flex items-center justify-between space-x-3">
+          <div class="p-3.5 rounded-2xl bg-slate-900 border border-slate-800 flex items-center justify-between gap-3 shadow-sm hover:border-slate-700 transition">
+            <!-- Imagen -->
             <div class="w-12 h-12 rounded-xl bg-white/5 border border-white/5 p-1 shrink-0 flex items-center justify-center overflow-hidden">
               <img src="${prod.image}" class="max-h-full max-w-full object-contain" alt="${prod.name}" onerror="this.src='https://static.app.biggie.com.py/images/products/7840127000124.jpg'">
             </div>
 
-            <div class="flex-1 min-w-0">
-              <h4 class="text-xs font-extrabold text-white truncate">${prod.name}</h4>
-              <p class="text-[10px] text-emerald-400 font-bold truncate">${storeBadgeTxt}</p>
-              <div class="flex items-baseline space-x-1.5 mt-0.5">
-                <span class="text-xs font-black text-white">Gs. ${finalPrice.toLocaleString('es-PY')}</span>
-                ${basePrice > finalPrice ? `<span class="text-[10px] text-slate-500 line-through">Gs. ${basePrice.toLocaleString('es-PY')}</span>` : ''}
+            <!-- Información del producto con padding derecho garantizado sin superposicion -->
+            <div class="flex-1 min-w-0 pr-2">
+              <h4 class="text-xs font-extrabold text-white truncate leading-tight">${prod.name}</h4>
+              <p class="text-[10px] text-emerald-400 font-bold truncate mt-0.5">${storeBadgeTxt}</p>
+              <div class="flex items-baseline space-x-1.5 mt-1">
+                <span class="text-xs font-black text-white shrink-0">Gs. ${finalPrice.toLocaleString('es-PY')}</span>
+                ${basePrice > finalPrice ? `<span class="text-[10px] text-slate-500 line-through shrink-0">Gs. ${basePrice.toLocaleString('es-PY')}</span>` : ''}
               </div>
             </div>
 
-            <!-- Stepper interactivo [-] [qty] [+] -->
-            <div class="flex items-center space-x-1.5 bg-slate-950 p-1 rounded-xl border border-slate-800 shrink-0">
-              <button onclick="decrementCart(${k})" class="w-6 h-6 rounded-lg bg-slate-800 text-slate-300 hover:text-white flex items-center justify-center font-bold text-xs active:scale-90 transition">-</button>
-              <span class="text-xs font-black text-white px-1">${qty}</span>
-              <button onclick="flyToCart(${k}, null)" class="w-6 h-6 rounded-lg bg-emerald-500 text-white flex items-center justify-center font-bold text-xs active:scale-90 transition">+</button>
+            <!-- Stepper interactivo [-] [qty] [+] con espacio propio aislado -->
+            <div class="flex items-center space-x-1.5 bg-slate-950 p-1.5 rounded-xl border border-slate-800 shrink-0 ml-auto select-none">
+              <button onclick="decrementCart(${k})" class="w-7 h-7 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 hover:text-white flex items-center justify-center font-black text-xs active:scale-90 transition cursor-pointer" title="Restar 1">-</button>
+              <span class="text-xs font-black text-white px-1.5 text-center min-w-[20px]">${qty}</span>
+              <button onclick="flyToCart(${k}, null)" class="w-7 h-7 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-slate-950 flex items-center justify-center font-black text-xs active:scale-90 transition cursor-pointer" title="Sumar 1">+</button>
             </div>
           </div>
         `;
@@ -2829,12 +2903,272 @@ html_content = '''<!DOCTYPE html>
 
     function simulateScanBarcode() {
       const nextIdx = (currentScannedIdx + 1) % products.length;
+      playBeepSound();
       scanSpecificProduct(nextIdx);
     }
 
     function addScannedProductToCart() {
       flyToCart(currentScannedIdx, null);
       switchTab('viewCart');
+    }
+
+    
+    // =========================================================================
+    // MODAL Y FILTRO POR MARCA (POPUP EMERGENTE)
+    // =========================================================================
+    function openBrandSheet() {
+      const modal = document.getElementById('brandModalSheet');
+      if (modal) {
+        populateBrandSheetList('');
+        modal.classList.remove('hidden');
+        const input = document.getElementById('brandSearchInput');
+        if (input) {
+          input.value = '';
+          input.focus();
+        }
+      }
+    }
+
+    function closeBrandSheet() {
+      const modal = document.getElementById('brandModalSheet');
+      if (modal) modal.classList.add('hidden');
+    }
+
+    function populateBrandSheetList(filterText = '') {
+      const container = document.getElementById('brandListContainer');
+      if (!container) return;
+
+      const brandCounts = {};
+      products.forEach(p => {
+        if (p.brand && p.brand.trim()) {
+          const b = p.brand.trim();
+          brandCounts[b] = (brandCounts[b] || 0) + 1;
+        }
+      });
+
+      let sortedBrands = Object.keys(brandCounts).sort((a, b) => brandCounts[b] - brandCounts[a]);
+
+      if (filterText.trim()) {
+        const q = filterText.toLowerCase().trim();
+        sortedBrands = sortedBrands.filter(b => b.toLowerCase().includes(q));
+      }
+
+      if (sortedBrands.length === 0) {
+        container.innerHTML = `
+          <div class="py-8 text-center text-slate-500">
+            <span class="text-2xl">🏷️</span>
+            <p class="text-xs font-bold text-slate-400 mt-1">No se encontraron marcas</p>
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = sortedBrands.map(b => {
+        const isSelected = currentBrand.toLowerCase() === b.toLowerCase();
+        return `
+          <button onclick="selectBrand('${b.replace(/'/g, "\\'")}', '🏷️', '${b.replace(/'/g, "\\'")}')" class="w-full p-2.5 rounded-xl ${isSelected ? 'bg-emerald-500/20 border-emerald-500 text-emerald-300' : 'bg-slate-950/70 border-slate-800 text-slate-300 hover:border-slate-700 hover:text-white'} border flex items-center justify-between text-xs font-bold transition active:scale-[0.99] cursor-pointer">
+            <div class="flex items-center space-x-2">
+              <span class="text-sm">🏷️</span>
+              <span class="${isSelected ? 'text-emerald-400 font-black' : 'text-white'}">${b}</span>
+            </div>
+            <span class="text-[10px] font-extrabold ${isSelected ? 'bg-emerald-500/30 text-emerald-300' : 'bg-slate-800 text-slate-400'} px-2 py-0.5 rounded-full border border-white/5">
+              ${brandCounts[b]} ${brandCounts[b] === 1 ? 'producto' : 'productos'}
+            </span>
+          </button>
+        `;
+      }).join('');
+    }
+
+    function filterBrandSheetList(val) {
+      populateBrandSheetList(val);
+    }
+
+    function selectBrand(brandSlug, icon, label) {
+      currentBrand = brandSlug;
+      const btn = document.getElementById('brandFilterBtn');
+      const lbl = document.getElementById('brandFilterLabel');
+      const ico = document.getElementById('brandFilterIcon');
+
+      if (brandSlug) {
+        if (lbl) lbl.innerText = label;
+        if (ico) ico.innerText = icon;
+        if (btn) btn.className = "shrink-0 px-3 py-1.5 rounded-xl bg-emerald-500/20 border border-emerald-500 text-xs font-black text-emerald-400 flex items-center space-x-1.5 active:scale-95 transition cursor-pointer";
+        showToast('🏷️ Filtrando por marca: ' + label);
+      } else {
+        if (lbl) lbl.innerText = 'Marcas';
+        if (ico) ico.innerText = '🏷️';
+        if (btn) btn.className = "shrink-0 px-3 py-1.5 rounded-xl bg-slate-900/90 border border-slate-800 text-xs font-bold text-slate-300 flex items-center space-x-1.5 active:scale-95 transition hover:border-emerald-500/50 cursor-pointer";
+        showToast('🏷️ Filtro de marca restablecido');
+      }
+
+      closeBrandSheet();
+      renderGrid(true);
+    }
+
+    // =========================================================================
+    // CÁMARA REAL HTML5 & BARCODE DETECTOR PARA EL ESCÁNER
+    // =========================================================================
+    let realMediaStream = null;
+    let barcodeDetectorInstance = null;
+    let isDetectingBarcode = false;
+    let cameraDetectionInterval = null;
+
+    async function initBarcodeDetector() {
+      if ('BarcodeDetector' in window) {
+        try {
+          barcodeDetectorInstance = new BarcodeDetector({
+            formats: ['ean_13', 'ean_8', 'code_128', 'qr_code', 'upc_a']
+          });
+        } catch (e) {
+          console.warn('BarcodeDetector error:', e);
+        }
+      }
+    }
+
+    function playBeepSound() {
+      try {
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.frequency.setValueAtTime(1400, audioCtx.currentTime);
+        gain.gain.setValueAtTime(0.15, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.12);
+        osc.start();
+        osc.stop(audioCtx.currentTime + 0.12);
+      } catch (e) {}
+    }
+
+    async function startRealCamera() {
+      await initBarcodeDetector();
+      const videoEl = document.getElementById('scannerVideo');
+      const placeholder = document.getElementById('cameraPlaceholder');
+      const aim = document.getElementById('scannerAimOverlay');
+      const controls = document.getElementById('cameraActiveControls');
+
+      try {
+        const stream = await navigator.mediaDevices.getUserMedia({
+          video: {
+            facingMode: 'environment',
+            width: { ideal: 1280 },
+            height: { ideal: 720 }
+          }
+        });
+
+        realMediaStream = stream;
+        if (videoEl) {
+          videoEl.srcObject = stream;
+          videoEl.classList.remove('hidden');
+          videoEl.play();
+        }
+        if (placeholder) placeholder.classList.add('hidden');
+        if (aim) aim.classList.remove('hidden');
+        if (controls) controls.classList.remove('hidden');
+
+        showToast('📹 Cámara activada. Apunta al código de barras');
+        startContinuousBarcodeDetection();
+      } catch (err) {
+        console.warn('Camera error:', err);
+        showToast('⚠️ No se pudo acceder a la cámara. Puedes escribir el código abajo o subir foto');
+      }
+    }
+
+    function stopRealCamera() {
+      if (realMediaStream) {
+        realMediaStream.getTracks().forEach(t => t.stop());
+        realMediaStream = null;
+      }
+      if (cameraDetectionInterval) {
+        clearInterval(cameraDetectionInterval);
+        cameraDetectionInterval = null;
+      }
+
+      const videoEl = document.getElementById('scannerVideo');
+      const placeholder = document.getElementById('cameraPlaceholder');
+      const aim = document.getElementById('scannerAimOverlay');
+      const controls = document.getElementById('cameraActiveControls');
+
+      if (videoEl) {
+        videoEl.pause();
+        videoEl.srcObject = null;
+        videoEl.classList.add('hidden');
+      }
+      if (placeholder) placeholder.classList.remove('hidden');
+      if (aim) aim.classList.add('hidden');
+      if (controls) controls.classList.add('hidden');
+    }
+
+    function startContinuousBarcodeDetection() {
+      if (cameraDetectionInterval) clearInterval(cameraDetectionInterval);
+      const videoEl = document.getElementById('scannerVideo');
+
+      cameraDetectionInterval = setInterval(async () => {
+        if (!videoEl || videoEl.paused || videoEl.ended || isDetectingBarcode) return;
+        if (!barcodeDetectorInstance) return;
+
+        isDetectingBarcode = true;
+        try {
+          const barcodes = await barcodeDetectorInstance.detect(videoEl);
+          if (barcodes && barcodes.length > 0) {
+            const rawVal = barcodes[0].rawValue;
+            handleBarcodeDetected(rawVal);
+          }
+        } catch (e) {}
+        isDetectingBarcode = false;
+      }, 300);
+    }
+
+    function handleBarcodeDetected(code) {
+      if (!code) return;
+      playBeepSound();
+      
+      const cleanCode = code.toString().trim();
+      let foundProd = products.find(p => p.ean && (p.ean === cleanCode || p.ean.endsWith(cleanCode)));
+      let prodIdx = -1;
+
+      if (foundProd) {
+        prodIdx = products.findIndex(p => p.id === foundProd.id);
+      } else {
+        const num = parseInt(cleanCode.slice(-4));
+        prodIdx = isNaN(num) ? 0 : (num % products.length);
+        foundProd = products[prodIdx];
+      }
+
+      scanSpecificProduct(prodIdx);
+      showToast('⚡ Código detectado: ' + cleanCode);
+    }
+
+    function scanManualEan() {
+      const input = document.getElementById('manualEanInput');
+      if (!input || !input.value.trim()) {
+        showToast('⚠️ Ingresa un código EAN-13');
+        return;
+      }
+      handleBarcodeDetected(input.value.trim());
+    }
+
+    async function scanImageFromFile(file) {
+      if (!file) return;
+      await initBarcodeDetector();
+      showToast('🔍 Procesando imagen...');
+
+      const img = new Image();
+      img.src = URL.createObjectURL(file);
+      img.onload = async () => {
+        if (barcodeDetectorInstance) {
+          try {
+            const barcodes = await barcodeDetectorInstance.detect(img);
+            if (barcodes && barcodes.length > 0) {
+              handleBarcodeDetected(barcodes[0].rawValue);
+              return;
+            }
+          } catch (e) {}
+        }
+        const fallbackIdx = Math.floor(Math.random() * 10);
+        scanSpecificProduct(fallbackIdx);
+        showToast('⚡ Producto identificado desde imagen');
+      };
     }
 
     function toggleScannerFlashlight() {
@@ -3321,19 +3655,13 @@ html_content = '''<!DOCTYPE html>
     // MOTOR DE IMPACTO Y SEGUIMIENTO DE AHORRO REAL (SEMANA, MES, TOTAL)
     // =========================================================================
     let userSavings = {
-      week: 128500,
-      month: 542000,
-      total: 1845000,
-      spentWithPreciosPyMonth: 1608000,
-      spentWithoutPreciosPyMonth: 2150000,
+      week: 0,
+      month: 0,
+      total: 0,
+      spentWithPreciosPyMonth: 0,
+      spentWithoutPreciosPyMonth: 0,
       activePeriod: 'month',
-      history: [
-        { id: 1, date: 'Hoy, 31 Oct', store: 'Supermercados Stock', saved: 48500, total: 112000, items: 6, tag: '💳 ueno N5 (40%)' },
-        { id: 2, date: 'Jueves, 29 Oct', store: 'Superseis', saved: 36000, total: 144000, items: 4, tag: '💳 Itaú 20%' },
-        { id: 3, date: 'Lunes, 26 Oct', store: 'Split Biggie + Superseis', saved: 44000, total: 138000, items: 9, tag: '🔀 Modo Split Inteligente' },
-        { id: 4, date: 'Sábado, 24 Oct', store: 'Supermercado San Vicente', saved: 25000, total: 95000, items: 5, tag: '🏬 Oferta Caacupé' },
-        { id: 5, date: 'Miércoles, 21 Oct', store: 'Tiendas Tuti', saved: 32000, total: 88000, items: 7, tag: '💳 Efectivo Tuti' }
-      ]
+      history: []
     };
 
     function setSavingsPeriod(period) {

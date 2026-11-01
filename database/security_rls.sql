@@ -197,3 +197,4 @@ CREATE POLICY "Users can manage own favorites"
 -- ----------------------------------------------------------------------------
 -- Se asegura que cualquier función RPC creada en Supabase tenga un search_path seguro.
 ALTER DEFAULT PRIVILEGES REVOKE EXECUTE ON FUNCTIONS FROM PUBLIC;
+

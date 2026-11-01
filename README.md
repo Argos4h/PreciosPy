@@ -165,3 +165,4 @@ PreciosPy cuenta con suites de prueba automatizadas end-to-end con Selenium WebD
 
 Desarrollado con dedicación para los consumidores de la República del Paraguay 🇵🇾.
 Distribución libre bajo licencia MIT.
+

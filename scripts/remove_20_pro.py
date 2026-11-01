@@ -20,3 +20,4 @@ with open('scripts/build_html.py', 'w', encoding='utf-8') as f:
     f.write(content)
 
 print("Removed '2.0 PRO' and updated titles in build_html.py!")
+
