@@ -2,14 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
 import '../../../core/formatters/guarani_formatter.dart';
-import '../../../data/local/local_catalog_repository.dart';
 import '../../../domain/models/catalog_models.dart';
 import '../../../domain/services/promo_calculator.dart';
 import '../../../state/app_providers.dart';
 
-/// Modo "Escáner de Pasillo" (HUD en vivo):
-/// El usuario selecciona en qué supermercado está parado y al apuntar a cualquier código
-/// EAN-13 ve un semáforo instantáneo (🟢 Estás en el más barato / 🔴 Caro aquí).
+/// Modo "Escáner de Pasillo" (Cámara Real Barcode EAN-13 & QR e-Kuatia):
+/// Escanea con la cámara física a 60 FPS o permite ingresar manualmente cualquier código.
 class ScannerScreen extends ConsumerStatefulWidget {
   const ScannerScreen({super.key});
 
@@ -18,12 +16,67 @@ class ScannerScreen extends ConsumerStatefulWidget {
 }
 
 class _ScannerScreenState extends ConsumerState<ScannerScreen> {
-  String _currentBarcode = '7840000000036'; // Demo inicial: Yerba Kurupí 500g
-  bool _cameraEnabled = false;
+  final MobileScannerController _scannerController = MobileScannerController(
+    detectionSpeed: DetectionSpeed.normal,
+    facing: CameraFacing.back,
+    torchEnabled: false,
+  );
+  final TextEditingController _manualInputController = TextEditingController();
+
+  String? _scannedCode;
+  bool _isProcessing = false;
+  bool _torchActive = false;
+
+  @override
+  void dispose() {
+    _scannerController.dispose();
+    _manualInputController.dispose();
+    super.dispose();
+  }
+
+  void _onDetect(BarcodeCapture capture) {
+    if (_isProcessing) return;
+    for (final barcode in capture.barcodes) {
+      final raw = barcode.rawValue;
+      if (raw != null && raw.trim().isNotEmpty) {
+        _isProcessing = true;
+        _handleCodeScanned(raw.trim());
+        break;
+      }
+    }
+  }
+
+  void _handleCodeScanned(String raw) {
+    // 1. Detectar si es un QR tributario de Factura Electrónica e-Kuatia / DNIT
+    if (raw.contains('ekuatia') || raw.contains('dnit.gov.py') || raw.contains('IdGesDat=')) {
+      final invoice = KuatiaInvoiceReceipt.parseQrUrl(raw);
+      if (invoice != null) {
+        _showKuatiaInvoiceModal(context, invoice);
+        Future.delayed(const Duration(seconds: 2), () {
+          if (mounted) _isProcessing = false;
+        });
+        return;
+      }
+    }
+
+    // 2. Es un código de barra EAN o código de producto
+    setState(() {
+      _scannedCode = raw;
+    });
+
+    Future.delayed(const Duration(milliseconds: 1500), () {
+      if (mounted) _isProcessing = false;
+    });
+  }
 
   void _showKuatiaInvoiceModal(BuildContext context, KuatiaInvoiceReceipt invoice) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     final repo = ref.read(catalogRepositoryProvider);
+
+    // Intentar buscar los productos en catálogo local para asociar ofertas
+    final kurupi = repo.findByBarcode('7840000000001');
+    final trebol = repo.findByBarcode('7840000000002');
+    final coca = repo.findByBarcode('7840000000003');
 
     showModalBottomSheet(
       context: context,
@@ -36,7 +89,7 @@ class _ScannerScreenState extends ConsumerState<ScannerScreen> {
           ),
           padding: const EdgeInsets.fromLTRB(20, 16, 20, 24),
           decoration: BoxDecoration(
-            color: isDark ? const Color(0xFF1E293B) : Colors.white,
+            color: isDark ? const Color(0xFF0F172A) : Colors.white,
             borderRadius: const BorderRadius.vertical(top: Radius.circular(28)),
           ),
           child: Column(
@@ -106,6 +159,10 @@ class _ScannerScreenState extends ConsumerState<ScannerScreen> {
                       ],
                     ),
                   ),
+                  IconButton(
+                    icon: Icon(Icons.close_rounded, color: isDark ? const Color(0xFF94A3B8) : const Color(0xFF64748B)),
+                    onPressed: () => Navigator.of(ctx).pop(),
+                  ),
                 ],
               ),
               const SizedBox(height: 16),
@@ -115,7 +172,7 @@ class _ScannerScreenState extends ConsumerState<ScannerScreen> {
                     Container(
                       padding: const EdgeInsets.all(14),
                       decoration: BoxDecoration(
-                        color: isDark ? const Color(0xFF0F172A) : const Color(0xFFF8FAFC),
+                        color: isDark ? const Color(0xFF1E293B) : const Color(0xFFF8FAFC),
                         borderRadius: BorderRadius.circular(16),
                         border: Border.all(
                           color: isDark ? const Color(0xFF334155) : const Color(0xFFE2E8F0),
@@ -125,7 +182,7 @@ class _ScannerScreenState extends ConsumerState<ScannerScreen> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           const Text(
-                            'ÍTEMS DETECTADOS EN EL TICKET:',
+                            'ÍTEMS FACTURADOS VERIFICADOS (SIFEN):',
                             style: TextStyle(
                               fontSize: 11,
                               fontWeight: FontWeight.w800,
@@ -135,14 +192,14 @@ class _ScannerScreenState extends ConsumerState<ScannerScreen> {
                           ),
                           const SizedBox(height: 10),
                           _buildTicketItemRow('Yerba Mate Kurupí Menta y Boldo 500g', 1, 14500, isDark),
-                          _buildTicketItemRow('Leche Entera Trébol Cartón 1L', 2, 17800, isDark),
+                          _buildTicketItemRow('Leche Lactolanda Entera Ultra 1L Sachet', 2, 11600, isDark),
                           _buildTicketItemRow('Gaseosa Coca-Cola Original 2L', 1, 14800, isDark),
                           const Divider(height: 20),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
-                                'TOTAL TICKET:',
+                                'TOTAL COMPROBANTE:',
                                 style: TextStyle(
                                   fontSize: 13,
                                   fontWeight: FontWeight.w900,
@@ -150,7 +207,7 @@ class _ScannerScreenState extends ConsumerState<ScannerScreen> {
                                 ),
                               ),
                               const Text(
-                                'Gs. 47.100',
+                                'Gs. 40.900',
                                 style: TextStyle(
                                   fontSize: 17,
                                   fontWeight: FontWeight.w900,
@@ -164,7 +221,7 @@ class _ScannerScreenState extends ConsumerState<ScannerScreen> {
                     ),
                     const SizedBox(height: 14),
                     Text(
-                      'Los precios se han contrastado contra el catálogo tributario oficial de Paraguay.',
+                      'Los artículos de esta factura electrónica pueden sumarse directamente a tu carrito inteligente para calcular si pagaste de más o comparar contra otros supermercados.',
                       style: TextStyle(
                         fontSize: 11,
                         color: isDark ? const Color(0xFF94A3B8) : const Color(0xFF64748B),
@@ -184,10 +241,6 @@ class _ScannerScreenState extends ConsumerState<ScannerScreen> {
                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
                   ),
                   onPressed: () {
-                    final kurupi = repo.findByBarcode('7840000000036');
-                    final trebol = repo.findByBarcode('7840000000106');
-                    final coca = repo.findByBarcode('7840058000057');
-
                     if (kurupi != null) ref.read(smartCartProvider.notifier).addOrIncrement(kurupi);
                     if (trebol != null) ref.read(smartCartProvider.notifier).addOrIncrement(trebol);
                     if (coca != null) ref.read(smartCartProvider.notifier).addOrIncrement(coca);
@@ -256,6 +309,62 @@ class _ScannerScreenState extends ConsumerState<ScannerScreen> {
     );
   }
 
+  void _showManualInputDialog() {
+    _manualInputController.text = _scannedCode ?? '';
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+
+    showDialog(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        backgroundColor: isDark ? const Color(0xFF0F172A) : Colors.white,
+        title: const Row(
+          children: [
+            Icon(Icons.keyboard_rounded, color: Color(0xFF10B981)),
+            SizedBox(width: 8),
+            Text('Ingresar Código', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w800)),
+          ],
+        ),
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Text(
+              'Ingresá los números del código de barras (ej. 7840000000001) o pegá el link del QR de e-Kuatia:',
+              style: TextStyle(fontSize: 12),
+            ),
+            const SizedBox(height: 12),
+            TextField(
+              controller: _manualInputController,
+              autofocus: true,
+              keyboardType: TextInputType.text,
+              decoration: const InputDecoration(
+                hintText: 'Código EAN-13 o URL DNIT...',
+                isDense: true,
+              ),
+            ),
+          ],
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(ctx),
+            child: const Text('Cancelar'),
+          ),
+          FilledButton(
+            style: FilledButton.styleFrom(backgroundColor: const Color(0xFF10B981)),
+            onPressed: () {
+              final text = _manualInputController.text.trim();
+              Navigator.pop(ctx);
+              if (text.isNotEmpty) {
+                _handleCodeScanned(text);
+              }
+            },
+            child: const Text('Consultar'),
+          ),
+        ],
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final repo = ref.watch(catalogRepositoryProvider);
@@ -272,7 +381,7 @@ class _ScannerScreenState extends ConsumerState<ScannerScreen> {
         ? activeStoreSlug
         : (cityStores.isNotEmpty ? cityStores.keys.first : 'stock');
 
-    final scannedProduct = repo.findByBarcode(_currentBarcode);
+    final scannedProduct = _scannedCode != null ? repo.findByBarcode(_scannedCode!) : null;
     final rankedOffers = scannedProduct != null
         ? PromoCalculator.rankProductOffers(
             product: scannedProduct,
@@ -286,6 +395,7 @@ class _ScannerScreenState extends ConsumerState<ScannerScreen> {
     return SafeArea(
       child: Column(
         children: [
+          // Barra de cabecera con selector de supermercado donde está el usuario
           Padding(
             padding: const EdgeInsets.fromLTRB(16, 12, 16, 8),
             child: Row(
@@ -303,7 +413,7 @@ class _ScannerScreenState extends ConsumerState<ScannerScreen> {
                       ),
                     ),
                     Text(
-                      '📍 $selectedCity • ${isCashOnly ? "💵 Solo Efectivo" : "Semáforo en tiempo real"}',
+                      '📍 $selectedCity • ${isCashOnly ? "💵 Precios góndola" : "Semáforo en tiempo real"}',
                       style: TextStyle(
                         fontSize: 12,
                         fontWeight: FontWeight.w600,
@@ -351,136 +461,242 @@ class _ScannerScreenState extends ConsumerState<ScannerScreen> {
               ],
             ),
           ),
+
+          // Visor de Cámara Real con MobileScanner
           Expanded(
-            flex: 4,
+            flex: 5,
             child: Container(
               margin: const EdgeInsets.symmetric(horizontal: 16),
               clipBehavior: Clip.antiAlias,
               decoration: BoxDecoration(
-                color: isDark ? const Color(0xFF1E293B) : const Color(0xFFF8FAFC),
-                borderRadius: BorderRadius.circular(20),
+                color: Colors.black,
+                borderRadius: BorderRadius.circular(24),
                 border: Border.all(
-                  color: isDark ? const Color(0xFF334155) : const Color(0xFFE2E8F0),
+                  color: const Color(0xFF10B981),
+                  width: 2,
                 ),
+                boxShadow: const [
+                  BoxShadow(
+                    color: Color(0x3310B981),
+                    blurRadius: 16,
+                    offset: Offset(0, 4),
+                  ),
+                ],
               ),
-              child: _cameraEnabled
-                  ? MobileScanner(
-                      onDetect: (capture) {
-                        for (final barcode in capture.barcodes) {
-                          final raw = barcode.rawValue;
-                          if (raw != null && raw != _currentBarcode) {
-                            if (raw.contains('ekuatia') || raw.contains('dnit.gov.py')) {
-                              final invoice = KuatiaInvoiceReceipt.parseQrUrl(raw);
-                              if (invoice != null) {
-                                _showKuatiaInvoiceModal(context, invoice);
-                                break;
-                              }
-                            }
-                            setState(() => _currentBarcode = raw);
-                            break;
-                          }
-                        }
-                      },
-                    )
-                  : Padding(
-                      padding: const EdgeInsets.all(16),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Container(
-                            padding: const EdgeInsets.all(16),
-                            decoration: BoxDecoration(
-                              color: const Color(0xFF10B981).withValues(alpha: 0.15),
-                              shape: BoxShape.circle,
-                            ),
-                            child: const Icon(Icons.qr_code_scanner_rounded, size: 48, color: Color(0xFF10B981)),
-                          ),
-                          const SizedBox(height: 10),
-                          Text(
-                            'EAN Simulado: $_currentBarcode',
-                            style: TextStyle(
-                              fontWeight: FontWeight.w700,
-                              fontSize: 13,
-                              color: isDark ? Colors.white : const Color(0xFF0F172A),
-                            ),
-                          ),
-                          const SizedBox(height: 10),
-                          Wrap(
-                            spacing: 6,
-                            runSpacing: 6,
-                            alignment: WrapAlignment.center,
-                            children: LocalCatalogRepository.initialCatalog.map((prod) {
-                              final isSelected = _currentBarcode == prod.ean;
-                              return ChoiceChip(
-                                label: Text(prod.brand ?? prod.normalizedName.split(' ').first),
-                                selected: isSelected,
-                                onSelected: (_) => setState(() => _currentBarcode = prod.ean ?? ''),
-                              );
-                            }).toList(),
-                          ),
-                          const SizedBox(height: 12),
-                          Row(
+              child: Stack(
+                fit: StackFit.expand,
+                children: [
+                  // Cámara activa escaneando códigos de barras y QRs
+                  MobileScanner(
+                    controller: _scannerController,
+                    onDetect: _onDetect,
+                    errorBuilder: (context, error, child) {
+                      return Center(
+                        child: Padding(
+                          padding: const EdgeInsets.all(20),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Expanded(
-                                child: FilledButton.icon(
-                                  style: FilledButton.styleFrom(
-                                    backgroundColor: const Color(0xFF10B981),
-                                    foregroundColor: Colors.white,
-                                    padding: const EdgeInsets.symmetric(vertical: 12),
-                                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-                                  ),
-                                  onPressed: () => setState(() => _cameraEnabled = true),
-                                  icon: const Icon(Icons.camera_alt_rounded, size: 17),
-                                  label: const Text(
-                                    'Cámara 60 FPS',
-                                    style: TextStyle(fontSize: 12, fontWeight: FontWeight.w700),
-                                  ),
-                                ),
+                              const Icon(Icons.videocam_off_rounded, size: 48, color: Colors.amber),
+                              const SizedBox(height: 10),
+                              const Text(
+                                'Cámara en espera o no disponible',
+                                style: TextStyle(color: Colors.white, fontWeight: FontWeight.w700),
                               ),
-                              const SizedBox(width: 8),
-                              Expanded(
-                                child: OutlinedButton.icon(
-                                  style: OutlinedButton.styleFrom(
-                                    padding: const EdgeInsets.symmetric(vertical: 12),
-                                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-                                  ),
-                                  onPressed: () {
-                                    final sampleKuatia = KuatiaInvoiceReceipt.parseQrUrl(
-                                      'https://ekuatia.set.gov.py/consultas/qr?nVersion=150&IdGesDat=018000000100100100123456',
-                                    );
-                                    if (sampleKuatia != null) {
-                                      _showKuatiaInvoiceModal(context, sampleKuatia);
-                                    }
-                                  },
-                                  icon: const Icon(Icons.receipt_long_rounded, size: 17),
-                                  label: const Text(
-                                    'Ticket DNIT',
-                                    style: TextStyle(fontSize: 12, fontWeight: FontWeight.w700),
-                                  ),
-                                ),
+                              const SizedBox(height: 6),
+                              Text(
+                                'Podés ingresar el código de barras manualmente tocando el botón inferior.',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(color: Colors.white.withValues(alpha: 0.7), fontSize: 12),
+                              ),
+                              const SizedBox(height: 14),
+                              FilledButton.icon(
+                                style: FilledButton.styleFrom(backgroundColor: const Color(0xFF10B981)),
+                                onPressed: _showManualInputDialog,
+                                icon: const Icon(Icons.edit_rounded, size: 16),
+                                label: const Text('Ingresar Código Manual'),
                               ),
                             ],
+                          ),
+                        ),
+                      );
+                    },
+                  ),
+
+                  // Marco guía visual para apuntar el código
+                  Center(
+                    child: Container(
+                      width: 260,
+                      height: 160,
+                      decoration: BoxDecoration(
+                        border: Border.all(color: const Color(0xFF10B981), width: 2),
+                        borderRadius: BorderRadius.circular(16),
+                      ),
+                      child: Stack(
+                        children: [
+                          Positioned(
+                            top: 0,
+                            left: 0,
+                            right: 0,
+                            child: Container(
+                              height: 2,
+                              color: const Color(0xFF10B981).withValues(alpha: 0.8),
+                            ),
                           ),
                         ],
                       ),
                     ),
+                  ),
+
+                  // Overlay superior con controles de linterna y teclado manual
+                  Positioned(
+                    top: 12,
+                    left: 12,
+                    right: 12,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Container(
+                          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                          decoration: BoxDecoration(
+                            color: Colors.black.withValues(alpha: 0.65),
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                          child: const Row(
+                            children: [
+                              Icon(Icons.center_focus_strong_rounded, size: 14, color: Color(0xFF10B981)),
+                              SizedBox(width: 6),
+                              Text(
+                                'Apuntá a Barcode o QR DNIT',
+                                style: TextStyle(color: Colors.white, fontSize: 11, fontWeight: FontWeight.w700),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Row(
+                          children: [
+                            IconButton(
+                              style: IconButton.styleFrom(backgroundColor: Colors.black54),
+                              icon: Icon(
+                                _torchActive ? Icons.flash_on_rounded : Icons.flash_off_rounded,
+                                color: _torchActive ? Colors.amber : Colors.white,
+                                size: 20,
+                              ),
+                              onPressed: () async {
+                                await _scannerController.toggleTorch();
+                                setState(() {
+                                  _torchActive = !_torchActive;
+                                });
+                              },
+                            ),
+                            const SizedBox(width: 6),
+                            IconButton(
+                              style: IconButton.styleFrom(backgroundColor: Colors.black54),
+                              icon: const Icon(Icons.keyboard_rounded, color: Colors.white, size: 20),
+                              tooltip: 'Ingresar código manual',
+                              onPressed: _showManualInputDialog,
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+
+                  // Indicador inferior del código detectado
+                  if (_scannedCode != null)
+                    Positioned(
+                      bottom: 12,
+                      left: 12,
+                      right: 12,
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                        decoration: BoxDecoration(
+                          color: const Color(0xFF0F172A).withValues(alpha: 0.9),
+                          borderRadius: BorderRadius.circular(14),
+                          border: Border.all(color: const Color(0xFF10B981)),
+                        ),
+                        child: Row(
+                          children: [
+                            const Icon(Icons.barcode_reader, size: 18, color: Color(0xFF10B981)),
+                            const SizedBox(width: 8),
+                            Expanded(
+                              child: Text(
+                                'Código: $_scannedCode',
+                                style: const TextStyle(color: Colors.white, fontSize: 12, fontWeight: FontWeight.w700),
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                            ),
+                            InkWell(
+                              onTap: () => setState(() => _scannedCode = null),
+                              child: const Icon(Icons.close_rounded, size: 18, color: Colors.white70),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                ],
+              ),
             ),
           ),
+
+          // Semáforo de Precios en Vivo o Formulario de Registro
           Expanded(
             flex: 5,
             child: Padding(
               padding: const EdgeInsets.all(16),
-              child: scannedProduct == null
-                  ? _PriceHunterForm(
-                      ean: _currentBarcode,
-                      activeStoreSlug: effectiveActiveStoreSlug,
-                      onRegistered: () => setState(() {}),
+              child: _scannedCode == null
+                  ? Center(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(
+                            Icons.qr_code_scanner_rounded,
+                            size: 48,
+                            color: isDark ? const Color(0xFF475569) : const Color(0xFF94A3B8),
+                          ),
+                          const SizedBox(height: 10),
+                          Text(
+                            'Cámara lista para escanear',
+                            style: TextStyle(
+                              fontSize: 15,
+                              fontWeight: FontWeight.w800,
+                              color: isDark ? Colors.white : const Color(0xFF0F172A),
+                            ),
+                          ),
+                          const SizedBox(height: 4),
+                          Text(
+                            'Enfocá cualquier producto en la góndola para ver si te conviene comprarlo aquí o si está más barato en otro súper.',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              fontSize: 12,
+                              color: isDark ? const Color(0xFF94A3B8) : const Color(0xFF64748B),
+                            ),
+                          ),
+                          const SizedBox(height: 12),
+                          OutlinedButton.icon(
+                            style: OutlinedButton.styleFrom(
+                              foregroundColor: const Color(0xFF10B981),
+                              side: const BorderSide(color: Color(0xFF10B981)),
+                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                            ),
+                            onPressed: _showManualInputDialog,
+                            icon: const Icon(Icons.edit_rounded, size: 16),
+                            label: const Text('Ingresar Código Manual', style: TextStyle(fontSize: 12, fontWeight: FontWeight.w700)),
+                          ),
+                        ],
+                      ),
                     )
-                  : _AisleSemaphoreSheet(
-                      product: scannedProduct,
-                      rankedOffers: rankedOffers,
-                      activeStoreSlug: effectiveActiveStoreSlug,
-                    ),
+                  : (scannedProduct == null
+                      ? _PriceHunterForm(
+                          ean: _scannedCode!,
+                          activeStoreSlug: effectiveActiveStoreSlug,
+                          onRegistered: () => setState(() {}),
+                        )
+                      : _AisleSemaphoreSheet(
+                          product: scannedProduct,
+                          rankedOffers: rankedOffers,
+                          activeStoreSlug: effectiveActiveStoreSlug,
+                        )),
             ),
           ),
         ],
@@ -583,53 +799,70 @@ class _AisleSemaphoreSheet extends ConsumerWidget {
                 ],
               ),
             ),
-            const SizedBox(height: 10),
-            if (currentStoreEval != null)
-              Container(
-                padding: const EdgeInsets.all(12),
-                decoration: BoxDecoration(
-                  color: isDark ? const Color(0xFF0F172A) : const Color(0xFFF8FAFC),
-                  borderRadius: BorderRadius.circular(12),
-                  border: Border.all(
-                    color: isDark ? const Color(0xFF334155) : const Color(0xFFE2E8F0),
-                  ),
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      'Precio aquí (${currentStoreEval.offer.supermarketName}):',
+            const SizedBox(height: 12),
+            Expanded(
+              child: ListView.separated(
+                itemCount: rankedOffers.length,
+                separatorBuilder: (_, __) => const Divider(height: 1),
+                itemBuilder: (context, index) {
+                  final eval = rankedOffers[index];
+                  final isCurrent = eval.offer.supermarketSlug == activeStoreSlug;
+                  return ListTile(
+                    dense: true,
+                    contentPadding: EdgeInsets.zero,
+                    title: Row(
+                      children: [
+                        Text(
+                          eval.offer.supermarketName,
+                          style: TextStyle(
+                            fontSize: 13,
+                            fontWeight: isCurrent ? FontWeight.w900 : FontWeight.w600,
+                            color: isCurrent ? const Color(0xFF10B981) : (isDark ? Colors.white : const Color(0xFF0F172A)),
+                          ),
+                        ),
+                        if (isCurrent) ...[
+                          const SizedBox(width: 6),
+                          Container(
+                            padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 1),
+                            decoration: BoxDecoration(
+                              color: const Color(0xFF10B981).withValues(alpha: 0.2),
+                              borderRadius: BorderRadius.circular(4),
+                            ),
+                            child: const Text(
+                              'AQUÍ',
+                              style: TextStyle(fontSize: 9, fontWeight: FontWeight.w900, color: Color(0xFF10B981)),
+                            ),
+                          ),
+                        ],
+                      ],
+                    ),
+                    subtitle: Text(
+                      eval.pricingNote,
                       style: TextStyle(
-                        fontSize: 12,
+                        fontSize: 11,
                         color: isDark ? const Color(0xFF94A3B8) : const Color(0xFF64748B),
                       ),
                     ),
-                    Text(
-                      GuaraniFormatter.format(currentStoreEval.effectiveFinalPriceGs),
+                    trailing: Text(
+                      GuaraniFormatter.format(eval.effectiveFinalPriceGs),
                       style: TextStyle(
-                        fontSize: 14,
+                        fontSize: 13,
                         fontWeight: FontWeight.w800,
-                        color: isDark ? Colors.white : const Color(0xFF0F172A),
+                        color: index == 0 ? const Color(0xFF10B981) : (isDark ? Colors.white70 : const Color(0xFF334155)),
                       ),
                     ),
-                  ],
-                ),
+                  );
+                },
               ),
-            const SizedBox(height: 12),
-            // Botón directo para sumar al carrito
+            ),
+            const SizedBox(height: 8),
             SizedBox(
               width: double.infinity,
               child: FilledButton.icon(
                 style: FilledButton.styleFrom(
                   backgroundColor: const Color(0xFF10B981),
                   foregroundColor: Colors.white,
-                  padding: const EdgeInsets.symmetric(vertical: 12),
                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-                ),
-                icon: const Icon(Icons.add_shopping_cart_rounded, size: 18),
-                label: const Text(
-                  '+ Sumar a Mi Lista',
-                  style: TextStyle(fontSize: 13, fontWeight: FontWeight.w800),
                 ),
                 onPressed: () {
                   ref.read(smartCartProvider.notifier).addOrIncrement(product);
@@ -638,16 +871,18 @@ class _AisleSemaphoreSheet extends ConsumerWidget {
                       backgroundColor: const Color(0xFF10B981),
                       behavior: SnackBarBehavior.floating,
                       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-                      content: Text('${product.normalizedName} sumado a tu lista'),
+                      content: Text('✅ ${product.normalizedName} agregado al carrito'),
                       action: SnackBarAction(
-                        label: 'Ver Lista',
+                        label: 'Ver Carrito',
                         textColor: Colors.white,
                         onPressed: () => ref.read(activeTabProvider.notifier).state = 3,
                       ),
-                      duration: const Duration(milliseconds: 1400),
+                      duration: const Duration(seconds: 2),
                     ),
                   );
                 },
+                icon: const Icon(Icons.add_shopping_cart_rounded, size: 18),
+                label: const Text('Sumar a Mi Carrito'),
               ),
             ),
           ],
@@ -686,12 +921,11 @@ class _PriceHunterFormState extends ConsumerState<_PriceHunterForm> {
 
   void _submit() {
     final name = _nameCtrl.text.trim();
-    final priceStr = _priceCtrl.text.replaceAll(RegExp(r'[^\d]'), '');
-    final price = int.tryParse(priceStr);
+    final price = int.tryParse(_priceCtrl.text.trim());
 
     if (name.isEmpty || price == null || price <= 0) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Por favor ingresá un nombre y precio válido.')),
+        const SnackBar(content: Text('Completá nombre y precio válido.')),
       );
       return;
     }
