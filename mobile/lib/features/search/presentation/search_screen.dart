@@ -1526,6 +1526,11 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
               ],
             ),
           ),
+                if (searchQuery.trim().isEmpty && selectedCategory.isEmpty && selectedSupermarket.isEmpty)
+                  _DailyDealsCarousel(
+                    isoWeekday: selectedWeekday,
+                    isDark: isDark,
+                  ),
           Expanded(
             child: products.isEmpty
                 ? Center(
@@ -2053,3 +2058,249 @@ class _ProductGridCard extends StatelessWidget {
   }
 }
 
+
+class _DailyDealsCarousel extends ConsumerStatefulWidget {
+  final int isoWeekday;
+  final bool isDark;
+
+  const _DailyDealsCarousel({
+    required this.isoWeekday,
+    required this.isDark,
+  });
+
+  @override
+  ConsumerState<_DailyDealsCarousel> createState() => _DailyDealsCarouselState();
+}
+
+class _DailyDealsCarouselState extends ConsumerState<_DailyDealsCarousel> {
+  late final PageController _pageController;
+  Timer? _autoSlideTimer;
+  int _currentPage = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    _pageController = PageController(viewportFraction: 0.92);
+    _startAutoSlide();
+  }
+
+  @override
+  void dispose() {
+    _autoSlideTimer?.cancel();
+    _pageController.dispose();
+    super.dispose();
+  }
+
+  void _startAutoSlide() {
+    _autoSlideTimer?.cancel();
+    _autoSlideTimer = Timer.periodic(const Duration(seconds: 4), (timer) {
+      if (!mounted) return;
+      if (_pageController.hasClients) {
+        final nextPage = (_currentPage + 1) % 4;
+        _pageController.animateToPage(
+          nextPage,
+          duration: const Duration(milliseconds: 450),
+          curve: Curves.easeInOutCubic,
+        );
+      }
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final promos = ref.watch(bankPromotionsProvider);
+    final todayPromos = promos.where((p) => p.daysOfWeek.contains(widget.isoWeekday)).toList();
+    todayPromos.sort((a, b) => b.discountPct.compareTo(a.discountPct));
+
+    final slides = <Widget>[
+      // Slide 1: Oferta estrella de Banco / Reintegro del día
+      _buildSlideCard(
+        title: todayPromos.isNotEmpty
+            ? '% DE AHORRO HOY'
+            : 'HASTA 40% REINTEGRO',
+        subtitle: todayPromos.isNotEmpty
+            ? todayPromos.first.title
+            : 'Pagando con tarjetas y QR seleccionados',
+        badge: 'OFERTA DEL DÍA',
+        gradientColors: const [Color(0xFF047857), Color(0xFF10B981)],
+        icon: Icons.percent_rounded,
+        actionLabel: 'Ver Promos',
+        onTap: () => ref.read(activeTabProvider.notifier).state = 1,
+      ),
+      // Slide 2: Supermercados y Pasillo Barato
+      _buildSlideCard(
+        title: 'COMPARADOR DE GÓNDOLAS',
+        subtitle: 'Más de 1.700 productos relevados en Asunción, CDE y Encarnación',
+        badge: 'PRECIOS EN VIVO',
+        gradientColors: const [Color(0xFF0369A1), Color(0xFF0284C7)],
+        icon: Icons.storefront_rounded,
+        actionLabel: 'Escanear',
+        onTap: () => ref.read(activeTabProvider.notifier).state = 2,
+      ),
+      // Slide 3: Smart Cart y Ahorro en Carrito
+      _buildSlideCard(
+        title: 'ARMÁ TU LISTA INTELIGENTE',
+        subtitle: 'Te calculamos automáticamente qué súper te conviene más',
+        badge: 'OPTIMIZADOR',
+        gradientColors: const [Color(0xFF7C3AED), Color(0xFF8B5CF6)],
+        icon: Icons.checklist_rounded,
+        actionLabel: 'Ver Listas',
+        onTap: () => ref.read(activeTabProvider.notifier).state = 3,
+      ),
+      // Slide 4: Modo Efectivo vs Tarjetas
+      _buildSlideCard(
+        title: 'CAZADOR DE PRECIOS DNIT',
+        subtitle: 'Escaneá facturas electrónicas e-Kuatia para sumar productos al instante',
+        badge: 'SIFEN DNIT',
+        gradientColors: const [Color(0xFFB45309), Color(0xFFF59E0B)],
+        icon: Icons.receipt_long_rounded,
+        actionLabel: 'Ver QR',
+        onTap: () => ref.read(activeTabProvider.notifier).state = 2,
+      ),
+    ];
+
+    return Container(
+      margin: const EdgeInsets.only(top: 8, bottom: 6),
+      height: 108,
+      child: Stack(
+        alignment: Alignment.bottomCenter,
+        children: [
+          PageView.builder(
+            controller: _pageController,
+            onPageChanged: (idx) {
+              setState(() => _currentPage = idx);
+              _startAutoSlide();
+            },
+            itemCount: slides.length,
+            itemBuilder: (context, index) {
+              return slides[index];
+            },
+          ),
+          Positioned(
+            bottom: 6,
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: List.generate(slides.length, (idx) {
+                final isActive = idx == _currentPage;
+                return AnimatedContainer(
+                  duration: const Duration(milliseconds: 300),
+                  margin: const EdgeInsets.symmetric(horizontal: 2.5),
+                  height: 4,
+                  width: isActive ? 16 : 5,
+                  decoration: BoxDecoration(
+                    color: isActive ? Colors.white : Colors.white54,
+                    borderRadius: BorderRadius.circular(2),
+                  ),
+                );
+              }),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildSlideCard({
+    required String title,
+    required String subtitle,
+    required String badge,
+    required List<Color> gradientColors,
+    required IconData icon,
+    required String actionLabel,
+    required VoidCallback onTap,
+  }) {
+    return Container(
+      margin: const EdgeInsets.symmetric(horizontal: 4),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(16),
+        gradient: LinearGradient(
+          colors: gradientColors,
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+        ),
+        boxShadow: [
+          BoxShadow(
+            color: gradientColors.last.withValues(alpha: 0.3),
+            blurRadius: 8,
+            offset: const Offset(0, 3),
+          ),
+        ],
+      ),
+      child: Material(
+        color: Colors.transparent,
+        child: InkWell(
+          borderRadius: BorderRadius.circular(16),
+          onTap: onTap,
+          child: Padding(
+            padding: const EdgeInsets.fromLTRB(14, 10, 14, 16),
+            child: Row(
+              children: [
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Row(
+                        children: [
+                          Container(
+                            padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+                            decoration: BoxDecoration(
+                              color: Colors.white.withValues(alpha: 0.25),
+                              borderRadius: BorderRadius.circular(6),
+                            ),
+                            child: Text(
+                              badge,
+                              style: const TextStyle(
+                                fontSize: 9,
+                                fontWeight: FontWeight.w900,
+                                color: Colors.white,
+                                letterSpacing: 0.5,
+                              ),
+                            ),
+                          ),
+                          const SizedBox(width: 6),
+                          Flexible(
+                            child: Text(
+                              title,
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                              style: const TextStyle(
+                                fontSize: 13,
+                                fontWeight: FontWeight.w900,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 4),
+                      Text(
+                        subtitle,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(
+                          fontSize: 11,
+                          fontWeight: FontWeight.w500,
+                          color: Colors.white.withValues(alpha: 0.9),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(width: 8),
+                Container(
+                  padding: const EdgeInsets.all(8),
+                  decoration: BoxDecoration(
+                    color: Colors.white.withValues(alpha: 0.2),
+                    shape: BoxShape.circle,
+                  ),
+                  child: Icon(icon, color: Colors.white, size: 20),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}

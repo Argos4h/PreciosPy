@@ -14,7 +14,9 @@ class PreciosPyApp extends ConsumerStatefulWidget {
   ConsumerState<PreciosPyApp> createState() => _PreciosPyAppState();
 }
 
-class _PreciosPyAppState extends ConsumerState<PreciosPyApp> {
+class _PreciosPyAppState extends ConsumerState<PreciosPyApp> with WidgetsBindingObserver {
+  DateTime? _pausedTimestamp;
+
   static const List<Widget> _screens = [
     SearchScreen(),
     PromosScreen(),
@@ -22,6 +24,45 @@ class _PreciosPyAppState extends ConsumerState<PreciosPyApp> {
     SmartCartScreen(),
     ProfileScreen(),
   ];
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addObserver(this);
+  }
+
+  @override
+  void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    super.dispose();
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    if (state == AppLifecycleState.paused || state == AppLifecycleState.hidden) {
+      _pausedTimestamp = DateTime.now();
+    } else if (state == AppLifecycleState.resumed) {
+      if (_pausedTimestamp != null) {
+        final elapsed = DateTime.now().difference(_pausedTimestamp!);
+        // Si estuvo en segundo plano por más de 5 minutos, reiniciar vista al Inicio
+        if (elapsed.inMinutes >= 5) {
+          _resetToHome();
+        }
+      }
+      _pausedTimestamp = null;
+    }
+  }
+
+  void _resetToHome() {
+    // Volver a la pestaña de Precios (Inicio)
+    ref.read(activeTabProvider.notifier).state = 0;
+    // Limpiar búsqueda y filtros
+    ref.read(searchQueryProvider.notifier).state = '';
+    ref.read(selectedCategoryProvider.notifier).state = '';
+    ref.read(selectedSupermarketFilterProvider.notifier).state = '';
+    ref.read(selectedBrandProvider.notifier).state = null;
+    ref.read(selectedWeekdayProvider.notifier).state = DateTime.now().weekday;
+  }
 
   @override
   Widget build(BuildContext context) {
