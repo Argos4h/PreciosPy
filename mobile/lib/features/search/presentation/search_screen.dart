@@ -504,6 +504,278 @@ class SearchScreen extends ConsumerWidget {
     }
   }
 
+  void _showBrandsBottomSheet(BuildContext context, WidgetRef ref) {
+    final currentBrand = ref.read(selectedBrandProvider);
+    final repo = ref.read(catalogRepositoryProvider);
+    final brandsMap = repo.getUniqueBrands();
+    final brandsList = brandsMap.keys.toList();
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    String brandSearch = '';
+
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      backgroundColor: Colors.transparent,
+      builder: (ctx) {
+        return StatefulBuilder(
+          builder: (context, setModalState) {
+            final filtered = brandsList.where((b) {
+              if (brandSearch.isEmpty) return true;
+              return b.toLowerCase().contains(brandSearch.toLowerCase());
+            }).toList();
+
+            return Container(
+              constraints: BoxConstraints(
+                maxHeight: MediaQuery.of(context).size.height * 0.82,
+              ),
+              decoration: BoxDecoration(
+                color: isDark ? const Color(0xFF0F172A) : Colors.white,
+                borderRadius: const BorderRadius.vertical(top: Radius.circular(28)),
+                boxShadow: const [
+                  BoxShadow(color: Colors.black45, blurRadius: 20, offset: Offset(0, -4)),
+                ],
+              ),
+              padding: const EdgeInsets.fromLTRB(20, 16, 20, 24),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Center(
+                    child: Container(
+                      width: 44,
+                      height: 4,
+                      margin: const EdgeInsets.only(bottom: 16),
+                      decoration: BoxDecoration(
+                        color: isDark ? const Color(0xFF475569) : const Color(0xFFCBD5E1),
+                        borderRadius: BorderRadius.circular(2),
+                      ),
+                    ),
+                  ),
+                  Row(
+                    children: [
+                      Container(
+                        padding: const EdgeInsets.all(8),
+                        decoration: BoxDecoration(
+                          color: const Color(0xFFF59E0B).withValues(alpha: 0.15),
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        child: const Icon(Icons.sell_rounded, color: Color(0xFFF59E0B), size: 24),
+                      ),
+                      const SizedBox(width: 12),
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'Marcas del Catálogo',
+                              style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.w900,
+                                color: isDark ? Colors.white : const Color(0xFF0F172A),
+                              ),
+                            ),
+                            Text(
+                              '${brandsList.length} marcas registradas con precios en vivo',
+                              style: TextStyle(
+                                fontSize: 12,
+                                color: isDark ? const Color(0xFF94A3B8) : const Color(0xFF64748B),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      IconButton(
+                        icon: Icon(Icons.close_rounded, color: isDark ? const Color(0xFF94A3B8) : const Color(0xFF64748B)),
+                        onPressed: () => Navigator.of(ctx).pop(),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 12),
+                  // Barra de búsqueda dentro del modal de marcas
+                  TextField(
+                    onChanged: (val) {
+                      setModalState(() {
+                        brandSearch = val.trim();
+                      });
+                    },
+                    style: TextStyle(color: isDark ? Colors.white : const Color(0xFF0F172A), fontSize: 13),
+                    decoration: InputDecoration(
+                      hintText: 'Filtrar marca (ej: Campesino, Coca Cola, Trebol)...',
+                      hintStyle: TextStyle(color: isDark ? const Color(0xFF64748B) : const Color(0xFF94A3B8), fontSize: 13),
+                      prefixIcon: const Icon(Icons.search_rounded, size: 20, color: Color(0xFFF59E0B)),
+                      isDense: true,
+                      contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+                      filled: true,
+                      fillColor: isDark ? const Color(0xFF1E293B) : const Color(0xFFF8FAFC),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(12),
+                        borderSide: BorderSide.none,
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 12),
+                  Expanded(
+                    child: ListView(
+                      children: [
+                        // Opción de "Todas las marcas"
+                        Material(
+                          color: Colors.transparent,
+                          child: InkWell(
+                            onTap: () {
+                              ref.read(selectedBrandProvider.notifier).state = null;
+                              Navigator.of(ctx).pop();
+                            },
+                            borderRadius: BorderRadius.circular(16),
+                            child: Container(
+                              padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
+                              margin: const EdgeInsets.only(bottom: 8),
+                              decoration: BoxDecoration(
+                                color: currentBrand == null
+                                    ? const Color(0xFF10B981).withValues(alpha: isDark ? 0.25 : 0.12)
+                                    : (isDark ? const Color(0xFF1E293B) : const Color(0xFFF8FAFC)),
+                                borderRadius: BorderRadius.circular(16),
+                                border: Border.all(
+                                  color: currentBrand == null
+                                      ? const Color(0xFF10B981)
+                                      : (isDark ? const Color(0xFF334155) : const Color(0xFFE2E8F0)),
+                                  width: currentBrand == null ? 1.5 : 1,
+                                ),
+                              ),
+                              child: Row(
+                                children: [
+                                  Container(
+                                    width: 40,
+                                    height: 40,
+                                    alignment: Alignment.center,
+                                    decoration: BoxDecoration(
+                                      color: const Color(0xFF10B981).withValues(alpha: 0.15),
+                                      borderRadius: BorderRadius.circular(10),
+                                    ),
+                                    child: const Text('🏷️', style: TextStyle(fontSize: 18)),
+                                  ),
+                                  const SizedBox(width: 14),
+                                  Expanded(
+                                    child: Column(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          'Todas las Marcas',
+                                          style: TextStyle(
+                                            fontSize: 14,
+                                            fontWeight: FontWeight.w800,
+                                            color: currentBrand == null
+                                                ? const Color(0xFF10B981)
+                                                : (isDark ? Colors.white : const Color(0xFF0F172A)),
+                                          ),
+                                        ),
+                                        Text(
+                                          'Ver productos sin filtro de fabricante',
+                                          style: TextStyle(
+                                            fontSize: 11,
+                                            color: isDark ? const Color(0xFF94A3B8) : const Color(0xFF64748B),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  if (currentBrand == null)
+                                    const Icon(Icons.check_circle_rounded, color: Color(0xFF10B981), size: 22),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                        // Marcas de la lista
+                        ...filtered.map((b) {
+                          final count = brandsMap[b] ?? 1;
+                          final isSelected = currentBrand != null &&
+                              currentBrand.toLowerCase() == b.toLowerCase();
+
+                          return Material(
+                            color: Colors.transparent,
+                            child: InkWell(
+                              onTap: () {
+                                ref.read(selectedBrandProvider.notifier).state = b;
+                                Navigator.of(ctx).pop();
+                              },
+                              borderRadius: BorderRadius.circular(14),
+                              child: Container(
+                                padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
+                                margin: const EdgeInsets.only(bottom: 6),
+                                decoration: BoxDecoration(
+                                  color: isSelected
+                                      ? const Color(0xFFF59E0B).withValues(alpha: isDark ? 0.25 : 0.12)
+                                      : (isDark ? const Color(0xFF1E293B) : const Color(0xFFF8FAFC)),
+                                  borderRadius: BorderRadius.circular(14),
+                                  border: Border.all(
+                                    color: isSelected
+                                        ? const Color(0xFFF59E0B)
+                                        : (isDark ? const Color(0xFF334155) : const Color(0xFFE2E8F0)),
+                                    width: isSelected ? 1.5 : 1,
+                                  ),
+                                ),
+                                child: Row(
+                                  children: [
+                                    Container(
+                                      width: 36,
+                                      height: 36,
+                                      alignment: Alignment.center,
+                                      decoration: BoxDecoration(
+                                        color: const Color(0xFFF59E0B).withValues(alpha: 0.12),
+                                        borderRadius: BorderRadius.circular(8),
+                                      ),
+                                      child: const Text('✨', style: TextStyle(fontSize: 15)),
+                                    ),
+                                    const SizedBox(width: 12),
+                                    Expanded(
+                                      child: Text(
+                                        b,
+                                        style: TextStyle(
+                                          fontSize: 13,
+                                          fontWeight: FontWeight.w700,
+                                          color: isSelected
+                                              ? const Color(0xFFF59E0B)
+                                              : (isDark ? Colors.white : const Color(0xFF0F172A)),
+                                        ),
+                                      ),
+                                    ),
+                                    Container(
+                                      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
+                                      decoration: BoxDecoration(
+                                        color: isDark ? const Color(0xFF334155) : const Color(0xFFE2E8F0),
+                                        borderRadius: BorderRadius.circular(8),
+                                      ),
+                                      child: Text(
+                                        '$count prod.',
+                                        style: TextStyle(
+                                          fontSize: 11,
+                                          fontWeight: FontWeight.w600,
+                                          color: isDark ? const Color(0xFF94A3B8) : const Color(0xFF64748B),
+                                        ),
+                                      ),
+                                    ),
+                                    if (isSelected) ...[
+                                      const SizedBox(width: 8),
+                                      const Icon(Icons.check_circle_rounded, color: Color(0xFFF59E0B), size: 20),
+                                    ],
+                                  ],
+                                ),
+                              ),
+                            ),
+                          );
+                        }),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            );
+          },
+        );
+      },
+    );
+  }
+
   void _showSupermarketsBottomSheet(BuildContext context, WidgetRef ref) {
     final currentStore = ref.read(selectedSupermarketFilterProvider);
     final allStores = ref.read(supermarketsProvider);
@@ -764,6 +1036,7 @@ class SearchScreen extends ConsumerWidget {
     final selectedCategory = ref.watch(selectedCategoryProvider);
     final selectedSupermarket = ref.watch(selectedSupermarketFilterProvider);
     final supermarkets = ref.watch(supermarketsProvider);
+    final selectedBrand = ref.watch(selectedBrandProvider);
     final activeCatMeta = productCategories.firstWhere(
       (c) => c['key'] == selectedCategory,
       orElse: () => productCategories.first,
@@ -971,16 +1244,17 @@ class SearchScreen extends ConsumerWidget {
                   ),
                 ),
                 const SizedBox(height: 10),
-                // Botones gemelos flotantes: Categorías y Supermercados
+                // Botones triples flotantes: Categorías, Marcas y Supermercados
                 Row(
                   children: [
-                    // Botón principal que abre la Ventana Flotante de Categorías
+                    // Botón de Categorías
                     Expanded(
+                      flex: 4,
                       child: InkWell(
                         onTap: () => _showCategoriesBottomSheet(context, ref),
                         borderRadius: BorderRadius.circular(12),
                         child: Container(
-                          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
+                          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
                           decoration: BoxDecoration(
                             color: selectedCategory.isNotEmpty
                                 ? const Color(0xFF10B981).withValues(alpha: isDark ? 0.25 : 0.15)
@@ -998,9 +1272,9 @@ class SearchScreen extends ConsumerWidget {
                             children: [
                               Text(
                                 activeCatMeta['icon'] as String,
-                                style: const TextStyle(fontSize: 14),
+                                style: const TextStyle(fontSize: 13),
                               ),
-                              const SizedBox(width: 6),
+                              const SizedBox(width: 4),
                               Flexible(
                                 child: Text(
                                   selectedCategory.isEmpty
@@ -1008,7 +1282,7 @@ class SearchScreen extends ConsumerWidget {
                                       : '${activeCatMeta['label']} ▾',
                                   overflow: TextOverflow.ellipsis,
                                   style: TextStyle(
-                                    fontSize: 12,
+                                    fontSize: 11,
                                     fontWeight: FontWeight.w800,
                                     color: selectedCategory.isNotEmpty
                                         ? const Color(0xFF10B981)
@@ -1022,7 +1296,7 @@ class SearchScreen extends ConsumerWidget {
                                   onTap: () => ref.read(selectedCategoryProvider.notifier).state = '',
                                   child: const Icon(
                                     Icons.close_rounded,
-                                    size: 15,
+                                    size: 14,
                                     color: Color(0xFF10B981),
                                   ),
                                 ),
@@ -1032,14 +1306,72 @@ class SearchScreen extends ConsumerWidget {
                         ),
                       ),
                     ),
-                    const SizedBox(width: 8),
-                    // Botón que abre la Ventana Flotante de Supermercados
+                    const SizedBox(width: 6),
+                    // Botón de Marcas (Emergente)
                     Expanded(
+                      flex: 3,
+                      child: InkWell(
+                        onTap: () => _showBrandsBottomSheet(context, ref),
+                        borderRadius: BorderRadius.circular(12),
+                        child: Container(
+                          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
+                          decoration: BoxDecoration(
+                            color: selectedBrand != null && selectedBrand.isNotEmpty
+                                ? const Color(0xFFF59E0B).withValues(alpha: isDark ? 0.25 : 0.15)
+                                : (isDark ? const Color(0xFF1E293B) : const Color(0xFFF1F5F9)),
+                            borderRadius: BorderRadius.circular(12),
+                            border: Border.all(
+                              color: selectedBrand != null && selectedBrand.isNotEmpty
+                                  ? const Color(0xFFF59E0B)
+                                  : (isDark ? const Color(0xFF334155) : const Color(0xFFCBD5E1)),
+                              width: selectedBrand != null && selectedBrand.isNotEmpty ? 1.5 : 1.0,
+                            ),
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              const Text('🏷️', style: TextStyle(fontSize: 13)),
+                              const SizedBox(width: 4),
+                              Flexible(
+                                child: Text(
+                                  selectedBrand == null || selectedBrand.isEmpty
+                                      ? 'Marcas ▾'
+                                      : '$selectedBrand ▾',
+                                  overflow: TextOverflow.ellipsis,
+                                  style: TextStyle(
+                                    fontSize: 11,
+                                    fontWeight: FontWeight.w800,
+                                    color: selectedBrand != null && selectedBrand.isNotEmpty
+                                        ? const Color(0xFFF59E0B)
+                                        : (isDark ? Colors.white : const Color(0xFF0F172A)),
+                                  ),
+                                ),
+                              ),
+                              if (selectedBrand != null && selectedBrand.isNotEmpty) ...[
+                                const SizedBox(width: 4),
+                                GestureDetector(
+                                  onTap: () => ref.read(selectedBrandProvider.notifier).state = null,
+                                  child: const Icon(
+                                    Icons.close_rounded,
+                                    size: 14,
+                                    color: Color(0xFFF59E0B),
+                                  ),
+                                ),
+                              ],
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(width: 6),
+                    // Botón de Supermercados
+                    Expanded(
+                      flex: 4,
                       child: InkWell(
                         onTap: () => _showSupermarketsBottomSheet(context, ref),
                         borderRadius: BorderRadius.circular(12),
                         child: Container(
-                          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
+                          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
                           decoration: BoxDecoration(
                             color: selectedSupermarket.isNotEmpty
                                 ? const Color(0xFF0284C7).withValues(alpha: isDark ? 0.25 : 0.15)
@@ -1059,9 +1391,9 @@ class SearchScreen extends ConsumerWidget {
                                 selectedSupermarket.isEmpty
                                     ? '🏪'
                                     : _getSupermarketEmoji(selectedSupermarket),
-                                style: const TextStyle(fontSize: 14),
+                                style: const TextStyle(fontSize: 13),
                               ),
-                              const SizedBox(width: 6),
+                              const SizedBox(width: 4),
                               Flexible(
                                 child: Text(
                                   selectedSupermarket.isEmpty
@@ -1069,7 +1401,7 @@ class SearchScreen extends ConsumerWidget {
                                       : '$selectedStoreName ▾',
                                   overflow: TextOverflow.ellipsis,
                                   style: TextStyle(
-                                    fontSize: 12,
+                                    fontSize: 11,
                                     fontWeight: FontWeight.w800,
                                     color: selectedSupermarket.isNotEmpty
                                         ? const Color(0xFF0284C7)
@@ -1083,7 +1415,7 @@ class SearchScreen extends ConsumerWidget {
                                   onTap: () => ref.read(selectedSupermarketFilterProvider.notifier).state = '',
                                   child: const Icon(
                                     Icons.close_rounded,
-                                    size: 15,
+                                    size: 14,
                                     color: Color(0xFF0284C7),
                                   ),
                                 ),

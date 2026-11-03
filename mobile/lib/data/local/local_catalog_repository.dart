@@ -41,6 +41,26 @@ class LocalCatalogRepository {
     }
   }
 
+  
+  /// Devuelve todas las marcas registradas en el catalogo con su conteo
+  Map<String, int> getUniqueBrands() {
+    final counts = <String, int>{};
+    if (_db != null) {
+      try {
+        final rows = _db.select(
+          'SELECT brand, count(*) as cnt FROM local_products WHERE brand IS NOT NULL AND trim(brand) != "" GROUP BY brand ORDER BY cnt DESC, brand ASC'
+        );
+        for (final r in rows) {
+          final b = (r['brand'] as String?)?.trim() ?? '';
+          if (b.isNotEmpty) {
+            counts[b] = (r['cnt'] as int?) ?? 1;
+          }
+        }
+      } catch (_) {}
+    }
+    return counts;
+  }
+
   Map<String, String> get supermarkets {
     if (_db != null) {
       final rows = _db.select('SELECT slug, name FROM local_supermarkets ORDER BY id ASC');
@@ -1778,7 +1798,7 @@ class LocalCatalogRepository {
   List<ProductItem> get allProducts => searchInstant('', limit: 100);
 
   /// Búsqueda instantánea FTS5 (< 4 ms) en SQLite local o filtro en memoria como fallback
-  List<ProductItem> searchInstant(String rawQuery, {int limit = 30}) {
+  List<ProductItem> searchInstant(String rawQuery, {int limit = 1200}) {
     if (_db != null) {
       final clean = normalizeDiacritics(rawQuery.trim());
       ResultSet rows;

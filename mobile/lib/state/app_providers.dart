@@ -5,7 +5,7 @@ import '../domain/models/catalog_models.dart';
 import '../domain/services/promo_calculator.dart';
 
 /// Modo Claro / Oscuro amigable
-final themeModeProvider = StateProvider<ThemeMode>((ref) => ThemeMode.light);
+final themeModeProvider = StateProvider<ThemeMode>((ref) => ThemeMode.dark);
 
 /// Repositorio local Offline-First
 final catalogRepositoryProvider = Provider<LocalCatalogRepository>((ref) {
@@ -263,12 +263,7 @@ final activeStoreInAisleProvider = StateProvider<String>((ref) => 'superseis');
 
 /// Estado del Carrito Inteligente: Mapa de (ProductItem -> Cantidad)
 class SmartCartNotifier extends StateNotifier<Map<ProductItem, int>> {
-  SmartCartNotifier()
-      : super({
-          LocalCatalogRepository.initialCatalog[0]: 2, // 2x Yerba Kurupí
-          LocalCatalogRepository.initialCatalog[1]: 6, // 6x Leche Trébol 1L
-          LocalCatalogRepository.initialCatalog[3]: 1, // 1x Pack Pilsen
-        });
+  SmartCartNotifier() : super({});
 
   void addOrIncrement(ProductItem product) {
     state = {
@@ -332,7 +327,7 @@ final filteredProductsProvider = Provider<List<ProductItem>>((ref) {
   final query = ref.watch(searchQueryProvider);
   final category = ref.watch(selectedCategoryProvider);
   final selectedStore = ref.watch(selectedSupermarketFilterProvider);
-  var items = repo.searchInstant(query, limit: 120);
+  var items = repo.searchInstant(query, limit: 1200);
 
   // Si no hay resultados locales pero hubo búsqueda online en vivo, usar los resultados encontrados
   if (items.isEmpty && query.trim().isNotEmpty) {
@@ -342,9 +337,15 @@ final filteredProductsProvider = Provider<List<ProductItem>>((ref) {
     }
   }
 
-  // Filtrar por supermercado si el usuario eligió uno específico (ej. Biggie, Stock, Fortis)
+    // Filtrar por supermercado si el usuario eligio uno especifico (ej. Biggie, Stock, Fortis)
   if (selectedStore.isNotEmpty) {
     items = items.where((p) => p.offers.any((o) => o.supermarketSlug == selectedStore)).toList();
+  }
+
+  // Filtrar por marca si el usuario selecciono una en el modal emergente
+  final selectedBrand = ref.watch(selectedBrandProvider);
+  if (selectedBrand != null && selectedBrand.trim().isNotEmpty) {
+    items = items.where((p) => (p.brand ?? '').toLowerCase() == selectedBrand.toLowerCase().trim()).toList();
   }
 
   if (category.isEmpty) return items;
@@ -465,7 +466,7 @@ final splitCartResultProvider = Provider<SplitCartResult>((ref) {
 
 /// Gestión de productos favoritos y alertas de precio (al estilo Rebuscate)
 class FavoritesNotifier extends StateNotifier<Set<int>> {
-  FavoritesNotifier() : super({1, 2}); // Yerba Kurupí (id: 1) y Leche Trébol (id: 2) por defecto
+  FavoritesNotifier() : super({}); // Yerba Kurupí (id: 1) y Leche Trébol (id: 2) por defecto
 
   void toggleFavorite(int productId) {
     if (state.contains(productId)) {
@@ -489,3 +490,7 @@ final promosFilterOnlyUserCardsProvider = StateProvider<bool>((ref) => false);
 final activeTabProvider = StateProvider<int>((ref) => 0);
 
 
+
+
+/// Filtro opcional por marca seleccionada en el diAlogo emergente
+final selectedBrandProvider = StateProvider<String?>((ref) => null);
