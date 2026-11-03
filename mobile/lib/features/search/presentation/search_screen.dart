@@ -8,8 +8,30 @@ import '../../../state/app_providers.dart';
 import '../../onboarding/presentation/tutorial_tour_sheet.dart';
 import 'product_detail_sheet.dart';
 
-class SearchScreen extends ConsumerWidget {
+class SearchScreen extends ConsumerStatefulWidget {
   const SearchScreen({super.key});
+
+  @override
+  ConsumerState<SearchScreen> createState() => _SearchScreenState();
+}
+
+class _SearchScreenState extends ConsumerState<SearchScreen> {
+  late final TextEditingController _searchController;
+  late final FocusNode _searchFocusNode;
+
+  @override
+  void initState() {
+    super.initState();
+    _searchController = TextEditingController();
+    _searchFocusNode = FocusNode();
+  }
+
+  @override
+  void dispose() {
+    _searchController.dispose();
+    _searchFocusNode.dispose();
+    super.dispose();
+  }
 
   static const Map<int, String> _weekdayLabels = {
     1: 'Lun',
@@ -1020,7 +1042,7 @@ class SearchScreen extends ConsumerWidget {
   }
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(BuildContext context) {
     final searchQuery = ref.watch(searchQueryProvider);
     final products = ref.watch(filteredProductsProvider);
     final isSearchingOnline = ref.watch(isSearchingOnlineProvider);
@@ -1231,6 +1253,8 @@ class SearchScreen extends ConsumerWidget {
                   ),
                 const SizedBox(height: 12),
                 TextField(
+                  controller: _searchController,
+                  focusNode: _searchFocusNode,
                   onChanged: (value) => ref.read(searchQueryProvider.notifier).state = value,
                   decoration: InputDecoration(
                     hintText: 'Buscar yerba, leche trébol, cerveza o EAN...',
@@ -1238,7 +1262,11 @@ class SearchScreen extends ConsumerWidget {
                     suffixIcon: ref.watch(searchQueryProvider).isNotEmpty
                         ? IconButton(
                             icon: const Icon(Icons.clear_rounded, size: 18),
-                            onPressed: () => ref.read(searchQueryProvider.notifier).state = '',
+                            onPressed: () {
+                              _searchController.clear();
+                              ref.read(searchQueryProvider.notifier).state = '';
+                              _searchFocusNode.unfocus();
+                            },
                           )
                         : null,
                   ),
@@ -1769,6 +1797,7 @@ class _ProductGridCard extends StatelessWidget {
       ),
       child: InkWell(
         onTap: () {
+          FocusScope.of(context).unfocus();
           showModalBottomSheet(
             context: context,
             isScrollControlled: true,

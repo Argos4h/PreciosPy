@@ -1876,7 +1876,7 @@ class LocalCatalogRepository {
                  o.supermarket_id, s.slug AS supermarket_slug, s.name AS supermarket_name,
                  o.regular_price, o.promo_price, o.wholesale_price, o.wholesale_min_qty, o.in_stock
           FROM local_products_fts fts
-          JOIN local_products p ON p.id = fts.product_id
+          JOIN local_products p ON (p.id = fts.rowid OR p.id = fts.product_id)
           JOIN local_offers o ON o.product_id = p.id
           JOIN local_supermarkets s ON s.id = o.supermarket_id
           WHERE local_products_fts MATCH ?

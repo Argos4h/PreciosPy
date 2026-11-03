@@ -42,9 +42,9 @@ for p in products:
     """, (p_id, ean, name, brand, unit_measure, 1.0, unit_measure, img))
 
     cursor.execute("""
-        INSERT INTO local_products_fts (rowid, normalized_name, brand, ean)
-        VALUES (?, ?, ?, ?)
-    """, (p_id, name, brand, ean))
+        INSERT INTO local_products_fts (rowid, product_id, normalized_name, brand, ean)
+        VALUES (?, ?, ?, ?, ?)
+    """, (p_id, p_id, name, brand, ean))
 
     # Ofertas por supermercado
     stores = p.get('stores', {})
