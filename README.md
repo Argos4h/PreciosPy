@@ -55,7 +55,6 @@ PreciosPy/
 ├── scripts/                   # Herramientas de generacion y sincronizacion del catalogo
 │   ├── sync_real_products_exact.py     # Extraccion de productos y fotos reales
 │   └── populate_exact_catalog_sqlite.py # Migracion de ofertas hacia SQLite
-├── preciospy_redesign_2026.html        # Prototipo y vista interactiva web
 └── README.md
 ```
 
