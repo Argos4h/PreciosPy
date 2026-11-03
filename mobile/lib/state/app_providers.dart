@@ -7,8 +7,8 @@ import '../domain/services/promo_calculator.dart';
 /// Modo Claro / Oscuro amigable
 final themeModeProvider = StateProvider<ThemeMode>((ref) => ThemeMode.dark);
 
-/// Repositorio local Offline-First
-final catalogRepositoryProvider = Provider<LocalCatalogRepository>((ref) {
+/// Repositorio local Offline-First reactivo
+final catalogRepositoryProvider = StateProvider<LocalCatalogRepository>((ref) {
   return LocalCatalogRepository();
 });
 
