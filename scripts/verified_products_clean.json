@@ -43198,5 +43198,7201 @@
       "Cadena Gran Vía": 7100,
       "Delimarket": 7950
     }
+  },
+  {
+    "id": 1201,
+    "ean": "7840005012379",
+    "name": "Leche Trebol Entera Tetra de 1.000 ml.",
+    "brand": "Trebol",
+    "image": "",
+    "regularPrice": 7850,
+    "stores": {
+      "biggie": 7850,
+      "superseis": 7700,
+      "stock": 7600,
+      "fortis": 7150
+    }
+  },
+  {
+    "id": 1202,
+    "ean": "7840005013550",
+    "name": "Yogurt Trebol Griegur Natural de 200 gr.",
+    "brand": "Trebol",
+    "image": "",
+    "regularPrice": 6900,
+    "stores": {
+      "biggie": 6900,
+      "superseis": 6750,
+      "stock": 6700,
+      "fortis": 6300
+    }
+  },
+  {
+    "id": 1203,
+    "ean": "7840005012409",
+    "name": "Leche Trebol Descremada Vida Sana de 1.000 ml.",
+    "brand": "Trebol",
+    "image": "",
+    "regularPrice": 7850,
+    "stores": {
+      "biggie": 7850,
+      "superseis": 7700,
+      "stock": 7600,
+      "fortis": 7150
+    }
+  },
+  {
+    "id": 1204,
+    "ean": "7840005003100",
+    "name": "Manteca Trebol Plateada sin sal de 200 gr.",
+    "brand": "Trebol",
+    "image": "",
+    "regularPrice": 15000,
+    "stores": {
+      "biggie": 15000,
+      "superseis": 14700,
+      "stock": 14550,
+      "fortis": 13650
+    }
+  },
+  {
+    "id": 1205,
+    "ean": "7840005013604",
+    "name": "Yogurt Trebol Descremado Sin Lactosa Con Proteina frutilla 200 g.",
+    "brand": "Trebol",
+    "image": "",
+    "regularPrice": 7000,
+    "stores": {
+      "biggie": 7000,
+      "superseis": 6850,
+      "stock": 6800,
+      "fortis": 6350
+    }
+  },
+  {
+    "id": 1206,
+    "ean": "7840005013086",
+    "name": "Yogurt Trebol Descremada Sin Lactosa Dulce de Leche de 200 gr.",
+    "brand": "Trebol",
+    "image": "",
+    "regularPrice": 7150,
+    "stores": {
+      "biggie": 7150,
+      "superseis": 7000,
+      "stock": 6950,
+      "fortis": 6500
+    }
+  },
+  {
+    "id": 1207,
+    "ean": "7840005012393",
+    "name": "Leche Trebol Uat Square Crecimiento de 1.000 ml.",
+    "brand": "Trebol",
+    "image": "",
+    "regularPrice": 9900,
+    "stores": {
+      "biggie": 9900,
+      "superseis": 9700,
+      "stock": 9600,
+      "fortis": 9000
+    }
+  },
+  {
+    "id": 1208,
+    "ean": "7840005014359",
+    "name": "Yogurt Trebol Griegur Natural Sin Lactosa de 200 ml.",
+    "brand": "Trebol",
+    "image": "",
+    "regularPrice": 6850,
+    "stores": {
+      "biggie": 6850,
+      "superseis": 6700,
+      "stock": 6650,
+      "fortis": 6250
+    }
+  },
+  {
+    "id": 1209,
+    "ean": "7840005014342",
+    "name": "Yogurt Trebol Griegur Pistacho de 200 ml.",
+    "brand": "Trebol",
+    "image": "",
+    "regularPrice": 6500,
+    "stores": {
+      "biggie": 6500,
+      "superseis": 6350,
+      "stock": 6300,
+      "fortis": 5900
+    }
+  },
+  {
+    "id": 1210,
+    "ean": "7840005012348",
+    "name": "Leche Trebol Entera Square Tetra de 500 ml.",
+    "brand": "Trebol",
+    "image": "",
+    "regularPrice": 4450,
+    "stores": {
+      "biggie": 4450,
+      "superseis": 4350,
+      "stock": 4300,
+      "fortis": 4050
+    }
+  },
+  {
+    "id": 1211,
+    "ean": "7840005000451",
+    "name": "Yogurt Trebol Bebible Sachet Frutilla de 1.000 ml.",
+    "brand": "Trebol",
+    "image": "",
+    "regularPrice": 9900,
+    "stores": {
+      "biggie": 9900,
+      "superseis": 9700,
+      "stock": 9600,
+      "fortis": 9000
+    }
+  },
+  {
+    "id": 1212,
+    "ean": "7840005002011",
+    "name": "Flan Trebol de 140 gr.",
+    "brand": "Trebol",
+    "image": "",
+    "regularPrice": 3050,
+    "stores": {
+      "biggie": 3050,
+      "superseis": 3000,
+      "stock": 2950,
+      "fortis": 2800
+    }
+  },
+  {
+    "id": 1213,
+    "ean": "7840005011273",
+    "name": "Yogurt Trebol con Cereales Zucosos de 150 gr.",
+    "brand": "Trebol",
+    "image": "",
+    "regularPrice": 3800,
+    "stores": {
+      "biggie": 3800,
+      "superseis": 3700,
+      "stock": 3700,
+      "fortis": 3450
+    }
+  },
+  {
+    "id": 1214,
+    "ean": "7840005011334",
+    "name": "Yogurt Trebol con Cereales Trix de 150 gr.",
+    "brand": "Trebol",
+    "image": "",
+    "regularPrice": 3800,
+    "stores": {
+      "biggie": 3800,
+      "superseis": 3700,
+      "stock": 3700,
+      "fortis": 3450
+    }
+  },
+  {
+    "id": 1215,
+    "ean": "7840005000482",
+    "name": "Yogurt Trebol Bebible Durazno sachet de 1.000 ml",
+    "brand": "Trebol",
+    "image": "",
+    "regularPrice": 9900,
+    "stores": {
+      "biggie": 9900,
+      "superseis": 9700,
+      "stock": 9600,
+      "fortis": 9000
+    }
+  },
+  {
+    "id": 1216,
+    "ean": "7840005013154",
+    "name": "Yogurt Trebol Frutos Rojos del Bosque Sachet de 1.000 ml.",
+    "brand": "Trebol",
+    "image": "",
+    "regularPrice": 9900,
+    "stores": {
+      "biggie": 9900,
+      "superseis": 9700,
+      "stock": 9600,
+      "fortis": 9000
+    }
+  },
+  {
+    "id": 1217,
+    "ean": "7840005000499",
+    "name": "Yogurt Trebol Bebible Frutilla sachet de 500 ml.",
+    "brand": "Trebol",
+    "image": "",
+    "regularPrice": 5000,
+    "stores": {
+      "biggie": 5000,
+      "superseis": 4900,
+      "stock": 4850,
+      "fortis": 4550
+    }
+  },
+  {
+    "id": 1218,
+    "ean": "7840005011952",
+    "name": "Yogurt Trebol Bio Body Botella Ciruela de 1.000 ml.",
+    "brand": "Trebol",
+    "image": "",
+    "regularPrice": 16900,
+    "stores": {
+      "biggie": 16900,
+      "superseis": 16550,
+      "stock": 16400,
+      "fortis": 15400
+    }
+  },
+  {
+    "id": 1219,
+    "ean": "7840005012959",
+    "name": "Yogurt Trebol sin Lactosa Frutilla de 200 gr.",
+    "brand": "Trebol",
+    "image": "",
+    "regularPrice": 3600,
+    "stores": {
+      "biggie": 3600,
+      "superseis": 3550,
+      "stock": 3500,
+      "fortis": 3300
+    }
+  },
+  {
+    "id": 1220,
+    "ean": "7840005012966",
+    "name": "Yogurt Trebol Descremado Sin Lactosa Pera y Manzana de 200 gr.",
+    "brand": "Trebol",
+    "image": "",
+    "regularPrice": 3900,
+    "stores": {
+      "biggie": 3900,
+      "superseis": 3800,
+      "stock": 3800,
+      "fortis": 3550
+    }
+  },
+  {
+    "id": 1221,
+    "ean": "7840005011976",
+    "name": "Yogurt Trebol Bio Body Frutilla botella de 1.000 ml.",
+    "brand": "Trebol",
+    "image": "",
+    "regularPrice": 16900,
+    "stores": {
+      "biggie": 16900,
+      "superseis": 16550,
+      "stock": 16400,
+      "fortis": 15400
+    }
+  },
+  {
+    "id": 1222,
+    "ean": "7840005011990",
+    "name": "Yogurt Trebol Bio Body Vainilla botella de 1.000 ml.",
+    "brand": "Trebol",
+    "image": "",
+    "regularPrice": 16400,
+    "stores": {
+      "biggie": 16400,
+      "superseis": 16050,
+      "stock": 15900,
+      "fortis": 14900
+    }
+  },
+  {
+    "id": 1223,
+    "ean": "7840005000529",
+    "name": "Yogurt Trebol Durazno sachet de 500 ml.",
+    "brand": "Trebol",
+    "image": "",
+    "regularPrice": 5200,
+    "stores": {
+      "biggie": 5200,
+      "superseis": 5100,
+      "stock": 5050,
+      "fortis": 4750
+    }
+  },
+  {
+    "id": 1224,
+    "ean": "7840005013055",
+    "name": "Gelatina Trebol Diet Frutilla de 200 gr.",
+    "brand": "Trebol",
+    "image": "",
+    "regularPrice": 2350,
+    "stores": {
+      "biggie": 2350,
+      "superseis": 2300,
+      "stock": 2300,
+      "fortis": 2150
+    }
+  },
+  {
+    "id": 1225,
+    "ean": "7840005011808",
+    "name": "Yogurt Trebol Bio Con Fibra Ciruela de 180 gr.",
+    "brand": "Trebol",
+    "image": "",
+    "regularPrice": 3400,
+    "stores": {
+      "biggie": 3400,
+      "superseis": 3350,
+      "stock": 3300,
+      "fortis": 3100
+    }
+  },
+  {
+    "id": 1226,
+    "ean": "7840005013062",
+    "name": "Gelatina Trebol Diet Naranja de 200 gr.",
+    "brand": "Trebol",
+    "image": "",
+    "regularPrice": 2350,
+    "stores": {
+      "biggie": 2350,
+      "superseis": 2300,
+      "stock": 2300,
+      "fortis": 2150
+    }
+  },
+  {
+    "id": 1227,
+    "ean": "7840005013079",
+    "name": "Gelatina Trebol Diet Manzana Verde de 200 gr.",
+    "brand": "Trebol",
+    "image": "",
+    "regularPrice": 2350,
+    "stores": {
+      "biggie": 2350,
+      "superseis": 2300,
+      "stock": 2300,
+      "fortis": 2150
+    }
+  },
+  {
+    "id": 1228,
+    "ean": "7840005012812",
+    "name": "Yogurt Trebol Descremada Sin Lactosa Natural de 350 ml.",
+    "brand": "Trebol",
+    "image": "",
+    "regularPrice": 5250,
+    "stores": {
+      "biggie": 5250,
+      "superseis": 5150,
+      "stock": 5100,
+      "fortis": 4800
+    }
+  },
+  {
+    "id": 1229,
+    "ean": "7840005012928",
+    "name": "Yogurt Trebol Dietetico Vainilla de 140 gr.",
+    "brand": "Trebol",
+    "image": "",
+    "regularPrice": 2700,
+    "stores": {
+      "biggie": 2700,
+      "superseis": 2650,
+      "stock": 2600,
+      "fortis": 2450
+    }
+  },
+  {
+    "id": 1230,
+    "ean": "7840005012157",
+    "name": "Yogurt Trebol Cero Frutilla de 1.000 ml.",
+    "brand": "Trebol",
+    "image": "",
+    "regularPrice": 15000,
+    "stores": {
+      "biggie": 15000,
+      "superseis": 14700,
+      "stock": 14550,
+      "fortis": 13650
+    }
+  },
+  {
+    "id": 1231,
+    "ean": "7840005013567",
+    "name": "Yogurt Trebol Natural de 350 gr.",
+    "brand": "Trebol",
+    "image": "",
+    "regularPrice": 5250,
+    "stores": {
+      "biggie": 5250,
+      "superseis": 5150,
+      "stock": 5100,
+      "fortis": 4800
+    }
+  },
+  {
+    "id": 1232,
+    "ean": "7840005012935",
+    "name": "Yogurt Trebol Dietetico Frutilla de 140 gr.",
+    "brand": "Trebol",
+    "image": "",
+    "regularPrice": 2700,
+    "stores": {
+      "biggie": 2700,
+      "superseis": 2650,
+      "stock": 2600,
+      "fortis": 2450
+    }
+  },
+  {
+    "id": 1233,
+    "ean": "7840005012911",
+    "name": "Yogurt Trebol Dietetico Coco de 140 gr.",
+    "brand": "Trebol",
+    "image": "",
+    "regularPrice": 2700,
+    "stores": {
+      "biggie": 2700,
+      "superseis": 2650,
+      "stock": 2600,
+      "fortis": 2450
+    }
+  },
+  {
+    "id": 1234,
+    "ean": "7840005011815",
+    "name": "Yogurt Trebol Bio Fibra Frutilla 180 gr.",
+    "brand": "Trebol",
+    "image": "",
+    "regularPrice": 3400,
+    "stores": {
+      "biggie": 3400,
+      "superseis": 3350,
+      "stock": 3300,
+      "fortis": 3100
+    }
+  },
+  {
+    "id": 1235,
+    "ean": "7840005012843",
+    "name": "Yogurt Trebol Entero Sin Lactosa Natural de 350 ml.",
+    "brand": "Trebol",
+    "image": "",
+    "regularPrice": 5200,
+    "stores": {
+      "biggie": 5200,
+      "superseis": 5100,
+      "stock": 5050,
+      "fortis": 4750
+    }
+  },
+  {
+    "id": 1236,
+    "ean": "7840005014014",
+    "name": "Leche Trebol Whey Proteico de 1.000 ml.",
+    "brand": "Trebol",
+    "image": "",
+    "regularPrice": 19750,
+    "stores": {
+      "biggie": 19750,
+      "superseis": 19350,
+      "stock": 19150,
+      "fortis": 17950
+    }
+  },
+  {
+    "id": 1237,
+    "ean": "7840005014236",
+    "name": "Yogurt Trebol Frutos del bosque de 180 gr.",
+    "brand": "Trebol",
+    "image": "",
+    "regularPrice": 3050,
+    "stores": {
+      "biggie": 3050,
+      "superseis": 3000,
+      "stock": 2950,
+      "fortis": 2800
+    }
+  },
+  {
+    "id": 1238,
+    "ean": "7840005014243",
+    "name": "Yogurt Trebol Entero Pera y Manzana de 180 gr.",
+    "brand": "Trebol",
+    "image": "",
+    "regularPrice": 3050,
+    "stores": {
+      "biggie": 3050,
+      "superseis": 3000,
+      "stock": 2950,
+      "fortis": 2800
+    }
+  },
+  {
+    "id": 1239,
+    "ean": "7840005014250",
+    "name": "Yogurt Trebol Entero Banana de 180 gr.",
+    "brand": "Trebol",
+    "image": "",
+    "regularPrice": 3050,
+    "stores": {
+      "biggie": 3050,
+      "superseis": 3000,
+      "stock": 2950,
+      "fortis": 2800
+    }
+  },
+  {
+    "id": 1240,
+    "ean": "7840005000062",
+    "name": "Leche Chocolatada Trebol de 200 ml.",
+    "brand": "Trebol",
+    "image": "",
+    "regularPrice": 2650,
+    "stores": {
+      "biggie": 2650,
+      "superseis": 2600,
+      "stock": 2550,
+      "fortis": 2400
+    }
+  },
+  {
+    "id": 1241,
+    "ean": "7840005012355",
+    "name": "Leche Chocolotada Trebol de 500 ml.",
+    "brand": "Trebol",
+    "image": "",
+    "regularPrice": 5600,
+    "stores": {
+      "biggie": 5600,
+      "superseis": 5500,
+      "stock": 5450,
+      "fortis": 5100
+    }
+  },
+  {
+    "id": 1242,
+    "ean": "19999",
+    "name": "Queso Paraguay Trebol x Kg.",
+    "brand": "Trebol",
+    "image": "",
+    "regularPrice": 58800,
+    "stores": {
+      "biggie": 58800,
+      "superseis": 57600,
+      "stock": 57050,
+      "fortis": 53500
+    }
+  },
+  {
+    "id": 1243,
+    "ean": "7840005014076",
+    "name": "Yogurt Griego Trebol con Pulpa de Frutilla de 200 gr.",
+    "brand": "Trebol",
+    "image": "",
+    "regularPrice": 6500,
+    "stores": {
+      "biggie": 6500,
+      "superseis": 6350,
+      "stock": 6300,
+      "fortis": 5900
+    }
+  },
+  {
+    "id": 1244,
+    "ean": "7840005000352",
+    "name": "Crema de Leche Trebol sachet de 1.000 ml.",
+    "brand": "Trebol",
+    "image": "",
+    "regularPrice": 25000,
+    "stores": {
+      "biggie": 25000,
+      "superseis": 24500,
+      "stock": 24250,
+      "fortis": 22750
+    }
+  },
+  {
+    "id": 1245,
+    "ean": "7840005014052",
+    "name": "Dulce De Leche Trebol de 200 gr.",
+    "brand": "Trebol",
+    "image": "",
+    "regularPrice": 7500,
+    "stores": {
+      "biggie": 7500,
+      "superseis": 7350,
+      "stock": 7300,
+      "fortis": 6800
+    }
+  },
+  {
+    "id": 1246,
+    "ean": "7840005013253",
+    "name": "Leche Chocolatada Trebol Semidescremada Ultra Sachet de 1.000 ml.",
+    "brand": "Trebol",
+    "image": "",
+    "regularPrice": 9950,
+    "stores": {
+      "biggie": 9950,
+      "superseis": 9750,
+      "stock": 9650,
+      "fortis": 9050
+    }
+  },
+  {
+    "id": 1247,
+    "ean": "7840042004061",
+    "name": "Queso Lactolanda Danbo feteado de 250 gr.",
+    "brand": "Lactolanda",
+    "image": "",
+    "regularPrice": 19900,
+    "stores": {
+      "biggie": 19900,
+      "superseis": 19500,
+      "stock": 19300,
+      "fortis": 18100
+    }
+  },
+  {
+    "id": 1248,
+    "ean": "7840042000223",
+    "name": "Leche Lactolanda Entera Ultrapasteurizada sachet de 500 ml.",
+    "brand": "Lactolanda",
+    "image": "",
+    "regularPrice": 3000,
+    "stores": {
+      "biggie": 3000,
+      "superseis": 2950,
+      "stock": 2900,
+      "fortis": 2750
+    }
+  },
+  {
+    "id": 1249,
+    "ean": "7840042000377",
+    "name": "Leche Lactolanda Vital Light sachet descremeda 1 l.",
+    "brand": "Lactolanda",
+    "image": "",
+    "regularPrice": 6250,
+    "stores": {
+      "biggie": 6250,
+      "superseis": 6100,
+      "stock": 6050,
+      "fortis": 5700
+    }
+  },
+  {
+    "id": 1250,
+    "ean": "7840042004146",
+    "name": "Queso Lactolanda Dambo de 100 gr.",
+    "brand": "Lactolanda",
+    "image": "",
+    "regularPrice": 8800,
+    "stores": {
+      "biggie": 8800,
+      "superseis": 8600,
+      "stock": 8550,
+      "fortis": 8000
+    }
+  },
+  {
+    "id": 1251,
+    "ean": "7840042000162",
+    "name": "Leche Lactolanda Entera Tetra de 500 ml.",
+    "brand": "Lactolanda",
+    "image": "",
+    "regularPrice": 4250,
+    "stores": {
+      "biggie": 4250,
+      "superseis": 4150,
+      "stock": 4100,
+      "fortis": 3850
+    }
+  },
+  {
+    "id": 1252,
+    "ean": "7840042100688",
+    "name": "Yogurt Lactolanda Frutilla Sachet de 1.000 ml.",
+    "brand": "Lactolanda",
+    "image": "",
+    "regularPrice": 9400,
+    "stores": {
+      "biggie": 9400,
+      "superseis": 9200,
+      "stock": 9100,
+      "fortis": 8550
+    }
+  },
+  {
+    "id": 1253,
+    "ean": "7840042004153",
+    "name": "Queso Lactolanda Dambo Vital Light Feteado de 100 gr.",
+    "brand": "DAMBO",
+    "image": "",
+    "regularPrice": 9500,
+    "stores": {
+      "biggie": 9500,
+      "superseis": 9300,
+      "stock": 9200,
+      "fortis": 8650
+    }
+  },
+  {
+    "id": 1254,
+    "ean": "7840042101685",
+    "name": "Yogurt Lactolanda Frutti Gurt Vainilla de 1.000 ml.",
+    "brand": "Lactolanda",
+    "image": "",
+    "regularPrice": 9400,
+    "stores": {
+      "biggie": 9400,
+      "superseis": 9200,
+      "stock": 9100,
+      "fortis": 8550
+    }
+  },
+  {
+    "id": 1255,
+    "ean": "7840042100664",
+    "name": "Yogurt Lactolanda Fruttigurt Frutilla Sach de 500 gr.",
+    "brand": "Lactolanda",
+    "image": "",
+    "regularPrice": 4100,
+    "stores": {
+      "biggie": 4100,
+      "superseis": 4000,
+      "stock": 4000,
+      "fortis": 3750
+    }
+  },
+  {
+    "id": 1256,
+    "ean": "7840042102644",
+    "name": "Yogurt Lactolanda Yogulac Coco de 350 gr.",
+    "brand": "Lactolanda",
+    "image": "",
+    "regularPrice": 3800,
+    "stores": {
+      "biggie": 3800,
+      "superseis": 3700,
+      "stock": 3700,
+      "fortis": 3450
+    }
+  },
+  {
+    "id": 1257,
+    "ean": "7840042101517",
+    "name": "Yogurt Lactolanda Frutti Gurt Vainilla de 350 gr.",
+    "brand": "Lactolanda",
+    "image": "",
+    "regularPrice": 4800,
+    "stores": {
+      "biggie": 4800,
+      "superseis": 4700,
+      "stock": 4650,
+      "fortis": 4350
+    }
+  },
+  {
+    "id": 1258,
+    "ean": "7840042102682",
+    "name": "Yogurt Lactolanda Frutti Gurt Entero coco sachet de 1.000 ml.",
+    "brand": "Lactolanda",
+    "image": "",
+    "regularPrice": 9400,
+    "stores": {
+      "biggie": 9400,
+      "superseis": 9200,
+      "stock": 9100,
+      "fortis": 8550
+    }
+  },
+  {
+    "id": 1259,
+    "ean": "7840042100527",
+    "name": "Yogurt Lactolanda Ceregurt vaquita de 140 gr.",
+    "brand": "Lactolanda",
+    "image": "",
+    "regularPrice": 3800,
+    "stores": {
+      "biggie": 3800,
+      "superseis": 3700,
+      "stock": 3700,
+      "fortis": 3450
+    }
+  },
+  {
+    "id": 1260,
+    "ean": "7840042101630",
+    "name": "Yogurt Lactolanda Yogulac Vainilla de 140 ml.",
+    "brand": "Lactolanda",
+    "image": "",
+    "regularPrice": 1850,
+    "stores": {
+      "biggie": 1850,
+      "superseis": 1800,
+      "stock": 1800,
+      "fortis": 1700
+    }
+  },
+  {
+    "id": 1261,
+    "ean": "7840042102637",
+    "name": "Yogurt Lactolanda Yogulac Coco de 140 ml.",
+    "brand": "Lactolanda",
+    "image": "",
+    "regularPrice": 1850,
+    "stores": {
+      "biggie": 1850,
+      "superseis": 1800,
+      "stock": 1800,
+      "fortis": 1700
+    }
+  },
+  {
+    "id": 1262,
+    "ean": "7840042000926",
+    "name": "Yogurt Lactolanda Semidescremado Sin Lactosa Sabor Frutilla en Botella de 900 gr.",
+    "brand": "Lactolanda",
+    "image": "",
+    "regularPrice": 13950,
+    "stores": {
+      "biggie": 13950,
+      "superseis": 13650,
+      "stock": 13550,
+      "fortis": 12700
+    }
+  },
+  {
+    "id": 1263,
+    "ean": "7840042101531",
+    "name": "Yogurt Lactolanda Vital Light Vainilla de 140 gr.",
+    "brand": "Lactolanda",
+    "image": "",
+    "regularPrice": 2500,
+    "stores": {
+      "biggie": 2500,
+      "superseis": 2450,
+      "stock": 2400,
+      "fortis": 2300
+    }
+  },
+  {
+    "id": 1264,
+    "ean": "7840042000452",
+    "name": "Leche Lactolanda Semi descremenada con fibras de 1.000 ml.",
+    "brand": "Lactolanda",
+    "image": "",
+    "regularPrice": 8850,
+    "stores": {
+      "biggie": 8850,
+      "superseis": 8650,
+      "stock": 8600,
+      "fortis": 8050
+    }
+  },
+  {
+    "id": 1265,
+    "ean": "7840042000933",
+    "name": "Yogurt Lactolanda Semidescremado Sin Lactosa Sabor Vainilla en Botella de 900 gr.",
+    "brand": "Lactolanda",
+    "image": "",
+    "regularPrice": 13950,
+    "stores": {
+      "biggie": 13950,
+      "superseis": 13650,
+      "stock": 13550,
+      "fortis": 12700
+    }
+  },
+  {
+    "id": 1266,
+    "ean": "7840042100503",
+    "name": "Yogurt Lactolanda Frutti Gurt Frutilla de 140 gr.",
+    "brand": "Lactolanda",
+    "image": "",
+    "regularPrice": 2500,
+    "stores": {
+      "biggie": 2500,
+      "superseis": 2450,
+      "stock": 2400,
+      "fortis": 2300
+    }
+  },
+  {
+    "id": 1267,
+    "ean": "7840042103528",
+    "name": "Yogurt Lactolanda Ceregurt light de 140 gr.",
+    "brand": "Lactolanda",
+    "image": "",
+    "regularPrice": 3800,
+    "stores": {
+      "biggie": 3800,
+      "superseis": 3700,
+      "stock": 3700,
+      "fortis": 3450
+    }
+  },
+  {
+    "id": 1268,
+    "ean": "7840042101500",
+    "name": "Yogurt Lactolanda Frutti Gurt Vainillla de 140 gr.",
+    "brand": "Lactolanda",
+    "image": "",
+    "regularPrice": 2500,
+    "stores": {
+      "biggie": 2500,
+      "superseis": 2450,
+      "stock": 2400,
+      "fortis": 2300
+    }
+  },
+  {
+    "id": 1269,
+    "ean": "7840042103689",
+    "name": "Yogurt Lactolanda Frutti Gurt Entero durazno sachet de 1.000 ml.",
+    "brand": "Lactolanda",
+    "image": "",
+    "regularPrice": 9400,
+    "stores": {
+      "biggie": 9400,
+      "superseis": 9200,
+      "stock": 9100,
+      "fortis": 8550
+    }
+  },
+  {
+    "id": 1270,
+    "ean": "7840042000834",
+    "name": "Yogurt Lactolanda Semidescremada sin Lactosa frutilla pote de 180 gr.",
+    "brand": "Lactolanda",
+    "image": "",
+    "regularPrice": 2950,
+    "stores": {
+      "biggie": 2950,
+      "superseis": 2900,
+      "stock": 2850,
+      "fortis": 2700
+    }
+  },
+  {
+    "id": 1271,
+    "ean": "7840042000957",
+    "name": "Yogurt Lactolanda Semidescremado Sin Lactosa Sabor Frutos Rojos en Botella de 900 gr.",
+    "brand": "Lactolanda",
+    "image": "",
+    "regularPrice": 13950,
+    "stores": {
+      "biggie": 13950,
+      "superseis": 13650,
+      "stock": 13550,
+      "fortis": 12700
+    }
+  },
+  {
+    "id": 1272,
+    "ean": "7840042000919",
+    "name": "Yogurt Lactolanda Semidescremado Sin Lactosa Sabor Coco en Botella de 900 gr.",
+    "brand": "Lactolanda",
+    "image": "",
+    "regularPrice": 13950,
+    "stores": {
+      "biggie": 13950,
+      "superseis": 13650,
+      "stock": 13550,
+      "fortis": 12700
+    }
+  },
+  {
+    "id": 1273,
+    "ean": "7840042100695",
+    "name": "Yogurt Lactolanda Frutti Gurt Entero frutilla sachet de 500 gr.",
+    "brand": "Lactolanda",
+    "image": "",
+    "regularPrice": 4950,
+    "stores": {
+      "biggie": 4950,
+      "superseis": 4850,
+      "stock": 4800,
+      "fortis": 4500
+    }
+  },
+  {
+    "id": 1274,
+    "ean": "7840042101692",
+    "name": "Yogurt Lactolanda Frutti Gurt Vainilla sachet de 500 gr.",
+    "brand": "Lactolanda",
+    "image": "",
+    "regularPrice": 4950,
+    "stores": {
+      "biggie": 4950,
+      "superseis": 4850,
+      "stock": 4800,
+      "fortis": 4500
+    }
+  },
+  {
+    "id": 1275,
+    "ean": "7840042000827",
+    "name": "Yogurt Lactolanda Semidescremada sin Lactosa coco de 180 gr.",
+    "brand": "Lactolanda",
+    "image": "",
+    "regularPrice": 2950,
+    "stores": {
+      "biggie": 2950,
+      "superseis": 2900,
+      "stock": 2850,
+      "fortis": 2700
+    }
+  },
+  {
+    "id": 1276,
+    "ean": "7840037014587",
+    "name": "Leche Los Colonos Entera ultra Sachet de 1.000 ml.",
+    "brand": "Los Colonos",
+    "image": "",
+    "regularPrice": 6450,
+    "stores": {
+      "biggie": 6450,
+      "superseis": 6300,
+      "stock": 6250,
+      "fortis": 5850
+    }
+  },
+  {
+    "id": 1277,
+    "ean": "7840042002500",
+    "name": "Leche Chocolatada Lactolanda de 1.000 ml.",
+    "brand": "Lactolanda",
+    "image": "",
+    "regularPrice": 10400,
+    "stores": {
+      "biggie": 10400,
+      "superseis": 10200,
+      "stock": 10100,
+      "fortis": 9450
+    }
+  },
+  {
+    "id": 1278,
+    "ean": "7840042002548",
+    "name": "Leche Chocolatada Lactolanda de 500 ml.",
+    "brand": "Lactolanda",
+    "image": "",
+    "regularPrice": 5500,
+    "stores": {
+      "biggie": 5500,
+      "superseis": 5400,
+      "stock": 5350,
+      "fortis": 5000
+    }
+  },
+  {
+    "id": 1279,
+    "ean": "7841229001736",
+    "name": "Leche La Fortuna UAT Entera de 1.000 ml.",
+    "brand": "La Fortuna",
+    "image": "",
+    "regularPrice": 7350,
+    "stores": {
+      "biggie": 7350,
+      "superseis": 7200,
+      "stock": 7150,
+      "fortis": 6700
+    }
+  },
+  {
+    "id": 1280,
+    "ean": "7840006204834",
+    "name": "Leche Parmalat Zymil Sin Lactosa UHT de 1.000 ml.",
+    "brand": "Parmalat",
+    "image": "",
+    "regularPrice": 9300,
+    "stores": {
+      "biggie": 9300,
+      "superseis": 9100,
+      "stock": 9000,
+      "fortis": 8450
+    }
+  },
+  {
+    "id": 1281,
+    "ean": "7790787002535",
+    "name": "Leche Ilolay Larga Vida Semi Descremada de 1.000 ml..",
+    "brand": "iLoLay",
+    "image": "",
+    "regularPrice": 11500,
+    "stores": {
+      "biggie": 11500,
+      "superseis": 11250,
+      "stock": 11150,
+      "fortis": 10450
+    }
+  },
+  {
+    "id": 1282,
+    "ean": "7790787002528",
+    "name": "Leche Ilolay Entera Fortificada con Vitaminas de 1.000 ml.",
+    "brand": "iLoLay",
+    "image": "",
+    "regularPrice": 11500,
+    "stores": {
+      "biggie": 11500,
+      "superseis": 11250,
+      "stock": 11150,
+      "fortis": 10450
+    }
+  },
+  {
+    "id": 1283,
+    "ean": "7840030002185",
+    "name": "Leche Ultra Tambo Blanco de 1.000 ml.",
+    "brand": "La Pradera",
+    "image": "",
+    "regularPrice": 5400,
+    "stores": {
+      "biggie": 5400,
+      "superseis": 5300,
+      "stock": 5250,
+      "fortis": 4900
+    }
+  },
+  {
+    "id": 1284,
+    "ean": "7840031110001",
+    "name": "Leche Doña Angela Entera Sachet de 1.000 ml.",
+    "brand": "Doña Ángela",
+    "image": "",
+    "regularPrice": 7000,
+    "stores": {
+      "biggie": 7000,
+      "superseis": 6850,
+      "stock": 6800,
+      "fortis": 6350
+    }
+  },
+  {
+    "id": 1285,
+    "ean": "7790787002672",
+    "name": "Leche Ilolay Uat Chocolatada con Vitaminas de 200 ml.",
+    "brand": "iLoLay",
+    "image": "",
+    "regularPrice": 4300,
+    "stores": {
+      "biggie": 4300,
+      "superseis": 4200,
+      "stock": 4150,
+      "fortis": 3900
+    }
+  },
+  {
+    "id": 1286,
+    "ean": "7898215157175",
+    "name": "Leche de Almendra Blue Diamond original sin azucar de 1.000 ml.",
+    "brand": "Blue Diamond",
+    "image": "",
+    "regularPrice": 30000,
+    "stores": {
+      "biggie": 30000,
+      "superseis": 29400,
+      "stock": 29100,
+      "fortis": 27300
+    }
+  },
+  {
+    "id": 1287,
+    "ean": "7790787201297",
+    "name": "Leche en Polvo Descremada Ilolay 30 Unidades x 5 gr.",
+    "brand": "iLoLay",
+    "image": "",
+    "regularPrice": 34100,
+    "stores": {
+      "biggie": 34100,
+      "superseis": 33400,
+      "stock": 33100,
+      "fortis": 31050
+    }
+  },
+  {
+    "id": 1288,
+    "ean": "8445290391872",
+    "name": "Leche en Polvo Nutricional Nido Fortiqrow 3D 370 gr.",
+    "brand": "NIDO",
+    "image": "",
+    "regularPrice": 42000,
+    "stores": {
+      "biggie": 42000,
+      "superseis": 41150,
+      "stock": 40750,
+      "fortis": 38200
+    }
+  },
+  {
+    "id": 1289,
+    "ean": "7840029000277",
+    "name": "Leche Condensada Norte de 395 gr.",
+    "brand": "Norte",
+    "image": "",
+    "regularPrice": 16000,
+    "stores": {
+      "biggie": 16000,
+      "superseis": 15700,
+      "stock": 15500,
+      "fortis": 14550
+    }
+  },
+  {
+    "id": 1290,
+    "ean": "7891097101427",
+    "name": "Leche Condensada Parmalat de 395 gr.",
+    "brand": "Parmalat",
+    "image": "",
+    "regularPrice": 14000,
+    "stores": {
+      "biggie": 14000,
+      "superseis": 13700,
+      "stock": 13600,
+      "fortis": 12750
+    }
+  },
+  {
+    "id": 1291,
+    "ean": "7898215157106",
+    "name": "Leche Blue Diamond Almendra Original de 1.000 ml.",
+    "brand": "Blue Diamond",
+    "image": "",
+    "regularPrice": 30000,
+    "stores": {
+      "biggie": 30000,
+      "superseis": 29400,
+      "stock": 29100,
+      "fortis": 27300
+    }
+  },
+  {
+    "id": 1292,
+    "ean": "7790787208067",
+    "name": "Leche en Polvo descremada Ilolay de 400 gr",
+    "brand": "iLoLay",
+    "image": "",
+    "regularPrice": 35200,
+    "stores": {
+      "biggie": 35200,
+      "superseis": 34500,
+      "stock": 34150,
+      "fortis": 32050
+    }
+  },
+  {
+    "id": 1293,
+    "ean": "7840042005143",
+    "name": "Leche en Polvo Lactolanda Descremada bolsita 800 gr.",
+    "brand": "Lactolanda",
+    "image": "",
+    "regularPrice": 54100,
+    "stores": {
+      "biggie": 54100,
+      "superseis": 53000,
+      "stock": 52500,
+      "fortis": 49250
+    }
+  },
+  {
+    "id": 1294,
+    "ean": "7840037015676",
+    "name": "Queso Los Colonos Sandwich Feteado de 200 gr.",
+    "brand": "Los Colonos",
+    "image": "",
+    "regularPrice": 19200,
+    "stores": {
+      "biggie": 19200,
+      "superseis": 18800,
+      "stock": 18600,
+      "fortis": 17450
+    }
+  },
+  {
+    "id": 1295,
+    "ean": "36532",
+    "name": "Queso Paraguay La fortuna x Kg.",
+    "brand": "La Fortuna",
+    "image": "",
+    "regularPrice": 39000,
+    "stores": {
+      "biggie": 39000,
+      "superseis": 38200,
+      "stock": 37850,
+      "fortis": 35500
+    }
+  },
+  {
+    "id": 1296,
+    "ean": "7840037015706",
+    "name": "Queso Los Colonos Mozzarella Feteado de 200 gr.",
+    "brand": "Los Colonos",
+    "image": "",
+    "regularPrice": 19200,
+    "stores": {
+      "biggie": 19200,
+      "superseis": 18800,
+      "stock": 18600,
+      "fortis": 17450
+    }
+  },
+  {
+    "id": 1297,
+    "ean": "7840042004085",
+    "name": "Queso Danbo Lactolanda vital light 250 gr.",
+    "brand": "Lactolanda",
+    "image": "",
+    "regularPrice": 20300,
+    "stores": {
+      "biggie": 20300,
+      "superseis": 19900,
+      "stock": 19700,
+      "fortis": 18450
+    }
+  },
+  {
+    "id": 1298,
+    "ean": "7841229000562",
+    "name": "Queso Sandwich La Fortuna Cortado de 500 gr.",
+    "brand": "La Fortuna",
+    "image": "",
+    "regularPrice": 38200,
+    "stores": {
+      "biggie": 38200,
+      "superseis": 37450,
+      "stock": 37050,
+      "fortis": 34750
+    }
+  },
+  {
+    "id": 1299,
+    "ean": "7841229000579",
+    "name": "Queso Sandwich La Fortuna Cortado de 200 gr.",
+    "brand": "La Fortuna",
+    "image": "",
+    "regularPrice": 18700,
+    "stores": {
+      "biggie": 18700,
+      "superseis": 18350,
+      "stock": 18150,
+      "fortis": 17000
+    }
+  },
+  {
+    "id": 1300,
+    "ean": "15997",
+    "name": "Queso Paraguay Lactolanda x kg.",
+    "brand": "Lactolanda",
+    "image": "",
+    "regularPrice": 46500,
+    "stores": {
+      "biggie": 46500,
+      "superseis": 45550,
+      "stock": 45100,
+      "fortis": 42300
+    }
+  },
+  {
+    "id": 1301,
+    "ean": "23041",
+    "name": "Queso Coop Sandwich Feteado x Kg.",
+    "brand": "Co-op",
+    "image": "",
+    "regularPrice": 66250,
+    "stores": {
+      "biggie": 66250,
+      "superseis": 64900,
+      "stock": 64250,
+      "fortis": 60300
+    }
+  },
+  {
+    "id": 1302,
+    "ean": "25002",
+    "name": "Queso Sandwich Danbo Trebol Feteado x Kg.",
+    "brand": "Trebol",
+    "image": "",
+    "regularPrice": 68600,
+    "stores": {
+      "biggie": 68600,
+      "superseis": 67250,
+      "stock": 66550,
+      "fortis": 62450
+    }
+  },
+  {
+    "id": 1303,
+    "ean": "7840907000399",
+    "name": "Queso Lolita Sandwich Danbo de 200 gr.",
+    "brand": "Lolita",
+    "image": "",
+    "regularPrice": 17800,
+    "stores": {
+      "biggie": 17800,
+      "superseis": 17450,
+      "stock": 17250,
+      "fortis": 16200
+    }
+  },
+  {
+    "id": 1304,
+    "ean": "7891143001206",
+    "name": "Queso Sandwichin Polenghi Cheddar de 144 gr.",
+    "brand": "Polenghi",
+    "image": "",
+    "regularPrice": 15350,
+    "stores": {
+      "biggie": 15350,
+      "superseis": 15050,
+      "stock": 14900,
+      "fortis": 13950
+    }
+  },
+  {
+    "id": 1305,
+    "ean": "7840907000382",
+    "name": "Queso Mozzarella Lolita de 200 gr.",
+    "brand": "Lolita",
+    "image": "",
+    "regularPrice": 18000,
+    "stores": {
+      "biggie": 18000,
+      "superseis": 17650,
+      "stock": 17450,
+      "fortis": 16400
+    }
+  },
+  {
+    "id": 1306,
+    "ean": "36531",
+    "name": "Queso Muzzarella La Fortuna x Kg.",
+    "brand": "La Fortuna",
+    "image": "",
+    "regularPrice": 67500,
+    "stores": {
+      "biggie": 67500,
+      "superseis": 66150,
+      "stock": 65500,
+      "fortis": 61400
+    }
+  },
+  {
+    "id": 1307,
+    "ean": "60225",
+    "name": "Queso Tregar Cremoso x Kg.",
+    "brand": "TREGAR",
+    "image": "",
+    "regularPrice": 79300,
+    "stores": {
+      "biggie": 79300,
+      "superseis": 77700,
+      "stock": 76900,
+      "fortis": 72150
+    }
+  },
+  {
+    "id": 1308,
+    "ean": "7841229002603",
+    "name": "Queso Sandwich La Fortuna Cortado de 100 gr.",
+    "brand": "La Fortuna",
+    "image": "",
+    "regularPrice": 7300,
+    "stores": {
+      "biggie": 7300,
+      "superseis": 7150,
+      "stock": 7100,
+      "fortis": 6650
+    }
+  },
+  {
+    "id": 1309,
+    "ean": "12904",
+    "name": "Queso Jersey Paraguay x kg.",
+    "brand": "Jersey",
+    "image": "",
+    "regularPrice": 57000,
+    "stores": {
+      "biggie": 57000,
+      "superseis": 55850,
+      "stock": 55300,
+      "fortis": 51850
+    }
+  },
+  {
+    "id": 1310,
+    "ean": "7891143011069",
+    "name": "Queso Sandwich Polenghi Cheddar Light de 144 gr.",
+    "brand": "Polenghi",
+    "image": "",
+    "regularPrice": 16400,
+    "stores": {
+      "biggie": 16400,
+      "superseis": 16050,
+      "stock": 15900,
+      "fortis": 14900
+    }
+  },
+  {
+    "id": 1311,
+    "ean": "7898258812352",
+    "name": "Queso Madero Procesado Sabor Cheddar de 144 gr.",
+    "brand": "Madero",
+    "image": "",
+    "regularPrice": 16500,
+    "stores": {
+      "biggie": 16500,
+      "superseis": 16150,
+      "stock": 16000,
+      "fortis": 15000
+    }
+  },
+  {
+    "id": 1312,
+    "ean": "12903",
+    "name": "Queso Jersey muzzarella x kg.",
+    "brand": "Jersey",
+    "image": "",
+    "regularPrice": 70000,
+    "stores": {
+      "biggie": 70000,
+      "superseis": 68600,
+      "stock": 67900,
+      "fortis": 63700
+    }
+  },
+  {
+    "id": 1313,
+    "ean": "7840042004177",
+    "name": "Queso Dambo Sin Lactosa Feteado de 100 gr.",
+    "brand": "DAMBO",
+    "image": "",
+    "regularPrice": 9500,
+    "stores": {
+      "biggie": 9500,
+      "superseis": 9300,
+      "stock": 9200,
+      "fortis": 8650
+    }
+  },
+  {
+    "id": 1314,
+    "ean": "12906",
+    "name": "Queso Jersey provolone x kg.",
+    "brand": "Jersey",
+    "image": "",
+    "regularPrice": 115000,
+    "stores": {
+      "biggie": 115000,
+      "superseis": 112700,
+      "stock": 111550,
+      "fortis": 104650
+    }
+  },
+  {
+    "id": 1315,
+    "ean": "36534",
+    "name": "Queso La Fortuna Parmesano x Kg.",
+    "brand": "La Fortuna",
+    "image": "",
+    "regularPrice": 126100,
+    "stores": {
+      "biggie": 126100,
+      "superseis": 123600,
+      "stock": 122300,
+      "fortis": 114750
+    }
+  },
+  {
+    "id": 1316,
+    "ean": "7840037015690",
+    "name": "Queso Los Colonos Mozzarella Feteado de 500 gr.",
+    "brand": "Los Colonos",
+    "image": "",
+    "regularPrice": 38500,
+    "stores": {
+      "biggie": 38500,
+      "superseis": 37750,
+      "stock": 37350,
+      "fortis": 35050
+    }
+  },
+  {
+    "id": 1317,
+    "ean": "7802920004112",
+    "name": "Queso Colun Ranco Sin Lactosa de 250 gr.",
+    "brand": "COLUN",
+    "image": "",
+    "regularPrice": 28250,
+    "stores": {
+      "biggie": 28250,
+      "superseis": 27700,
+      "stock": 27400,
+      "fortis": 25700
+    }
+  },
+  {
+    "id": 1318,
+    "ean": "7840037015669",
+    "name": "Queso Los Colonos Sandwich Feteado de 500 gr.",
+    "brand": "Los Colonos",
+    "image": "",
+    "regularPrice": 39000,
+    "stores": {
+      "biggie": 39000,
+      "superseis": 38200,
+      "stock": 37850,
+      "fortis": 35500
+    }
+  },
+  {
+    "id": 1319,
+    "ean": "7840042004092",
+    "name": "Queso Danbo Vital Ligt Feteado de 500.",
+    "brand": "Lactolanda",
+    "image": "",
+    "regularPrice": 39000,
+    "stores": {
+      "biggie": 39000,
+      "superseis": 38200,
+      "stock": 37850,
+      "fortis": 35500
+    }
+  },
+  {
+    "id": 1320,
+    "ean": "7840042004139",
+    "name": "Queso Lactolanda Danbo Sin Lactosa de 500 gr.",
+    "brand": "Lactolanda",
+    "image": "",
+    "regularPrice": 39000,
+    "stores": {
+      "biggie": 39000,
+      "superseis": 38200,
+      "stock": 37850,
+      "fortis": 35500
+    }
+  },
+  {
+    "id": 1321,
+    "ean": "7840030003137",
+    "name": "Queso La Pradera Mozzarella de 200 gr.",
+    "brand": "La Pradera",
+    "image": "",
+    "regularPrice": 23000,
+    "stores": {
+      "biggie": 23000,
+      "superseis": 22550,
+      "stock": 22300,
+      "fortis": 20950
+    }
+  },
+  {
+    "id": 1322,
+    "ean": "28296942",
+    "name": "Queso Cremo Frossard Boursin Ajo de 100 gr.",
+    "brand": "CREMO",
+    "image": "",
+    "regularPrice": 9100,
+    "stores": {
+      "biggie": 9100,
+      "superseis": 8900,
+      "stock": 8850,
+      "fortis": 8300
+    }
+  },
+  {
+    "id": 1323,
+    "ean": "7841231000086",
+    "name": "Queso Tybo Ilolay de 200 gr.",
+    "brand": "iLoLay",
+    "image": "",
+    "regularPrice": 25950,
+    "stores": {
+      "biggie": 25950,
+      "superseis": 25450,
+      "stock": 25150,
+      "fortis": 23600
+    }
+  },
+  {
+    "id": 1324,
+    "ean": "7841328000173",
+    "name": "Queso La Paulina Gouda de 150 gr.",
+    "brand": "LA PAULINA",
+    "image": "",
+    "regularPrice": 19600,
+    "stores": {
+      "biggie": 19600,
+      "superseis": 19200,
+      "stock": 19000,
+      "fortis": 17850
+    }
+  },
+  {
+    "id": 1325,
+    "ean": "7841328000210",
+    "name": "Queso Schreiber Chedar x 150 gr.",
+    "brand": "SCHREIBER",
+    "image": "",
+    "regularPrice": 14850,
+    "stores": {
+      "biggie": 14850,
+      "superseis": 14550,
+      "stock": 14400,
+      "fortis": 13500
+    }
+  },
+  {
+    "id": 1326,
+    "ean": "7840037014457",
+    "name": "Yogurt Los Colonos Griego Frutilla de 125 gr.",
+    "brand": "Los Colonos",
+    "image": "",
+    "regularPrice": 5000,
+    "stores": {
+      "biggie": 5000,
+      "superseis": 4900,
+      "stock": 4850,
+      "fortis": 4550
+    }
+  },
+  {
+    "id": 1327,
+    "ean": "7840037015454",
+    "name": "Yogurt Los Colonos Griego Frutos del Bosque de 125 gr.",
+    "brand": "Los Colonos",
+    "image": "",
+    "regularPrice": 5000,
+    "stores": {
+      "biggie": 5000,
+      "superseis": 4900,
+      "stock": 4850,
+      "fortis": 4550
+    }
+  },
+  {
+    "id": 1328,
+    "ean": "7840037014617",
+    "name": "Yogurt Los Colonos Griego Ciruela de 125 gr.",
+    "brand": "Los Colonos",
+    "image": "",
+    "regularPrice": 5000,
+    "stores": {
+      "biggie": 5000,
+      "superseis": 4900,
+      "stock": 4850,
+      "fortis": 4550
+    }
+  },
+  {
+    "id": 1329,
+    "ean": "7896691104669",
+    "name": "Yogurt Carolina Trozos de Acai Frutilla de 450 gr.",
+    "brand": "Carolina",
+    "image": "",
+    "regularPrice": 17900,
+    "stores": {
+      "biggie": 17900,
+      "superseis": 17550,
+      "stock": 17350,
+      "fortis": 16300
+    }
+  },
+  {
+    "id": 1330,
+    "ean": "7840031155637",
+    "name": "Yogurt Doña Angela Bebible Vainilla de 1.000 ml.",
+    "brand": "Doña Ángela",
+    "image": "",
+    "regularPrice": 9500,
+    "stores": {
+      "biggie": 9500,
+      "superseis": 9300,
+      "stock": 9200,
+      "fortis": 8650
+    }
+  },
+  {
+    "id": 1331,
+    "ean": "7896691103860",
+    "name": "Yogurt Carolina Trozos de Frutilla de 450 gr.",
+    "brand": "Carolina",
+    "image": "",
+    "regularPrice": 17900,
+    "stores": {
+      "biggie": 17900,
+      "superseis": 17550,
+      "stock": 17350,
+      "fortis": 16300
+    }
+  },
+  {
+    "id": 1332,
+    "ean": "7840031050000",
+    "name": "Yogurt Doña Angela con Cereales de 200 gr.",
+    "brand": "Doña Ángela",
+    "image": "",
+    "regularPrice": 5350,
+    "stores": {
+      "biggie": 5350,
+      "superseis": 5250,
+      "stock": 5200,
+      "fortis": 4850
+    }
+  },
+  {
+    "id": 1333,
+    "ean": "7840005013208",
+    "name": "Yogurt Griego Trebol con Pulpa de Guayaba de 200 gr.",
+    "brand": "Trebol",
+    "image": "",
+    "regularPrice": 6900,
+    "stores": {
+      "biggie": 6900,
+      "superseis": 6750,
+      "stock": 6700,
+      "fortis": 6300
+    }
+  },
+  {
+    "id": 1334,
+    "ean": "7840005013185",
+    "name": "Yogurt Griego Trebol con Pulpa de Acai de 200 gr.",
+    "brand": "Trebol",
+    "image": "",
+    "regularPrice": 6900,
+    "stores": {
+      "biggie": 6900,
+      "superseis": 6750,
+      "stock": 6700,
+      "fortis": 6300
+    }
+  },
+  {
+    "id": 1335,
+    "ean": "7840037015348",
+    "name": "Yogurt Los Colonos Sin Lactosa Arandano de 190 gr.",
+    "brand": "Los Colonos",
+    "image": "",
+    "regularPrice": 3500,
+    "stores": {
+      "biggie": 3500,
+      "superseis": 3450,
+      "stock": 3400,
+      "fortis": 3200
+    }
+  },
+  {
+    "id": 1336,
+    "ean": "7840037014464",
+    "name": "Yogurt Los Colonos Griego Durazno de 125 gr.",
+    "brand": "Los Colonos",
+    "image": "",
+    "regularPrice": 5000,
+    "stores": {
+      "biggie": 5000,
+      "superseis": 4900,
+      "stock": 4850,
+      "fortis": 4550
+    }
+  },
+  {
+    "id": 1337,
+    "ean": "7840127000124",
+    "name": "Yerba Kurupi Menta y Boldo Caja de 500 gr.",
+    "brand": "Kurupi",
+    "image": "",
+    "regularPrice": 13400,
+    "stores": {
+      "biggie": 13400,
+      "superseis": 13150,
+      "stock": 13000,
+      "fortis": 12200
+    }
+  },
+  {
+    "id": 1338,
+    "ean": "7840127020856",
+    "name": "Yerba Kurupi MegaMenta de 500 gr.",
+    "brand": "Kurupi",
+    "image": "",
+    "regularPrice": 15000,
+    "stores": {
+      "biggie": 15000,
+      "superseis": 14700,
+      "stock": 14550,
+      "fortis": 13650
+    }
+  },
+  {
+    "id": 1339,
+    "ean": "7840127001701",
+    "name": "Yerba Kurupi Ediccion Limitada de 500 gr.",
+    "brand": "Kurupi",
+    "image": "",
+    "regularPrice": 60000,
+    "stores": {
+      "biggie": 60000,
+      "superseis": 58800,
+      "stock": 58200,
+      "fortis": 54600
+    }
+  },
+  {
+    "id": 1340,
+    "ean": "7840013000726",
+    "name": "Yerba Pajarito Premiun de 500 gr.",
+    "brand": "PAJARITO",
+    "image": "",
+    "regularPrice": 18600,
+    "stores": {
+      "biggie": 18600,
+      "superseis": 18250,
+      "stock": 18050,
+      "fortis": 16950
+    }
+  },
+  {
+    "id": 1341,
+    "ean": "7840127001848",
+    "name": "Yerba Kurupi Compuesta Sabor Menta y Limon de 500 gr.",
+    "brand": "Kurupi",
+    "image": "",
+    "regularPrice": 12050,
+    "stores": {
+      "biggie": 12050,
+      "superseis": 11800,
+      "stock": 11700,
+      "fortis": 10950
+    }
+  },
+  {
+    "id": 1342,
+    "ean": "7840013000023",
+    "name": "Yerba Pajarito de 500 gr.",
+    "brand": "PAJARITO",
+    "image": "",
+    "regularPrice": 10250,
+    "stores": {
+      "biggie": 10250,
+      "superseis": 10050,
+      "stock": 9950,
+      "fortis": 9350
+    }
+  },
+  {
+    "id": 1343,
+    "ean": "7840127002005",
+    "name": "Yerba Kurupi Cedron de 500 gr.",
+    "brand": "Kurupi",
+    "image": "",
+    "regularPrice": 12500,
+    "stores": {
+      "biggie": 12500,
+      "superseis": 12250,
+      "stock": 12100,
+      "fortis": 11400
+    }
+  },
+  {
+    "id": 1344,
+    "ean": "7840045018553",
+    "name": "Yerba Indega Clasica Plast de 500 gr.",
+    "brand": "INDEGA",
+    "image": "",
+    "regularPrice": 9250,
+    "stores": {
+      "biggie": 9250,
+      "superseis": 9050,
+      "stock": 8950,
+      "fortis": 8400
+    }
+  },
+  {
+    "id": 1345,
+    "ean": "7840037014624",
+    "name": "Yerba Colon Molienda Gruesa Suave de 500 gr.",
+    "brand": "COLON",
+    "image": "",
+    "regularPrice": 12600,
+    "stores": {
+      "biggie": 12600,
+      "superseis": 12350,
+      "stock": 12200,
+      "fortis": 11450
+    }
+  },
+  {
+    "id": 1346,
+    "ean": "7840127001831",
+    "name": "Yerba Kurupi Compuesta Sabor Menta y Limon de 250 gr.",
+    "brand": "Kurupi",
+    "image": "",
+    "regularPrice": 6650,
+    "stores": {
+      "biggie": 6650,
+      "superseis": 6500,
+      "stock": 6450,
+      "fortis": 6050
+    }
+  },
+  {
+    "id": 1347,
+    "ean": "7840127021075",
+    "name": "Yerba Kurupi Anis y Manzanilla de 500 gr.",
+    "brand": "Té Guaraní",
+    "image": "",
+    "regularPrice": 13400,
+    "stores": {
+      "biggie": 13400,
+      "superseis": 13150,
+      "stock": 13000,
+      "fortis": 12200
+    }
+  },
+  {
+    "id": 1348,
+    "ean": "7840013000900",
+    "name": "Yerba Pajarito Compuesta de 500 gr.",
+    "brand": "PAJARITO",
+    "image": "",
+    "regularPrice": 13250,
+    "stores": {
+      "biggie": 13250,
+      "superseis": 13000,
+      "stock": 12850,
+      "fortis": 12050
+    }
+  },
+  {
+    "id": 1349,
+    "ean": "7840127021068",
+    "name": "Yerba Kurupi Anis y Manzanilla de 250 gr.",
+    "brand": "Té Guaraní",
+    "image": "",
+    "regularPrice": 7550,
+    "stores": {
+      "biggie": 7550,
+      "superseis": 7400,
+      "stock": 7300,
+      "fortis": 6850
+    }
+  },
+  {
+    "id": 1350,
+    "ean": "7840127000384",
+    "name": "Yerba Kurupi Energizante Katuava de 500 gr.",
+    "brand": "Kurupi",
+    "image": "",
+    "regularPrice": 13400,
+    "stores": {
+      "biggie": 13400,
+      "superseis": 13150,
+      "stock": 13000,
+      "fortis": 12200
+    }
+  },
+  {
+    "id": 1351,
+    "ean": "7840045029016",
+    "name": "Yerba Indega Compuesta de 500 gr.",
+    "brand": "INDEGA",
+    "image": "",
+    "regularPrice": 10900,
+    "stores": {
+      "biggie": 10900,
+      "superseis": 10700,
+      "stock": 10550,
+      "fortis": 9900
+    }
+  },
+  {
+    "id": 1352,
+    "ean": "7840013000825",
+    "name": "Yerba Pajarito Compuesta Menta y Boldo de 500 gr.",
+    "brand": "PAJARITO",
+    "image": "",
+    "regularPrice": 13400,
+    "stores": {
+      "biggie": 13400,
+      "superseis": 13150,
+      "stock": 13000,
+      "fortis": 12200
+    }
+  },
+  {
+    "id": 1353,
+    "ean": "7840037003147",
+    "name": "Yerba Colon Compuesta Cedron, Limon ,Menta de 500 gr.",
+    "brand": "COLON",
+    "image": "",
+    "regularPrice": 13050,
+    "stores": {
+      "biggie": 13050,
+      "superseis": 12800,
+      "stock": 12650,
+      "fortis": 11900
+    }
+  },
+  {
+    "id": 1354,
+    "ean": "7840045056555",
+    "name": "Yerba Indega Kuña Guapa de 250 gr.",
+    "brand": "INDEGA",
+    "image": "",
+    "regularPrice": 8600,
+    "stores": {
+      "biggie": 8600,
+      "superseis": 8450,
+      "stock": 8350,
+      "fortis": 7850
+    }
+  },
+  {
+    "id": 1355,
+    "ean": "7840243000022",
+    "name": "Yerba La Rubia de 500 gr.",
+    "brand": "La Rubia",
+    "image": "",
+    "regularPrice": 22050,
+    "stores": {
+      "biggie": 22050,
+      "superseis": 21600,
+      "stock": 21400,
+      "fortis": 20050
+    }
+  },
+  {
+    "id": 1356,
+    "ean": "7840009040507",
+    "name": "Yerba Campesino Menta Limon de 500 gr.",
+    "brand": "CAMPESINO",
+    "image": "",
+    "regularPrice": 11500,
+    "stores": {
+      "biggie": 11500,
+      "superseis": 11250,
+      "stock": 11150,
+      "fortis": 10450
+    }
+  },
+  {
+    "id": 1357,
+    "ean": "7840013000016",
+    "name": "Yerba Pajarito Tradicional de 1.000 gr.",
+    "brand": "PAJARITO",
+    "image": "",
+    "regularPrice": 19900,
+    "stores": {
+      "biggie": 19900,
+      "superseis": 19500,
+      "stock": 19300,
+      "fortis": 18100
+    }
+  },
+  {
+    "id": 1358,
+    "ean": "7840045047430",
+    "name": "Yerba Indega Manzanilla y Anis Caja de 500 gr.",
+    "brand": "INDEGA",
+    "image": "",
+    "regularPrice": 13700,
+    "stores": {
+      "biggie": 13700,
+      "superseis": 13450,
+      "stock": 13300,
+      "fortis": 12450
+    }
+  },
+  {
+    "id": 1359,
+    "ean": "7840045046105",
+    "name": "Yerba Indega Siempre Vive de 500 gr.",
+    "brand": "INDEGA",
+    "image": "",
+    "regularPrice": 12550,
+    "stores": {
+      "biggie": 12550,
+      "superseis": 12300,
+      "stock": 12150,
+      "fortis": 11400
+    }
+  },
+  {
+    "id": 1360,
+    "ean": "7840009650942",
+    "name": "Yerba Campesino Doble Menta y Boldo de 500 gr.",
+    "brand": "CAMPESINO",
+    "image": "",
+    "regularPrice": 13250,
+    "stores": {
+      "biggie": 13250,
+      "superseis": 13000,
+      "stock": 12850,
+      "fortis": 12050
+    }
+  },
+  {
+    "id": 1361,
+    "ean": "7842500000219",
+    "name": "Yerba Santo Tomas Menta y Boldo de 500 gr.",
+    "brand": "Santo Tomas",
+    "image": "",
+    "regularPrice": 13000,
+    "stores": {
+      "biggie": 13000,
+      "superseis": 12750,
+      "stock": 12600,
+      "fortis": 11850
+    }
+  },
+  {
+    "id": 1362,
+    "ean": "7840009650898",
+    "name": "Yerba Campesino Manzanilla y Anis de 500 gr.",
+    "brand": "CAMPESINO",
+    "image": "",
+    "regularPrice": 12900,
+    "stores": {
+      "biggie": 12900,
+      "superseis": 12650,
+      "stock": 12500,
+      "fortis": 11750
+    }
+  },
+  {
+    "id": 1363,
+    "ean": "7840009650997",
+    "name": "Yerba Campesino Menta Limon y Cedron de 500 gr.",
+    "brand": "CAMPESINO",
+    "image": "",
+    "regularPrice": 11500,
+    "stores": {
+      "biggie": 11500,
+      "superseis": 11250,
+      "stock": 11150,
+      "fortis": 10450
+    }
+  },
+  {
+    "id": 1364,
+    "ean": "7842500000677",
+    "name": "Yerba Mate Santo Tomas Con Todo de 500 gr.",
+    "brand": "Santo Tomas",
+    "image": "",
+    "regularPrice": 13500,
+    "stores": {
+      "biggie": 13500,
+      "superseis": 13250,
+      "stock": 13100,
+      "fortis": 12300
+    }
+  },
+  {
+    "id": 1365,
+    "ean": "7842500000714",
+    "name": "Yerba Mate Santo Tomas Menta Purete de 500 gr.",
+    "brand": "Santo Tomas",
+    "image": "",
+    "regularPrice": 15000,
+    "stores": {
+      "biggie": 15000,
+      "superseis": 14700,
+      "stock": 14550,
+      "fortis": 13650
+    }
+  },
+  {
+    "id": 1366,
+    "ean": "7840009651031",
+    "name": "Yerba Mate Campesino Doble Menta y Boldo de 100gramos",
+    "brand": "CAMPESINO",
+    "image": "",
+    "regularPrice": 2900,
+    "stores": {
+      "biggie": 2900,
+      "superseis": 2850,
+      "stock": 2800,
+      "fortis": 2650
+    }
+  },
+  {
+    "id": 1367,
+    "ean": "7842500000233",
+    "name": "Yerba Santo Tomas Menta y Limon de 500 gr.",
+    "brand": "Santo Tomas",
+    "image": "",
+    "regularPrice": 12000,
+    "stores": {
+      "biggie": 12000,
+      "superseis": 11750,
+      "stock": 11650,
+      "fortis": 10900
+    }
+  },
+  {
+    "id": 1368,
+    "ean": "7840009040255",
+    "name": "Yerba Campesino Menta Limon de 250 gr.",
+    "brand": "CAMPESINO",
+    "image": "",
+    "regularPrice": 6500,
+    "stores": {
+      "biggie": 6500,
+      "superseis": 6350,
+      "stock": 6300,
+      "fortis": 5900
+    }
+  },
+  {
+    "id": 1369,
+    "ean": "7840045040011",
+    "name": "Yerba Indega Menta Boldo Caja de 500 gr.",
+    "brand": "INDEGA",
+    "image": "",
+    "regularPrice": 12350,
+    "stores": {
+      "biggie": 12350,
+      "superseis": 12100,
+      "stock": 12000,
+      "fortis": 11250
+    }
+  },
+  {
+    "id": 1370,
+    "ean": "7840009000181",
+    "name": "Yerba Campesino Manzanilla y Anis de 100 gr.",
+    "brand": "CAMPESINO",
+    "image": "",
+    "regularPrice": 2900,
+    "stores": {
+      "biggie": 2900,
+      "superseis": 2850,
+      "stock": 2800,
+      "fortis": 2650
+    }
+  },
+  {
+    "id": 1371,
+    "ean": "7840009650218",
+    "name": "Yerba Campesino Menta y boldo 100 gr.",
+    "brand": "CAMPESINO",
+    "image": "",
+    "regularPrice": 2400,
+    "stores": {
+      "biggie": 2400,
+      "superseis": 2350,
+      "stock": 2350,
+      "fortis": 2200
+    }
+  },
+  {
+    "id": 1372,
+    "ean": "7840009000235",
+    "name": "Yerba Campesino Menta y Boldo de 500 gr.",
+    "brand": "CAMPESINO",
+    "image": "",
+    "regularPrice": 9400,
+    "stores": {
+      "biggie": 9400,
+      "superseis": 9200,
+      "stock": 9100,
+      "fortis": 8550
+    }
+  },
+  {
+    "id": 1373,
+    "ean": "7840009000174",
+    "name": "Yerba Mate Campesino Menta Limon y Cedron 100",
+    "brand": "CAMPESINO",
+    "image": "",
+    "regularPrice": 2400,
+    "stores": {
+      "biggie": 2400,
+      "superseis": 2350,
+      "stock": 2350,
+      "fortis": 2200
+    }
+  },
+  {
+    "id": 1374,
+    "ean": "7840009515005",
+    "name": "Yerba Campesino con Anis de 500 gr.",
+    "brand": "CAMPESINO",
+    "image": "",
+    "regularPrice": 12500,
+    "stores": {
+      "biggie": 12500,
+      "superseis": 12250,
+      "stock": 12100,
+      "fortis": 11400
+    }
+  },
+  {
+    "id": 1375,
+    "ean": "7840009650935",
+    "name": "Yerba Campesino Doble Menta y Boldo de 250 gr.",
+    "brand": "CAMPESINO",
+    "image": "",
+    "regularPrice": 7500,
+    "stores": {
+      "biggie": 7500,
+      "superseis": 7350,
+      "stock": 7300,
+      "fortis": 6800
+    }
+  },
+  {
+    "id": 1376,
+    "ean": "7840009650096",
+    "name": "Yerba Campesino con Hierba Natural Tradicional de 500 gr.",
+    "brand": "CAMPESINO",
+    "image": "",
+    "regularPrice": 10950,
+    "stores": {
+      "biggie": 10950,
+      "superseis": 10750,
+      "stock": 10600,
+      "fortis": 9950
+    }
+  },
+  {
+    "id": 1377,
+    "ean": "7840009650324",
+    "name": "Yerba Campesino menta limón 100 gr.",
+    "brand": "CAMPESINO",
+    "image": "",
+    "regularPrice": 2400,
+    "stores": {
+      "biggie": 2400,
+      "superseis": 2350,
+      "stock": 2350,
+      "fortis": 2200
+    }
+  },
+  {
+    "id": 1378,
+    "ean": "7840009011255",
+    "name": "Yerba Campesino de 250 gr.",
+    "brand": "CAMPESINO",
+    "image": "",
+    "regularPrice": 4500,
+    "stores": {
+      "biggie": 4500,
+      "superseis": 4400,
+      "stock": 4350,
+      "fortis": 4100
+    }
+  },
+  {
+    "id": 1379,
+    "ean": "7840009650980",
+    "name": "Yerba Campesino Menta Limon y Cedron de 250 gr.",
+    "brand": "CAMPESINO",
+    "image": "",
+    "regularPrice": 6450,
+    "stores": {
+      "biggie": 6450,
+      "superseis": 6300,
+      "stock": 6250,
+      "fortis": 5850
+    }
+  },
+  {
+    "id": 1380,
+    "ean": "7840009650256",
+    "name": "Yerba Campesino Terere ya de 40 gr.",
+    "brand": "CAMPESINO",
+    "image": "",
+    "regularPrice": 4700,
+    "stores": {
+      "biggie": 4700,
+      "superseis": 4600,
+      "stock": 4550,
+      "fortis": 4300
+    }
+  },
+  {
+    "id": 1381,
+    "ean": "7840009650904",
+    "name": "Yerba Campesino Manzanilla y Anis de 250 gr.",
+    "brand": "CAMPESINO",
+    "image": "",
+    "regularPrice": 7500,
+    "stores": {
+      "biggie": 7500,
+      "superseis": 7350,
+      "stock": 7300,
+      "fortis": 6800
+    }
+  },
+  {
+    "id": 1382,
+    "ean": "7840045040028",
+    "name": "Yerba Indega Menta Boldo de 250 gr.",
+    "brand": "INDEGA",
+    "image": "",
+    "regularPrice": 6400,
+    "stores": {
+      "biggie": 6400,
+      "superseis": 6250,
+      "stock": 6200,
+      "fortis": 5800
+    }
+  },
+  {
+    "id": 1383,
+    "ean": "7840045019765",
+    "name": "Picadillo de Carne Indega de 90 gr.",
+    "brand": "INDEGA",
+    "image": "",
+    "regularPrice": 3800,
+    "stores": {
+      "biggie": 3800,
+      "superseis": 3700,
+      "stock": 3700,
+      "fortis": 3450
+    }
+  },
+  {
+    "id": 1384,
+    "ean": "7840058002532",
+    "name": "Gaseosa Coca Cola Zero de 500 ml.",
+    "brand": "Coca Cola",
+    "image": "",
+    "regularPrice": 6500,
+    "stores": {
+      "biggie": 6500,
+      "superseis": 6350,
+      "stock": 6300,
+      "fortis": 5900
+    }
+  },
+  {
+    "id": 1385,
+    "ean": "7790895067587",
+    "name": "Gaseosa Coca Cola Zero Lata de 354 ml.",
+    "brand": "Coca Cola",
+    "image": "",
+    "regularPrice": 6500,
+    "stores": {
+      "biggie": 6500,
+      "superseis": 6350,
+      "stock": 6300,
+      "fortis": 5900
+    }
+  },
+  {
+    "id": 1386,
+    "ean": "7840058003638",
+    "name": "Gaseosa Coca Cola Zero Retornable de 2.000 ml.",
+    "brand": "Coca Cola",
+    "image": "",
+    "regularPrice": 10000,
+    "stores": {
+      "biggie": 10000,
+      "superseis": 9800,
+      "stock": 9700,
+      "fortis": 9100
+    }
+  },
+  {
+    "id": 1387,
+    "ean": "7840028202092",
+    "name": "Gaseosa Pepsi Cola de 2.000 ml.",
+    "brand": "Pepsi",
+    "image": "",
+    "regularPrice": 12000,
+    "stores": {
+      "biggie": 12000,
+      "superseis": 11750,
+      "stock": 11650,
+      "fortis": 10900
+    }
+  },
+  {
+    "id": 1388,
+    "ean": "7840028205246",
+    "name": "Gaseosa Pepsi Black de 2.000 ml.",
+    "brand": "Pepsi",
+    "image": "",
+    "regularPrice": 12000,
+    "stores": {
+      "biggie": 12000,
+      "superseis": 11750,
+      "stock": 11650,
+      "fortis": 10900
+    }
+  },
+  {
+    "id": 1389,
+    "ean": "7840028202078",
+    "name": "Gaseosa Pepsi de 500 ml.",
+    "brand": "Pepsi",
+    "image": "",
+    "regularPrice": 6000,
+    "stores": {
+      "biggie": 6000,
+      "superseis": 5900,
+      "stock": 5800,
+      "fortis": 5450
+    }
+  },
+  {
+    "id": 1390,
+    "ean": "7840058004673",
+    "name": "Gaseosa Fanta Guarana Descartable de 2.000 ml.",
+    "brand": "Coca Cola",
+    "image": "",
+    "regularPrice": 14900,
+    "stores": {
+      "biggie": 14900,
+      "superseis": 14600,
+      "stock": 14450,
+      "fortis": 13550
+    }
+  },
+  {
+    "id": 1391,
+    "ean": "7840058004697",
+    "name": "Gaseosa Fanta piña descartable de 2.000 ml.",
+    "brand": "Coca Cola",
+    "image": "",
+    "regularPrice": 14900,
+    "stores": {
+      "biggie": 14900,
+      "superseis": 14600,
+      "stock": 14450,
+      "fortis": 13550
+    }
+  },
+  {
+    "id": 1392,
+    "ean": "7840058010353",
+    "name": "Gaseosa Fanta Naranja Descartable de 500 ml.",
+    "brand": "Fanta",
+    "image": "",
+    "regularPrice": 6500,
+    "stores": {
+      "biggie": 6500,
+      "superseis": 6350,
+      "stock": 6300,
+      "fortis": 5900
+    }
+  },
+  {
+    "id": 1393,
+    "ean": "7840058003089",
+    "name": "Gaseosa Fanta Guarana de 500 ml.",
+    "brand": "Fanta",
+    "image": "",
+    "regularPrice": 6500,
+    "stores": {
+      "biggie": 6500,
+      "superseis": 6350,
+      "stock": 6300,
+      "fortis": 5900
+    }
+  },
+  {
+    "id": 1394,
+    "ean": "7840058003690",
+    "name": "Gaseosa Fanta piña de 500 ml.",
+    "brand": "Fanta",
+    "image": "",
+    "regularPrice": 6500,
+    "stores": {
+      "biggie": 6500,
+      "superseis": 6350,
+      "stock": 6300,
+      "fortis": 5900
+    }
+  },
+  {
+    "id": 1395,
+    "ean": "7840058003133",
+    "name": "Gaseosa Fanta Guarana Retornable de 2.000 ml.",
+    "brand": "Fanta",
+    "image": "",
+    "regularPrice": 10000,
+    "stores": {
+      "biggie": 10000,
+      "superseis": 9800,
+      "stock": 9700,
+      "fortis": 9100
+    }
+  },
+  {
+    "id": 1396,
+    "ean": "7840058010438",
+    "name": "Gaseosa Fanta Naranja Retornable de 2.000 ml.",
+    "brand": "Fanta",
+    "image": "",
+    "regularPrice": 10000,
+    "stores": {
+      "biggie": 10000,
+      "superseis": 9800,
+      "stock": 9700,
+      "fortis": 9100
+    }
+  },
+  {
+    "id": 1397,
+    "ean": "7840058008510",
+    "name": "Gaseosa Fanta Guarana de 250 ml x 6 Uni.",
+    "brand": "Fanta",
+    "image": "",
+    "regularPrice": 17500,
+    "stores": {
+      "biggie": 17500,
+      "superseis": 17150,
+      "stock": 17000,
+      "fortis": 15900
+    }
+  },
+  {
+    "id": 1398,
+    "ean": "7840058010346",
+    "name": "Gaseosa Fanta Naranja de 250 ml Pack x 6 Uni.",
+    "brand": "Fanta",
+    "image": "",
+    "regularPrice": 17500,
+    "stores": {
+      "biggie": 17500,
+      "superseis": 17150,
+      "stock": 17000,
+      "fortis": 15900
+    }
+  },
+  {
+    "id": 1399,
+    "ean": "7841881033885",
+    "name": "Perfume Mawwal Fantasy Basir 100ml",
+    "brand": "MAWALL",
+    "image": "",
+    "regularPrice": 225000,
+    "stores": {
+      "biggie": 225000,
+      "superseis": 220500,
+      "stock": 218250,
+      "fortis": 204750
+    }
+  },
+  {
+    "id": 1400,
+    "ean": "7841881035377",
+    "name": "Perfume Mawwal Fantasy Malek 100ml",
+    "brand": "MAWALL",
+    "image": "",
+    "regularPrice": 265000,
+    "stores": {
+      "biggie": 265000,
+      "superseis": 259700,
+      "stock": 257050,
+      "fortis": 241150
+    }
+  },
+  {
+    "id": 1401,
+    "ean": "7841378006224",
+    "name": "Eau de Toilette Fantasy Sweet Care De 100ML",
+    "brand": "Sweet care",
+    "image": "",
+    "regularPrice": 89700,
+    "stores": {
+      "biggie": 89700,
+      "superseis": 87900,
+      "stock": 87000,
+      "fortis": 81650
+    }
+  },
+  {
+    "id": 1402,
+    "ean": "7841881035209",
+    "name": "Perfume Spray Mawwall Fantasy Basir 250ml",
+    "brand": "MAWALL",
+    "image": "",
+    "regularPrice": 50000,
+    "stores": {
+      "biggie": 50000,
+      "superseis": 49000,
+      "stock": 48500,
+      "fortis": 45500
+    }
+  },
+  {
+    "id": 1403,
+    "ean": "7840118216374",
+    "name": "Desodorante para piso Cavallaro Fantasia de 900 ml.",
+    "brand": "Cavallaro",
+    "image": "",
+    "regularPrice": 13100,
+    "stores": {
+      "biggie": 13100,
+      "superseis": 12850,
+      "stock": 12700,
+      "fortis": 11900
+    }
+  },
+  {
+    "id": 1404,
+    "ean": "7840045034102",
+    "name": "Arroz Primicia Parborizado Tipo I de 1.000 gr.",
+    "brand": "Primicia",
+    "image": "",
+    "regularPrice": 9400,
+    "stores": {
+      "biggie": 9400,
+      "superseis": 9200,
+      "stock": 9100,
+      "fortis": 8550
+    }
+  },
+  {
+    "id": 1405,
+    "ean": "7840099000023",
+    "name": "Arroz Tio Nico Tipo 00000 Rojo de 1.000 gr.",
+    "brand": "Tio Nico",
+    "image": "",
+    "regularPrice": 5100,
+    "stores": {
+      "biggie": 5100,
+      "superseis": 5000,
+      "stock": 4950,
+      "fortis": 4650
+    }
+  },
+  {
+    "id": 1406,
+    "ean": "7840099000016",
+    "name": "Arroz Tio Nico Tipo 0000 Azul de 1.000 gr.",
+    "brand": "Tio Nico",
+    "image": "",
+    "regularPrice": 4850,
+    "stores": {
+      "biggie": 4850,
+      "superseis": 4750,
+      "stock": 4700,
+      "fortis": 4400
+    }
+  },
+  {
+    "id": 1407,
+    "ean": "7840099000085",
+    "name": "Arroz Tio Nico Tipo 00000 Rojo de 2.000 gr.",
+    "brand": "Tio Nico",
+    "image": "",
+    "regularPrice": 10000,
+    "stores": {
+      "biggie": 10000,
+      "superseis": 9800,
+      "stock": 9700,
+      "fortis": 9100
+    }
+  },
+  {
+    "id": 1408,
+    "ean": "7840045049946",
+    "name": "Arroz Primicia Parbolizado de 500 gr.",
+    "brand": "Primicia",
+    "image": "",
+    "regularPrice": 5050,
+    "stores": {
+      "biggie": 5050,
+      "superseis": 4950,
+      "stock": 4900,
+      "fortis": 4600
+    }
+  },
+  {
+    "id": 1409,
+    "ean": "7840045019291",
+    "name": "Arroz Primicia Tipo II Amarillo de 1.000 gr.",
+    "brand": "Primicia",
+    "image": "",
+    "regularPrice": 6900,
+    "stores": {
+      "biggie": 6900,
+      "superseis": 6750,
+      "stock": 6700,
+      "fortis": 6300
+    }
+  },
+  {
+    "id": 1410,
+    "ean": "7840045019253",
+    "name": "Arroz Primicia Tipo I Azul de 1.000 gr.",
+    "brand": "Primicia",
+    "image": "",
+    "regularPrice": 7950,
+    "stores": {
+      "biggie": 7950,
+      "superseis": 7800,
+      "stock": 7700,
+      "fortis": 7250
+    }
+  },
+  {
+    "id": 1411,
+    "ean": "7840533000053",
+    "name": "Arroz El Pais tipo I rojo de 1.000 gr.",
+    "brand": "EL PAIS",
+    "image": "",
+    "regularPrice": 6500,
+    "stores": {
+      "biggie": 6500,
+      "superseis": 6350,
+      "stock": 6300,
+      "fortis": 5900
+    }
+  },
+  {
+    "id": 1412,
+    "ean": "7840023000129",
+    "name": "Arroz Supremo Premium de 1.000 gr.",
+    "brand": "Supremo",
+    "image": "",
+    "regularPrice": 5250,
+    "stores": {
+      "biggie": 5250,
+      "superseis": 5150,
+      "stock": 5100,
+      "fortis": 4800
+    }
+  },
+  {
+    "id": 1413,
+    "ean": "7840533000145",
+    "name": "Arroz El Pais Parbolizado verde 1.000 gr",
+    "brand": "EL PAIS",
+    "image": "",
+    "regularPrice": 9000,
+    "stores": {
+      "biggie": 9000,
+      "superseis": 8800,
+      "stock": 8750,
+      "fortis": 8200
+    }
+  },
+  {
+    "id": 1414,
+    "ean": "7840533000022",
+    "name": "Arroz El pais tipo II de 1.000 gr",
+    "brand": "EL PAIS",
+    "image": "",
+    "regularPrice": 6000,
+    "stores": {
+      "biggie": 6000,
+      "superseis": 5900,
+      "stock": 5800,
+      "fortis": 5450
+    }
+  },
+  {
+    "id": 1415,
+    "ean": "7840533000206",
+    "name": "Arroz El Pais tipo I rojo 500 gr.",
+    "brand": "EL PAIS",
+    "image": "",
+    "regularPrice": 4300,
+    "stores": {
+      "biggie": 4300,
+      "superseis": 4200,
+      "stock": 4150,
+      "fortis": 3900
+    }
+  },
+  {
+    "id": 1416,
+    "ean": "7840533000190",
+    "name": "Arroz El Pais Parbolizado de 500 gr",
+    "brand": "EL PAIS",
+    "image": "",
+    "regularPrice": 5000,
+    "stores": {
+      "biggie": 5000,
+      "superseis": 4900,
+      "stock": 4850,
+      "fortis": 4550
+    }
+  },
+  {
+    "id": 1417,
+    "ean": "7840185788507",
+    "name": "Arroz Norte Tipo II de 500 gr.",
+    "brand": "Norte",
+    "image": "",
+    "regularPrice": 2650,
+    "stores": {
+      "biggie": 2650,
+      "superseis": 2600,
+      "stock": 2550,
+      "fortis": 2400
+    }
+  },
+  {
+    "id": 1418,
+    "ean": "7840185788453",
+    "name": "Arroz Norte Tipo I de 250 gr.",
+    "brand": "Norte",
+    "image": "",
+    "regularPrice": 1450,
+    "stores": {
+      "biggie": 1450,
+      "superseis": 1400,
+      "stock": 1400,
+      "fortis": 1300
+    }
+  },
+  {
+    "id": 1419,
+    "ean": "7840031140107",
+    "name": "Arroz con leche Doña Angela de 200 gr.",
+    "brand": "Doña Ángela",
+    "image": "",
+    "regularPrice": 4600,
+    "stores": {
+      "biggie": 4600,
+      "superseis": 4500,
+      "stock": 4450,
+      "fortis": 4200
+    }
+  },
+  {
+    "id": 1420,
+    "ean": "7841787000035",
+    "name": "Galleta de Arroz B-Light natural de 85 gr.",
+    "brand": "SARIC",
+    "image": "",
+    "regularPrice": 9350,
+    "stores": {
+      "biggie": 9350,
+      "superseis": 9150,
+      "stock": 9050,
+      "fortis": 8500
+    }
+  },
+  {
+    "id": 1421,
+    "ean": "7841787000080",
+    "name": "Galleta de Arroz B-Light chía y quinua de 110 gr.",
+    "brand": "SARIC",
+    "image": "",
+    "regularPrice": 11500,
+    "stores": {
+      "biggie": 11500,
+      "superseis": 11250,
+      "stock": 11150,
+      "fortis": 10450
+    }
+  },
+  {
+    "id": 1422,
+    "ean": "7841787000059",
+    "name": "Galleta de Arroz sin sal B-Light de 85 gr.",
+    "brand": "SARIC",
+    "image": "",
+    "regularPrice": 9350,
+    "stores": {
+      "biggie": 9350,
+      "superseis": 9150,
+      "stock": 9050,
+      "fortis": 8500
+    }
+  },
+  {
+    "id": 1423,
+    "ean": "5902609000557",
+    "name": "Galleta de Arroz Lestello Natural de 110 gr.",
+    "brand": "LESTELLO",
+    "image": "",
+    "regularPrice": 15500,
+    "stores": {
+      "biggie": 15500,
+      "superseis": 15200,
+      "stock": 15050,
+      "fortis": 14100
+    }
+  },
+  {
+    "id": 1424,
+    "ean": "8801052036762",
+    "name": "Fideos de Arroz Chungjungone Picante de 92g",
+    "brand": "CHUNGJUNGONE",
+    "image": "",
+    "regularPrice": 23035,
+    "stores": {
+      "biggie": 23035,
+      "superseis": 22550,
+      "stock": 22350,
+      "fortis": 20950
+    }
+  },
+  {
+    "id": 1425,
+    "ean": "2880105203706",
+    "name": "Fideos de Arroz Chungjungone Sabor Marisco de 92g",
+    "brand": "CHUNGJUNGONE",
+    "image": "",
+    "regularPrice": 23035,
+    "stores": {
+      "biggie": 23035,
+      "superseis": 22550,
+      "stock": 22350,
+      "fortis": 20950
+    }
+  },
+  {
+    "id": 1426,
+    "ean": "7622201753061",
+    "name": "Galletitas Cerealitas de Arroz de 160 gr.",
+    "brand": "Cerealitas",
+    "image": "",
+    "regularPrice": 12600,
+    "stores": {
+      "biggie": 12600,
+      "superseis": 12350,
+      "stock": 12200,
+      "fortis": 11450
+    }
+  },
+  {
+    "id": 1427,
+    "ean": "7613035652583",
+    "name": "Cereal Nestle Nestum de Arroz de 350 gr.",
+    "brand": "Nestle",
+    "image": "",
+    "regularPrice": 45600,
+    "stores": {
+      "biggie": 45600,
+      "superseis": 44700,
+      "stock": 44250,
+      "fortis": 41500
+    }
+  },
+  {
+    "id": 1428,
+    "ean": "7891000423271",
+    "name": "Alimento Para Perro Dog Chow Adulto Nutricion Reforzada Carne en filetes con arroz de 85gr",
+    "brand": "Dog Chow",
+    "image": "",
+    "regularPrice": 7450,
+    "stores": {
+      "biggie": 7450,
+      "superseis": 7300,
+      "stock": 7250,
+      "fortis": 6800
+    }
+  },
+  {
+    "id": 1429,
+    "ean": "7702433290821",
+    "name": "Polvo Compacto Vogue de Arroz Tono Porcelana",
+    "brand": "VOGUE",
+    "image": "",
+    "regularPrice": 62150,
+    "stores": {
+      "biggie": 62150,
+      "superseis": 60900,
+      "stock": 60300,
+      "fortis": 56550
+    }
+  },
+  {
+    "id": 1430,
+    "ean": "7842557001313",
+    "name": "Aceite de Soja Cacique de 500 ml.",
+    "brand": "Cacique",
+    "image": "",
+    "regularPrice": 9750,
+    "stores": {
+      "biggie": 9750,
+      "superseis": 9550,
+      "stock": 9450,
+      "fortis": 8850
+    }
+  },
+  {
+    "id": 1431,
+    "ean": "7842557001306",
+    "name": "Aceite de Soja Cacique  de 250 ml.",
+    "brand": "Cacique",
+    "image": "",
+    "regularPrice": 5500,
+    "stores": {
+      "biggie": 5500,
+      "superseis": 5400,
+      "stock": 5350,
+      "fortis": 5000
+    }
+  },
+  {
+    "id": 1432,
+    "ean": "7790272001005",
+    "name": "Aceite de Girasol Natura de 900 ml.",
+    "brand": "Natura",
+    "image": "",
+    "regularPrice": 25300,
+    "stores": {
+      "biggie": 25300,
+      "superseis": 24800,
+      "stock": 24550,
+      "fortis": 23000
+    }
+  },
+  {
+    "id": 1433,
+    "ean": "7896181711902",
+    "name": "Aceite de Coco Dacolonia Extra Virgen de 200 gr.",
+    "brand": "DACOLONIA",
+    "image": "",
+    "regularPrice": 38500,
+    "stores": {
+      "biggie": 38500,
+      "superseis": 37750,
+      "stock": 37350,
+      "fortis": 35050
+    }
+  },
+  {
+    "id": 1434,
+    "ean": "7790070012050",
+    "name": "Aceite de Girasol Cocinero de 900 ml.",
+    "brand": "Cocinero",
+    "image": "",
+    "regularPrice": 23650,
+    "stores": {
+      "biggie": 23650,
+      "superseis": 23200,
+      "stock": 22950,
+      "fortis": 21500
+    }
+  },
+  {
+    "id": 1435,
+    "ean": "7792180001641",
+    "name": "Aceite de Girasol Cañuelas de 900 ml.",
+    "brand": "Cañuelas",
+    "image": "",
+    "regularPrice": 21500,
+    "stores": {
+      "biggie": 21500,
+      "superseis": 21050,
+      "stock": 20850,
+      "fortis": 19550
+    }
+  },
+  {
+    "id": 1436,
+    "ean": "8410179100067",
+    "name": "Aceite de Oliva Borges Extra Virgen Botella de 125 ml.",
+    "brand": "Borges",
+    "image": "",
+    "regularPrice": 26550,
+    "stores": {
+      "biggie": 26550,
+      "superseis": 26000,
+      "stock": 25750,
+      "fortis": 24150
+    }
+  },
+  {
+    "id": 1437,
+    "ean": "7794870000149",
+    "name": "Aceite de Girasol Alsamar de 1.500 ml.",
+    "brand": "Alsamar",
+    "image": "",
+    "regularPrice": 28700,
+    "stores": {
+      "biggie": 28700,
+      "superseis": 28150,
+      "stock": 27850,
+      "fortis": 26100
+    }
+  },
+  {
+    "id": 1438,
+    "ean": "8410179100036",
+    "name": "Aceite de Oliva Borges Extra Virgen de 500 ml.",
+    "brand": "Borges",
+    "image": "",
+    "regularPrice": 75500,
+    "stores": {
+      "biggie": 75500,
+      "superseis": 74000,
+      "stock": 73250,
+      "fortis": 68700
+    }
+  },
+  {
+    "id": 1439,
+    "ean": "7792180001665",
+    "name": "Aceite de Girasol Cañuelas de 1.500 ml.",
+    "brand": "Cañuelas",
+    "image": "",
+    "regularPrice": 35150,
+    "stores": {
+      "biggie": 35150,
+      "superseis": 34450,
+      "stock": 34100,
+      "fortis": 32000
+    }
+  },
+  {
+    "id": 1440,
+    "ean": "8410660101481",
+    "name": "Aceite de Oliva La Española Extra Virgen de 250 ml.",
+    "brand": "La Española",
+    "image": "",
+    "regularPrice": 45900,
+    "stores": {
+      "biggie": 45900,
+      "superseis": 45000,
+      "stock": 44500,
+      "fortis": 41750
+    }
+  },
+  {
+    "id": 1441,
+    "ean": "7840833000104",
+    "name": "Aceite de Girasol Mirasol de 900 ml.",
+    "brand": "Mirasol",
+    "image": "",
+    "regularPrice": 24950,
+    "stores": {
+      "biggie": 24950,
+      "superseis": 24450,
+      "stock": 24200,
+      "fortis": 22700
+    }
+  },
+  {
+    "id": 1442,
+    "ean": "8410179100050",
+    "name": "Aceite de Oliva Borges Extra Virgen de 250 ml.",
+    "brand": "Borges",
+    "image": "",
+    "regularPrice": 44500,
+    "stores": {
+      "biggie": 44500,
+      "superseis": 43600,
+      "stock": 43150,
+      "fortis": 40500
+    }
+  },
+  {
+    "id": 1443,
+    "ean": "7790272000831",
+    "name": "Aceite Natura Rocio Vegetal de 120 gr.",
+    "brand": "Natura",
+    "image": "",
+    "regularPrice": 30000,
+    "stores": {
+      "biggie": 30000,
+      "superseis": 29400,
+      "stock": 29100,
+      "fortis": 27300
+    }
+  },
+  {
+    "id": 1444,
+    "ean": "7840045000046",
+    "name": "Aceite Primicia de Girasol de 1.500 ml.",
+    "brand": "Primicia",
+    "image": "",
+    "regularPrice": 34700,
+    "stores": {
+      "biggie": 34700,
+      "superseis": 34000,
+      "stock": 33650,
+      "fortis": 31600
+    }
+  },
+  {
+    "id": 1445,
+    "ean": "8410660001798",
+    "name": "Aceite de Oliva La Española Extra Virgen de 125 ml.",
+    "brand": "La Española",
+    "image": "",
+    "regularPrice": 29500,
+    "stores": {
+      "biggie": 29500,
+      "superseis": 28900,
+      "stock": 28600,
+      "fortis": 26850
+    }
+  },
+  {
+    "id": 1446,
+    "ean": "8007150903658",
+    "name": "Aceite de Oliva Olitalia Extra Virgen de 500 ml.",
+    "brand": "Olitalia",
+    "image": "",
+    "regularPrice": 105000,
+    "stores": {
+      "biggie": 105000,
+      "superseis": 102900,
+      "stock": 101850,
+      "fortis": 95550
+    }
+  },
+  {
+    "id": 1447,
+    "ean": "7898905356185",
+    "name": "Aceite de Coco Extra Virgen de 500 ml.",
+    "brand": "Virgen",
+    "image": "",
+    "regularPrice": 97550,
+    "stores": {
+      "biggie": 97550,
+      "superseis": 95600,
+      "stock": 94600,
+      "fortis": 88750
+    }
+  },
+  {
+    "id": 1448,
+    "ean": "7842557002716",
+    "name": "Aceite de Girasol Cacique de 500 ml.",
+    "brand": "Cacique",
+    "image": "",
+    "regularPrice": 11900,
+    "stores": {
+      "biggie": 11900,
+      "superseis": 11650,
+      "stock": 11550,
+      "fortis": 10850
+    }
+  },
+  {
+    "id": 1449,
+    "ean": "7842557002709",
+    "name": "Aceite de Girasol Cacique de 250 ml.",
+    "brand": "Cacique",
+    "image": "",
+    "regularPrice": 6900,
+    "stores": {
+      "biggie": 6900,
+      "superseis": 6750,
+      "stock": 6700,
+      "fortis": 6300
+    }
+  },
+  {
+    "id": 1450,
+    "ean": "8410660034543",
+    "name": "Aceite de Oliva La Española Spray de 200 ml.",
+    "brand": "La Española",
+    "image": "",
+    "regularPrice": 51000,
+    "stores": {
+      "biggie": 51000,
+      "superseis": 50000,
+      "stock": 49450,
+      "fortis": 46400
+    }
+  },
+  {
+    "id": 1451,
+    "ean": "7840029870078",
+    "name": "Atun en aceite Norte con Ajo 150 gr.",
+    "brand": "Norte",
+    "image": "",
+    "regularPrice": 15800,
+    "stores": {
+      "biggie": 15800,
+      "superseis": 15500,
+      "stock": 15350,
+      "fortis": 14400
+    }
+  },
+  {
+    "id": 1452,
+    "ean": "7898943163011",
+    "name": "Sardinas al aceite R.Crusoe de 125 gr.",
+    "brand": "Crusoe",
+    "image": "",
+    "regularPrice": 9400,
+    "stores": {
+      "biggie": 9400,
+      "superseis": 9200,
+      "stock": 9100,
+      "fortis": 8550
+    }
+  },
+  {
+    "id": 1453,
+    "ean": "7840029873901",
+    "name": "Sardina Norte en Aceite de 125 gr.",
+    "brand": "Norte",
+    "image": "",
+    "regularPrice": 8300,
+    "stores": {
+      "biggie": 8300,
+      "superseis": 8150,
+      "stock": 8050,
+      "fortis": 7550
+    }
+  },
+  {
+    "id": 1454,
+    "ean": "7841056000810",
+    "name": "Atun Sun Desmenuzado Aceite de 140 gr.",
+    "brand": "SUN",
+    "image": "",
+    "regularPrice": 7900,
+    "stores": {
+      "biggie": 7900,
+      "superseis": 7750,
+      "stock": 7650,
+      "fortis": 7200
+    }
+  },
+  {
+    "id": 1455,
+    "ean": "722008723315",
+    "name": "Atun Van Camps en Aceite Lata de 160 gr.",
+    "brand": "Van Camps",
+    "image": "",
+    "regularPrice": 18250,
+    "stores": {
+      "biggie": 18250,
+      "superseis": 17900,
+      "stock": 17700,
+      "fortis": 16600
+    }
+  },
+  {
+    "id": 1456,
+    "ean": "7840029230056",
+    "name": "Atun Norte Solido en Aceite de 170 gr.",
+    "brand": "Norte",
+    "image": "",
+    "regularPrice": 15000,
+    "stores": {
+      "biggie": 15000,
+      "superseis": 14700,
+      "stock": 14550,
+      "fortis": 13650
+    }
+  },
+  {
+    "id": 1457,
+    "ean": "7891079013335",
+    "name": "Fideo Nissin Lamen Costilla de 85 gr.",
+    "brand": "Nissin",
+    "image": "",
+    "regularPrice": 4900,
+    "stores": {
+      "biggie": 4900,
+      "superseis": 4800,
+      "stock": 4750,
+      "fortis": 4450
+    }
+  },
+  {
+    "id": 1458,
+    "ean": "7840029230070",
+    "name": "Fideo Anita tallarin verde de 400 gr.",
+    "brand": "ANITA",
+    "image": "",
+    "regularPrice": 5800,
+    "stores": {
+      "biggie": 5800,
+      "superseis": 5700,
+      "stock": 5650,
+      "fortis": 5300
+    }
+  },
+  {
+    "id": 1459,
+    "ean": "7840029101691",
+    "name": "Fideo Anita spaguetti largo de 400 gr.",
+    "brand": "ANITA",
+    "image": "",
+    "regularPrice": 5800,
+    "stores": {
+      "biggie": 5800,
+      "superseis": 5700,
+      "stock": 5650,
+      "fortis": 5300
+    }
+  },
+  {
+    "id": 1460,
+    "ean": "7840029101622",
+    "name": "Fideo Anita Caracol de 400 gr.",
+    "brand": "ANITA",
+    "image": "",
+    "regularPrice": 5800,
+    "stores": {
+      "biggie": 5800,
+      "superseis": 5700,
+      "stock": 5650,
+      "fortis": 5300
+    }
+  },
+  {
+    "id": 1461,
+    "ean": "7840029101653",
+    "name": "Fideo Anita Tirabuzon de 400 gr.",
+    "brand": "ANITA",
+    "image": "",
+    "regularPrice": 5800,
+    "stores": {
+      "biggie": 5800,
+      "superseis": 5700,
+      "stock": 5650,
+      "fortis": 5300
+    }
+  },
+  {
+    "id": 1462,
+    "ean": "7891079014172",
+    "name": "Fideo Instantaneo Nissin Yakissoba UFO Pollo de 81 gr.",
+    "brand": "Nissin",
+    "image": "",
+    "regularPrice": 16900,
+    "stores": {
+      "biggie": 16900,
+      "superseis": 16550,
+      "stock": 16400,
+      "fortis": 15400
+    }
+  },
+  {
+    "id": 1463,
+    "ean": "7840029101639",
+    "name": "Fideo Anita Cortadito de 400 gr.",
+    "brand": "ANITA",
+    "image": "",
+    "regularPrice": 5800,
+    "stores": {
+      "biggie": 5800,
+      "superseis": 5700,
+      "stock": 5650,
+      "fortis": 5300
+    }
+  },
+  {
+    "id": 1464,
+    "ean": "7802575004437",
+    "name": "Fideo Carozzi Spaghetti Grueso de 400 gr.",
+    "brand": "Carozzi",
+    "image": "",
+    "regularPrice": 10850,
+    "stores": {
+      "biggie": 10850,
+      "superseis": 10650,
+      "stock": 10500,
+      "fortis": 9850
+    }
+  },
+  {
+    "id": 1465,
+    "ean": "7840029101684",
+    "name": "Fideo Anita Mostacholi de 400 gr.",
+    "brand": "ANITA",
+    "image": "",
+    "regularPrice": 5800,
+    "stores": {
+      "biggie": 5800,
+      "superseis": 5700,
+      "stock": 5650,
+      "fortis": 5300
+    }
+  },
+  {
+    "id": 1466,
+    "ean": "7896183905712",
+    "name": "Fideo Zaeli Instantaneo Gallina de 80 gr.",
+    "brand": "Zaeli",
+    "image": "",
+    "regularPrice": 3100,
+    "stores": {
+      "biggie": 3100,
+      "superseis": 3050,
+      "stock": 3000,
+      "fortis": 2800
+    }
+  },
+  {
+    "id": 1467,
+    "ean": "7891079013861",
+    "name": "Fideo Nissin Ufo Verdura Salsa Oriental de 81 gr.",
+    "brand": "Nissin",
+    "image": "",
+    "regularPrice": 16900,
+    "stores": {
+      "biggie": 16900,
+      "superseis": 16550,
+      "stock": 16400,
+      "fortis": 15400
+    }
+  },
+  {
+    "id": 1468,
+    "ean": "7840029101806",
+    "name": "Fideo Anita Cinta Tallarin de 400 gr",
+    "brand": "ANITA",
+    "image": "",
+    "regularPrice": 5800,
+    "stores": {
+      "biggie": 5800,
+      "superseis": 5700,
+      "stock": 5650,
+      "fortis": 5300
+    }
+  },
+  {
+    "id": 1469,
+    "ean": "7840185785803",
+    "name": "Fideo Anita spaghettini de 400 gr.",
+    "brand": "ANITA",
+    "image": "",
+    "regularPrice": 5800,
+    "stores": {
+      "biggie": 5800,
+      "superseis": 5700,
+      "stock": 5650,
+      "fortis": 5300
+    }
+  },
+  {
+    "id": 1470,
+    "ean": "7840029101615",
+    "name": "Fideo Anita Caracolito de 400 gr.",
+    "brand": "ANITA",
+    "image": "",
+    "regularPrice": 5800,
+    "stores": {
+      "biggie": 5800,
+      "superseis": 5700,
+      "stock": 5650,
+      "fortis": 5300
+    }
+  },
+  {
+    "id": 1471,
+    "ean": "8004323110318",
+    "name": "Fideo Colavita Rigatoni de 500 gr.",
+    "brand": "COLAVITA",
+    "image": "",
+    "regularPrice": 18500,
+    "stores": {
+      "biggie": 18500,
+      "superseis": 18150,
+      "stock": 17950,
+      "fortis": 16850
+    }
+  },
+  {
+    "id": 1472,
+    "ean": "648436310685",
+    "name": "Fideo Instantaneo Paldo Volcano Carbonara de 130g",
+    "brand": "PALDO",
+    "image": "",
+    "regularPrice": 16200,
+    "stores": {
+      "biggie": 16200,
+      "superseis": 15900,
+      "stock": 15700,
+      "fortis": 14750
+    }
+  },
+  {
+    "id": 1473,
+    "ean": "648436101276",
+    "name": "Fideo Instantaneo Paldo Volcano Chicken Ramen de 140g",
+    "brand": "PALDO",
+    "image": "",
+    "regularPrice": 14100,
+    "stores": {
+      "biggie": 14100,
+      "superseis": 13800,
+      "stock": 13700,
+      "fortis": 12850
+    }
+  },
+  {
+    "id": 1474,
+    "ean": "648436100590",
+    "name": "Fideo Instantaneo Paldo Con Salsa de Poroto Negro de 200g",
+    "brand": "PALDO",
+    "image": "",
+    "regularPrice": 18200,
+    "stores": {
+      "biggie": 18200,
+      "superseis": 17850,
+      "stock": 17650,
+      "fortis": 16550
+    }
+  },
+  {
+    "id": 1475,
+    "ean": "7795711000052",
+    "name": "Fideo Villa Dagri Tallarin de 500 gr.",
+    "brand": "Villa Dagri",
+    "image": "",
+    "regularPrice": 12800,
+    "stores": {
+      "biggie": 12800,
+      "superseis": 12550,
+      "stock": 12400,
+      "fortis": 11650
+    }
+  },
+  {
+    "id": 1476,
+    "ean": "7840225010056",
+    "name": "Ñoquis Edward de 500 gr.",
+    "brand": "Edward",
+    "image": "",
+    "regularPrice": 8250,
+    "stores": {
+      "biggie": 8250,
+      "superseis": 8100,
+      "stock": 8000,
+      "fortis": 7500
+    }
+  },
+  {
+    "id": 1477,
+    "ean": "7891079012895",
+    "name": "Fideos Nissin Cup Noodles Pollo de 71 gr.",
+    "brand": "Nissin",
+    "image": "",
+    "regularPrice": 12900,
+    "stores": {
+      "biggie": 12900,
+      "superseis": 12650,
+      "stock": 12500,
+      "fortis": 11750
+    }
+  },
+  {
+    "id": 1478,
+    "ean": "7840821000031",
+    "name": "Harina Hildebrand Trigo 0000 de 1.000 gr.",
+    "brand": "HILDEBRAND",
+    "image": "",
+    "regularPrice": 6700,
+    "stores": {
+      "biggie": 6700,
+      "superseis": 6550,
+      "stock": 6500,
+      "fortis": 6100
+    }
+  },
+  {
+    "id": 1479,
+    "ean": "7841535000126",
+    "name": "Harina de Maiz Granopar Precocida de 1.000 gr.",
+    "brand": "GRANOPAR",
+    "image": "",
+    "regularPrice": 14300,
+    "stores": {
+      "biggie": 14300,
+      "superseis": 14000,
+      "stock": 13850,
+      "fortis": 13000
+    }
+  },
+  {
+    "id": 1480,
+    "ean": "7840821000055",
+    "name": "Harina Hildebrant leudante de 1.000 gr.",
+    "brand": "Hilagro",
+    "image": "",
+    "regularPrice": 8400,
+    "stores": {
+      "biggie": 8400,
+      "superseis": 8250,
+      "stock": 8150,
+      "fortis": 7650
+    }
+  },
+  {
+    "id": 1481,
+    "ean": "7840045023106",
+    "name": "Harina Primicia Leudante de 1.000 gr.",
+    "brand": "Primicia",
+    "image": "",
+    "regularPrice": 7350,
+    "stores": {
+      "biggie": 7350,
+      "superseis": 7200,
+      "stock": 7150,
+      "fortis": 6700
+    }
+  },
+  {
+    "id": 1482,
+    "ean": "7840024000166",
+    "name": "Harina Federal 0000 de 1000 gr",
+    "brand": "FEDERAL",
+    "image": "",
+    "regularPrice": 6800,
+    "stores": {
+      "biggie": 6800,
+      "superseis": 6650,
+      "stock": 6600,
+      "fortis": 6200
+    }
+  },
+  {
+    "id": 1483,
+    "ean": "7840024000319",
+    "name": "Harina para Pizza Federal de 1 kilo",
+    "brand": "FEDERAL",
+    "image": "",
+    "regularPrice": 6500,
+    "stores": {
+      "biggie": 6500,
+      "superseis": 6350,
+      "stock": 6300,
+      "fortis": 5900
+    }
+  },
+  {
+    "id": 1484,
+    "ean": "7841503001087",
+    "name": "Tortillas Harina Finitas Light Be Fit 10 Uni. de 370 gr.",
+    "brand": "MAZZEI",
+    "image": "",
+    "regularPrice": 12500,
+    "stores": {
+      "biggie": 12500,
+      "superseis": 12250,
+      "stock": 12100,
+      "fortis": 11400
+    }
+  },
+  {
+    "id": 1485,
+    "ean": "410100",
+    "name": "Pan Oveja Negra 100% Integral Harina de Trigo de 850 gr.",
+    "brand": "OVEJA NEGRA",
+    "image": "",
+    "regularPrice": 25000,
+    "stores": {
+      "biggie": 25000,
+      "superseis": 24500,
+      "stock": 24250,
+      "fortis": 22750
+    }
+  },
+  {
+    "id": 1486,
+    "ean": "7848003010045",
+    "name": "Palito Madre del Pan con Harina Integral de 250 gr.",
+    "brand": "Madre del Pan",
+    "image": "",
+    "regularPrice": 11750,
+    "stores": {
+      "biggie": 11750,
+      "superseis": 11500,
+      "stock": 11400,
+      "fortis": 10700
+    }
+  },
+  {
+    "id": 1487,
+    "ean": "7848000170100",
+    "name": "Palitos Nutritiva Store a Base de Harina de Sesamo y Coco Queso de 150 gr.",
+    "brand": "Nutritiva Store",
+    "image": "",
+    "regularPrice": 40600,
+    "stores": {
+      "biggie": 40600,
+      "superseis": 39800,
+      "stock": 39400,
+      "fortis": 36950
+    }
+  },
+  {
+    "id": 1488,
+    "ean": "7840045018959",
+    "name": "Almidon de Mandioca Primicia de 1.000 gr.",
+    "brand": "Primicia",
+    "image": "",
+    "regularPrice": 18200,
+    "stores": {
+      "biggie": 18200,
+      "superseis": 17850,
+      "stock": 17650,
+      "fortis": 16550
+    }
+  },
+  {
+    "id": 1489,
+    "ean": "7896183909529",
+    "name": "Masa Zaeli Para Tapioca de 500 gr.",
+    "brand": "Zaeli",
+    "image": "",
+    "regularPrice": 11500,
+    "stores": {
+      "biggie": 11500,
+      "superseis": 11250,
+      "stock": 11150,
+      "fortis": 10450
+    }
+  },
+  {
+    "id": 1490,
+    "ean": "7840045018782",
+    "name": "Azucar Primicia de 1.000 gr.",
+    "brand": "Primicia",
+    "image": "",
+    "regularPrice": 10750,
+    "stores": {
+      "biggie": 10750,
+      "superseis": 10550,
+      "stock": 10450,
+      "fortis": 9800
+    }
+  },
+  {
+    "id": 1491,
+    "ean": "7840045018799",
+    "name": "Azucar Primicia de 500 gr.",
+    "brand": "Primicia",
+    "image": "",
+    "regularPrice": 5850,
+    "stores": {
+      "biggie": 5850,
+      "superseis": 5750,
+      "stock": 5650,
+      "fortis": 5300
+    }
+  },
+  {
+    "id": 1492,
+    "ean": "7840045019383",
+    "name": "Azucar Primicia de 250 gr.",
+    "brand": "Primicia",
+    "image": "",
+    "regularPrice": 2950,
+    "stores": {
+      "biggie": 2950,
+      "superseis": 2900,
+      "stock": 2850,
+      "fortis": 2700
+    }
+  },
+  {
+    "id": 1493,
+    "ean": "7840121402009",
+    "name": "Azucar Blanca Azpa de 1.000 gr.",
+    "brand": "Azpa",
+    "image": "",
+    "regularPrice": 10850,
+    "stores": {
+      "biggie": 10850,
+      "superseis": 10650,
+      "stock": 10500,
+      "fortis": 9850
+    }
+  },
+  {
+    "id": 1494,
+    "ean": "7840121415009",
+    "name": "Azucar Azukita de 500 gr.",
+    "brand": "Azukita",
+    "image": "",
+    "regularPrice": 4900,
+    "stores": {
+      "biggie": 4900,
+      "superseis": 4800,
+      "stock": 4750,
+      "fortis": 4450
+    }
+  },
+  {
+    "id": 1495,
+    "ean": "7840854000084",
+    "name": "Azucar Organica Eco Agro Morena de 1.000 gr.",
+    "brand": "ECO AGRO",
+    "image": "",
+    "regularPrice": 14400,
+    "stores": {
+      "biggie": 14400,
+      "superseis": 14100,
+      "stock": 13950,
+      "fortis": 13100
+    }
+  },
+  {
+    "id": 1496,
+    "ean": "7840854000077",
+    "name": "Azucar Organica Eco Agro Morena de 2.000 gr.",
+    "brand": "ECO AGRO",
+    "image": "",
+    "regularPrice": 29000,
+    "stores": {
+      "biggie": 29000,
+      "superseis": 28400,
+      "stock": 28150,
+      "fortis": 26400
+    }
+  },
+  {
+    "id": 1497,
+    "ean": "7840045018829",
+    "name": "Azucar Primicia Impalpable de 500 gr.",
+    "brand": "Primicia",
+    "image": "",
+    "regularPrice": 9150,
+    "stores": {
+      "biggie": 9150,
+      "superseis": 8950,
+      "stock": 8900,
+      "fortis": 8350
+    }
+  },
+  {
+    "id": 1498,
+    "ean": "7841819000019",
+    "name": "Azucar Alcotec Blanca de 1.000 gr.",
+    "brand": "ALCOTEC",
+    "image": "",
+    "regularPrice": 10400,
+    "stores": {
+      "biggie": 10400,
+      "superseis": 10200,
+      "stock": 10100,
+      "fortis": 9450
+    }
+  },
+  {
+    "id": 1499,
+    "ean": "7841390000095",
+    "name": "Mermelada Zero Azucar Mora F&F Frasco de 400 gr.",
+    "brand": "FRUITS & FOODS",
+    "image": "",
+    "regularPrice": 19900,
+    "stores": {
+      "biggie": 19900,
+      "superseis": 19500,
+      "stock": 19300,
+      "fortis": 18100
+    }
+  },
+  {
+    "id": 1500,
+    "ean": "7841390000620",
+    "name": "Mermelada Zero Azucar Frutilla F&F Frasco de 400 gr.",
+    "brand": "FRUITS & FOODS",
+    "image": "",
+    "regularPrice": 19900,
+    "stores": {
+      "biggie": 19900,
+      "superseis": 19500,
+      "stock": 19300,
+      "fortis": 18100
+    }
+  },
+  {
+    "id": 1501,
+    "ean": "7841390000637",
+    "name": "Mermelada Zero Azucar Guayaba F&F Frasco de 400 gr.",
+    "brand": "FRUITS & FOODS",
+    "image": "",
+    "regularPrice": 18900,
+    "stores": {
+      "biggie": 18900,
+      "superseis": 18500,
+      "stock": 18350,
+      "fortis": 17200
+    }
+  },
+  {
+    "id": 1502,
+    "ean": "902014",
+    "name": "Postre sin Azucar Dulces Fit x Unidad.",
+    "brand": "Dulces fit",
+    "image": "",
+    "regularPrice": 15500,
+    "stores": {
+      "biggie": 15500,
+      "superseis": 15200,
+      "stock": 15050,
+      "fortis": 14100
+    }
+  },
+  {
+    "id": 1503,
+    "ean": "7840058010773",
+    "name": "Gaseosa Schweppes Pomelo Zero Azucar de 2.000 ml.",
+    "brand": "Schweppes",
+    "image": "",
+    "regularPrice": 14900,
+    "stores": {
+      "biggie": 14900,
+      "superseis": 14600,
+      "stock": 14450,
+      "fortis": 13550
+    }
+  },
+  {
+    "id": 1504,
+    "ean": "7840058010766",
+    "name": "Gaseosa Schweppes Pomelo Zero Azucar de 500 ml.",
+    "brand": "Schweppes",
+    "image": "",
+    "regularPrice": 6500,
+    "stores": {
+      "biggie": 6500,
+      "superseis": 6350,
+      "stock": 6300,
+      "fortis": 5900
+    }
+  },
+  {
+    "id": 1505,
+    "ean": "7841503002299",
+    "name": "Galletitas Mazzei Coco sin Azucar de 150 gr.",
+    "brand": "MAZZEI",
+    "image": "",
+    "regularPrice": 8000,
+    "stores": {
+      "biggie": 8000,
+      "superseis": 7850,
+      "stock": 7750,
+      "fortis": 7300
+    }
+  },
+  {
+    "id": 1506,
+    "ean": "7841503002282",
+    "name": "Galletitas Mazzei Limon sin Azucar de 150 gr.",
+    "brand": "MAZZEI",
+    "image": "",
+    "regularPrice": 8000,
+    "stores": {
+      "biggie": 8000,
+      "superseis": 7850,
+      "stock": 7750,
+      "fortis": 7300
+    }
+  },
+  {
+    "id": 1507,
+    "ean": "7891150081963",
+    "name": "Helado Kibon Chocolate Magnum Zero Azucar de 67 gr.",
+    "brand": "Kibon",
+    "image": "",
+    "regularPrice": 19500,
+    "stores": {
+      "biggie": 19500,
+      "superseis": 19100,
+      "stock": 18900,
+      "fortis": 17750
+    }
+  },
+  {
+    "id": 1508,
+    "ean": "0658325697957",
+    "name": "Chocolate Wisner Tableta 70% Sin Azucar de 80 gr.",
+    "brand": "Wisner",
+    "image": "",
+    "regularPrice": 47000,
+    "stores": {
+      "biggie": 47000,
+      "superseis": 46050,
+      "stock": 45600,
+      "fortis": 42750
+    }
+  },
+  {
+    "id": 1509,
+    "ean": "7841503001230",
+    "name": "Chocolate Be Fit con almendras sin azucar de 75 gr.",
+    "brand": "MAZZEI",
+    "image": "",
+    "regularPrice": 23900,
+    "stores": {
+      "biggie": 23900,
+      "superseis": 23400,
+      "stock": 23200,
+      "fortis": 21750
+    }
+  },
+  {
+    "id": 1510,
+    "ean": "7841503001216",
+    "name": "Chocolate Mazzei Be Fit con Leche Sin Azucar de 75 gr.",
+    "brand": "MAZZEI",
+    "image": "",
+    "regularPrice": 23900,
+    "stores": {
+      "biggie": 23900,
+      "superseis": 23400,
+      "stock": 23200,
+      "fortis": 21750
+    }
+  },
+  {
+    "id": 1511,
+    "ean": "7790045001010",
+    "name": "Cereal Granix azucarados copo de maiz de 300 gr.",
+    "brand": "Granix",
+    "image": "",
+    "regularPrice": 15950,
+    "stores": {
+      "biggie": 15950,
+      "superseis": 15650,
+      "stock": 15450,
+      "fortis": 14500
+    }
+  },
+  {
+    "id": 1512,
+    "ean": "7840058006608",
+    "name": "Gaseosa Sprite Sin Azucares de 500 ml.",
+    "brand": "Sprite",
+    "image": "",
+    "regularPrice": 6500,
+    "stores": {
+      "biggie": 6500,
+      "superseis": 6350,
+      "stock": 6300,
+      "fortis": 5900
+    }
+  },
+  {
+    "id": 1513,
+    "ean": "7840017212125",
+    "name": "Energizante Mr. Bee Sin Azucares de 500 ml.",
+    "brand": "Seltz",
+    "image": "",
+    "regularPrice": 7200,
+    "stores": {
+      "biggie": 7200,
+      "superseis": 7050,
+      "stock": 7000,
+      "fortis": 6550
+    }
+  },
+  {
+    "id": 1514,
+    "ean": "8410376037784",
+    "name": "Galletita Gullon Diet Nature sin Azucares de 250gr.",
+    "brand": "Gullón",
+    "image": "",
+    "regularPrice": 26900,
+    "stores": {
+      "biggie": 26900,
+      "superseis": 26350,
+      "stock": 26100,
+      "fortis": 24500
+    }
+  },
+  {
+    "id": 1515,
+    "ean": "8410376009415",
+    "name": "Galletita Gullon Diet Nature sin Azucares de 125 gr.",
+    "brand": "Gullón",
+    "image": "",
+    "regularPrice": 24500,
+    "stores": {
+      "biggie": 24500,
+      "superseis": 24000,
+      "stock": 23750,
+      "fortis": 22300
+    }
+  },
+  {
+    "id": 1516,
+    "ean": "7841503001759",
+    "name": "Chocolate Blanco Be Fit sin Azucares de 75 gr.",
+    "brand": "Be Fit",
+    "image": "",
+    "regularPrice": 23900,
+    "stores": {
+      "biggie": 23900,
+      "superseis": 23400,
+      "stock": 23200,
+      "fortis": 21750
+    }
+  },
+  {
+    "id": 1517,
+    "ean": "7841503001766",
+    "name": "Chocolate Negro Be Fit 72% sin Azucares de 75 gr.",
+    "brand": "Be Fit",
+    "image": "",
+    "regularPrice": 23900,
+    "stores": {
+      "biggie": 23900,
+      "superseis": 23400,
+      "stock": 23200,
+      "fortis": 21750
+    }
+  },
+  {
+    "id": 1518,
+    "ean": "50051109771",
+    "name": "Bálsamo Labial Smackers Fresa Oso de Azucar",
+    "brand": "Smackers",
+    "image": "",
+    "regularPrice": 53900,
+    "stores": {
+      "biggie": 53900,
+      "superseis": 52800,
+      "stock": 52300,
+      "fortis": 49050
+    }
+  },
+  {
+    "id": 1519,
+    "ean": "7840050008884",
+    "name": "Cerveza Skol Botella Abre Facil de 275 ml.",
+    "brand": "SKOL",
+    "image": "",
+    "regularPrice": 6000,
+    "stores": {
+      "biggie": 6000,
+      "superseis": 5900,
+      "stock": 5800,
+      "fortis": 5450
+    }
+  },
+  {
+    "id": 1520,
+    "ean": "7840050009508",
+    "name": "Cerveza Michelob Ultra de 269 ml por unidad",
+    "brand": "Michelob",
+    "image": "",
+    "regularPrice": 4000,
+    "stores": {
+      "biggie": 4000,
+      "superseis": 3900,
+      "stock": 3900,
+      "fortis": 3650
+    }
+  },
+  {
+    "id": 1521,
+    "ean": "7840050009515",
+    "name": "Cerveza Michelob Ultra Lata de 350 ml.",
+    "brand": "Michelob",
+    "image": "",
+    "regularPrice": 5500,
+    "stores": {
+      "biggie": 5500,
+      "superseis": 5400,
+      "stock": 5350,
+      "fortis": 5000
+    }
+  },
+  {
+    "id": 1522,
+    "ean": "7802100005373",
+    "name": "Cerveza Heineken Lata de 269 ml.",
+    "brand": "Heineken",
+    "image": "",
+    "regularPrice": 6000,
+    "stores": {
+      "biggie": 6000,
+      "superseis": 5900,
+      "stock": 5800,
+      "fortis": 5450
+    }
+  },
+  {
+    "id": 1523,
+    "ean": "7802100005526",
+    "name": "Cerveza Amstel Export Lata de 269 ml.",
+    "brand": "AMSTEL",
+    "image": "",
+    "regularPrice": 4500,
+    "stores": {
+      "biggie": 4500,
+      "superseis": 4400,
+      "stock": 4350,
+      "fortis": 4100
+    }
+  },
+  {
+    "id": 1524,
+    "ean": "7898032910168",
+    "name": "Cerveza Miller Genuine Draft Botella de 600 ml.",
+    "brand": "Miller",
+    "image": "",
+    "regularPrice": 11500,
+    "stores": {
+      "biggie": 11500,
+      "superseis": 11250,
+      "stock": 11150,
+      "fortis": 10450
+    }
+  },
+  {
+    "id": 1525,
+    "ean": "7891149103102",
+    "name": "Cerveza Skol Lata de 269 ml.",
+    "brand": "SKOL",
+    "image": "",
+    "regularPrice": 4000,
+    "stores": {
+      "biggie": 4000,
+      "superseis": 3900,
+      "stock": 3900,
+      "fortis": 3650
+    }
+  },
+  {
+    "id": 1526,
+    "ean": "7840050009157",
+    "name": "Cerveza Skol Lata de 269 ml Edicion Pack Promo x 15 Uni.",
+    "brand": "SKOL",
+    "image": "",
+    "regularPrice": 60000,
+    "stores": {
+      "biggie": 60000,
+      "superseis": 58800,
+      "stock": 58200,
+      "fortis": 54600
+    }
+  },
+  {
+    "id": 1527,
+    "ean": "7802100005946",
+    "name": "Cerveza Heineken Silver Botellita de 250 ml.",
+    "brand": "Heineken",
+    "image": "",
+    "regularPrice": 7500,
+    "stores": {
+      "biggie": 7500,
+      "superseis": 7350,
+      "stock": 7300,
+      "fortis": 6800
+    }
+  },
+  {
+    "id": 1528,
+    "ean": "7802100005472",
+    "name": "Cerveza Amstel Ow Export de 650 ml.",
+    "brand": "AMSTEL",
+    "image": "",
+    "regularPrice": 11500,
+    "stores": {
+      "biggie": 11500,
+      "superseis": 11250,
+      "stock": 11150,
+      "fortis": 10450
+    }
+  },
+  {
+    "id": 1529,
+    "ean": "7898032910083",
+    "name": "Cerveza Miller Genuine Draft Lata de 350 ml.",
+    "brand": "Miller",
+    "image": "",
+    "regularPrice": 5500,
+    "stores": {
+      "biggie": 5500,
+      "superseis": 5400,
+      "stock": 5350,
+      "fortis": 5000
+    }
+  },
+  {
+    "id": 1530,
+    "ean": "7840025000127",
+    "name": "Cerveza Munich Gluten Free Botella de 275 ml.",
+    "brand": "MUNICH ULTRA",
+    "image": "",
+    "regularPrice": 5000,
+    "stores": {
+      "biggie": 5000,
+      "superseis": 4900,
+      "stock": 4850,
+      "fortis": 4550
+    }
+  },
+  {
+    "id": 1531,
+    "ean": "7840025000028",
+    "name": "Cerveza Munich Ultra Botella de 275 ml.",
+    "brand": "MUNICH ULTRA",
+    "image": "",
+    "regularPrice": 5000,
+    "stores": {
+      "biggie": 5000,
+      "superseis": 4900,
+      "stock": 4850,
+      "fortis": 4550
+    }
+  },
+  {
+    "id": 1532,
+    "ean": "7840050006644",
+    "name": "Cerveza Skol Retornable de 940 ml.",
+    "brand": "SKOL",
+    "image": "",
+    "regularPrice": 10000,
+    "stores": {
+      "biggie": 10000,
+      "superseis": 9800,
+      "stock": 9700,
+      "fortis": 9100
+    }
+  },
+  {
+    "id": 1533,
+    "ean": "7840050002561",
+    "name": "Cerveza Brahma SubZero Lata de 269 ml.",
+    "brand": "Brahma",
+    "image": "",
+    "regularPrice": 3000,
+    "stores": {
+      "biggie": 3000,
+      "superseis": 2950,
+      "stock": 2900,
+      "fortis": 2750
+    }
+  },
+  {
+    "id": 1534,
+    "ean": "7840025110864",
+    "name": "Cerveza Munich Retornable de 1.000 ml.",
+    "brand": "MUNICH",
+    "image": "",
+    "regularPrice": 8000,
+    "stores": {
+      "biggie": 8000,
+      "superseis": 7850,
+      "stock": 7750,
+      "fortis": 7300
+    }
+  },
+  {
+    "id": 1535,
+    "ean": "7840050003704",
+    "name": "Cerveza Budweiser 66 lata de 269 ml.",
+    "brand": "Budweiser",
+    "image": "",
+    "regularPrice": 5000,
+    "stores": {
+      "biggie": 5000,
+      "superseis": 4900,
+      "stock": 4850,
+      "fortis": 4550
+    }
+  },
+  {
+    "id": 1536,
+    "ean": "7898032910144",
+    "name": "Cerveza Miller Genuine Draft Botella de 355 ml.",
+    "brand": "Miller",
+    "image": "",
+    "regularPrice": 7500,
+    "stores": {
+      "biggie": 7500,
+      "superseis": 7350,
+      "stock": 7300,
+      "fortis": 6800
+    }
+  },
+  {
+    "id": 1537,
+    "ean": "7840050008549",
+    "name": "Cerveza Budweiser 66 Botella de 275 ml.",
+    "brand": "Budweiser",
+    "image": "",
+    "regularPrice": 7000,
+    "stores": {
+      "biggie": 7000,
+      "superseis": 6850,
+      "stock": 6800,
+      "fortis": 6350
+    }
+  },
+  {
+    "id": 1538,
+    "ean": "7898032910281",
+    "name": "Cerveza Miller High Life Botella de 600 ml.",
+    "brand": "Miller",
+    "image": "",
+    "regularPrice": 13000,
+    "stores": {
+      "biggie": 13000,
+      "superseis": 12750,
+      "stock": 12600,
+      "fortis": 11850
+    }
+  },
+  {
+    "id": 1539,
+    "ean": "7840050009607",
+    "name": "Cerveza Brahma Ultra Cero Retornable de 940 ml.",
+    "brand": "Brahma",
+    "image": "",
+    "regularPrice": 7000,
+    "stores": {
+      "biggie": 7000,
+      "superseis": 6850,
+      "stock": 6800,
+      "fortis": 6350
+    }
+  },
+  {
+    "id": 1540,
+    "ean": "7840050009270",
+    "name": "Cerveza Brahma Edicion Limitada Pablito Lezcano Retornable de 940 ml.",
+    "brand": "Brahma",
+    "image": "",
+    "regularPrice": 7500,
+    "stores": {
+      "biggie": 7500,
+      "superseis": 7350,
+      "stock": 7300,
+      "fortis": 6800
+    }
+  },
+  {
+    "id": 1541,
+    "ean": "7840050009256",
+    "name": "Cerveza Brahma Edicion Limitada Pablito Lezcano de 269 ml.",
+    "brand": "Brahma",
+    "image": "",
+    "regularPrice": 3000,
+    "stores": {
+      "biggie": 3000,
+      "superseis": 2950,
+      "stock": 2900,
+      "fortis": 2750
+    }
+  },
+  {
+    "id": 1542,
+    "ean": "7840050009362",
+    "name": "Cerveza Pilsen Edicion Limitada Albirroja Retornable de 940 ml.",
+    "brand": "Pilsen",
+    "image": "",
+    "regularPrice": 7500,
+    "stores": {
+      "biggie": 7500,
+      "superseis": 7350,
+      "stock": 7300,
+      "fortis": 6800
+    }
+  },
+  {
+    "id": 1543,
+    "ean": "7840050002806",
+    "name": "Cerveza Pilsen botella retornable de 710 ml.",
+    "brand": "Pilsen",
+    "image": "",
+    "regularPrice": 6500,
+    "stores": {
+      "biggie": 6500,
+      "superseis": 6350,
+      "stock": 6300,
+      "fortis": 5900
+    }
+  },
+  {
+    "id": 1544,
+    "ean": "7840050002783",
+    "name": "Cerveza Pilsen Botella Retornable de 340 ml.",
+    "brand": "Pilsen",
+    "image": "",
+    "regularPrice": 3000,
+    "stores": {
+      "biggie": 3000,
+      "superseis": 2950,
+      "stock": 2900,
+      "fortis": 2750
+    }
+  },
+  {
+    "id": 1545,
+    "ean": "7840050009379",
+    "name": "Cerveza Pilsen Edicion Limitada Albirroja Retornable de 340 ml.",
+    "brand": "Pilsen",
+    "image": "",
+    "regularPrice": 3000,
+    "stores": {
+      "biggie": 3000,
+      "superseis": 2950,
+      "stock": 2900,
+      "fortis": 2750
+    }
+  },
+  {
+    "id": 1546,
+    "ean": "7840050010023",
+    "name": "Cerveza Pilsen Edicion Limitada Albirroja Retornable de 710 ml.",
+    "brand": "Pilsen",
+    "image": "",
+    "regularPrice": 6500,
+    "stores": {
+      "biggie": 6500,
+      "superseis": 6350,
+      "stock": 6300,
+      "fortis": 5900
+    }
+  },
+  {
+    "id": 1547,
+    "ean": "7891150064928",
+    "name": "Jabon Liquido Omo Lavado Perfecto de 900 ml.",
+    "brand": "OMO",
+    "image": "",
+    "regularPrice": 23300,
+    "stores": {
+      "biggie": 23300,
+      "superseis": 22850,
+      "stock": 22600,
+      "fortis": 21200
+    }
+  },
+  {
+    "id": 1548,
+    "ean": "7791290792791",
+    "name": "Jabon Liquido Skip Diluido Perfect Results de 3.000 ml.",
+    "brand": "Skip",
+    "image": "",
+    "regularPrice": 89450,
+    "stores": {
+      "biggie": 89450,
+      "superseis": 87650,
+      "stock": 86750,
+      "fortis": 81400
+    }
+  },
+  {
+    "id": 1549,
+    "ean": "7779970670119",
+    "name": "Jabon en Polvo Omo poder acelerador alta espuma de 200 gr.",
+    "brand": "OMO",
+    "image": "",
+    "regularPrice": 7400,
+    "stores": {
+      "biggie": 7400,
+      "superseis": 7250,
+      "stock": 7200,
+      "fortis": 6750
+    }
+  },
+  {
+    "id": 1550,
+    "ean": "7891150064522",
+    "name": "Jabon en Polvo Omo Lavado Perfecto de 400 gr.",
+    "brand": "OMO",
+    "image": "",
+    "regularPrice": 13050,
+    "stores": {
+      "biggie": 13050,
+      "superseis": 12800,
+      "stock": 12650,
+      "fortis": 11900
+    }
+  },
+  {
+    "id": 1551,
+    "ean": "7791290792807",
+    "name": "Jabon Liquido Skip botella de 3.000 ml.",
+    "brand": "Skip",
+    "image": "",
+    "regularPrice": 95450,
+    "stores": {
+      "biggie": 95450,
+      "superseis": 93550,
+      "stock": 92600,
+      "fortis": 86850
+    }
+  },
+  {
+    "id": 1552,
+    "ean": "7791290795129",
+    "name": "Jabon Liquido Granby Plus Para Ropa de 3.000 ml.",
+    "brand": "Granby",
+    "image": "",
+    "regularPrice": 41650,
+    "stores": {
+      "biggie": 41650,
+      "superseis": 40800,
+      "stock": 40400,
+      "fortis": 37900
+    }
+  },
+  {
+    "id": 1553,
+    "ean": "7891150064331",
+    "name": "Jabon en Polvo Omo Lavagem de 1.600 gr.",
+    "brand": "OMO",
+    "image": "",
+    "regularPrice": 46050,
+    "stores": {
+      "biggie": 46050,
+      "superseis": 45150,
+      "stock": 44650,
+      "fortis": 41900
+    }
+  },
+  {
+    "id": 1554,
+    "ean": "7891150080188",
+    "name": "Jabon en Polvo Omo Lavanda de 800 gr.",
+    "brand": "OMO",
+    "image": "",
+    "regularPrice": 24300,
+    "stores": {
+      "biggie": 24300,
+      "superseis": 23800,
+      "stock": 23550,
+      "fortis": 22100
+    }
+  },
+  {
+    "id": 1555,
+    "ean": "7791290793316",
+    "name": "Jabon en Polvo Omo con Bicarbonato Lavado a Mano de 800 gr.",
+    "brand": "OMO",
+    "image": "",
+    "regularPrice": 21350,
+    "stores": {
+      "biggie": 21350,
+      "superseis": 20900,
+      "stock": 20700,
+      "fortis": 19450
+    }
+  },
+  {
+    "id": 1556,
+    "ean": "7891150078413",
+    "name": "Jabon Liquido Omo para Ropa Lavanda de 900 ml.",
+    "brand": "OMO",
+    "image": "",
+    "regularPrice": 23000,
+    "stores": {
+      "biggie": 23000,
+      "superseis": 22550,
+      "stock": 22300,
+      "fortis": 20950
+    }
+  },
+  {
+    "id": 1557,
+    "ean": "7840118217302",
+    "name": "Jabon en Polvo Cavallaro Insuperable de 1.000 gr.",
+    "brand": "Cavallaro",
+    "image": "",
+    "regularPrice": 15300,
+    "stores": {
+      "biggie": 15300,
+      "superseis": 15000,
+      "stock": 14850,
+      "fortis": 13900
+    }
+  },
+  {
+    "id": 1558,
+    "ean": "7791290795013",
+    "name": "Jabon en Polvo Granby Plus Matic Blanqueador de 800 gr.",
+    "brand": "Granby",
+    "image": "",
+    "regularPrice": 13050,
+    "stores": {
+      "biggie": 13050,
+      "superseis": 12800,
+      "stock": 12650,
+      "fortis": 11900
+    }
+  },
+  {
+    "id": 1559,
+    "ean": "7840118219429",
+    "name": "Jabon en Polvo Cavallaro Insuperable Citrus de 1.000 gr.",
+    "brand": "Cavallaro",
+    "image": "",
+    "regularPrice": 15300,
+    "stores": {
+      "biggie": 15300,
+      "superseis": 15000,
+      "stock": 14850,
+      "fortis": 13900
+    }
+  },
+  {
+    "id": 1560,
+    "ean": "7891150086456",
+    "name": "Jabon en Polvo Brilhante Higiene Total de 800 gr.",
+    "brand": "BRILHANTE",
+    "image": "",
+    "regularPrice": 20250,
+    "stores": {
+      "biggie": 20250,
+      "superseis": 19850,
+      "stock": 19650,
+      "fortis": 18450
+    }
+  },
+  {
+    "id": 1561,
+    "ean": "7891150086562",
+    "name": "Jabon en Polvo Brilhante de 2.400 gr.",
+    "brand": "BRILHANTE",
+    "image": "",
+    "regularPrice": 49700,
+    "stores": {
+      "biggie": 49700,
+      "superseis": 48700,
+      "stock": 48200,
+      "fortis": 45250
+    }
+  },
+  {
+    "id": 1562,
+    "ean": "7891150086432",
+    "name": "Jabon en Polvo Brillante Multi Tejidos de 800 gr.",
+    "brand": "BRILHANTE",
+    "image": "",
+    "regularPrice": 20250,
+    "stores": {
+      "biggie": 20250,
+      "superseis": 19850,
+      "stock": 19650,
+      "fortis": 18450
+    }
+  },
+  {
+    "id": 1563,
+    "ean": "7840010203557",
+    "name": "Jabon Liquido Asi Para Ropas Fiber Max de 900 ml.",
+    "brand": "Así",
+    "image": "",
+    "regularPrice": 23000,
+    "stores": {
+      "biggie": 23000,
+      "superseis": 22550,
+      "stock": 22300,
+      "fortis": 20950
+    }
+  },
+  {
+    "id": 1564,
+    "ean": "7840003022868",
+    "name": "Jabon en Polvo Kinder liberacion de perfume de 1000 gr.",
+    "brand": "Kinder",
+    "image": "",
+    "regularPrice": 15300,
+    "stores": {
+      "biggie": 15300,
+      "superseis": 15000,
+      "stock": 14850,
+      "fortis": 13900
+    }
+  },
+  {
+    "id": 1565,
+    "ean": "7891150086470",
+    "name": "Jabon en Polvo Brilhante Limpieza Total de 400 gr.",
+    "brand": "BRILHANTE",
+    "image": "",
+    "regularPrice": 9300,
+    "stores": {
+      "biggie": 9300,
+      "superseis": 9100,
+      "stock": 9000,
+      "fortis": 8450
+    }
+  },
+  {
+    "id": 1566,
+    "ean": "7840118215247",
+    "name": "Jabon en Polvo Guaira Deluxe de 2.000 gr.",
+    "brand": "Cavallaro",
+    "image": "",
+    "regularPrice": 48500,
+    "stores": {
+      "biggie": 48500,
+      "superseis": 47550,
+      "stock": 47050,
+      "fortis": 44150
+    }
+  },
+  {
+    "id": 1567,
+    "ean": "7840118215568",
+    "name": "Jabon en Polvo Guaira de 800 gr.",
+    "brand": "Cavallaro",
+    "image": "",
+    "regularPrice": 18000,
+    "stores": {
+      "biggie": 18000,
+      "superseis": 17650,
+      "stock": 17450,
+      "fortis": 16400
+    }
+  },
+  {
+    "id": 1568,
+    "ean": "7840003024114",
+    "name": "Jabon Liquido Kinder Perfumado de 3.000 ml.",
+    "brand": "KINDER",
+    "image": "",
+    "regularPrice": 42200,
+    "stores": {
+      "biggie": 42200,
+      "superseis": 41350,
+      "stock": 40950,
+      "fortis": 38400
+    }
+  },
+  {
+    "id": 1569,
+    "ean": "7891150086449",
+    "name": "Jabon en Polvo Brihlante de 1.600 gr.",
+    "brand": "BRILHANTE",
+    "image": "",
+    "regularPrice": 38950,
+    "stores": {
+      "biggie": 38950,
+      "superseis": 38150,
+      "stock": 37800,
+      "fortis": 35450
+    }
+  },
+  {
+    "id": 1570,
+    "ean": "7840118219443",
+    "name": "Jabon en Polvo Cavallaro Insuperable Citrus de 3.000 gr.",
+    "brand": "Cavallaro",
+    "image": "",
+    "regularPrice": 43000,
+    "stores": {
+      "biggie": 43000,
+      "superseis": 42150,
+      "stock": 41700,
+      "fortis": 39150
+    }
+  },
+  {
+    "id": 1571,
+    "ean": "7840033007033",
+    "name": "Jabon Liquido Pacholi Bebe Unisex de 1.000 ml.",
+    "brand": "Incabril",
+    "image": "",
+    "regularPrice": 32000,
+    "stores": {
+      "biggie": 32000,
+      "superseis": 31350,
+      "stock": 31050,
+      "fortis": 29100
+    }
+  },
+  {
+    "id": 1572,
+    "ean": "7840033009884",
+    "name": "Jabon Liquido Pacholi Evolution de 1.000 ml.",
+    "brand": "Pacholi",
+    "image": "",
+    "regularPrice": 15500,
+    "stores": {
+      "biggie": 15500,
+      "superseis": 15200,
+      "stock": 15050,
+      "fortis": 14100
+    }
+  },
+  {
+    "id": 1573,
+    "ean": "7840033003592",
+    "name": "Jabon Liquido Pacholi triple accion de 1.000 ml.",
+    "brand": "Incabril",
+    "image": "",
+    "regularPrice": 28300,
+    "stores": {
+      "biggie": 28300,
+      "superseis": 27750,
+      "stock": 27450,
+      "fortis": 25750
+    }
+  },
+  {
+    "id": 1574,
+    "ean": "7891150026025",
+    "name": "Jabon en Barra Dove BaBy hidratante de 75 gr.",
+    "brand": "Dove",
+    "image": "",
+    "regularPrice": 11850,
+    "stores": {
+      "biggie": 11850,
+      "superseis": 11600,
+      "stock": 11500,
+      "fortis": 10800
+    }
+  },
+  {
+    "id": 1575,
+    "ean": "7501199413433",
+    "name": "Jabon Liquido Persil Regular de 830 ml.",
+    "brand": "PERSIL",
+    "image": "",
+    "regularPrice": 28400,
+    "stores": {
+      "biggie": 28400,
+      "superseis": 27850,
+      "stock": 27550,
+      "fortis": 25850
+    }
+  },
+  {
+    "id": 1576,
+    "ean": "7501199409801",
+    "name": "Jabon en Polvo Persil Color de 900 gr.",
+    "brand": "PERSIL",
+    "image": "",
+    "regularPrice": 29700,
+    "stores": {
+      "biggie": 29700,
+      "superseis": 29100,
+      "stock": 28800,
+      "fortis": 27050
+    }
+  },
+  {
+    "id": 1577,
+    "ean": "7501199406671",
+    "name": "Jabon en Polvo Persil Regular de 900 gr.",
+    "brand": "PERSIL",
+    "image": "",
+    "regularPrice": 29700,
+    "stores": {
+      "biggie": 29700,
+      "superseis": 29100,
+      "stock": 28800,
+      "fortis": 27050
+    }
+  },
+  {
+    "id": 1578,
+    "ean": "7501199413426",
+    "name": "Jabon Liquido Persil Color de 830 ml.",
+    "brand": "PERSIL",
+    "image": "",
+    "regularPrice": 28400,
+    "stores": {
+      "biggie": 28400,
+      "superseis": 27850,
+      "stock": 27550,
+      "fortis": 25850
+    }
+  },
+  {
+    "id": 1579,
+    "ean": "7896115704321",
+    "name": "Jabon Liquido Suave Trá Lá Lá Lá Baby Blanco y Púrpura 250 ml",
+    "brand": "TRA LA LA",
+    "image": "",
+    "regularPrice": 28800,
+    "stores": {
+      "biggie": 28800,
+      "superseis": 28200,
+      "stock": 27950,
+      "fortis": 26200
+    }
+  },
+  {
+    "id": 1580,
+    "ean": "7804945011120",
+    "name": "Jabón de Glicerina Humectante Simonds Baby Care De 1000ml",
+    "brand": "Simonds",
+    "image": "",
+    "regularPrice": 87560,
+    "stores": {
+      "biggie": 87560,
+      "superseis": 85800,
+      "stock": 84950,
+      "fortis": 79700
+    }
+  },
+  {
+    "id": 1581,
+    "ean": "7804945011113",
+    "name": "Jabón de Afrecho Cremoso Simonds Baby Care De 1000ml",
+    "brand": "Simonds",
+    "image": "",
+    "regularPrice": 87560,
+    "stores": {
+      "biggie": 87560,
+      "superseis": 85800,
+      "stock": 84950,
+      "fortis": 79700
+    }
+  },
+  {
+    "id": 1582,
+    "ean": "8683420312070",
+    "name": "Arenas Sanitarias Catron Jabon Marsella x Uni.",
+    "brand": "Catron",
+    "image": "",
+    "regularPrice": 54900,
+    "stores": {
+      "biggie": 54900,
+      "superseis": 53800,
+      "stock": 53250,
+      "fortis": 49950
+    }
+  },
+  {
+    "id": 1583,
+    "ean": "8400000218924",
+    "name": "Jabonera",
+    "brand": "Sin Marca",
+    "image": "",
+    "regularPrice": 16000,
+    "stores": {
+      "biggie": 16000,
+      "superseis": 15700,
+      "stock": 15500,
+      "fortis": 14550
+    }
+  },
+  {
+    "id": 1584,
+    "ean": "7891150046481",
+    "name": "Jabon Original Dove de 90 gr x 3 Uni.",
+    "brand": "Dove",
+    "image": "",
+    "regularPrice": 25900,
+    "stores": {
+      "biggie": 25900,
+      "superseis": 25400,
+      "stock": 25100,
+      "fortis": 23550
+    }
+  },
+  {
+    "id": 1585,
+    "ean": "7891150104303",
+    "name": "Jabon Liquido Omo Accion Total de 1.4L.",
+    "brand": "OMO",
+    "image": "",
+    "regularPrice": 49500,
+    "stores": {
+      "biggie": 49500,
+      "superseis": 48500,
+      "stock": 48000,
+      "fortis": 45050
+    }
+  },
+  {
+    "id": 1586,
+    "ean": "7891150104310",
+    "name": "Jabon Liquido Omo Accion Antiodor de 1.4L.",
+    "brand": "OMO",
+    "image": "",
+    "regularPrice": 49500,
+    "stores": {
+      "biggie": 49500,
+      "superseis": 48500,
+      "stock": 48000,
+      "fortis": 45050
+    }
+  },
+  {
+    "id": 1587,
+    "ean": "7891150104297",
+    "name": "Jabon Liquido Omo Accion Cuidado de 1.4L.",
+    "brand": "OMO",
+    "image": "",
+    "regularPrice": 49500,
+    "stores": {
+      "biggie": 49500,
+      "superseis": 48500,
+      "stock": 48000,
+      "fortis": 45050
+    }
+  },
+  {
+    "id": 1588,
+    "ean": "7804945012486",
+    "name": "Shampoo Brillitos de Argán Kids Simonds De 400ml",
+    "brand": "Simonds",
+    "image": "",
+    "regularPrice": 61050,
+    "stores": {
+      "biggie": 61050,
+      "superseis": 59850,
+      "stock": 59200,
+      "fortis": 55550
+    }
+  },
+  {
+    "id": 1589,
+    "ean": "7804945001862",
+    "name": "Baby Shampoo Manzanilla Simonds De 400ml",
+    "brand": "Simonds",
+    "image": "",
+    "regularPrice": 61050,
+    "stores": {
+      "biggie": 61050,
+      "superseis": 59850,
+      "stock": 59200,
+      "fortis": 55550
+    }
+  },
+  {
+    "id": 1590,
+    "ean": "7798420160109",
+    "name": "Tio Nachito Shampoo 2 En 1 De 400 ML",
+    "brand": "TIO NACHO",
+    "image": "",
+    "regularPrice": 67800,
+    "stores": {
+      "biggie": 67800,
+      "superseis": 66450,
+      "stock": 65750,
+      "fortis": 61700
+    }
+  },
+  {
+    "id": 1591,
+    "ean": "7791293046983",
+    "name": "Shampoo Dove Reconstruccion Completa Superior de 200 ml.",
+    "brand": "Dove",
+    "image": "",
+    "regularPrice": 25500,
+    "stores": {
+      "biggie": 25500,
+      "superseis": 25000,
+      "stock": 24750,
+      "fortis": 23200
+    }
+  },
+  {
+    "id": 1592,
+    "ean": "7840004582736",
+    "name": "Shampoo Sedal Ceramidas de 350 ml + Acondicionador de 190 ml.",
+    "brand": "Sedal",
+    "image": "",
+    "regularPrice": 24500,
+    "stores": {
+      "biggie": 24500,
+      "superseis": 24000,
+      "stock": 23750,
+      "fortis": 22300
+    }
+  },
+  {
+    "id": 1593,
+    "ean": "7840004584907",
+    "name": "Shampoo Sedal Acido Hialuronico de 340 ml + Acondicionador de 190 ml.",
+    "brand": "Sedal",
+    "image": "",
+    "regularPrice": 24500,
+    "stores": {
+      "biggie": 24500,
+      "superseis": 24000,
+      "stock": 23750,
+      "fortis": 22300
+    }
+  },
+  {
+    "id": 1594,
+    "ean": "7500435019484",
+    "name": "Shampoo Head & Shoulders Men Control de Caspa 3 en 1 de 180 ml.",
+    "brand": "H&S",
+    "image": "",
+    "regularPrice": 26500,
+    "stores": {
+      "biggie": 26500,
+      "superseis": 25950,
+      "stock": 25700,
+      "fortis": 24100
+    }
+  },
+  {
+    "id": 1595,
+    "ean": "7500435231244",
+    "name": "Shampoo Heads & Shoulders Control Caspa Anti-Comezon de 180 ml.",
+    "brand": "Heads & Shoulders",
+    "image": "",
+    "regularPrice": 26500,
+    "stores": {
+      "biggie": 26500,
+      "superseis": 25950,
+      "stock": 25700,
+      "fortis": 24100
+    }
+  },
+  {
+    "id": 1596,
+    "ean": "7501056342999",
+    "name": "Shampoo Clear Anticaspa Dual Efect 2 en 1 de 400 ml.",
+    "brand": "CLEAR",
+    "image": "",
+    "regularPrice": 58600,
+    "stores": {
+      "biggie": 58600,
+      "superseis": 57450,
+      "stock": 56850,
+      "fortis": 53350
+    }
+  },
+  {
+    "id": 1597,
+    "ean": "7509552874952",
+    "name": "Shampoo Elvive Pure Hidra Hialuronico de 370 ml.",
+    "brand": "ELVIVE",
+    "image": "",
+    "regularPrice": 51900,
+    "stores": {
+      "biggie": 51900,
+      "superseis": 50850,
+      "stock": 50350,
+      "fortis": 47250
+    }
+  },
+  {
+    "id": 1598,
+    "ean": "7509552845884",
+    "name": "Shampoo Elvive Hidra Hialuronico de 370 ml.",
+    "brand": "ELVIVE",
+    "image": "",
+    "regularPrice": 51900,
+    "stores": {
+      "biggie": 51900,
+      "superseis": 50850,
+      "stock": 50350,
+      "fortis": 47250
+    }
+  },
+  {
+    "id": 1599,
+    "ean": "7509552931143",
+    "name": "Shampoo Elvive Glycolic Gloss 370ml",
+    "brand": "ELVIVE",
+    "image": "",
+    "regularPrice": 63400,
+    "stores": {
+      "biggie": 63400,
+      "superseis": 62150,
+      "stock": 61500,
+      "fortis": 57700
+    }
+  },
+  {
+    "id": 1600,
+    "ean": "7509552847499",
+    "name": "Shampoo Elvive Loreal Color Vive de 370 ml.",
+    "brand": "ELVIVE",
+    "image": "",
+    "regularPrice": 51900,
+    "stores": {
+      "biggie": 51900,
+      "superseis": 50850,
+      "stock": 50350,
+      "fortis": 47250
+    }
+  },
+  {
+    "id": 1601,
+    "ean": "7509552889543",
+    "name": "Shampoo Elvive Loreal Caida Resist de 370 ml.",
+    "brand": "ELVIVE",
+    "image": "",
+    "regularPrice": 51900,
+    "stores": {
+      "biggie": 51900,
+      "superseis": 50850,
+      "stock": 50350,
+      "fortis": 47250
+    }
+  },
+  {
+    "id": 1602,
+    "ean": "7509552847987",
+    "name": "Shampoo Elvive Loreal Reparacion Total Cinco de 370 ml.",
+    "brand": "ELVIVE",
+    "image": "",
+    "regularPrice": 51900,
+    "stores": {
+      "biggie": 51900,
+      "superseis": 50850,
+      "stock": 50350,
+      "fortis": 47250
+    }
+  },
+  {
+    "id": 1603,
+    "ean": "7840194000188",
+    "name": "Shampoo Zerosebum Limpieza Profunda Dermahai",
+    "brand": "DERMAHAI",
+    "image": "",
+    "regularPrice": 55375,
+    "stores": {
+      "biggie": 55375,
+      "superseis": 54250,
+      "stock": 53700,
+      "fortis": 50400
+    }
+  },
+  {
+    "id": 1604,
+    "ean": "7500435019521",
+    "name": "Shampoo control caspa men head & shoulders De 180 mL",
+    "brand": "Heads & Shoulders",
+    "image": "",
+    "regularPrice": 26500,
+    "stores": {
+      "biggie": 26500,
+      "superseis": 25950,
+      "stock": 25700,
+      "fortis": 24100
+    }
+  },
+  {
+    "id": 1605,
+    "ean": "7841235001010",
+    "name": "Shampoo Klasse Salt Free 500 ml",
+    "brand": "KLASSE",
+    "image": "",
+    "regularPrice": 29531,
+    "stores": {
+      "biggie": 29531,
+      "superseis": 28950,
+      "stock": 28650,
+      "fortis": 26850
+    }
+  },
+  {
+    "id": 1606,
+    "ean": "7841235001096",
+    "name": "Shampoo Klasse Brillance De 500ml",
+    "brand": "KLASSE",
+    "image": "",
+    "regularPrice": 29531,
+    "stores": {
+      "biggie": 29531,
+      "superseis": 28950,
+      "stock": 28650,
+      "fortis": 26850
+    }
+  },
+  {
+    "id": 1607,
+    "ean": "7509552845891",
+    "name": "Shampoo Hidra Hialurónico Elvive 680 ml",
+    "brand": "ELVIVE",
+    "image": "",
+    "regularPrice": 74350,
+    "stores": {
+      "biggie": 74350,
+      "superseis": 72850,
+      "stock": 72100,
+      "fortis": 67650
+    }
+  },
+  {
+    "id": 1608,
+    "ean": "7509552792287",
+    "name": "Shampoo Fructis Hair Food Manteca de Cacao Rizos 300mL",
+    "brand": "GARNIER",
+    "image": "",
+    "regularPrice": 52400,
+    "stores": {
+      "biggie": 52400,
+      "superseis": 51350,
+      "stock": 50850,
+      "fortis": 47700
+    }
+  },
+  {
+    "id": 1609,
+    "ean": "650240015670",
+    "name": "Shampoo Anticaída Herbolaria Milenaria Tío Nacho 415mL",
+    "brand": "TIO NACHO",
+    "image": "",
+    "regularPrice": 79000,
+    "stores": {
+      "biggie": 79000,
+      "superseis": 77400,
+      "stock": 76650,
+      "fortis": 71900
+    }
+  },
+  {
+    "id": 1610,
+    "ean": "7509552849509",
+    "name": "Shampoo Garnier Fructis Hair Food Sandia - 300ML",
+    "brand": "GARNIER",
+    "image": "",
+    "regularPrice": 52400,
+    "stores": {
+      "biggie": 52400,
+      "superseis": 51350,
+      "stock": 50850,
+      "fortis": 47700
+    }
+  },
+  {
+    "id": 1611,
+    "ean": "7509552844191",
+    "name": "Shampoo Garnier Fructis Hair Food Coco 300ml",
+    "brand": "GARNIER",
+    "image": "",
+    "regularPrice": 52400,
+    "stores": {
+      "biggie": 52400,
+      "superseis": 51350,
+      "stock": 50850,
+      "fortis": 47700
+    }
+  },
+  {
+    "id": 1612,
+    "ean": "7509552844177",
+    "name": "Shampoo Garnier Fructis Hair Food Aloe Vera 300ml",
+    "brand": "GARNIER",
+    "image": "",
+    "regularPrice": 52400,
+    "stores": {
+      "biggie": 52400,
+      "superseis": 51350,
+      "stock": 50850,
+      "fortis": 47700
+    }
+  },
+  {
+    "id": 1613,
+    "ean": "7506078919372",
+    "name": "Shampoo Loreal Kids Manzanilla 265 mL",
+    "brand": "Loreal",
+    "image": "",
+    "regularPrice": 30450,
+    "stores": {
+      "biggie": 30450,
+      "superseis": 29850,
+      "stock": 29550,
+      "fortis": 27700
+    }
+  },
+  {
+    "id": 1614,
+    "ean": "7509552844214",
+    "name": "Shampoo Fructis Hair Food Aguacate 300ml",
+    "brand": "GARNIER",
+    "image": "",
+    "regularPrice": 52400,
+    "stores": {
+      "biggie": 52400,
+      "superseis": 51350,
+      "stock": 50850,
+      "fortis": 47700
+    }
+  },
+  {
+    "id": 1615,
+    "ean": "7841235001102",
+    "name": "Shampoo Klasse Curly Motion De 500ml",
+    "brand": "KLASSE",
+    "image": "",
+    "regularPrice": 38281,
+    "stores": {
+      "biggie": 38281,
+      "superseis": 37500,
+      "stock": 37150,
+      "fortis": 34850
+    }
+  },
+  {
+    "id": 1616,
+    "ean": "7896115702679",
+    "name": "Shampoo Kids 2 en 1 Phisalia de 480 ml",
+    "brand": "Phisalia",
+    "image": "",
+    "regularPrice": 27300,
+    "stores": {
+      "biggie": 27300,
+      "superseis": 26750,
+      "stock": 26500,
+      "fortis": 24850
+    }
+  },
+  {
+    "id": 1617,
+    "ean": "7896115704123",
+    "name": "Shampoo 480 ml + Acondicionador 480 ml Tralala Phisalia",
+    "brand": "TRA LA LA",
+    "image": "",
+    "regularPrice": 55950,
+    "stores": {
+      "biggie": 55950,
+      "superseis": 54850,
+      "stock": 54250,
+      "fortis": 50900
+    }
+  },
+  {
+    "id": 1618,
+    "ean": "7804651937592",
+    "name": "Shampoo y Acondicionador Anticanas Tio Nacho 415 ml",
+    "brand": "TIO NACHO",
+    "image": "",
+    "regularPrice": 119600,
+    "stores": {
+      "biggie": 119600,
+      "superseis": 117200,
+      "stock": 116000,
+      "fortis": 108850
+    }
+  },
+  {
+    "id": 1619,
+    "ean": "7896115705519",
+    "name": "Shampoo Phisalia 2 en 1 Niñas de 480 ml",
+    "brand": "Phisalia",
+    "image": "",
+    "regularPrice": 27300,
+    "stores": {
+      "biggie": 27300,
+      "superseis": 26750,
+      "stock": 26500,
+      "fortis": 24850
+    }
+  },
+  {
+    "id": 1620,
+    "ean": "7896115703713",
+    "name": "Shampoo 480 ml + Acondicionador 480 ml Tralala Phisalia Nutrikids",
+    "brand": "TRA LA LA",
+    "image": "",
+    "regularPrice": 55950,
+    "stores": {
+      "biggie": 55950,
+      "superseis": 54850,
+      "stock": 54250,
+      "fortis": 50900
+    }
+  },
+  {
+    "id": 1621,
+    "ean": "764451777187",
+    "name": "Shampoo Repelente Suavecitos de 300 ml",
+    "brand": "SUAVECITOS",
+    "image": "",
+    "regularPrice": 21000,
+    "stores": {
+      "biggie": 21000,
+      "superseis": 20600,
+      "stock": 20350,
+      "fortis": 19100
+    }
+  },
+  {
+    "id": 1622,
+    "ean": "650240062063",
+    "name": "Shampoo Anticanas Tio Nacho 415 ml",
+    "brand": "TIO NACHO",
+    "image": "",
+    "regularPrice": 79000,
+    "stores": {
+      "biggie": 79000,
+      "superseis": 77400,
+      "stock": 76650,
+      "fortis": 71900
+    }
+  },
+  {
+    "id": 1623,
+    "ean": "764451777163",
+    "name": "Shampoo Suave Suavecitos de 300 ml",
+    "brand": "SUAVECITOS",
+    "image": "",
+    "regularPrice": 17650,
+    "stores": {
+      "biggie": 17650,
+      "superseis": 17300,
+      "stock": 17100,
+      "fortis": 16050
+    }
+  },
+  {
+    "id": 1624,
+    "ean": "764451777170",
+    "name": "Shampoo Antiparasitario Suavecitos de 300 ml",
+    "brand": "SUAVECITOS",
+    "image": "",
+    "regularPrice": 26500,
+    "stores": {
+      "biggie": 26500,
+      "superseis": 25950,
+      "stock": 25700,
+      "fortis": 24100
+    }
+  },
+  {
+    "id": 1625,
+    "ean": "650240069352",
+    "name": "Shampoo Tio Nacho Control Caspa x415ml",
+    "brand": "TIO NACHO",
+    "image": "",
+    "regularPrice": 79000,
+    "stores": {
+      "biggie": 79000,
+      "superseis": 77400,
+      "stock": 76650,
+      "fortis": 71900
+    }
+  },
+  {
+    "id": 1626,
+    "ean": "7509552844153",
+    "name": "Shampoo Fructis Hair Food Banana 300ml",
+    "brand": "GARNIER",
+    "image": "",
+    "regularPrice": 52400,
+    "stores": {
+      "biggie": 52400,
+      "superseis": 51350,
+      "stock": 50850,
+      "fortis": 47700
+    }
+  },
+  {
+    "id": 1627,
+    "ean": "022796916709",
+    "name": "Shampoo Biotin Collagen De 385 mL",
+    "brand": "OGX",
+    "image": "",
+    "regularPrice": 117300,
+    "stores": {
+      "biggie": 117300,
+      "superseis": 114950,
+      "stock": 113800,
+      "fortis": 106750
+    }
+  },
+  {
+    "id": 1628,
+    "ean": "7792640000269",
+    "name": "Shampoo Ortiga con Salvia para Cabello Graso Capilatis De 410 mL",
+    "brand": "CAPILATIS",
+    "image": "",
+    "regularPrice": 58953,
+    "stores": {
+      "biggie": 58953,
+      "superseis": 57750,
+      "stock": 57200,
+      "fortis": 53650
+    }
+  },
+  {
+    "id": 1629,
+    "ean": "3660398500703",
+    "name": "Shampoo Anticaida Cystine B6 De 200 ML",
+    "brand": "CYSTINE",
+    "image": "",
+    "regularPrice": 110450,
+    "stores": {
+      "biggie": 110450,
+      "superseis": 108250,
+      "stock": 107150,
+      "fortis": 100500
+    }
+  },
+  {
+    "id": 1630,
+    "ean": "7841134010533",
+    "name": "Shampoo Fortalecedor Quenavin Frasco de 200 ml",
+    "brand": "QUENAVIN",
+    "image": "",
+    "regularPrice": 90000,
+    "stores": {
+      "biggie": 90000,
+      "superseis": 88200,
+      "stock": 87300,
+      "fortis": 81900
+    }
+  },
+  {
+    "id": 1631,
+    "ean": "7896115703720",
+    "name": "Shampoo 480 ml + Acondicionador 480 ml Kids Tralala Phisalia",
+    "brand": "TRA LA LA",
+    "image": "",
+    "regularPrice": 55950,
+    "stores": {
+      "biggie": 55950,
+      "superseis": 54850,
+      "stock": 54250,
+      "fortis": 50900
+    }
+  },
+  {
+    "id": 1632,
+    "ean": "7792640001150",
+    "name": "Shampoo Iluminador Puro Rubio Capilatis De 420 mL",
+    "brand": "CAPILATIS",
+    "image": "",
+    "regularPrice": 67375,
+    "stores": {
+      "biggie": 67375,
+      "superseis": 66050,
+      "stock": 65350,
+      "fortis": 61300
+    }
+  },
+  {
+    "id": 1633,
+    "ean": "7795373013346",
+    "name": "Micopirox Ciclopirox Champú De 100 mL",
+    "brand": "MICOPIROX",
+    "image": "",
+    "regularPrice": 70000,
+    "stores": {
+      "biggie": 70000,
+      "superseis": 68600,
+      "stock": 67900,
+      "fortis": 63700
+    }
+  },
+  {
+    "id": 1634,
+    "ean": "7840641118022",
+    "name": "Carbod Ket Shampoo x200ml -Aanticaspa - Antiseborreico",
+    "brand": "CARBOD",
+    "image": "",
+    "regularPrice": 121750,
+    "stores": {
+      "biggie": 121750,
+      "superseis": 119300,
+      "stock": 118100,
+      "fortis": 110800
+    }
+  },
+  {
+    "id": 1635,
+    "ean": "7792640000245",
+    "name": "Capilatis ortiga shampoo 410 ml + ampolla tratamiento",
+    "brand": "CAPILATIS",
+    "image": "",
+    "regularPrice": 72300,
+    "stores": {
+      "biggie": 72300,
+      "superseis": 70850,
+      "stock": 70150,
+      "fortis": 65800
+    }
+  },
+  {
+    "id": 1636,
+    "ean": "7792640000320",
+    "name": "Capilatis Ortiga Shampoo Tratante con Extractos Vegetales para Caída del Cabello Frasco de 410 ml",
+    "brand": "CAPILATIS",
+    "image": "",
+    "regularPrice": 77800,
+    "stores": {
+      "biggie": 77800,
+      "superseis": 76250,
+      "stock": 75450,
+      "fortis": 70800
+    }
+  },
+  {
+    "id": 1637,
+    "ean": "7891000414903",
+    "name": "Cafe Tradicion Nescafe Instantaneo De 160 gr",
+    "brand": "Nescafé",
+    "image": "",
+    "regularPrice": 39900,
+    "stores": {
+      "biggie": 39900,
+      "superseis": 39100,
+      "stock": 38700,
+      "fortis": 36300
+    }
+  },
+  {
+    "id": 1638,
+    "ean": "088169004978",
+    "name": "Cafe Nescafe instantaneo clasico de 8 gr.",
+    "brand": "Nescafé",
+    "image": "",
+    "regularPrice": 3550,
+    "stores": {
+      "biggie": 3550,
+      "superseis": 3500,
+      "stock": 3450,
+      "fortis": 3250
+    }
+  },
+  {
+    "id": 1639,
+    "ean": "7891000307083",
+    "name": "Cafe Nescafe tradicion sachet de 40 gr.",
+    "brand": "Nestle",
+    "image": "",
+    "regularPrice": 14900,
+    "stores": {
+      "biggie": 14900,
+      "superseis": 14600,
+      "stock": 14450,
+      "fortis": 13550
+    }
+  },
+  {
+    "id": 1640,
+    "ean": "7891000016565",
+    "name": "Cafe Nescafe tradicion de 50 gr.",
+    "brand": "Nescafé",
+    "image": "",
+    "regularPrice": 19100,
+    "stores": {
+      "biggie": 19100,
+      "superseis": 18700,
+      "stock": 18550,
+      "fortis": 17400
+    }
+  },
+  {
+    "id": 1641,
+    "ean": "7840185786947",
+    "name": "Cafe Belen Liofilizado de 100 gr.",
+    "brand": "Belen",
+    "image": "",
+    "regularPrice": 62500,
+    "stores": {
+      "biggie": 62500,
+      "superseis": 61250,
+      "stock": 60600,
+      "fortis": 56900
+    }
+  },
+  {
+    "id": 1642,
+    "ean": "7891000421093",
+    "name": "Cafe Nescafe Dolce Gusto Capuccino de 117,5 gr.",
+    "brand": "Nescafé",
+    "image": "",
+    "regularPrice": 39900,
+    "stores": {
+      "biggie": 39900,
+      "superseis": 39100,
+      "stock": 38700,
+      "fortis": 36300
+    }
+  },
+  {
+    "id": 1643,
+    "ean": "7891000294376",
+    "name": "Cafe Nescafe Dolce Gusto mocachino canela de 172 gr.",
+    "brand": "Nescafé",
+    "image": "",
+    "regularPrice": 39900,
+    "stores": {
+      "biggie": 39900,
+      "superseis": 39100,
+      "stock": 38700,
+      "fortis": 36300
+    }
+  },
+  {
+    "id": 1644,
+    "ean": "7840029101059",
+    "name": "Cafe Belen instantaneo de 200 gr.",
+    "brand": "Belen",
+    "image": "",
+    "regularPrice": 39900,
+    "stores": {
+      "biggie": 39900,
+      "superseis": 39100,
+      "stock": 38700,
+      "fortis": 36300
+    }
+  },
+  {
+    "id": 1645,
+    "ean": "7841699000185",
+    "name": "Cafe molido Quattro D de 250 gr.",
+    "brand": "Quattro D",
+    "image": "",
+    "regularPrice": 64150,
+    "stores": {
+      "biggie": 64150,
+      "superseis": 62850,
+      "stock": 62250,
+      "fortis": 58400
+    }
+  },
+  {
+    "id": 1646,
+    "ean": "7840029865647",
+    "name": "Cafe Belen instantaneo matinal de 100 gr.",
+    "brand": "Belen",
+    "image": "",
+    "regularPrice": 31500,
+    "stores": {
+      "biggie": 31500,
+      "superseis": 30850,
+      "stock": 30550,
+      "fortis": 28650
+    }
+  },
+  {
+    "id": 1647,
+    "ean": "7840185785230",
+    "name": "Cafe Belen soluble clasico de 50 gr.",
+    "brand": "Belen",
+    "image": "",
+    "regularPrice": 13400,
+    "stores": {
+      "biggie": 13400,
+      "superseis": 13150,
+      "stock": 13000,
+      "fortis": 12200
+    }
+  },
+  {
+    "id": 1648,
+    "ean": "7891000284155",
+    "name": "Cafe Nescafe Matinal de 160 gr.",
+    "brand": "Nescafé",
+    "image": "",
+    "regularPrice": 38900,
+    "stores": {
+      "biggie": 38900,
+      "superseis": 38100,
+      "stock": 37750,
+      "fortis": 35400
+    }
+  },
+  {
+    "id": 1649,
+    "ean": "7707280880256",
+    "name": "Cafe Juan Valdez volcan molido de 250 gr.",
+    "brand": "Juan Valdez",
+    "image": "",
+    "regularPrice": 90000,
+    "stores": {
+      "biggie": 90000,
+      "superseis": 88200,
+      "stock": 87300,
+      "fortis": 81900
+    }
+  },
+  {
+    "id": 1650,
+    "ean": "7840029101042",
+    "name": "Cafe Belen instantaneo Clasico de 100 gr.",
+    "brand": "Belen",
+    "image": "",
+    "regularPrice": 29950,
+    "stores": {
+      "biggie": 29950,
+      "superseis": 29350,
+      "stock": 29050,
+      "fortis": 27250
+    }
+  },
+  {
+    "id": 1651,
+    "ean": "7840029866521",
+    "name": "Cafe Belen instantaneo descafeinado de 50 gr.",
+    "brand": "Belen",
+    "image": "",
+    "regularPrice": 28500,
+    "stores": {
+      "biggie": 28500,
+      "superseis": 27950,
+      "stock": 27650,
+      "fortis": 25950
+    }
+  },
+  {
+    "id": 1652,
+    "ean": "7707280880218",
+    "name": "Cafe Juan Valdez cumbre molido de 250 gr.",
+    "brand": "Juan Valdez",
+    "image": "",
+    "regularPrice": 90000,
+    "stores": {
+      "biggie": 90000,
+      "superseis": 88200,
+      "stock": 87300,
+      "fortis": 81900
+    }
+  },
+  {
+    "id": 1653,
+    "ean": "7891021006125",
+    "name": "Cafe Melitta Tradicional de 500 gr.",
+    "brand": "Melitta",
+    "image": "",
+    "regularPrice": 77900,
+    "stores": {
+      "biggie": 77900,
+      "superseis": 76350,
+      "stock": 75550,
+      "fortis": 70900
+    }
+  },
+  {
+    "id": 1654,
+    "ean": "7701362014904",
+    "name": "Cafe Juan Valdez Liofilizado Avellana de 95 gr.",
+    "brand": "Juan Valdez",
+    "image": "",
+    "regularPrice": 115000,
+    "stores": {
+      "biggie": 115000,
+      "superseis": 112700,
+      "stock": 111550,
+      "fortis": 104650
+    }
+  },
+  {
+    "id": 1655,
+    "ean": "7840112000214",
+    "name": "Cafe Mayo torrado de 500 gr.",
+    "brand": "Mayo",
+    "image": "",
+    "regularPrice": 78000,
+    "stores": {
+      "biggie": 78000,
+      "superseis": 76450,
+      "stock": 75650,
+      "fortis": 71000
+    }
+  },
+  {
+    "id": 1656,
+    "ean": "7707211631865",
+    "name": "Cafe Juan Valdez chocolate soluble frasco de 95 gr.",
+    "brand": "Juan Valdez",
+    "image": "",
+    "regularPrice": 115000,
+    "stores": {
+      "biggie": 115000,
+      "superseis": 112700,
+      "stock": 111550,
+      "fortis": 104650
+    }
+  },
+  {
+    "id": 1657,
+    "ean": "722008321313",
+    "name": "Atun Van Camps en Agua Lata de 160 gr.",
+    "brand": "Van Camps",
+    "image": "",
+    "regularPrice": 18250,
+    "stores": {
+      "biggie": 18250,
+      "superseis": 17900,
+      "stock": 17700,
+      "fortis": 16600
+    }
+  },
+  {
+    "id": 1658,
+    "ean": "722008000362",
+    "name": "Atún Van Camp's Oliva x 3 Uni de 80 gr.",
+    "brand": "Van Camps",
+    "image": "",
+    "regularPrice": 40150,
+    "stores": {
+      "biggie": 40150,
+      "superseis": 39350,
+      "stock": 38950,
+      "fortis": 36550
+    }
+  },
+  {
+    "id": 1659,
+    "ean": "7841056000605",
+    "name": "Atun Sun Lomito Natural Abre Facil de 140 gr.",
+    "brand": "SUN",
+    "image": "",
+    "regularPrice": 14900,
+    "stores": {
+      "biggie": 14900,
+      "superseis": 14600,
+      "stock": 14450,
+      "fortis": 13550
+    }
+  },
+  {
+    "id": 1660,
+    "ean": "7841738000282",
+    "name": "Atun Vivaz Solido en Agua de 170 gr.",
+    "brand": "Vivaz",
+    "image": "",
+    "regularPrice": 13900,
+    "stores": {
+      "biggie": 13900,
+      "superseis": 13600,
+      "stock": 13500,
+      "fortis": 12650
+    }
+  },
+  {
+    "id": 1661,
+    "ean": "7793360005084",
+    "name": "Atun La Campagnola en Lomos al Natural Lata de 170 gr.",
+    "brand": "BC La Campagnola",
+    "image": "",
+    "regularPrice": 18000,
+    "stores": {
+      "biggie": 18000,
+      "superseis": 17650,
+      "stock": 17450,
+      "fortis": 16400
+    }
+  },
+  {
+    "id": 1662,
+    "ean": "7898943163042",
+    "name": "Atun R.Crusoe Solido Natural de 170 gr.",
+    "brand": "Crusoe",
+    "image": "",
+    "regularPrice": 16600,
+    "stores": {
+      "biggie": 16600,
+      "superseis": 16250,
+      "stock": 16100,
+      "fortis": 15100
+    }
+  },
+  {
+    "id": 1663,
+    "ean": "7840064000034",
+    "name": "Atun Excellent Desmenuzado En Aceite de 170gr",
+    "brand": "Excellent",
+    "image": "",
+    "regularPrice": 8000,
+    "stores": {
+      "biggie": 8000,
+      "superseis": 7850,
+      "stock": 7750,
+      "fortis": 7300
+    }
+  },
+  {
+    "id": 1664,
+    "ean": "7840064000027",
+    "name": "Atun Excellent Desmenuzado En Agua de 170gr",
+    "brand": "Excellent",
+    "image": "",
+    "regularPrice": 8000,
+    "stores": {
+      "biggie": 8000,
+      "superseis": 7850,
+      "stock": 7750,
+      "fortis": 7300
+    }
+  },
+  {
+    "id": 1665,
+    "ean": "7790040143517",
+    "name": "Galletita Bagley Rumba de 110 gr.",
+    "brand": "BAGLEY",
+    "image": "",
+    "regularPrice": 5250,
+    "stores": {
+      "biggie": 5250,
+      "superseis": 5150,
+      "stock": 5100,
+      "fortis": 4800
+    }
+  },
+  {
+    "id": 1666,
+    "ean": "7622201735906",
+    "name": "Galletita Pepitos Cadbury de 119 gr.",
+    "brand": "Pepitos",
+    "image": "",
+    "regularPrice": 6800,
+    "stores": {
+      "biggie": 6800,
+      "superseis": 6650,
+      "stock": 6600,
+      "fortis": 6200
+    }
+  },
+  {
+    "id": 1667,
+    "ean": "7622201759636",
+    "name": "Galletita Oreo Tripack de 354 gr.",
+    "brand": "Oreo",
+    "image": "",
+    "regularPrice": 19800,
+    "stores": {
+      "biggie": 19800,
+      "superseis": 19400,
+      "stock": 19200,
+      "fortis": 18000
+    }
+  },
+  {
+    "id": 1668,
+    "ean": "7622202049033",
+    "name": "Galletita Oreo Rellena Chocolate de 118 gr.",
+    "brand": "Oreo",
+    "image": "",
+    "regularPrice": 7400,
+    "stores": {
+      "biggie": 7400,
+      "superseis": 7250,
+      "stock": 7200,
+      "fortis": 6750
+    }
+  },
+  {
+    "id": 1669,
+    "ean": "77903518",
+    "name": "Galletita Bagley Opera de 92 gr.",
+    "brand": "BAGLEY",
+    "image": "",
+    "regularPrice": 5350,
+    "stores": {
+      "biggie": 5350,
+      "superseis": 5250,
+      "stock": 5200,
+      "fortis": 4850
+    }
+  },
+  {
+    "id": 1670,
+    "ean": "7730116103304",
+    "name": "Galletita el Trigal Surtidas de 300 gr.",
+    "brand": "El Trigal",
+    "image": "",
+    "regularPrice": 16200,
+    "stores": {
+      "biggie": 16200,
+      "superseis": 15900,
+      "stock": 15700,
+      "fortis": 14750
+    }
+  },
+  {
+    "id": 1671,
+    "ean": "7891962032290",
+    "name": "Galletita Waffer Bauducco Chocolate de 140 gr.",
+    "brand": "Bauducco",
+    "image": "",
+    "regularPrice": 6900,
+    "stores": {
+      "biggie": 6900,
+      "superseis": 6750,
+      "stock": 6700,
+      "fortis": 6300
+    }
+  },
+  {
+    "id": 1672,
+    "ean": "7802215502262",
+    "name": "Galletita Tuareg Coco de 120 gr.",
+    "brand": "Costa",
+    "image": "",
+    "regularPrice": 8250,
+    "stores": {
+      "biggie": 8250,
+      "superseis": 8100,
+      "stock": 8000,
+      "fortis": 7500
+    }
+  },
+  {
+    "id": 1673,
+    "ean": "7841503001414",
+    "name": "Galletita Anillos coco 300 gr. x 20 unidades.",
+    "brand": "MAZZEI",
+    "image": "",
+    "regularPrice": 6500,
+    "stores": {
+      "biggie": 6500,
+      "superseis": 6350,
+      "stock": 6300,
+      "fortis": 5900
+    }
+  },
+  {
+    "id": 1674,
+    "ean": "7790040110748",
+    "name": "Galletita Arcor Rocklets de 118 gr.",
+    "brand": "ARCOR",
+    "image": "",
+    "regularPrice": 9600,
+    "stores": {
+      "biggie": 9600,
+      "superseis": 9400,
+      "stock": 9300,
+      "fortis": 8750
+    }
+  },
+  {
+    "id": 1675,
+    "ean": "7891000089255",
+    "name": "Galletita Nestle Moca de 140 gr.",
+    "brand": "Nestle",
+    "image": "",
+    "regularPrice": 6100,
+    "stores": {
+      "biggie": 6100,
+      "superseis": 6000,
+      "stock": 5900,
+      "fortis": 5550
+    }
+  },
+  {
+    "id": 1676,
+    "ean": "7841503031121",
+    "name": "Galletita Mazzei Salvado Crackers de 190 gr.",
+    "brand": "MAZZEI",
+    "image": "",
+    "regularPrice": 5900,
+    "stores": {
+      "biggie": 5900,
+      "superseis": 5800,
+      "stock": 5700,
+      "fortis": 5350
+    }
+  },
+  {
+    "id": 1677,
+    "ean": "7622202038099",
+    "name": "Galletita Oreo Original Sin Gluten de 95 gr.",
+    "brand": "Oreo",
+    "image": "",
+    "regularPrice": 14500,
+    "stores": {
+      "biggie": 14500,
+      "superseis": 14200,
+      "stock": 14050,
+      "fortis": 13200
+    }
+  },
+  {
+    "id": 1678,
+    "ean": "7790040136076",
+    "name": "Galletita Arcor Hogareñas 7 Semillas por 3 de 189 gr.",
+    "brand": "ARCOR",
+    "image": "",
+    "regularPrice": 20000,
+    "stores": {
+      "biggie": 20000,
+      "superseis": 19600,
+      "stock": 19400,
+      "fortis": 18200
+    }
+  },
+  {
+    "id": 1679,
+    "ean": "7622201693114",
+    "name": "Galletita Oreo Cookies & Cream de 108 gr.",
+    "brand": "Oreo",
+    "image": "",
+    "regularPrice": 7400,
+    "stores": {
+      "biggie": 7400,
+      "superseis": 7250,
+      "stock": 7200,
+      "fortis": 6750
+    }
+  },
+  {
+    "id": 1680,
+    "ean": "7622201745523",
+    "name": "Galletita Lincolin Terrabusi de 153 gr.",
+    "brand": "Terrabusi",
+    "image": "",
+    "regularPrice": 7800,
+    "stores": {
+      "biggie": 7800,
+      "superseis": 7650,
+      "stock": 7550,
+      "fortis": 7100
+    }
+  },
+  {
+    "id": 1681,
+    "ean": "7790040137837",
+    "name": "Galletita Mana Liviana Vainilla de 136 gr.",
+    "brand": "ARCOR",
+    "image": "",
+    "regularPrice": 6000,
+    "stores": {
+      "biggie": 6000,
+      "superseis": 5900,
+      "stock": 5800,
+      "fortis": 5450
+    }
+  },
+  {
+    "id": 1682,
+    "ean": "7841503000172",
+    "name": "Galletita Mazzei de Agua Tradicional de 100 gr.",
+    "brand": "MAZZEI",
+    "image": "",
+    "regularPrice": 3750,
+    "stores": {
+      "biggie": 3750,
+      "superseis": 3700,
+      "stock": 3650,
+      "fortis": 3400
+    }
+  },
+  {
+    "id": 1683,
+    "ean": "7891962032283",
+    "name": "Galletita Waffer Bauducco Frutilla de 140 gr.",
+    "brand": "Bauducco",
+    "image": "",
+    "regularPrice": 6900,
+    "stores": {
+      "biggie": 6900,
+      "superseis": 6750,
+      "stock": 6700,
+      "fortis": 6300
+    }
+  },
+  {
+    "id": 1684,
+    "ean": "7622201806552",
+    "name": "Galletita Oreo Golden de 118 gr.",
+    "brand": "Oreo",
+    "image": "",
+    "regularPrice": 7400,
+    "stores": {
+      "biggie": 7400,
+      "superseis": 7250,
+      "stock": 7200,
+      "fortis": 6750
+    }
+  },
+  {
+    "id": 1685,
+    "ean": "7841503001636",
+    "name": "Galletita Aventura rellena chococrema de 120 gr.",
+    "brand": "Aventura",
+    "image": "",
+    "regularPrice": 3200,
+    "stores": {
+      "biggie": 3200,
+      "superseis": 3150,
+      "stock": 3100,
+      "fortis": 2900
+    }
+  },
+  {
+    "id": 1686,
+    "ean": "8410376040920",
+    "name": "Galletita Cinnamon Crisps Gullon de 235 gr.",
+    "brand": "MAZZEI",
+    "image": "",
+    "regularPrice": 15000,
+    "stores": {
+      "biggie": 15000,
+      "superseis": 14700,
+      "stock": 14550,
+      "fortis": 13650
+    }
+  },
+  {
+    "id": 1687,
+    "ean": "7891962064055",
+    "name": "Pan Integral Bauducco de 390 gr.",
+    "brand": "Bauducco",
+    "image": "",
+    "regularPrice": 11500,
+    "stores": {
+      "biggie": 11500,
+      "superseis": 11250,
+      "stock": 11150,
+      "fortis": 10450
+    }
+  },
+  {
+    "id": 1688,
+    "ean": "7840581040360",
+    "name": "Pan Felipe El Germano de 500 gr.",
+    "brand": "EL GERMANO",
+    "image": "",
+    "regularPrice": 10800,
+    "stores": {
+      "biggie": 10800,
+      "superseis": 10600,
+      "stock": 10500,
+      "fortis": 9850
+    }
+  },
+  {
+    "id": 1689,
+    "ean": "7898337980248",
+    "name": "Pan de Ajo Zinho Tradicional con Queso de 300 gr.",
+    "brand": "Zinho",
+    "image": "",
+    "regularPrice": 19950,
+    "stores": {
+      "biggie": 19950,
+      "superseis": 19550,
+      "stock": 19350,
+      "fortis": 18150
+    }
+  },
+  {
+    "id": 1690,
+    "ean": "7840131000028",
+    "name": "Pan para Sanwich Pantodos de 420 gr.",
+    "brand": "PANTODOS",
+    "image": "",
+    "regularPrice": 10400,
+    "stores": {
+      "biggie": 10400,
+      "superseis": 10200,
+      "stock": 10100,
+      "fortis": 9450
+    }
+  },
+  {
+    "id": 1691,
+    "ean": "7840075040050",
+    "name": "Pan para Pancho La Palmera 12 Unidades.",
+    "brand": "LA PALMERA",
+    "image": "",
+    "regularPrice": 10200,
+    "stores": {
+      "biggie": 10200,
+      "superseis": 10000,
+      "stock": 9900,
+      "fortis": 9300
+    }
+  },
+  {
+    "id": 1692,
+    "ean": "7840131000714",
+    "name": "Pan para Sandwich Pantodos Lacteado de 400 gr.",
+    "brand": "PANTODOS",
+    "image": "",
+    "regularPrice": 9100,
+    "stores": {
+      "biggie": 9100,
+      "superseis": 8900,
+      "stock": 8850,
+      "fortis": 8300
+    }
+  },
+  {
+    "id": 1693,
+    "ean": "7840699001628",
+    "name": "Pan de Ajo Guarani Tradicional de 400 gr.",
+    "brand": "Guaraní",
+    "image": "",
+    "regularPrice": 26800,
+    "stores": {
+      "biggie": 26800,
+      "superseis": 26250,
+      "stock": 26000,
+      "fortis": 24400
+    }
+  },
+  {
+    "id": 1694,
+    "ean": "7891962064048",
+    "name": "Pan Bauducco Blanco de 390 gr.",
+    "brand": "Bauducco",
+    "image": "",
+    "regularPrice": 10500,
+    "stores": {
+      "biggie": 10500,
+      "superseis": 10300,
+      "stock": 10200,
+      "fortis": 9550
+    }
+  },
+  {
+    "id": 1695,
+    "ean": "7840581040209",
+    "name": "Pan El Germano para Pancho de 480 gr.",
+    "brand": "EL GERMANO",
+    "image": "",
+    "regularPrice": 11900,
+    "stores": {
+      "biggie": 11900,
+      "superseis": 11650,
+      "stock": 11550,
+      "fortis": 10850
+    }
+  },
+  {
+    "id": 1696,
+    "ean": "7840131000011",
+    "name": "Pan para Sandwich Pantodos de 850 gr.",
+    "brand": "PANTODOS",
+    "image": "",
+    "regularPrice": 18400,
+    "stores": {
+      "biggie": 18400,
+      "superseis": 18050,
+      "stock": 17850,
+      "fortis": 16750
+    }
+  },
+  {
+    "id": 1697,
+    "ean": "7898337980262",
+    "name": "Pan de Ajo Zinho Picante con Queso de 300 gr.",
+    "brand": "Zinho",
+    "image": "",
+    "regularPrice": 19950,
+    "stores": {
+      "biggie": 19950,
+      "superseis": 19550,
+      "stock": 19350,
+      "fortis": 18150
+    }
+  },
+  {
+    "id": 1698,
+    "ean": "7891962067278",
+    "name": "Pan Bauducco Multigranos de 390 gr.",
+    "brand": "Bauducco",
+    "image": "",
+    "regularPrice": 12950,
+    "stores": {
+      "biggie": 12950,
+      "superseis": 12700,
+      "stock": 12550,
+      "fortis": 11800
+    }
+  },
+  {
+    "id": 1699,
+    "ean": "7840131004446",
+    "name": "Pan Bimbo Oroweat Multigrano 1p Bolsa Oro de 560 gr.",
+    "brand": "Bimbo",
+    "image": "",
+    "regularPrice": 23400,
+    "stores": {
+      "biggie": 23400,
+      "superseis": 22950,
+      "stock": 22700,
+      "fortis": 21300
+    }
+  },
+  {
+    "id": 1700,
+    "ean": "7840581002528",
+    "name": "Pan Integral El Germano de 400 gr.",
+    "brand": "EL GERMANO",
+    "image": "",
+    "regularPrice": 18700,
+    "stores": {
+      "biggie": 18700,
+      "superseis": 18350,
+      "stock": 18150,
+      "fortis": 17000
+    }
+  },
+  {
+    "id": 1701,
+    "ean": "7840581002108",
+    "name": "Pan de Gluten El Germano con 3 Semillas de 300 gr.",
+    "brand": "EL GERMANO",
+    "image": "",
+    "regularPrice": 23500,
+    "stores": {
+      "biggie": 23500,
+      "superseis": 23050,
+      "stock": 22800,
+      "fortis": 21400
+    }
+  },
+  {
+    "id": 1702,
+    "ean": "7840581002542",
+    "name": "Pan Integral El Germano con Avena de 400 gr. .",
+    "brand": "EL GERMANO",
+    "image": "",
+    "regularPrice": 16500,
+    "stores": {
+      "biggie": 16500,
+      "superseis": 16150,
+      "stock": 16000,
+      "fortis": 15000
+    }
+  },
+  {
+    "id": 1703,
+    "ean": "7840225020031",
+    "name": "Pan Edward Miga Blanco de 500 gr.",
+    "brand": "Edward",
+    "image": "",
+    "regularPrice": 9100,
+    "stores": {
+      "biggie": 9100,
+      "superseis": 8900,
+      "stock": 8850,
+      "fortis": 8300
+    }
+  },
+  {
+    "id": 1704,
+    "ean": "7898067340060",
+    "name": "Pan de Ajo picante Santa Massa de 240 gr.",
+    "brand": "Santa Massa",
+    "image": "",
+    "regularPrice": 19900,
+    "stores": {
+      "biggie": 19900,
+      "superseis": 19500,
+      "stock": 19300,
+      "fortis": 18100
+    }
+  },
+  {
+    "id": 1705,
+    "ean": "7840075000214",
+    "name": "Pan La Palmera Super Hamburguesa x 6 Uni.",
+    "brand": "LA PALMERA",
+    "image": "",
+    "regularPrice": 10800,
+    "stores": {
+      "biggie": 10800,
+      "superseis": 10600,
+      "stock": 10500,
+      "fortis": 9850
+    }
+  },
+  {
+    "id": 1706,
+    "ean": "7840581002535",
+    "name": "Pan para sandwich Integral  El Germano de 700 gr.",
+    "brand": "EL GERMANO",
+    "image": "",
+    "regularPrice": 23800,
+    "stores": {
+      "biggie": 23800,
+      "superseis": 23300,
+      "stock": 23100,
+      "fortis": 21650
+    }
+  },
+  {
+    "id": 1707,
+    "ean": "7840225030634",
+    "name": "Pan Edward Miga Integral de 500 gr.",
+    "brand": "Edward",
+    "image": "",
+    "regularPrice": 8600,
+    "stores": {
+      "biggie": 8600,
+      "superseis": 8450,
+      "stock": 8350,
+      "fortis": 7850
+    }
+  },
+  {
+    "id": 1708,
+    "ean": "7840075040029",
+    "name": "Pan para Hamburguesa La Palmera 6 Unidades.",
+    "brand": "LA PALMERA",
+    "image": "",
+    "regularPrice": 9950,
+    "stores": {
+      "biggie": 9950,
+      "superseis": 9750,
+      "stock": 9650,
+      "fortis": 9050
+    }
+  },
+  {
+    "id": 1709,
+    "ean": "7840699001970",
+    "name": "Pan de Ajo Guarani Picante de 400 gr.",
+    "brand": "Guaraní",
+    "image": "",
+    "regularPrice": 26800,
+    "stores": {
+      "biggie": 26800,
+      "superseis": 26250,
+      "stock": 26000,
+      "fortis": 24400
+    }
+  },
+  {
+    "id": 1710,
+    "ean": "7840131004309",
+    "name": "Pan de Sandwich Pantodos Salvado 1p de 850 gr.",
+    "brand": "PANTODOS",
+    "image": "",
+    "regularPrice": 19900,
+    "stores": {
+      "biggie": 19900,
+      "superseis": 19500,
+      "stock": 19300,
+      "fortis": 18100
+    }
+  },
+  {
+    "id": 1711,
+    "ean": "7848004640173",
+    "name": "Pan Sobado Trigolitos x Uni.",
+    "brand": "Trigolitos",
+    "image": "",
+    "regularPrice": 7400,
+    "stores": {
+      "biggie": 7400,
+      "superseis": 7250,
+      "stock": 7200,
+      "fortis": 6750
+    }
+  },
+  {
+    "id": 1712,
+    "ean": "7840581040223",
+    "name": "Pan El Germano Blanco de 400 gr.",
+    "brand": "EL GERMANO",
+    "image": "",
+    "regularPrice": 11500,
+    "stores": {
+      "biggie": 11500,
+      "superseis": 11250,
+      "stock": 11150,
+      "fortis": 10450
+    }
+  },
+  {
+    "ean": "7840005000222",
+    "name": "Leche Trebol Entera Pasteurizada Sachet 1 L.",
+    "brand": "Trebol",
+    "image": "https://static.biggie.com.py/products/7840005012317.jpg",
+    "regularPrice": 6200,
+    "stores": {
+      "biggie": 6200,
+      "superseis": 6100,
+      "stock": 6100,
+      "fortis": 5700
+    },
+    "id": 1713
+  },
+  {
+    "ean": "7840005013611",
+    "name": "Leche Trebol Descremada Sin Lactosa Sachet 1 L.",
+    "brand": "Trebol",
+    "image": "https://static.biggie.com.py/products/7840005012690.jpg",
+    "regularPrice": 7200,
+    "stores": {
+      "biggie": 7200,
+      "superseis": 7100,
+      "stock": 7050,
+      "fortis": 6600
+    },
+    "id": 1714
   }
 ]

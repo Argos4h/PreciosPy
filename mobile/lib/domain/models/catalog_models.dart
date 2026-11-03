@@ -352,27 +352,135 @@ class KuatiaInvoiceReceipt {
     required this.items,
   });
 
-  /// Parsea la URL tributaria oficial del QR de e-Kuatia (DNIT / SET)
-  static KuatiaInvoiceReceipt? parseQrUrl(String qrUrl) {
-    if (!qrUrl.contains('ekuatia.set.gov.py') && !qrUrl.contains('dnit.gov.py')) {
+  /// Parsea la URL tributaria oficial del QR de e-Kuatia (DNIT / SET) o el CDC directo de 44 dígitos
+  static KuatiaInvoiceReceipt? parseQrUrl(String input) {
+    final raw = input.trim();
+    final lower = raw.toLowerCase();
+
+    // Detección de URL oficial SIFEN (ekuatia.set.gov.py o dnit.gov.py) o formato de parámetros QR
+    final isUrl = lower.contains('ekuatia') ||
+        lower.contains('dnit.gov.py') ||
+        lower.contains('set.gov.py') ||
+        lower.contains('sifen') ||
+        lower.contains('chashqr') ||
+        lower.contains('idgesdat=') ||
+        (lower.contains('id=') && lower.contains('nversion='));
+
+    // O detección directa de un CDC numérico de 44 dígitos
+    final isDirectCdc = RegExp(r'^\d{44}$').hasMatch(raw);
+
+    if (!isUrl && !isDirectCdc) {
       return null;
     }
 
     try {
-      final uri = Uri.parse(qrUrl);
-      final idCdc = uri.queryParameters['IdGesDat'] ?? uri.queryParameters['dId'] ?? '';
-      final ruc = idCdc.length >= 11 ? idCdc.substring(3, 11) : '80000001';
+      String cdc = '';
+      int totalGs = 0;
+
+      if (isDirectCdc) {
+        cdc = raw;
+      } else {
+        // Intentar parsear como URI
+        Uri? uri;
+        try {
+          uri = Uri.parse(raw);
+        } catch (_) {}
+
+        final params = uri != null && uri.queryParameters.isNotEmpty
+            ? uri.queryParameters
+            : _parseQueryParamsManually(raw);
+
+        // En el estándar SIFEN DNIT, el parámetro puede ser 'Id', 'IdGesDat', o 'dId'
+        cdc = params['Id'] ?? params['id'] ?? params['IdGesDat'] ?? params['dId'] ?? '';
+
+        // Si no vino en query params, buscar con regex 44 dígitos consecutivos
+        if (cdc.length != 44) {
+          final cdcMatch = RegExp(r'(\d{44})').firstMatch(raw);
+          if (cdcMatch != null) {
+            cdc = cdcMatch.group(1)!;
+          }
+        }
+
+        // Total general del comprobante: dTotGralOpe
+        final totalStr = params['dTotGralOpe'] ?? params['tot'] ?? params['total'] ?? '';
+        if (totalStr.isNotEmpty) {
+          totalGs = (double.tryParse(totalStr) ?? int.tryParse(totalStr) ?? 0).round();
+        }
+      }
+
+      // Estructura oficial del CDC de 44 dígitos:
+      // Pos 1-2: Tipo doc (01=Factura Electrónica)
+      // Pos 3-10: RUC emisor (8 dígitos rellenos con 0)
+      // Pos 11: DV emisor (1 dígito)
+      // Pos 12-14: Establecimiento (3 dígitos)
+      // Pos 15-17: Punto expedición (3 dígitos)
+      // Pos 18-24: Número de documento (7 dígitos)
+      // Pos 25: Tipo contribuyente (1 o 2)
+      // Pos 26-33: Fecha AAAAMMDD (8 dígitos)
+      String rucClean = '80000001-1';
+      String docNum = '001-001-0001234';
+      DateTime date = DateTime.now();
+      String superName = 'Supermercado Verificado (DNIT)';
+
+      if (cdc.length == 44) {
+        final rucRaw = cdc.substring(2, 10).replaceFirst(RegExp(r'^0+'), '');
+        final dvRaw = cdc.substring(10, 11);
+        rucClean = '$rucRaw-$dvRaw';
+
+        final est = cdc.substring(11, 14);
+        final pexp = cdc.substring(14, 17);
+        final num = cdc.substring(17, 24);
+        docNum = '$est-$pexp-$num';
+
+        final dateStr = cdc.substring(25, 33); // AAAAMMDD
+        if (dateStr.length == 8) {
+          final y = int.tryParse(dateStr.substring(0, 4));
+          final m = int.tryParse(dateStr.substring(4, 6));
+          final d = int.tryParse(dateStr.substring(6, 8));
+          if (y != null && m != null && d != null) {
+            date = DateTime(y, m, d);
+          }
+        }
+
+        // Mapeo inteligente de RUC de cadenas paraguayas
+        if (rucClean.startsWith('80017124') || rucClean.startsWith('80002166')) {
+          superName = 'Supermercados Stock / Superseis';
+        } else if (rucClean.startsWith('80097787') || rucClean.startsWith('80076755')) {
+          superName = 'Biggie Express';
+        } else if (rucClean.startsWith('80016027')) {
+          superName = 'Fortis Mayorista';
+        } else if (rucClean.startsWith('80003006')) {
+          superName = 'Casa Grütter';
+        } else if (rucClean.startsWith('80000014')) {
+          superName = 'Supermercado Los Jardines';
+        }
+      }
 
       return KuatiaInvoiceReceipt(
-        rucIssuer: ruc,
-        supermarketName: 'Supermercado Verificado (DNIT)',
-        invoiceDate: DateTime.now(),
-        invoiceNumber: idCdc.length > 20 ? idCdc.substring(0, 15) : '001-001-0012345',
-        totalAmountGs: 0,
+        rucIssuer: rucClean,
+        supermarketName: superName,
+        invoiceDate: date,
+        invoiceNumber: docNum,
+        totalAmountGs: totalGs,
         items: const [],
       );
     } catch (_) {
       return null;
     }
+  }
+
+  static Map<String, String> _parseQueryParamsManually(String raw) {
+    final result = <String, String>{};
+    final qIndex = raw.indexOf('?');
+    if (qIndex == -1 || qIndex == raw.length - 1) return result;
+    final query = raw.substring(qIndex + 1);
+    final pairs = query.split('&');
+    for (final pair in pairs) {
+      final parts = pair.split('=');
+      if (parts.length == 2) {
+        result[parts[0]] = Uri.decodeQueryComponent(parts[1]);
+      }
+    }
+    return result;
   }
 }

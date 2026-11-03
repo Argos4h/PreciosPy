@@ -20,6 +20,16 @@ class _ScannerScreenState extends ConsumerState<ScannerScreen> {
     detectionSpeed: DetectionSpeed.normal,
     facing: CameraFacing.back,
     torchEnabled: false,
+    formats: const [
+      BarcodeFormat.ean13,
+      BarcodeFormat.ean8,
+      BarcodeFormat.qrCode,
+      BarcodeFormat.upcA,
+      BarcodeFormat.upcE,
+      BarcodeFormat.code128,
+      BarcodeFormat.code39,
+      BarcodeFormat.dataMatrix,
+    ],
   );
   final TextEditingController _manualInputController = TextEditingController();
 
@@ -46,23 +56,32 @@ class _ScannerScreenState extends ConsumerState<ScannerScreen> {
     }
   }
 
-  void _handleCodeScanned(String raw) {
+  void _handleCodeScanned(String raw) async {
     // 1. Detectar si es un QR tributario de Factura Electrónica e-Kuatia / DNIT
-    if (raw.contains('ekuatia') || raw.contains('dnit.gov.py') || raw.contains('IdGesDat=')) {
-      final invoice = KuatiaInvoiceReceipt.parseQrUrl(raw);
-      if (invoice != null) {
-        _showKuatiaInvoiceModal(context, invoice);
-        Future.delayed(const Duration(seconds: 2), () {
-          if (mounted) _isProcessing = false;
-        });
-        return;
-      }
+    final invoice = KuatiaInvoiceReceipt.parseQrUrl(raw);
+    if (invoice != null) {
+      _showKuatiaInvoiceModal(context, invoice);
+      Future.delayed(const Duration(seconds: 2), () {
+        if (mounted) _isProcessing = false;
+      });
+      return;
     }
 
     // 2. Es un código de barra EAN o código de producto
     setState(() {
       _scannedCode = raw;
     });
+
+    // 3. Si no existe en el catálogo local, consultar automáticamente en vivo
+    final repo = ref.read(catalogRepositoryProvider);
+    final localProd = repo.findByBarcode(raw);
+    if (localProd == null) {
+      // Intentar consulta remota automática en vivo para obtener el producto y su precio
+      await repo.findOnlineByBarcode(raw);
+      if (mounted) {
+        setState(() {}); // Refrescar para mostrar el producto encontrado de góndola
+      }
+    }
 
     Future.delayed(const Duration(milliseconds: 1500), () {
       if (mounted) _isProcessing = false;

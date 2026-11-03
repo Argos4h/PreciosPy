@@ -2209,9 +2209,9 @@ class LocalCatalogRepository {
             ''', [product.id, product.ean, product.normalizedName, product.brand, 'UN', 1.0, 'UN', product.imageUrl]);
 
             _db.execute('''
-              INSERT INTO local_products_fts (product_id, ean, normalized_name, brand)
-              VALUES (?, ?, ?, ?);
-            ''', [product.id, product.ean ?? '', product.normalizedName, product.brand ?? '']);
+              INSERT INTO local_products_fts (rowid, product_id, ean, normalized_name, brand)
+              VALUES (?, ?, ?, ?, ?);
+            ''', [product.id, product.id, product.ean ?? '', product.normalizedName, product.brand ?? '']);
 
             _db.execute('''
               INSERT OR REPLACE INTO local_offers

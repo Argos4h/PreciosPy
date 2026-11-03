@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../core/formatters/guarani_formatter.dart';
@@ -18,6 +19,7 @@ class SearchScreen extends ConsumerStatefulWidget {
 class _SearchScreenState extends ConsumerState<SearchScreen> {
   late final TextEditingController _searchController;
   late final FocusNode _searchFocusNode;
+  Timer? _debounceTimer;
 
   @override
   void initState() {
@@ -28,9 +30,25 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
 
   @override
   void dispose() {
+    _debounceTimer?.cancel();
     _searchController.dispose();
     _searchFocusNode.dispose();
     super.dispose();
+  }
+
+  void _onSearchInputChanged(String value) {
+    ref.read(searchQueryProvider.notifier).state = value;
+    _debounceTimer?.cancel();
+    final clean = value.trim();
+    if (clean.length >= 3) {
+      // Si la búsqueda local no arroja resultados, consultar automáticamente en línea en 600ms
+      _debounceTimer = Timer(const Duration(milliseconds: 600), () {
+        final currentProducts = ref.read(filteredProductsProvider);
+        if (currentProducts.isEmpty && clean.isNotEmpty) {
+          ref.read(onlineSearchActionProvider)(clean);
+        }
+      });
+    }
   }
 
   static const Map<int, String> _weekdayLabels = {
@@ -1255,7 +1273,7 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
                 TextField(
                   controller: _searchController,
                   focusNode: _searchFocusNode,
-                  onChanged: (value) => ref.read(searchQueryProvider.notifier).state = value,
+                  onChanged: _onSearchInputChanged,
                   decoration: InputDecoration(
                     hintText: 'Buscar yerba, leche trébol, cerveza o EAN...',
                     prefixIcon: const Icon(Icons.search_rounded, color: Color(0xFF10B981)),
@@ -1264,6 +1282,7 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
                             icon: const Icon(Icons.clear_rounded, size: 18),
                             onPressed: () {
                               _searchController.clear();
+                              _debounceTimer?.cancel();
                               ref.read(searchQueryProvider.notifier).state = '';
                               _searchFocusNode.unfocus();
                             },
